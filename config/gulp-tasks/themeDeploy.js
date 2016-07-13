@@ -1,11 +1,11 @@
 'use strict';
 
-let dirs = require('../dirs'),
-    apiConfig = require('../shopifyApiConfiguration');
+let paths = require(`${__config}/paths`)(),
+    apiConfig = require(`${__config}/shopifyApiConfiguration`);
 
 module.exports = function (gulp, plugins) {
     return function () {
-        plugins.watch(`${dirs.dest}/+(assets|layout|config|snippets|templates|locales)/**`)
-            .pipe(plugins.shopifyUpload(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: dirs.dest}));
+        plugins.watch(`${paths.theme}/**`)
+            .pipe(plugins.shopifyUpload(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: __dest}));
     }
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-let paths = require(`../paths`);
+let paths = require(`${__config}/paths`)();
 
 module.exports = function (gulp, plugins) {
     return function () {
