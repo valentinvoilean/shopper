@@ -2,27 +2,18 @@
 
 let gulp = require('gulp'),
     watch = require('gulp-watch'),
-    gss = require('gulp-shopify-sass'),
-    gulpShopify = require('gulp-shopify-upload');
+    plugins = require('gulp-load-plugins')();
 
 let dirs = require('./config/dirs'),
-    apiConfig = require(`${dirs.config}/shopifyApiConfiguration`),
     paths = require(`${dirs.config}/paths`);
 
-gulp.task('concatSass', function () {
-    gulp.src(`${paths.sass.src}/*.*`)
-        .pipe(gss())
-        .pipe(gulp.dest(paths.sass.dest));
-});
-
-gulp.task('Theme Deploy', function() {
-    return watch(`${dirs.dest}/+(assets|layout|config|snippets|templates|locales)/**`)
-        .pipe(gulpShopify(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: dirs.dest}));
-});
+// Gulp Tasks
+gulp.task('concatSass', require(`${dirs.config}/gulp-tasks/concatSass`)(gulp, plugins));
+gulp.task('themeDeploy', require(`${dirs.config}/gulp-tasks/themeDeploy`)(gulp, plugins));
 
 // configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
     gulp.watch(`${paths.sass.src}/**/*.*`, ['concatSass']);
 });
 
-gulp.task('default', ['watch', 'Theme Deploy']);
+gulp.task('default', ['watch', 'themeDeploy']);
