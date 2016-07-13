@@ -1,33 +1,28 @@
 'use strict';
 
 let gulp = require('gulp'),
-    shell = require('gulp-shell'),
-    gss = require('gulp-shopify-sass');
+    watch = require('gulp-watch'),
+    gss = require('gulp-shopify-sass'),
+    gulpShopify = require('gulp-shopify-upload');
 
-
-const dirs = {
-    src: 'src',
-    dest: 'dest'
-};
-
-const sassPaths = {
-    src: `${dirs.src}/sass`,
-    dest: `${dirs.dest}/assets`
-};
+let dirs = require('./config/dirs'),
+    apiConfig = require(`${dirs.config}/shopifyApiConfiguration`),
+    paths = require(`${dirs.config}/paths`);
 
 gulp.task('concatSass', function () {
-    gulp.src(`${sassPaths.src}/*.scss`)
+    gulp.src(`${paths.sass.src}/*.*`)
         .pipe(gss())
-        .pipe(gulp.dest(sassPaths.dest));
+        .pipe(gulp.dest(paths.sass.dest));
 });
 
-gulp.task('Theme Deploy', shell.task([
-    './themeWatch.sh'
-]));
+gulp.task('Theme Deploy', function() {
+    return watch(`${dirs.dest}/+(assets|layout|config|snippets|templates|locales)/**`)
+        .pipe(gulpShopify(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: dirs.dest}));
+});
 
 // configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-    gulp.watch(`${sassPaths.src}/**/*.*`, ['concatSass']);
+    gulp.watch(`${paths.sass.src}/**/*.*`, ['concatSass']);
 });
 
 gulp.task('default', ['watch', 'Theme Deploy']);
