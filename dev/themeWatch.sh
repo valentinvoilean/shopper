@@ -1,1 +1,0 @@
-cd ../prod && theme watch
