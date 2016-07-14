@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = function (gulp) {
-    return function () {
-        gulp.watch(`${__src.sass}/**/*.scss.liquid`, ['concatSass']);
-    }
+  return () => {
+    gulp.watch(`${__src.sass}/**/*.scss.liquid`, ['concatSass']);
+    gulp.watch(`${__src.js}/**/*.js`, ['lint']);
+  };
 };
