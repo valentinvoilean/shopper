@@ -5,7 +5,7 @@ let paths = require(`${__config}/paths`)(),
 
 module.exports = function (gulp, plugins) {
     return function () {
-        plugins.watch(`${paths.theme}/**`)
-            .pipe(plugins.shopifyUpload(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: __dest}));
+        plugins.watch(`${__theme}/**`)
+            .pipe(plugins.shopifyUpload(apiConfig.key, apiConfig.password, apiConfig.siteName, apiConfig.themeID, {basePath: __theme}));
     }
 };

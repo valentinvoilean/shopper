@@ -1,5 +1,5 @@
 .idea/
 .DS_Store
 node_modules/
-dest/config.yml
+theme/config.yml
 config/shopifyApiConfiguration.js
