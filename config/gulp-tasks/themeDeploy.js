@@ -1,7 +1,6 @@
 'use strict';
 
-let paths = require(`${__config}/paths`)(),
-    apiConfig = require(`${__config}/shopifyApiConfiguration`);
+let apiConfig = require(`${__config}/shopifyApiConfiguration`);
 
 module.exports = function (gulp, plugins) {
     return function () {

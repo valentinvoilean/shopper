@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "cd dest && theme watch"
+    "watch": "cd theme && theme watch"
   },
   "author": "",
   "license": "ISC",

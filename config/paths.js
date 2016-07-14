@@ -3,19 +3,12 @@
 module.exports = function (projectDir) {
     // Build global paths
     global.__base = projectDir || __base;
-    global.__src = `${__base}/src`;
     global.__theme = `${__base}/theme`;
     global.__config = `${__base}/config`;
-
-    return {
-        sass: {
-            src: `${__src}/sass`,
-            dest: `${__theme}/assets`
-        },
-        js: {
-            src: `${__src}/js`,
-            dest: `${__theme}/assets`
-        },
-        tasks: `${__config}/gulp-tasks`
+    global.__gulpTasks = `${__config}/gulp-tasks`;
+    global.__assets = `${__theme}/assets`;
+    global.__src = {
+        sass: `${__base}/src/sass`,
+        js: `${__base}/src/js`
     };
 };
