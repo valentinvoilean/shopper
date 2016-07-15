@@ -10,4 +10,5 @@ gulp.task('concatSass', require(`${__gulpTasks}/concatSass`)(gulp, plugins));
 gulp.task('themeDeploy', require(`${__gulpTasks}/themeDeploy`)(gulp, plugins));
 gulp.task('watch', require(`${__gulpTasks}/watch`)(gulp));
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));
-gulp.task('default', ['lint', 'watch', 'themeDeploy']);
+gulp.task('createBundle', require(`${__gulpTasks}/createBundle`)(gulp, plugins));
+gulp.task('default', ['lint', 'createBundle', 'watch', 'themeDeploy']);
