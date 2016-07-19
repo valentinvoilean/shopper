@@ -86,12 +86,6 @@ module.exports = function(config) {
       'src/js/**/!(*.spec).js': ['babel', 'coverage']
     },
 
-    // set up proxies so the test server will be able to find our files
-    proxies: {
-      '/src/js/': '/base/src/js/',
-      '/jspm_packages/': '/base/src/js/jspm_packages/'
-    },
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
