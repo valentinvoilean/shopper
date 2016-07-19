@@ -7,11 +7,9 @@ module.exports = function (gulp, plugins) {
   // Otherwise, the task may end before the stream has finished.
   return () =>
     gulp.src([
-      `${__base}/**/*.js`,
-      `!${__base}/config.js`,
-      `!${__base}/node_modules/**`,
-      `!${__base}/jspm_packages/**`,
-      `!${__dist}/**`
+      `${__base}/gulp.js`,
+      `${__base}/src/**/*.js`,
+      `${__base}/config/**/*.js`
     ])
     // eslint() attaches the lint output to the "eslint" property
     // of the file object so it can be used by other modules.
