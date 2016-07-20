@@ -1,3 +1,7 @@
+'use strict';
+
+let babelMoreOptions = { presets: 'es2015' };
+
 // Karma configuration
 // Generated on Fri Feb 19 2016 15:10:40 GMT-0500 (EST)
 
@@ -34,8 +38,22 @@ module.exports = function(config) {
 
     // Settings for the karma-coverage reporter
     coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
+      instrumenters: { isparta : require('isparta') },
+      instrumenter: {
+        'src/js/**/*.js': 'isparta'
+      },
+      instrumenterOptions: {
+        isparta: { babel : babelMoreOptions }
+      },
+      reporters: [
+        {
+          type: 'text-summary'
+        },
+        {
+          type: 'html',
+          dir: 'coverage/'
+        }
+      ]
     },
 
     // list of files to exclude
@@ -97,14 +115,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
-
-    // set up the spec reporter - I just want to see the "expected x to equal y" output in errors
-    specReporter: {
-      maxLogLines: 1,
-      suppressErrorSummary: true,
-      suppressFailed: false,
-      suppressPassed: false,
-      suppressSkipped: false
-    }
   });
 };
