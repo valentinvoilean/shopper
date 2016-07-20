@@ -11,6 +11,10 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
+    files: [
+      'node_modules/babel-polyfill/dist/polyfill.js'
+    ],
+
     // karma-babel-preprocessor settings
     // tell it to use babel-preset-es2015
     babelPreprocessor: {
