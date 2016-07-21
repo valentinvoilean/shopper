@@ -1,0 +1,17 @@
+.headerBottom {
+  overflow: hidden;
+
+  .topInfo {
+    height: 25px;
+    width: 100%;
+    float: left;
+    color: $c4;
+    background: $c5;
+  }
+
+  .breadcrumb {
+    height: 25px;
+    width: 100%;
+    float: left;
+  }
+}
