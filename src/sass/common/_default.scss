@@ -1,2 +1,12 @@
 @import 'normalize';
 @import 'colors';
+
+body {
+  background: $page-background-color;
+  color: $page-text-color;
+}
+
+a {
+  color: $page-link-color;
+  text-decoration: none;
+}

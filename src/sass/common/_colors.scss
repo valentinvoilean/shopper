@@ -1,3 +1,9 @@
+// COLORS
+
+$page-background-color: {{ settings.page_background_color }};
+$page-text-color: {{ settings.page_text_color }};
+$page-link-color: {{ settings.page_link_color }};
+
 $c0: #000;
 $c1: #E6E6E6;
 $c2: #444;

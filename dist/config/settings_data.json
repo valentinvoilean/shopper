@@ -1,6 +1,11 @@
 {
-  "current": "Slate",
+  "current": "Shopper",
   "presets": {
+    "Shopper": {
+      "page_background_color": "#fff",
+      "page_text_color": "#44423E",
+      "page_link_color": "#000"
+    },
     "Slate": {
       "customer_layout": "theme",
       "background_color": "#e6ebeb",
