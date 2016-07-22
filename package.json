@@ -19,6 +19,8 @@
     "gulp-eslint": "3.0.1",
     "gulp-jspm": "0.5.12",
     "gulp-load-plugins": "1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "2.3.2",
     "gulp-shell": "0.5.2",
     "gulp-shopify-sass": "0.2.1",
     "gulp-shopify-upload": "2.0.0",
