@@ -2,7 +2,7 @@
 
 module.exports = function (gulp) {
   return () => {
-    gulp.watch(`${__src.sass}/**/*.scss.liquid`, ['concatSass']);
-    gulp.watch(`${__src.js}/**/*.js`, ['lint', 'createBundle']);
+    gulp.watch(`${__src.sass}/**/*.*`, ['concatSass']);
+    gulp.watch(`${__src.js}/**/*.*`, ['lint', 'createBundle']);
   };
 };

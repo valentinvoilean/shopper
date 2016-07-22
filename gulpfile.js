@@ -11,4 +11,4 @@ gulp.task('themeDeploy', require(`${__gulpTasks}/themeDeploy`)(gulp, plugins));
 gulp.task('watch', require(`${__gulpTasks}/watch`)(gulp));
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));
 gulp.task('createBundle', require(`${__gulpTasks}/createBundle`)(gulp, plugins));
-gulp.task('default', ['watch', 'themeDeploy', 'lint', 'createBundle', 'concatSass']);
+gulp.task('default', ['watch', 'themeDeploy']);
