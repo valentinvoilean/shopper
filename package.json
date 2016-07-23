@@ -43,6 +43,9 @@
     "phantomjs-prebuilt": "^2.1.7"
   },
   "jspm": {
+    "directories": {
+      "packages": "dist/jspm_packages"
+    },
     "dependencies": {
       "jquery": "npm:jquery@^3.1.0",
       "susy": "npm:susy@^2.2.12"

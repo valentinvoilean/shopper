@@ -40,15 +40,8 @@ module.exports = function (config) {
       instrumenter: {
         'src/js/**/*.js': 'isparta'
       },
-      reporters: [
-        {
-          type: 'text'
-        },
-        {
-          type: 'html',
-          dir: 'coverage/'
-        }
-      ]
+      dir : 'dist/coverage/',
+      reporters: [{type: 'text'}, {type: 'html'}]
     }
   });
 };
