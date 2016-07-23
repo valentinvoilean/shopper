@@ -1,6 +1,6 @@
 .idea/
 .DS_Store
 node_modules/
-jspm_packages/
-theme/config.yml
-config/shopifyApiConfiguration.js
+dist/jspm_packages/
+dist/theme/config.yml
+src/config/shopifyApiConfiguration.js
