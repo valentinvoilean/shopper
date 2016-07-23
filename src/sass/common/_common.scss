@@ -1,7 +1,9 @@
-@import 'libs/normalize';
-
-// Variables
-@import 'variables/colors';
+// Import Susy
+@import "jspm:susy/sass/susy";
 
 // Mixins
 @import "mixins/clearfix";
+
+// Variables
+@import 'variables/colors';
+@import 'variables/grid';

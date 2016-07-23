@@ -41,7 +41,8 @@
     "karma-spec-reporter": "0.0.26",
     "phantomjs": "2.1.7",
     "phantomjs-prebuilt": "2.1.7",
-    "sass-jspm-importer": "0.0.6"
+    "sass-jspm-importer": "0.0.6",
+    "susy": "2.2.12"
   },
   "jspm": {
     "directories": {
@@ -49,7 +50,7 @@
     },
     "dependencies": {
       "jquery": "npm:jquery@^3.1.0",
-      "normalize.css": "npm:normalize.css@^4.2.0",
+      "node-normalize-scss": "npm:node-normalize-scss@^1.3.2",
       "susy": "npm:susy@^2.2.12"
     },
     "devDependencies": {

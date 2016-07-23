@@ -7,3 +7,14 @@ a {
   color: $page-link-color;
   text-decoration: none;
 }
+
+.container {
+  @include container;
+  height: 100vh;
+}
+
+.col {
+  @include gallery(1);
+  background: red;
+  height: 100%;
+}

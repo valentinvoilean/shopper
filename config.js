@@ -18,6 +18,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
     "jquery": "npm:jquery@3.1.0",
+    "node-normalize-scss": "npm:node-normalize-scss@1.3.2",
     "normalize.css": "npm:normalize.css@4.2.0",
     "susy": "npm:susy@2.2.12",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -66,6 +67,9 @@ System.config({
     },
     "npm:jquery@3.1.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:node-normalize-scss@1.3.2": {
+      "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
