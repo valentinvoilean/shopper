@@ -18,6 +18,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
     "jquery": "npm:jquery@3.1.0",
+    "normalize.css": "npm:normalize.css@4.2.0",
     "susy": "npm:susy@2.2.12",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
