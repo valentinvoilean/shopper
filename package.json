@@ -31,7 +31,7 @@
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "^2.5.0",
     "jspm": "^0.16.39",
-    "karma": "^1.1.1",
+    "karma": "0.13.21",
     "karma-babel-preprocessor": "6.0.1",
     "karma-coverage": "github:douglasduteil/karma-coverage#next",
     "karma-jasmine": "1.0.2",
