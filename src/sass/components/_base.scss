@@ -10,11 +10,27 @@ a {
 
 .container {
   @include container;
+
+  @include susy-media($b2) {
+    @include container($m);
+  }
+
+  @include susy-media($b3) {
+    @include container($l);
+  }
+
+  @include susy-media($b4) {
+    @include container($xl);
+  }
+
   height: 100vh;
 }
 
 .col {
-  @include gallery(1);
+  @include mq(1,4) {
+    @include gallery(1);
+  }
+
   background: red;
   height: 100%;
 }
