@@ -1,40 +1,57 @@
-//## Layouts
+@include gridle_setup((
+  context : 12,
+  gutter-width : 1.5625%
+));
 
-$susy: (
-  columns: 12,
-  gutters: .2272,
-  math: fluid,
-  output: float,
-  gutter-position: after
+@include gridle_register_state (tablet, (
+  min-width : 481px,
+  gutter-width : 2.604%
+));
+
+// make the use of media queries really easy
+@include gridle_register_state (desktop, (
+  min-width : 1025px,
+  gutter-width : 25px
+));
+
+@include gridle_generate_classes();
+
+
+/*============================================================================
+  #Breakpoint and Grid Variables
+==============================================================================*/
+$tablet: 480px;
+$desktop: 1024px;
+
+/*================ The following are dependencies of csswizardry grid ================*/
+$breakpoints: (
+  'tablet' '(min-width: #{$tablet})',
+  'desktop' '(min-width: #{$desktop})',
 );
 
-$m: 12 .4347 after fluid;
-$l: 12 (63px 24px) after static;
-$xl: 12 (77px 25px) after static;
+/*============================================================================
+  Dependency-free breakpoint mixin
+    - Based on http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
+    - Usage docs: http://shopify.github.io/Timber/#sass-mixins
+==============================================================================*/
 
-//## Breakpoints
-$b1: 0;
-$b2: 768px;
-$b3: 1024px;
-$b4: 1200px;
-
-@mixin mq($mq-from: 1, $mq-to: false) {
-  $map-layout: (
-    1: ($b1, $susy),
-    2: ($b2, $m),
-    3: ($b3, $l),
-    4: ($b4, $xl),
-  );
-  @if ($mq-to) {
-    @for $mq from $mq-from through $mq-to {
-      $currentLayout: map-get($map-layout, $mq);
-      @include susy-breakpoint(nth($currentLayout, 1), nth($currentLayout, 2)) {
-        @content;
-      }
+$min: min-width;
+$max: max-width;
+@mixin at-query ($constraint_, $viewport1_, $viewport2_:null) {
+  $constraint: $constraint_; $viewport1: $viewport1_; $viewport2: $viewport2_;
+  @if type-of($constraint_) == number {
+    $viewport1 : $constraint_; $viewport2 : $viewport1_; $constraint : null;
+  }
+  @if $constraint == $min {
+    @media screen and ($min: $viewport1) {
+      @content;
+    }
+  } @else if $constraint == $max {
+    @media screen and ($max: $viewport1) {
+      @content;
     }
   } @else {
-    $currentLayout: map-get($map-layout, $mq-from);
-    @include susy-breakpoint(nth($currentLayout, 1), nth($currentLayout, 2)) {
+    @media screen and ($min: $viewport1) and ($max: $viewport2) {
       @content;
     }
   }
