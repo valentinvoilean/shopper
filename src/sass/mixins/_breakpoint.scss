@@ -29,7 +29,7 @@
 $layouts: (
   'mobile' (12, 1.5625%),
   'tablet' (12, 2.604%),
-  'desktop' (12, 24px)
+  'desktop' (12, 24px, 63px)
 );
 
 @each $layout in $layouts {
@@ -37,6 +37,11 @@ $layouts: (
   $settings: nth($layout, 2);
   $columns: nth($settings, 1);
   $gutterWidth: nth($settings, 2);
+  $columnWidth: null;
+
+  @if (length($settings) == 3) {
+    $columnWidth: nth($settings, 3);
+  }
 
   @for $i from 1 through $columns {
     $gutters: $columns - 1;
@@ -45,14 +50,19 @@ $layouts: (
 
     .col-#{$bp}-#{$i} {
 
-      @include breakpoint($bp) {
+      //@include breakpoint($bp) {
         @if is-percentage($gutterWidth) {
           $colsTotalWidth: 100% - $guttersTotalWidth;
           width: $colsTotalWidth / $columns * $i + $insideGuttersTotalWidth;
         }
 
         @if is-absolute-length($gutterWidth) {
-          width: calc(#{100% / $columns * $i} - #{$guttersTotalWidth / $columns * $i - $insideGuttersTotalWidth});
+          @if $columnWidth {
+            width: $columnWidth * $i + $insideGuttersTotalWidth;
+          }
+          @else {
+            width: calc(#{100% / $columns * $i} - #{$guttersTotalWidth / $columns * $i - $insideGuttersTotalWidth});
+          }
         }
 
         margin-right: $gutterWidth;
@@ -61,7 +71,7 @@ $layouts: (
         &:last-child {
           margin-right: 0;
         }
-      }
+      //}
     }
   }
 }
