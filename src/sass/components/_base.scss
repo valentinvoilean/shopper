@@ -9,28 +9,17 @@ a {
 }
 
 .container {
-  @include container;
-
-  @include susy-media($b2) {
-    @include container($m);
-  }
-
-  @include susy-media($b3) {
-    @include container($l);
-  }
-
-  @include susy-media($b4) {
-    @include container($xl);
-  }
-
+  max-width : 1200px;
+  margin : 0 auto;
   height: 100vh;
 }
 
-.col {
-  @include mq(1,4) {
-    @include gallery(1);
-  }
+.test {
+  height: 100%;
+}
 
+.testBackground {
   background: red;
+  width: 100%;
   height: 100%;
 }

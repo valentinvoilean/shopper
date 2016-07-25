@@ -13,6 +13,8 @@ insert_final_newline = true
 [*.{liquid,html,js,scss,xml}]
 indent_size = 2
 
+[*.scss]
+insert_final_newline = false
 
 # Use 4 spaces for indentation in Markdown files
 

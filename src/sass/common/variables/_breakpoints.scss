@@ -1,0 +1,12 @@
+$mobileMax: 479px;
+$tabletMin: 480pxt;
+$tabletMax: 1023px;
+$desktopMin: 1024px;
+
+$breakpoints: (
+  'mobile' '(max-width: #{$mobileMax})',
+  'tablet' '(min-width: #{$tabletMin} and max-width: #{$tabletMax})',
+  'tabletMax' '(max-width: #{$tabletMax})',
+  'tabletMin' '(min-width: #{$tabletMin})',
+  'desktop' '(min-width: #{$desktopMin})',
+);

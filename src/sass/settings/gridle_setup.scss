@@ -1,0 +1,18 @@
+@import "jspm:gridle/sass/gridle/gridle";
+
+@include gridle_setup((
+  context : 12,
+  gutter-width : 1.5625%
+));
+
+@include gridle_register_state (tablet, (
+  min-width : 480px,
+  gutter-width : 2.604%
+));
+
+@include gridle_register_state (desktop, (
+  min-width : 1024px,
+  gutter-width : 24px
+));
+
+@include gridle_generate_classes();
