@@ -26,20 +26,32 @@
 
 /// test layout
 
-$gutterWidth: 2.5%;
+$layouts: (
+  'mobile',
+    (1.5625%),
+  'tablet',
+    (2.604%),
+  'desktop',
+    (24px)
+);
 
-@for $i from 1 through 12 {
-  $guttersTotalWidth: 11 * $gutterWidth;
+$gutterWidth: 2.5%;
+$columns: 12;
+
+@for $i from 1 through $columns {
+  $gutters: $columns - 1;
+  $guttersTotalWidth: $gutters * $gutterWidth;
   $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
 
   .col-#{$i} {
 
     @if is-percentage($gutterWidth) {
-      width: (100% / 12 * $i) - $guttersTotalWidth / 12 * $i + $insideGuttersTotalWidth;
+      $colsTotalWidth: 100% - $guttersTotalWidth;
+      width: $colsTotalWidth / $columns * $i + $insideGuttersTotalWidth;
     }
 
     @if is-absolute-length($gutterWidth) {
-      width: calc(#{100% / 12 * $i} - #{$guttersTotalWidth / 12 * $i - $insideGuttersTotalWidth});
+      width: calc(#{100% / $columns * $i} - #{$guttersTotalWidth / $columns * $i - $insideGuttersTotalWidth});
     }
 
     margin-right: $gutterWidth;
@@ -50,19 +62,3 @@ $gutterWidth: 2.5%;
     }
   }
 }
-
-/*@for $i from 1 through 12 {
-  $guttersTotalWidth: 11 * $gutterWidth;
-  $colsTotalWidth: 100% - $guttersTotalWidth;
-  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
-
-  .col-#{$i} {
-    width: $colsTotalWidth / 12 * $i + $insideGuttersTotalWidth;
-    margin-right: $gutterWidth;
-    float: left;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}*/
