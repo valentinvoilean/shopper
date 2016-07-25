@@ -1,8 +1,51 @@
-@import "jspm:node-normalize-scss/normalize";
+/*============================================================================
+  Shopify Shopper
+  Copyright 2016 Valentin-Marian Voilean.
+  Author Valentin-Marian Voilean
+  Built with Sass - http://sass-lang.com/
+==============================================================================*/
+
+/*============================================================================
+  Table of Contents
+
+  #Breakpoints
+  #General Variables
+  #Sass Mixins
+  #Normalize
+  #Grid Setup
+  #Basic Styles
+  #Helper Classes
+  #Typography
+  #Rich Text Editor
+  #Links and Buttons
+  #Lists
+  #Tables
+  #Reponsive Tables
+  #OOCSS Media Object
+  #Images and Iframes
+  #Forms
+  #Icons
+  #Pagination
+  #Site Header
+  #Site Nav and Dropdowns
+  #Mobile Nav
+  #Drawers
+  #Site Footer
+  #Product and Collection Grids
+  #Collection Filters
+  #Breadcrumbs
+  #Product Page
+  #Notes and Form Feedback
+  #Cart Page
+  #Ajax Cart Styles
+==============================================================================*/
 
 @import 'common/common';
 
-// Import base styles
+@import 'libs/normalize';
+
+@import 'components/grid';
+
 @import 'components/base';
 
 // Import all components
