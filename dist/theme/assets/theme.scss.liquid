@@ -57,6 +57,12 @@ $breakpoints: (
   'desktop' '(min-width: #{$desktopMin})'
 );
 
+$layouts: (
+  'mobile' 1.5625%,
+  'tablet' 2.604%,
+  'desktop' 24px
+);
+
 /*============================================================================
   #General Variables
 ==============================================================================*/
@@ -100,6 +106,17 @@ $c9: #777;
   *zoom: 1;
 }
 
+@function is-number($value) {
+  @return type-of($value) == 'number';
+}
+
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value));
+}
+
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
 /*================  Breakpoint mixin ================*/
 
 // e.g: @include breakpoint('tabletMax'){ color: red; }
@@ -124,6 +141,51 @@ $c9: #777;
     @warn "Breakpoint '#{$media-query}' does not exist";
   }
 }
+
+
+/// test layout
+
+$gutterWidth: 2.5%;
+
+@for $i from 1 through 12 {
+  $guttersTotalWidth: 11 * $gutterWidth;
+  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
+
+  .col-#{$i} {
+
+    @if is-percentage($gutterWidth) {
+      width: (100% / 12 * $i) - $guttersTotalWidth / 12 * $i + $insideGuttersTotalWidth;
+    }
+
+    @if is-absolute-length($gutterWidth) {
+      width: calc(#{100% / 12 * $i} - #{$guttersTotalWidth / 12 * $i - $insideGuttersTotalWidth});
+    }
+
+    margin-right: $gutterWidth;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+/*@for $i from 1 through 12 {
+  $guttersTotalWidth: 11 * $gutterWidth;
+  $colsTotalWidth: 100% - $guttersTotalWidth;
+  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
+
+  .col-#{$i} {
+    width: $colsTotalWidth / 12 * $i + $insideGuttersTotalWidth;
+    margin-right: $gutterWidth;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}*/
+
 
 /*============================================================================
   #Normalize

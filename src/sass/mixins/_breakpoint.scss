@@ -22,3 +22,47 @@
     @warn "Breakpoint '#{$media-query}' does not exist";
   }
 }
+
+
+/// test layout
+
+$gutterWidth: 2.5%;
+
+@for $i from 1 through 12 {
+  $guttersTotalWidth: 11 * $gutterWidth;
+  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
+
+  .col-#{$i} {
+
+    @if is-percentage($gutterWidth) {
+      width: (100% / 12 * $i) - $guttersTotalWidth / 12 * $i + $insideGuttersTotalWidth;
+    }
+
+    @if is-absolute-length($gutterWidth) {
+      width: calc(#{100% / 12 * $i} - #{$guttersTotalWidth / 12 * $i - $insideGuttersTotalWidth});
+    }
+
+    margin-right: $gutterWidth;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+/*@for $i from 1 through 12 {
+  $guttersTotalWidth: 11 * $gutterWidth;
+  $colsTotalWidth: 100% - $guttersTotalWidth;
+  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
+
+  .col-#{$i} {
+    width: $colsTotalWidth / 12 * $i + $insideGuttersTotalWidth;
+    margin-right: $gutterWidth;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}*/

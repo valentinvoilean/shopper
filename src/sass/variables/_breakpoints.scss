@@ -10,3 +10,9 @@ $breakpoints: (
   'tabletMin' '(min-width: #{$tabletMin})',
   'desktop' '(min-width: #{$desktopMin})'
 );
+
+$layouts: (
+  'mobile' 1.5625%,
+  'tablet' 2.604%,
+  'desktop' 24px
+);
