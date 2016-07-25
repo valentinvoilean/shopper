@@ -9,10 +9,13 @@ module.exports = function (gulp, plugins) {
         functions: plugins.sassJspmImporter.resolve_function(__jspm),
         importer: plugins.sassJspmImporter.importer
       }))
+      .pipe(plugins.mergeMediaQueries({
+        log: true
+      }))
       .pipe(plugins.rename(function (path) {
         path.dirname += '/components';
         path.basename = '_grid-classes';
-        path.extname = '.scss'
+        path.extname = '.scss';
       }))
       .pipe(gulp.dest(__src.sass));
 };

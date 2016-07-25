@@ -4,6 +4,7 @@ require('./src/config/paths')(__dirname);
 // Load Node Modules
 const gulp = require('gulp'),
   plugins = require('gulp-load-plugins')({
+    DEBUG: true,
     pattern: ['gulp-*', 'sass-*']
   });
 

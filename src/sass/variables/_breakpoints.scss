@@ -8,5 +8,5 @@ $breakpoints: (
   'tablet' '(min-width: #{$tabletMin} and max-width: #{$tabletMax})',
   'tabletMax' '(max-width: #{$tabletMax})',
   'tabletMin' '(min-width: #{$tabletMin})',
-  'desktop' '(min-width: #{$desktopMin})',
+  'desktop' '(min-width: #{$desktopMin})'
 );
