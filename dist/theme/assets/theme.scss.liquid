@@ -51,7 +51,7 @@ $desktopMin: 1024px;
 
 $breakpoints: (
   'mobile' '(max-width: #{$mobileMax})',
-  'tablet' '(min-width: #{$tabletMin} and max-width: #{$tabletMax})',
+  'tablet' '(min-width: #{$tabletMin}) and (max-width: #{$tabletMax})',
   'tabletMax' '(max-width: #{$tabletMax})',
   'tabletMin' '(min-width: #{$tabletMin})',
   'desktop' '(min-width: #{$desktopMin})'
@@ -146,38 +146,41 @@ $c9: #777;
 /// test layout
 
 $layouts: (
-  'mobile',
-    (1.5625%),
-  'tablet',
-    (2.604%),
-  'desktop',
-    (24px)
+  'mobile' (12, 1.5625%),
+  'tablet' (12, 2.604%),
+  'desktop' (12, 24px)
 );
 
-$gutterWidth: 2.5%;
-$columns: 12;
+@each $layout in $layouts {
+  $bp: nth($layout, 1);
+  $settings: nth($layout, 2);
+  $columns: nth($settings, 1);
+  $gutterWidth: nth($settings, 2);
 
-@for $i from 1 through $columns {
-  $gutters: $columns - 1;
-  $guttersTotalWidth: $gutters * $gutterWidth;
-  $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
+  @for $i from 1 through $columns {
+    $gutters: $columns - 1;
+    $guttersTotalWidth: $gutters * $gutterWidth;
+    $insideGuttersTotalWidth: ($i - 1) * $gutterWidth;
 
-  .col-#{$i} {
+    .col-#{$bp}-#{$i} {
 
-    @if is-percentage($gutterWidth) {
-      $colsTotalWidth: 100% - $guttersTotalWidth;
-      width: $colsTotalWidth / $columns * $i + $insideGuttersTotalWidth;
-    }
+      @include breakpoint($bp) {
+        @if is-percentage($gutterWidth) {
+          $colsTotalWidth: 100% - $guttersTotalWidth;
+          width: $colsTotalWidth / $columns * $i + $insideGuttersTotalWidth;
+        }
 
-    @if is-absolute-length($gutterWidth) {
-      width: calc(#{100% / $columns * $i} - #{$guttersTotalWidth / $columns * $i - $insideGuttersTotalWidth});
-    }
+        @if is-absolute-length($gutterWidth) {
+          width: calc(#{100% / $columns * $i} - #{$guttersTotalWidth / $columns * $i - $insideGuttersTotalWidth});
+        }
 
-    margin-right: $gutterWidth;
-    float: left;
+        margin-right: $gutterWidth;
+        float: left;
 
-    &:last-child {
-      margin-right: 0;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
