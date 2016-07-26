@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   background: $page-background-color;
   color: $page-text-color;
@@ -12,6 +18,10 @@ a {
   max-width : 1200px;
   margin : 0 auto;
   height: 100vh;
+
+  & > * {
+    height: 100%;
+  }
 }
 
 .test {

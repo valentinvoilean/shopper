@@ -44,7 +44,7 @@
   #Breakpoints
 ==============================================================================*/
 
-@import 'variables/breakpoints';
+@import 'variables/grid';
 
 /*============================================================================
   #General Variables
@@ -57,7 +57,9 @@
 ==============================================================================*/
 
 @import "mixins/clearfix";
-@import "mixins/checkType";
+@import "mixins/center-block";
+@import "mixins/grid-framework";
+@import "mixins/grid";
 @import "mixins/breakpoint";
 
 /*============================================================================
@@ -69,7 +71,7 @@
 /*============================================================================
   #Grid setup
 ==============================================================================*/
-@import 'components/grid-classes';
+@import 'components/grid';
 
 
 // Import all components

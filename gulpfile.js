@@ -12,10 +12,9 @@ const gulp = require('gulp'),
 
 // SASS related Tasks
 
-gulp.task('generateGrid', require(`${__gulpTasks}/generateGrid/generateGrid`)(gulp, plugins));
 gulp.task('normalizeCSS', require(`${__gulpTasks}/normalizeCSS/normalizeCSS`)(gulp, plugins));
 gulp.task('concatSass', require(`${__gulpTasks}/concatSass`)(gulp, plugins));
-gulp.task('compileSass', ['generateGrid', 'normalizeCSS', 'concatSass']);
+gulp.task('compileSass', ['normalizeCSS', 'concatSass']);
 
 gulp.task('themeDeploy', require(`${__gulpTasks}/themeDeploy`)(gulp, plugins));
 gulp.task('watch', require(`${__gulpTasks}/watch`)(gulp));
