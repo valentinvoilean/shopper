@@ -61,19 +61,22 @@
 @import "mixins/grid-framework";
 @import "mixins/grid";
 @import "mixins/breakpoint";
+@import "mixins/responsive-visibility";
 
 /*============================================================================
   #Normalize
 ==============================================================================*/
 
-@import 'components/normalize';
+@import 'components/core/normalize';
 
 /*============================================================================
   #Grid setup
 ==============================================================================*/
-@import 'components/grid';
+@import 'components/core/grid';
+@import 'components/core/utilities';
+@import 'components/core/responsive-utilities';
 
 
 // Import all components
-@import 'components/base';
+@import 'components/core/base';
 @import 'components/header/header';
