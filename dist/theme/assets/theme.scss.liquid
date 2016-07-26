@@ -48,31 +48,24 @@
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
-// Extra small screen / phone
-$screen-xs:                  480px;
-$screen-xs-min:              $screen-xs;
-$screen-phone:               $screen-xs-min;
-
-// Small screen / tablet
-$screen-sm:                  768px;
-$screen-sm-min:              $screen-sm;
-$screen-tablet:              $screen-sm-min;
+// Large screen / wide desktop
+$screen-lg-min:              1200px;
+$screen-lg:                  $screen-lg-min;
 
 // Medium screen / desktop
-$screen-md:                  992px;
-$screen-md-min:              $screen-md;
-$screen-desktop:             $screen-md-min;
+$screen-md-min:              1024px;
+$screen-md-max:              $screen-lg-min - 1;
+$screen-md:                  $screen-md-min $screen-md-max;
 
-// Large screen / wide desktop
-$screen-lg:                  1200px;
-$screen-lg-min:              $screen-lg;
-$screen-lg-desktop:          $screen-lg-min;
+// Small screen / tablet
+$screen-sm-min:              768px;
+$screen-sm-max:              $screen-md-min - 1;
+$screen-sm:                  $screen-sm-min $screen-sm-max;
 
-// So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1);
-$screen-sm-max:              ($screen-md-min - 1);
-$screen-md-max:              ($screen-lg-min - 1);
-
+// Extra small screen / phone
+$screen-xs-min:              0;
+$screen-xs-max:              $screen-sm-min - 1;
+$screen-xs:                  $screen-xs-min $screen-xs-max;
 
 //== Grid system
 //
@@ -94,17 +87,17 @@ $grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
 //## Define the maximum width of `.container` for different screen sizes.
 
 // Small screen / tablet
-$container-tablet:             (720px + $grid-gutter-width);
+$container-tablet:             100%;
 //** For `$screen-sm-min` and up.
 $container-sm:                 $container-tablet;
 
 // Medium screen / desktop
-$container-desktop:            (940px + $grid-gutter-width);
+$container-desktop:            100%;
 //** For `$screen-md-min` and up.
 $container-md:                 $container-desktop;
 
 // Large screen / wide desktop
-$container-large-desktop:      (1140px + $grid-gutter-width);
+$container-large-desktop:      1200px;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
 
@@ -366,26 +359,26 @@ $c9: #777;
 
 /*================  Breakpoint mixin ================*/
 
-// e.g: @include breakpoint('tabletMax'){ color: red; }
-// breakpoints: mobile, tablet, tabletMax, tabletMin, desktop
-@mixin breakpoint($media-query) {
-  $breakpoint-found: false;
+@mixin breakpoint($class) {
+  $minWidth: null;
+  $maxWidth: null;
 
-  @each $breakpoint in $breakpoints {
-    $name: nth($breakpoint, 1);
-    $declaration: nth($breakpoint, 2);
-
-    @if $media-query == $name and $declaration {
-      $breakpoint-found: true;
-
-      @media only screen and #{$declaration} {
-        @content;
-      }
-    }
+  @if length($class) == 2 {
+    $minWidth: nth($class, 1);
+    $maxWidth: nth($class, 2);
+  }
+  @else {
+    $minWidth: $class;
   }
 
-  @if $breakpoint-found == false {
-    @warn "Breakpoint '#{$media-query}' does not exist";
+  @if $minWidth != null and $maxWidth != null{
+    @media screen and (min-width: #{$minWidth}) and (max-width: #{$maxWidth}) { @content; }
+  }
+  @else if $minWidth != null {
+    @media screen and (min-width: #{$minWidth}) { @content; }
+  }
+  @else {
+    @warn "Please specify a breakpoint";
   }
 }
 
@@ -505,8 +498,6 @@ a {
 }
 
 .main {
-  max-width : 1200px;
-  margin : 0 auto;
   height: 100vh;
 
   & > * {
@@ -522,6 +513,10 @@ a {
   background: rgba(0, 120, 162, 0.23);
   width: 100%;
   height: 100%;
+
+  @include breakpoint($screen-md) {
+    background: black;
+  }
 }
 
 .headerTop {
