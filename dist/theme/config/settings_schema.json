@@ -29,6 +29,11 @@
         "type": "color",
         "id": "page_link_color",
         "label": "Link color"
+      },
+      {
+        "type": "color",
+        "id": "page_border_color",
+        "label": "Border color"
       }
     ]
   },

@@ -109,6 +109,7 @@ $container-lg:                 $container-large-desktop;
 $page-background-color: #{'{{ settings.page_background_color }}'};
 $page-text-color: #{'{{ settings.page_text_color }}'};
 $page-link-color: #{'{{ settings.page_link_color }}'};
+$border-color: #{'{{ settings.page_border_color }}'};
 
 // Other Colors
 $c0: #000;
@@ -724,6 +725,8 @@ a {
   text-decoration: none;
 }
 
+ul { margin:0; padding: 0;}
+
 .main {
   height: 100vh;
 
@@ -747,11 +750,62 @@ a {
 }
 
 .headerTop {
-  display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $c2;
+  height: 22px;
+  border-bottom: 1px solid $border-color;
+  overflow: hidden;
+
+  .currencies {
+    float: left;
+    text-transform: uppercase;
+  }
+
+  .currencies__list {
+    list-style: none;
+  }
+
+  .currencies__item {
+    margin-right: 15px;
+    display: inline-block;
+
+    &.is-active {
+      font-weight: 600;
+    }
+  }
+
+  .countries {
+    float: left;
+    margin-left: 40px;
+    text-transform: uppercase;
+  }
+
+  .countries__list {
+    list-style: none;
+  }
+
+  .countries__item {
+    margin-right: 15px;
+    display: inline-block;
+  }
+
+  .myAccount {
+    float: right;
+    text-transform: uppercase;
+  }
+
+  .newsletter {
+    float: right;
+    text-transform: uppercase;
+    margin-right: 40px;
+  }
 }
 
 .headerMain {
-
+  height: 80px;
 }
 
 .headerBottom {

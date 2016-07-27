@@ -10,7 +10,7 @@ module.exports = function (gulp, plugins) {
         importer: plugins.sassJspmImporter.importer
       }))
       .pipe(plugins.rename(function (path) {
-        path.dirname += '/components';
+        path.dirname += '/components/core';
         path.basename = '_normalize';
         path.extname = '.scss';
       }))

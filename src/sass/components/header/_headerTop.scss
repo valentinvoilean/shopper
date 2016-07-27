@@ -1,3 +1,54 @@
 .headerTop {
-  display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $c2;
+  height: 22px;
+  border-bottom: 1px solid $border-color;
+  overflow: hidden;
+
+  .currencies {
+    float: left;
+    text-transform: uppercase;
+  }
+
+  .currencies__list {
+    list-style: none;
+  }
+
+  .currencies__item {
+    margin-right: 15px;
+    display: inline-block;
+
+    &.is-active {
+      font-weight: 600;
+    }
+  }
+
+  .countries {
+    float: left;
+    margin-left: 40px;
+    text-transform: uppercase;
+  }
+
+  .countries__list {
+    list-style: none;
+  }
+
+  .countries__item {
+    margin-right: 15px;
+    display: inline-block;
+  }
+
+  .myAccount {
+    float: right;
+    text-transform: uppercase;
+  }
+
+  .newsletter {
+    float: right;
+    text-transform: uppercase;
+    margin-right: 40px;
+  }
 }

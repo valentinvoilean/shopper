@@ -4,7 +4,8 @@
     "Shopper": {
       "page_background_color": "#fff",
       "page_text_color": "#44423E",
-      "page_link_color": "#000"
+      "page_link_color": "#000",
+      "page_border_color": "#F2F2F2"
     },
     "Slate": {
       "customer_layout": "theme",
