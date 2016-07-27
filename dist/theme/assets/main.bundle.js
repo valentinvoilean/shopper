@@ -6426,29 +6426,92 @@ $__System.registerDynamic("9", ["8"], true, function($__require, exports, module
   return module.exports;
 });
 
-$__System.register('1', ['7', '9'], function (_export) {
+$__System.register("a", [], function (_export) {
+  "use strict";
+
+  var VALUES_GRID;
+  return {
+    setters: [],
+    execute: function () {
+      VALUES_GRID = {
+        xsMin: 0,
+        xsMax: 767,
+        smMin: 768,
+        smMax: 1023,
+        mdMin: 1024,
+        mdMax: 1199,
+        lgMin: 1200
+      };
+
+      _export("VALUES_GRID", VALUES_GRID);
+    }
+  };
+});
+$__System.register('b', ['a'], function (_export) {
   'use strict';
 
-  var $, enquire;
+  var VALUES_GRID, MEDIA_QUERIES;
+  return {
+    setters: [function (_a) {
+      VALUES_GRID = _a.VALUES_GRID;
+    }],
+    execute: function () {
+      MEDIA_QUERIES = {
+        xs: 'screen and (max-width: ' + VALUES_GRID.xsMax + 'px)',
+        xsMin: 'screen and (max-width: ' + VALUES_GRID.xsMax + 'px)',
+        xsMax: 'screen and (max-width: ' + VALUES_GRID.xsMax + 'px)',
+        sm: 'screen and (min-width: ' + VALUES_GRID.smMin + 'px) and (max-width: ' + VALUES_GRID.smMax + 'px)',
+        smMin: 'screen and (min-width: ' + VALUES_GRID.smMin + 'px)',
+        smMax: 'screen and (max-width: ' + VALUES_GRID.smMax + 'px)',
+        md: 'screen and (min-width: ' + VALUES_GRID.mdMin + 'px) and (max-width: ' + VALUES_GRID.mdMax + 'px)',
+        mdMin: 'screen and (min-width: ' + VALUES_GRID.mdMin + 'px)',
+        mdMax: 'screen and (max-width: ' + VALUES_GRID.mdMax + 'px)',
+        lg: 'screen and (min-width: ' + VALUES_GRID.lgMin + 'px)',
+        lgMin: 'screen and (min-width: ' + VALUES_GRID.lgMin + 'px)'
+      };
+
+      _export('MEDIA_QUERIES', MEDIA_QUERIES);
+    }
+  };
+});
+$__System.register('1', ['7', '9', 'b'], function (_export) {
+  'use strict';
+
+  var $, enquire, MEDIA_QUERIES, oldMediaQuery, registerBreakpoints;
   return {
     setters: [function (_) {
       $ = _['default'];
     }, function (_2) {
       enquire = _2['default'];
+    }, function (_b) {
+      MEDIA_QUERIES = _b.MEDIA_QUERIES;
     }],
     execute: function () {
 
       $('#site-title').css('color', 'red');
       console.warn('merge');
 
-      enquire.register('screen and (min-width:768px)', {
-        match: function match() {
-          console.warn('desktop');
-        },
-        unmatch: function unmatch() {
-          console.warn('mobile');
+      oldMediaQuery = undefined;
+
+      registerBreakpoints = function registerBreakpoints(mqs) {
+        var _loop = function (i, mqsLength) {
+          enquire.register(MEDIA_QUERIES[mqs[i]], function () {
+            if (oldMediaQuery && oldMediaQuery !== mqs[i]) {
+              console.warn('destroy ' + oldMediaQuery);
+            }
+
+            oldMediaQuery = mqs[i];
+
+            console.warn('init ' + oldMediaQuery);
+          }, true);
+        };
+
+        for (var i = 0, mqsLength = mqs.length; i < mqsLength; i++) {
+          _loop(i, mqsLength);
         }
-      });
+      };
+
+      registerBreakpoints(['xs', 'sm', 'md', 'lg']);
     }
   };
 });
