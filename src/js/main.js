@@ -1,8 +1,9 @@
 window.ss = window.ss || {};
 
+import 'babel-polyfill';
 import $ from 'jquery';
 import enquire from 'enquire.js';
-import {MEDIA_QUERIES} from './config/mediaQueries';
+import {MEDIA_QUERIES} from 'config/mediaQueries';
 
 $('#site-title').css('color', 'red');
 console.warn('merge');
