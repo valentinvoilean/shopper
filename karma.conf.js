@@ -12,13 +12,13 @@ module.exports = function (config) {
 
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      'tests/**/*.js',
+      'tests/**/*.js'
     ],
 
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'tests/**/*.js': ['babel', 'webpack']
+      'tests/**/*.js': ['babel', 'webpack', 'sourcemap', 'coverage']
     },
 
     webpack: require('./webpack.config.js'),
@@ -38,7 +38,7 @@ module.exports = function (config) {
     coverageReporter: {
       instrumenters: {isparta: require('isparta')},
       instrumenter: {
-        'src/js/**/*.js': 'isparta'
+        'tests/**/*.js': 'isparta'
       },
       dir : 'coverage/',
       reporters: [{type: 'text'}, {type: 'html'}]
