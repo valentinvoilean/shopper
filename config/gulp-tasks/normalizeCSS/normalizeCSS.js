@@ -6,8 +6,7 @@ module.exports = function (gulp, plugins) {
       .pipe(plugins.sass({
         outputStyle: 'compressed',
         errLogToConsole: true,
-        functions: plugins.sassJspmImporter.resolve_function(__jspm),
-        importer: plugins.sassJspmImporter.importer
+        includePaths: require('node-normalize-scss').includePaths
       }))
       .pipe(plugins.rename(function (path) {
         path.dirname += '/components/core';

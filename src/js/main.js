@@ -6,7 +6,7 @@ import enquire from 'enquire.js';
 import {MEDIA_QUERIES} from 'config/mediaQueries';
 
 $('#site-title').css('color', 'red');
-console.warn('merge');
+console.warn('merge sigur');
 
 let
   oldMediaQuery,

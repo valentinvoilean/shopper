@@ -63,7 +63,7 @@
 	window.ss = window.ss || {};
 	
 	(0, _jquery2.default)('#site-title').css('color', 'red');
-	console.warn('merge');
+	console.warn('merge sigur');
 	
 	var oldMediaQuery = void 0,
 	    registerBreakpoints = function registerBreakpoints(mqs) {
