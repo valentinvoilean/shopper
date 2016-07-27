@@ -9,6 +9,7 @@ module.exports = function (gulp, plugins) {
     gulp.src([
       `${__base}/gulp.js`,
       `${__base}/src/**/*.js`,
+      `${__base}/tests/**/*.js`,
       `${__base}/config/**/*.js`
     ])
     // eslint() attaches the lint output to the "eslint" property

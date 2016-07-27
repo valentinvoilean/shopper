@@ -11,7 +11,7 @@ module.exports = function (config) {
     frameworks: ['jspm', 'jasmine'],
 
     jspm: {
-      loadFiles: ['src/js/**/*.spec.js'],
+      loadFiles: ['tests/**/*.spec.js'],
       serveFiles: ['src/js/**/*.js']
     },
 
@@ -20,7 +20,7 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'src/js/**/!(*.spec).js': ['babel', 'sourcemap', 'coverage']
+      'src/js/**/*.js': ['babel', 'sourcemap', 'coverage']
     },
 
     babelPreprocessor: {
@@ -40,7 +40,7 @@ module.exports = function (config) {
       instrumenter: {
         'src/js/**/*.js': 'isparta'
       },
-      dir : 'dist/coverage/',
+      dir : 'coverage/',
       reporters: [{type: 'text'}, {type: 'html'}]
     }
   });

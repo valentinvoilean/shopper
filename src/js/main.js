@@ -1,3 +1,5 @@
+window.ss = window.ss || {};
+
 import $ from 'jquery';
 import enquire from 'enquire.js';
 import {MEDIA_QUERIES} from './config/mediaQueries';

@@ -1,6 +1,5 @@
 .idea/
 .DS_Store
 node_modules/
-dist/jspm_packages/
-dist/theme/config.yml
-src/config/shopifyApiConfiguration.js
+jspm_packages/
+coverage/

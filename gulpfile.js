@@ -1,5 +1,5 @@
 // Load Global Paths
-require('./src/config/paths')(__dirname);
+require('./config/paths')(__dirname);
 
 // Load Node Modules
 const gulp = require('gulp'),

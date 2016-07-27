@@ -47,9 +47,6 @@
     "susy": "2.2.12"
   },
   "jspm": {
-    "directories": {
-      "packages": "dist/jspm_packages"
-    },
     "dependencies": {
       "bootstrap-sass": "github:twbs/bootstrap-sass@^3.3.7",
       "enquire.js": "npm:enquire.js@^2.1.1",
