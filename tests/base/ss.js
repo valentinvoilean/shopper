@@ -1,4 +1,4 @@
-import 'src/js/base/ss';
+import 'base/ss';
 
 describe('SS init', () => {
 

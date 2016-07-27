@@ -8,20 +8,20 @@ module.exports = function (config) {
     autoWatch: false,
     singleRun: true,
 
-    frameworks: ['jspm', 'jasmine'],
+    frameworks: ['jasmine'],
 
-    jspm: {
-      loadFiles: ['tests/**/*.js'],
-      serveFiles: ['src/js/**/*.js']
-    },
-
-    files: ['node_modules/babel-polyfill/dist/polyfill.js'],
+    files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      'tests/**/*.js',
+    ],
 
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'src/js/**/*.js': ['babel', 'sourcemap', 'coverage']
+      'tests/**/*.js': ['babel', 'webpack']
     },
+
+    webpack: require('./webpack.config.js'),
 
     babelPreprocessor: {
       options: {
