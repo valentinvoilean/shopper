@@ -11,7 +11,7 @@ module.exports = function (config) {
     frameworks: ['jspm', 'jasmine'],
 
     jspm: {
-      loadFiles: ['tests/**/*.spec.js'],
+      loadFiles: ['tests/**/*.js'],
       serveFiles: ['src/js/**/*.js']
     },
 
