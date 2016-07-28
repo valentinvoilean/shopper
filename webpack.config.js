@@ -2,6 +2,8 @@ require('./config/paths')(__dirname);
 const path = require('path');
 
 module.exports = {
+  devtool: 'inline-source-map',
+
   entry: `${__src.js}/main.js`,
 
   output: {
@@ -18,35 +20,15 @@ module.exports = {
     }
   },
 
-  babel: {
-    presets: ['es2015']
-  },
-
-  isparta: {
-    embedSource: false,
-    noAutoWrap: true,
-    // these babel options will be passed only to isparta and not to babel-loader
-    babel: {
-      presets: ['es2015']
-    }
-  },
-
   module: {
     preLoaders: [
       // transpile all files except testing sources with babel as usual
       {
         test: /\.js$/,
         exclude: [
-          path.resolve('src/js/'),
-          path.resolve('node_modules/')
+          path.resolve(__npm)
         ],
         loader: 'babel'
-      },
-      // transpile and instrument only testing sources with isparta
-      {
-        test: /\.js$/,
-        include: path.resolve('src/js/'),
-        loader: 'isparta'
       }
     ]
   }

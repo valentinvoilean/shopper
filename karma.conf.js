@@ -1,5 +1,8 @@
 'use strict';
 
+require('./config/paths')(__dirname);
+const path = require('path');
+
 // Karma configuration
 // Generated on Fri Feb 19 2016 15:10:40 GMT-0500 (EST)
 
@@ -18,12 +21,46 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'tests/index.js': ['webpack', 'sourcemap']
+      'tests/index.js': ['webpack']
     },
 
-    webpack: require('./webpack.config.js'),
+    webpack: {
+      resolve: {
+        extensions: ['', '.js'],
+        alias: {
+          'components': `${__src.js}/components/`,
+          'config': `${__src.js}/config/`,
+          'base': `${__src.js}/base/`
+        }
+      },
 
-    reporters: ['coverage', 'progress', 'spec'],
+      isparta: {
+        embedSource: false,
+        noAutoWrap: true
+        // these babel options will be passed only to isparta and not to babel-loader
+      },
+
+      module: {
+        preLoaders: [
+          // transpile all files except testing sources with babel as usual
+          {
+            test: /\.js$/,
+            exclude: [
+              path.resolve(__npm)
+            ],
+            loader: 'babel'
+          },
+          // transpile and instrument only testing sources with isparta
+          {
+            test: /\.js$/,
+            include: path.resolve(__src.js),
+            loader: 'isparta'
+          }
+        ]
+      }
+    },
+
+    reporters: [ 'coverage', 'spec' ],
 
     coverageReporter: {
       dir : 'coverage/',
