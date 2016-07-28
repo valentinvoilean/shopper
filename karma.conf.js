@@ -18,7 +18,7 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'tests/index.js': 'webpack'
+      'tests/index.js': ['webpack', 'sourcemap']
     },
 
     webpack: require('./webpack.config.js'),

@@ -2,7 +2,7 @@ require('./config/paths')(__dirname);
 const path = require('path');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   entry: `${__src.js}/main.js`,
 
@@ -39,7 +39,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: [
-          path.resolve('src/js/components/'),
+          path.resolve('src/js/'),
           path.resolve('node_modules/')
         ],
         loader: 'babel'
@@ -47,7 +47,7 @@ module.exports = {
       // transpile and instrument only testing sources with isparta
       {
         test: /\.js$/,
-        include: path.resolve('src/js/components/'),
+        include: path.resolve('src/js/'),
         loader: 'isparta'
       }
     ]
