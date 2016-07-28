@@ -12,36 +12,22 @@ module.exports = function (config) {
 
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      'tests/**/*.js'
+      'tests/index.js'
     ],
 
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'tests/**/*.js': ['babel', 'webpack', 'sourcemap', 'coverage']
+      'tests/index.js': 'webpack'
     },
 
     webpack: require('./webpack.config.js'),
 
-    babelPreprocessor: {
-      options: {
-        presets: ['es2015'],
-        sourceMap: 'inline'
-      },
-      sourceFileName: function(file) {
-        return file.originalPath;
-      }
-    },
-
     reporters: ['coverage', 'progress', 'spec'],
 
     coverageReporter: {
-      instrumenters: {isparta: require('isparta')},
-      instrumenter: {
-        'tests/**/*.js': 'isparta'
-      },
       dir : 'coverage/',
-      reporters: [{type: 'text'}, {type: 'html'}]
+      reporters: [{type: 'html'}]
     }
   });
 };

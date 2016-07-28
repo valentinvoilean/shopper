@@ -1,4 +1,5 @@
 require('./config/paths')(__dirname);
+const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
@@ -19,11 +20,36 @@ module.exports = {
     }
   },
 
+  babel: {
+    presets: ['es2015']
+  },
+
+  isparta: {
+    embedSource: true,
+    noAutoWrap: true,
+    // these babel options will be passed only to isparta and not to babel-loader
+    babel: {
+      presets: ['es2015']
+    }
+  },
+
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }]
+    preLoaders: [
+      // transpile all files except testing sources with babel as usual
+      {
+        test: /\.js$/,
+        exclude: [
+          path.resolve('src/js/components/'),
+          path.resolve('node_modules/')
+        ],
+        loader: 'babel'
+      },
+      // transpile and instrument only testing sources with isparta
+      {
+        test: /\.js$/,
+        include: path.resolve('src/js/components/'),
+        loader: 'isparta'
+      }
+    ]
   }
 };
