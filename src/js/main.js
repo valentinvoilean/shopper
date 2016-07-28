@@ -4,8 +4,8 @@ import $ from 'jquery';
 import enquire from 'enquire.js';
 import {MEDIA_QUERIES} from 'config/mediaQueries';
 
-$('#site-title').css('color', 'red');
-console.warn('merge sigur');
+$('.breadcrumb').css('color', 'red');
+console.warn('merge sigurr');
 
 let
   oldMediaQuery,
