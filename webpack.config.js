@@ -4,7 +4,9 @@ const path = require('path');
 module.exports = {
   devtool: 'inline-source-map',
 
-  entry: `${__src.js}/main.js`,
+  entry: {
+    main: ['babel-polyfill', `${__src.js}/main.js`]
+  },
 
   output: {
     path: __assets,

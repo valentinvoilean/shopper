@@ -1,6 +1,5 @@
 window.ss = window.ss || {};
 
-import 'babel-polyfill';
 import $ from 'jquery';
 import enquire from 'enquire.js';
 import {MEDIA_QUERIES} from 'config/mediaQueries';

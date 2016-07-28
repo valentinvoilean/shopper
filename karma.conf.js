@@ -14,7 +14,6 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
       'tests/index.js'
     ],
 
