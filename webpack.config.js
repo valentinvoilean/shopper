@@ -20,9 +20,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'components': `${__src.js}/components/`,
-      'config': `${__src.js}/config/`,
-      'base': `${__src.js}/base/`,
+      'components': `${__src.js}/components`,
+      'config': `${__src.js}/config`,
+      'base': `${__src.js}/base`,
       'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
       'enquire.js': `${__npm}/enquire.js/dist/enquire.min.js`
     }

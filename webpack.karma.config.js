@@ -6,9 +6,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'components': `${__src.js}/components/`,
-      'config': `${__src.js}/config/`,
-      'base': `${__src.js}/base/`
+      'components': `${__src.js}/components`,
+      'config': `${__src.js}/config`,
+      'base': `${__src.js}/base`
     }
   },
 

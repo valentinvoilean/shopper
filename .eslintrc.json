@@ -27,7 +27,6 @@
     "no-extra-bind": "error",
     "no-extra-label": "error",
     "no-fallthrough": "error",
-    "no-invalid-this": "error",
     "no-labels": "error",
     "no-lone-blocks": "error",
     "no-magic-numbers": "error",
