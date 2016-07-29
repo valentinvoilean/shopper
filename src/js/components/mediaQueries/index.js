@@ -1,5 +1,5 @@
+import {MEDIA_QUERIES} from './config';
 import enquire from 'enquire.js';
-import {MEDIA_QUERIES} from 'config/mediaQueries';
 
 let
   oldMediaQuery,
