@@ -16,6 +16,7 @@ gulp.task('normalizeCSS', require(`${__gulpTasks}/normalizeCSS/normalizeCSS`)(gu
 gulp.task('concatSass', require(`${__gulpTasks}/concatSass`)(gulp, plugins));
 gulp.task('compileSass', ['normalizeCSS', 'concatSass']);
 
+gulp.task('test', require(`${__gulpTasks}/test`)());
 gulp.task('themeDeploy', require(`${__gulpTasks}/themeDeploy`)(gulp, plugins));
 gulp.task('watch', require(`${__gulpTasks}/watch`)(gulp));
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));

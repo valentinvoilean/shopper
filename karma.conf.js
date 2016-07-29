@@ -25,7 +25,7 @@ module.exports = function (config) {
 
     webpack: require('./webpack.karma.config.js'),
 
-    reporters: [ 'coverage', 'spec' ],
+    reporters: [ 'coverage', 'spec'],
 
     coverageReporter: {
       dir : 'coverage/',
