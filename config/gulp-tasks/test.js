@@ -3,8 +3,10 @@
 let Server = require('karma').Server;
 
 module.exports = () => {
-  new Server({
-    configFile: __base + '/karma.conf.js',
-    singleRun: true
-  }).start();
+  return () => {
+    new Server({
+      configFile: __base + '/karma.conf.js',
+      singleRun: true
+    }).start();
+  };
 };
