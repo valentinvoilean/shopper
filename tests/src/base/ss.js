@@ -10,18 +10,44 @@ describe('SS', () => {
   describe('Init Method', () => {
     it('should exist', () => expect(typeof ss.init).toBe('function'));
 
-    it('should initialize the module name passed as parameter', () => {
-      ss.test1 = {init: () => console.warn('test 1')};
-      spyOn(ss.test1, 'init');
-      ss.init('test1');
-      expect(ss.test1.init).toHaveBeenCalled();
-      ss.test1 = null;
+    describe('When a jQuery Element is passed', function() {
+
+      beforeEach(() => {
+        this.$container = $('<div class="container"></div>').appendTo($('body'));
+        this.$test1 = $(`<div data-ss-init="test1"></div>`).appendTo(this.$container);
+        this.$test2 = $(`<div data-ss-init="test2"></div>`).appendTo(this.$container);
+
+        ss.test1 = {init: () => console.warn('test 1')};
+        ss.test2 = {init: () => console.warn('test 1')};
+        spyOn(ss.test1, 'init');
+        spyOn(ss.test2, 'init');
+      });
+
+      it('should initialize the module of the jQuery Dom element if the deepscan is not activated', () => {
+        ss.init(this.$test1);
+        expect(ss.test1.init).toHaveBeenCalled();
+      });
+
+      it('should initialize all the modules from a jQuery DOM element', () => {
+        ss.init(this.$container, true);
+        expect(ss.test1.init).toHaveBeenCalled();
+        expect(ss.test2.init).toHaveBeenCalled();
+      });
+
+      afterEach(() => {
+        this.$container.remove();
+        this.$test1 = null;
+        this.$test2 = null;
+        ss.test1 = null;
+        ss.test2 = null;
+      });
+
     });
 
-    it('should throw a warning if the the module does not exist', () => {
-      spyOn(console, 'warn');
+    it('should throw an error if the parameter is not a jQuery element', () => {
+      spyOn(console, 'error');
       ss.init('blabla');
-      expect(console.warn).toHaveBeenCalledWith('The module blabla does not exist!');
+      expect(console.error).toHaveBeenCalledWith('The parameter passed it is not a jQuery element!');
     });
   });
 
