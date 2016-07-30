@@ -2,9 +2,8 @@ Install and Run the Watchers
 ============================
 
 1. `npm install`
-2. `jspm install`
-3. Configure `/config/shopifyApiConfiguration.js`
-4. `gulp`
+2. Configure `/config/shopifyApiConfiguration.js`
+3. `gulp`
 
 
 EXTRA

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cd ./dest && theme watch
+cd ./theme && theme watch
