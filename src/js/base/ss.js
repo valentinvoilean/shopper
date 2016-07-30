@@ -31,7 +31,7 @@ ss.init = ($container, deepScan = false) => {
       }
       else {
         // initialize  the current element passed
-        $container.each(function() {
+        $container.each(function () {
           let moduleName = $(this).data('ss-init');
           if (moduleName) {
             ss.checkIfModuleExists.call(this, moduleName, 'init');
@@ -45,8 +45,8 @@ ss.init = ($container, deepScan = false) => {
   } else {
     // if no param passed, all the modules from the DOM
     // will be initialized depending on the data-ss-state value
-    $(document).ready(ss.initByState('onReady'));
-    $(window).load(ss.initByState('onLoad'));
+    $(document).ready(() => ss.initByState('onReady'));
+    $(window).on('load', () => ss.initByState('onLoad'));
   }
 };
 
@@ -63,7 +63,7 @@ ss.destroy = ($container, deepScan = false) => {
       }
       else {
         // destroy  the current element passed
-        $container.each(function() {
+        $container.each(function () {
           let moduleName = $(this).data('ss-init');
           if (moduleName) {
             ss.checkIfModuleExists.call(this, moduleName, 'destroy');
