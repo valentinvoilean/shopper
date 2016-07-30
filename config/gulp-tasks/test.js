@@ -2,7 +2,7 @@
 
 let Server = require('karma').Server;
 
-module.exports = (debugMode) => {
+module.exports = function (debugMode) {
   return () => {
     let serverSettings = {
       configFile: __base + '/karma.conf.js'

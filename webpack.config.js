@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    vendors: ['babel-polyfill', 'jquery', 'enquire.js'],
+    vendors: ['babel-polyfill', 'jquery'],
     main: ['babel-polyfill', `${__src.js}/main.js`]
   },
 
@@ -23,8 +23,7 @@ module.exports = {
       'components': `${__src.js}/components`,
       'config': `${__src.js}/config`,
       'base': `${__src.js}/base`,
-      'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
-      'enquire.js': `${__npm}/enquire.js/dist/enquire.min.js`
+      'jquery': `${__npm}/jquery/dist/jquery.min.js` //don't import all the module; use only the minified version
     }
   },
 
@@ -34,8 +33,7 @@ module.exports = {
 
   module: {
     noParse: [
-      `${__npm}/jquery`,
-      `${__npm}/enquire.js/`
+      `${__npm}/jquery`
     ],
     preLoaders: [
       // transpile all files except testing sources with babel as usual

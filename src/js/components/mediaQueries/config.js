@@ -8,6 +8,10 @@ export const VALUES_GRID = {
   lgMin: 1200
 };
 
+export const VALUES = {
+  outOfIndex: -1
+};
+
 export const MEDIA_QUERIES = {
   xs: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
   xsMin: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
