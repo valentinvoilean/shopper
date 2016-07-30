@@ -12,7 +12,7 @@ describe('SS', () => {
 
     describe('When a jQuery Element is passed', function() {
 
-      beforeEach(() => {
+      beforeAll(() => {
         this.$container = $('<div class="container"></div>').appendTo($('body'));
         this.$test1 = $(`<div data-ss-init="test1"></div>`).appendTo(this.$container);
         this.$test2 = $(`<div data-ss-init="test2"></div>`).appendTo(this.$container);
@@ -34,7 +34,7 @@ describe('SS', () => {
         expect(ss.test2.init).toHaveBeenCalled();
       });
 
-      afterEach(() => {
+      afterAll(() => {
         this.$container.remove();
         this.$test1 = null;
         this.$test2 = null;
@@ -52,7 +52,7 @@ describe('SS', () => {
   });
 
   describe('Init By State', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       $('body').append(`<div data-ss-init="test1" data-ss-state="onReady"></div>
                         <div data-ss-init="test2" data-ss-state="onLoad"></div>`);
 
@@ -63,7 +63,6 @@ describe('SS', () => {
     });
 
     it('should initialize the modules by the state specied in the data-ss-state attribute', () => {
-      //test
       ss.initByState('onReady');
       expect(ss.test1.init).toHaveBeenCalled();
       ss.initByState('onLoad');
@@ -78,62 +77,61 @@ describe('SS', () => {
       expect(console.warn).toHaveBeenCalledWith('The module test3 does not exist!');
     });
 
-    afterEach(() => {
-      // destroy
+    afterAll(() => {
       ss.test1 = null;
       ss.test2 = null;
       $('body').find('[data-ss-init]').remove();
     });
   });
 
-  describe('Destroy Method', () => {
+  describe('Destroy Method', function() {
+
+    beforeAll(() => {
+      this.$container = $('<div class="container"></div>').appendTo($('body'));
+      this.$test1 = $(`<div data-ss-init="test1"></div>`).appendTo(this.$container);
+      this.$test2 = $(`<div data-ss-init="test2"></div>`).appendTo(this.$container);
+
+      ss.test1 = {destroy: () => console.warn('test 1')};
+      ss.test2 = {destroy: () => console.warn('test 1')};
+      spyOn(ss.test1, 'destroy');
+      spyOn(ss.test2, 'destroy');
+    });
+
     it('should exist', () => expect(typeof ss.destroy).toBe('function'));
 
-    it('should throw a warning if the the module does not exist', () => {
-      spyOn(console, 'warn');
-      ss.destroy('blabla2');
-      expect(console.warn).toHaveBeenCalledWith('The module blabla2 does not exist!');
-    });
-
-    it('should destroy the module name passed as parameter', () => {
-      ss.test1 = {destroy: () => console.warn('test 1')};
-      spyOn(ss.test1, 'destroy');
-      ss.destroy('test1');
+    it('should destroy all the modules if no param was passed', () => {
+      ss.destroy();
       expect(ss.test1.destroy).toHaveBeenCalled();
-      ss.test1 = null;
+      expect(ss.test2.destroy).toHaveBeenCalled();
     });
 
-    describe('Destroy all methods', () => {
-      beforeEach(() => {
-        $('body').append(`<div data-ss-init="test1" data-ss-state="onReady"></div>
-                          <div data-ss-init="test2" data-ss-state="onLoad"></div>`);
+    describe('When a jQuery Element is passed', () => {
 
-        ss.test1 = {destroy: () => console.warn('test 1')};
-        ss.test2 = {destroy: () => console.warn('test 2')};
-        spyOn(ss.test1, 'destroy');
-        spyOn(ss.test2, 'destroy');
+      it('should destroy the module of the jQuery Dom element if the deepscan is not activated', () => {
+        ss.destroy(this.$test1);
+        expect(ss.test1.destroy).toHaveBeenCalled();
       });
 
-      it('should destroy all the modules if was not specified one', () => {
-        ss.destroy();
+      it('should destroy all the modules from a jQuery DOM element', () => {
+        ss.destroy(this.$container, true);
         expect(ss.test1.destroy).toHaveBeenCalled();
         expect(ss.test2.destroy).toHaveBeenCalled();
       });
+    });
 
-      it('should throw a warning if a module does not exist', () => {
-        $('body').append(`<div data-ss-init="test3" data-ss-state="onReady"></div>`);
+    it('should throw an error if the parameter is not a jQuery element', () => {
+      spyOn(console, 'error');
+      ss.destroy('blabla');
+      expect(console.error).toHaveBeenCalledWith('The parameter passed it is not a jQuery element!');
+    });
 
-        spyOn(console, 'warn');
-        ss.destroy();
-        expect(console.warn).toHaveBeenCalledWith('The module test3 does not exist!');
-      });
-
-      afterEach(() => {
-        // destroy
-        ss.test1 = null;
-        ss.test2 = null;
-        $('body').find('[data-ss-init]').remove();
-      });
+    afterAll(() => {
+      this.$container.remove();
+      this.$test1 = null;
+      this.$test2 = null;
+      ss.test1 = null;
+      ss.test2 = null;
     });
   });
+
 });

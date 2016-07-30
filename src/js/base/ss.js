@@ -31,10 +31,12 @@ ss.init = ($container, deepScan = false) => {
       }
       else {
         // initialize  the current element passed
-        let moduleName = $container.data('ss-init');
-        if (moduleName) {
-          ss.checkIfModuleExists.call($container, moduleName, 'init');
-        }
+        $container.each(function() {
+          let moduleName = $(this).data('ss-init');
+          if (moduleName) {
+            ss.checkIfModuleExists.call(this, moduleName, 'init');
+          }
+        });
       }
 
     } else {
@@ -49,18 +51,35 @@ ss.init = ($container, deepScan = false) => {
 };
 
 //destroy method
-ss.destroy = (data) => {
-  if (data) {
-    ss.checkIfModuleExists(data, 'destroy');
-  } else {
+ss.destroy = ($container, deepScan = false) => {
+  if ($container) {
+    if ($container instanceof $) {
+      if (deepScan) {
+        // destroy all modules from the jQuery DOM element
+        $container.find(`[data-ss-init]`).each(function () {
+          let moduleName = $(this).data('ss-init');
+          ss.checkIfModuleExists.call(this, moduleName, 'destroy');
+        });
+      }
+      else {
+        // destroy  the current element passed
+        $container.each(function() {
+          let moduleName = $(this).data('ss-init');
+          if (moduleName) {
+            ss.checkIfModuleExists.call(this, moduleName, 'destroy');
+          }
+        });
+      }
+
+    } else {
+      console.error('The parameter passed it is not a jQuery element!');
+    }
+  }
+  else {
     $('body').find(`[data-ss-init]`).each(function () {
       let moduleName = $(this).data('ss-init');
-      try {
-        ss[moduleName].destroy($(this));
-      }
-      catch (e) {
-        console.warn(`The module ${moduleName} does not exist!`);
-      }
+      ss.checkIfModuleExists.call(this, moduleName, 'destroy');
     });
   }
+
 };
