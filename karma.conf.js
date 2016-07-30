@@ -1,5 +1,8 @@
 'use strict';
 
+require('./config/paths')(__dirname);
+const path = require('path');
+
 // Karma configuration
 // Generated on Fri Feb 19 2016 15:10:40 GMT-0500 (EST)
 
@@ -8,40 +11,25 @@ module.exports = function (config) {
     autoWatch: false,
     singleRun: true,
 
-    frameworks: ['jspm', 'jasmine'],
+    frameworks: ['jasmine'],
 
-    jspm: {
-      loadFiles: ['tests/**/*.js'],
-      serveFiles: ['src/js/**/*.js']
-    },
-
-    files: ['node_modules/babel-polyfill/dist/polyfill.js'],
+    files: [
+      'tests/index.js'
+    ],
 
     browsers: ['PhantomJS'],
 
     preprocessors: {
-      'src/js/**/*.js': ['babel', 'sourcemap', 'coverage']
+      'tests/index.js': ['webpack']
     },
 
-    babelPreprocessor: {
-      options: {
-        presets: ['es2015'],
-        sourceMap: 'inline'
-      },
-      sourceFileName: function(file) {
-        return file.originalPath;
-      }
-    },
+    webpack: require('./webpack.karma.config.js'),
 
-    reporters: ['coverage', 'progress', 'spec'],
+    reporters: [ 'coverage', 'spec'],
 
     coverageReporter: {
-      instrumenters: {isparta: require('isparta')},
-      instrumenter: {
-        'src/js/**/*.js': 'isparta'
-      },
       dir : 'coverage/',
-      reporters: [{type: 'text'}, {type: 'html'}]
+      reporters: [{type: 'html'}]
     }
   });
 };

@@ -1,4 +1,12 @@
-import {VALUES_GRID} from './values';
+export const VALUES_GRID = {
+  xsMin: 0,
+  xsMax: 767,
+  smMin: 768,
+  smMax: 1023,
+  mdMin: 1024,
+  mdMax: 1199,
+  lgMin: 1200
+};
 
 export const MEDIA_QUERIES = {
   xs: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
