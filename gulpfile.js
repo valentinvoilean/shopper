@@ -11,12 +11,14 @@ const gulp = require('gulp'),
 // Gulp Tasks
 
 // SASS related Tasks
-
 gulp.task('normalizeCSS', require(`${__gulpTasks}/normalizeCSS/normalizeCSS`)(gulp, plugins));
 gulp.task('concatSass', require(`${__gulpTasks}/concatSass`)(gulp, plugins));
 gulp.task('compileSass', ['normalizeCSS', 'concatSass']);
 
+// Unit tests related tasks
 gulp.task('test', require(`${__gulpTasks}/test`)());
+gulp.task('test:debug', require(`${__gulpTasks}/test`)(true));
+
 gulp.task('themeDeploy', require(`${__gulpTasks}/themeDeploy`)(gulp, plugins));
 gulp.task('watch', require(`${__gulpTasks}/watch`)(gulp));
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));

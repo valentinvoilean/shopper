@@ -3,6 +3,8 @@ require('./config/paths')(__dirname);
 const path = require('path');
 
 module.exports = {
+  devtool: 'inline-source-map',
+
   resolve: {
     extensions: ['', '.js'],
     alias: {
@@ -10,12 +12,6 @@ module.exports = {
       'config': `${__src.js}/config`,
       'base': `${__src.js}/base`
     }
-  },
-
-  isparta: {
-    embedSource: false,
-    noAutoWrap: true
-    // these babel options will be passed only to isparta and not to babel-loader
   },
 
   module: {

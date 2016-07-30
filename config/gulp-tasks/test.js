@@ -2,11 +2,19 @@
 
 let Server = require('karma').Server;
 
-module.exports = () => {
+module.exports = (debugMode) => {
   return () => {
-    new Server({
-      configFile: __base + '/karma.conf.js',
-      singleRun: true
-    }).start();
+    let serverSettings = {
+      configFile: __base + '/karma.conf.js'
+    };
+
+    if (debugMode) {
+      serverSettings.browsers = ['Chrome'];
+      serverSettings.reporters = ['spec'];
+      serverSettings.autoWatch = true;
+      serverSettings.singleRun = false;
+    }
+
+    new Server(serverSettings).start();
   };
 };
