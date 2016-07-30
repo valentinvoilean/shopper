@@ -1,10 +1,11 @@
 import $ from 'jquery';
 window.ss = window.ss || {};
 
-ss.checkIfModuleExists = (moduleName, cb) => {
+ss.checkIfModuleExists = function (moduleName, cb) {
   try {
     ss[moduleName][cb]($(this));
-  } catch (e) {
+  }
+  catch (e) {
     console.warn(`The module ${moduleName} does not exist!`);
   }
 };
@@ -12,7 +13,7 @@ ss.checkIfModuleExists = (moduleName, cb) => {
 ss.initByState = (state) => {
   $('body').find(`[data-ss-state="${state}"]`).each(function () {
     let moduleName = $(this).data('ss-init');
-    ss.checkIfModuleExists(moduleName, 'init');
+    ss.checkIfModuleExists.call(this, moduleName, 'init');
   });
 };
 
@@ -25,14 +26,14 @@ ss.init = ($container, deepScan = false) => {
         // initialize all modules from the jQuery DOM element
         $container.find(`[data-ss-init]`).each(function () {
           let moduleName = $(this).data('ss-init');
-          ss.checkIfModuleExists(moduleName, 'init');
+          ss.checkIfModuleExists.call(this, moduleName, 'init');
         });
       }
       else {
         // initialize  the current element passed
         let moduleName = $container.data('ss-init');
         if (moduleName) {
-          ss.checkIfModuleExists(moduleName, 'init');
+          ss.checkIfModuleExists.call($container, moduleName, 'init');
         }
       }
 
@@ -56,7 +57,8 @@ ss.destroy = (data) => {
       let moduleName = $(this).data('ss-init');
       try {
         ss[moduleName].destroy($(this));
-      } catch (e) {
+      }
+      catch (e) {
         console.warn(`The module ${moduleName} does not exist!`);
       }
     });
