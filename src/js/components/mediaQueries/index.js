@@ -1,47 +1,46 @@
 import $ from 'jquery';
-import {MEDIA_QUERIES, VALUES} from './config';
-
-let
-  lastMinMQ,
-  lastMaxMQ,
-  lastMQ;
+import {MEDIA_QUERIES, MEDIA_QUERIES_MIN, MEDIA_QUERIES_MAX} from './config';
 
 window.ss = window.ss || {};
 
-function submitEvents(mq) {
-  if (mq.indexOf('Min') !== VALUES.outOfIndex) {
-    if (lastMinMQ) {
-      $(ss).trigger(`${lastMinMQ}:destroy`);
-    }
-    $(ss).trigger(`${mq}:init`);
-    lastMinMQ = mq;
+for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+  let
+    currentMinBP = Object.keys(MEDIA_QUERIES_MIN)[i],
+    currentMinMQ = MEDIA_QUERIES_MIN[currentMinBP],
+    nextMinBP = i < 4 ? Object.keys(MEDIA_QUERIES_MIN)[i + 1] : null,
 
-  } else if (mq.indexOf('Max') !== VALUES.outOfIndex) {
-    if (lastMaxMQ) {
-      $(ss).trigger(`${lastMaxMQ}:destroy`);
-    }
-    $(ss).trigger(`${mq}:init`);
-    lastMaxMQ = mq;
+    currentBP = Object.keys(MEDIA_QUERIES)[i],
+    currentMQ = MEDIA_QUERIES[currentBP],
+    previousBP = i > 0 ? Object.keys(MEDIA_QUERIES)[i - 1] : null,
+    nextBP = i < 4 ? Object.keys(MEDIA_QUERIES)[i + 1] : null,
 
-  } else {
-    if (lastMQ) {
-      $(ss).trigger(`${lastMQ}:destroy`);
-    }
-    $(ss).trigger(`${mq}:init`);
-    lastMQ = mq;
+
+    currentMaxBP = Object.keys(MEDIA_QUERIES_MAX)[i],
+    currentMaxMQ = MEDIA_QUERIES_MAX[currentMaxBP],
+    previousMaxBP = i > 0 ? Object.keys(MEDIA_QUERIES_MAX)[i - 1] : null;
+
+  // min
+  if (window.matchMedia(currentMinMQ).matches) {
+    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
+    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
+    if (previousBP !== null) { $(ss).trigger(`${previousBP}:destroy`); }
+    $(ss).trigger(`${currentMinBP}:init`);
+  }
+
+  // current
+  if (window.matchMedia(currentMQ).matches) {
+    if (previousBP !== null) { $(ss).trigger(`${previousBP}:destroy`); }
+    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
+    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
+    if (nextBP !== null) { $(ss).trigger(`${nextBP}:destroy`); }
+    $(ss).trigger(`${currentBP}:init`);
+  }
+
+  // max
+  if (window.matchMedia(currentMaxMQ).matches) {
+    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
+    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
+    if (nextBP !== null) { $(ss).trigger(`${nextBP}:destroy`); }
+    $(ss).trigger(`${currentMaxMQ}:init`);
   }
 }
-
-$.each(MEDIA_QUERIES, function (key, value) {
-  if (window.matchMedia(value).matches) {
-    submitEvents(key);
-  }
-
-  window.matchMedia(value).addListener(() => {
-    submitEvents(key);
-  });
-});
-
-$(ss).on('smMin:init', function() {
-  console.warn('smMin initialized');
-});
