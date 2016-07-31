@@ -3,44 +3,112 @@ import {MEDIA_QUERIES, MEDIA_QUERIES_MIN, MEDIA_QUERIES_MAX} from './config';
 
 window.ss = window.ss || {};
 
-for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+ss.detectMediaQuery = function () {
+
   let
-    currentMinBP = Object.keys(MEDIA_QUERIES_MIN)[i],
-    currentMinMQ = MEDIA_QUERIES_MIN[currentMinBP],
-    nextMinBP = i < 4 ? Object.keys(MEDIA_QUERIES_MIN)[i + 1] : null,
+    _ = {},
 
-    currentBP = Object.keys(MEDIA_QUERIES)[i],
-    currentMQ = MEDIA_QUERIES[currentBP],
-    previousBP = i > 0 ? Object.keys(MEDIA_QUERIES)[i - 1] : null,
-    nextBP = i < 4 ? Object.keys(MEDIA_QUERIES)[i + 1] : null,
+    _triggerMinBPEvents = () => {
+      if (_.previousMaxBP !== null) {
+        $(ss).trigger(`${_.previousMaxBP}:destroy`);
+      }
+      if (_.nextMinBP !== null) {
+        $(ss).trigger(`${_.nextMinBP}:destroy`);
+      }
+      if (_.previousBP !== null) {
+        $(ss).trigger(`${_.previousBP}:destroy`);
+      }
+      $(ss).trigger(`${_.currentMinBP}:init`);
+    },
 
+    _triggerCurrentBPEvents = () => {
+      if (_.previousBP !== null) {
+        $(ss).trigger(`${_.previousBP}:destroy`);
+      }
+      if (_.previousMaxBP !== null) {
+        $(ss).trigger(`${_.previousMaxBP}:destroy`);
+      }
+      if (_.nextMinBP !== null) {
+        $(ss).trigger(`${_.nextMinBP}:destroy`);
+      }
+      if (_.nextBP !== null) {
+        $(ss).trigger(`${_.nextBP}:destroy`);
+      }
+      $(ss).trigger(`${_.currentBP}:init`);
+    },
 
-    currentMaxBP = Object.keys(MEDIA_QUERIES_MAX)[i],
-    currentMaxMQ = MEDIA_QUERIES_MAX[currentMaxBP],
-    previousMaxBP = i > 0 ? Object.keys(MEDIA_QUERIES_MAX)[i - 1] : null;
+    _triggerMaxBPEvents = () => {
+      if (_.previousMaxBP !== null) {
+        $(ss).trigger(`${_.previousMaxBP}:destroy`);
+      }
+      if (_.nextMinBP !== null) {
+        $(ss).trigger(`${_.nextMinBP}:destroy`);
+      }
+      if (_.nextBP !== null) {
+        $(ss).trigger(`${_.nextBP}:destroy`);
+      }
+      $(ss).trigger(`${_.currentMaxMQ}:init`);
+    },
 
-  // min
-  if (window.matchMedia(currentMinMQ).matches) {
-    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
-    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
-    if (previousBP !== null) { $(ss).trigger(`${previousBP}:destroy`); }
-    $(ss).trigger(`${currentMinBP}:init`);
-  }
+    _addEventListeners = () => {
+      window.matchMedia(_.currentMinMQ).addListener(_triggerMinBPEvents);
+      window.matchMedia(_.currentMQ).addListener(_triggerCurrentBPEvents);
+      window.matchMedia(_.currentMaxMQ).addListener(_triggerMaxBPEvents);
+    },
 
-  // current
-  if (window.matchMedia(currentMQ).matches) {
-    if (previousBP !== null) { $(ss).trigger(`${previousBP}:destroy`); }
-    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
-    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
-    if (nextBP !== null) { $(ss).trigger(`${nextBP}:destroy`); }
-    $(ss).trigger(`${currentBP}:init`);
-  }
+    _removeEventListeners = () => {
+      window.matchMedia(_.currentMinMQ).removeListener(_triggerMinBPEvents);
+      window.matchMedia(_.currentMQ).removeListener(_triggerCurrentBPEvents);
+      window.matchMedia(_.currentMaxMQ).removeListener(_triggerMaxBPEvents);
+    },
 
-  // max
-  if (window.matchMedia(currentMaxMQ).matches) {
-    if (previousMaxBP !== null) { $(ss).trigger(`${previousMaxBP}:destroy`); }
-    if (nextMinBP !== null) { $(ss).trigger(`${nextMinBP}:destroy`); }
-    if (nextBP !== null) { $(ss).trigger(`${nextBP}:destroy`); }
-    $(ss).trigger(`${currentMaxMQ}:init`);
-  }
-}
+    _checkCurrentMediaQuery = () => {
+      if (window.matchMedia(_.currentMinMQ).matches) {
+        _triggerMinBPEvents();
+      }
+
+      if (window.matchMedia(_.currentMQ).matches) {
+        _triggerCurrentBPEvents();
+      }
+
+      if (window.matchMedia(_.currentMaxMQ).matches) {
+        _triggerMaxBPEvents();
+      }
+    },
+
+    _updateValues = () => {
+      for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+
+        _.currentMinBP = Object.keys(MEDIA_QUERIES_MIN)[i];
+        _.currentMinMQ = MEDIA_QUERIES_MIN[_.currentMinBP];
+        _.nextMinBP = i < 4 ? Object.keys(MEDIA_QUERIES_MIN)[i + 1] : null;
+
+        _.currentBP = Object.keys(MEDIA_QUERIES)[i];
+        _.currentMQ = MEDIA_QUERIES[_.currentBP];
+        _.previousBP = i > 0 ? Object.keys(MEDIA_QUERIES)[i - 1] : null;
+        _.nextBP = i < 4 ? Object.keys(MEDIA_QUERIES)[i + 1] : null;
+
+        _.currentMaxBP = Object.keys(MEDIA_QUERIES_MAX)[i];
+        _.currentMaxMQ = MEDIA_QUERIES_MAX[_.currentMaxBP];
+        _.previousMaxBP = i > 0 ? Object.keys(MEDIA_QUERIES_MAX)[i - 1] : null;
+      }
+    };
+
+  return {
+    init() {
+      for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+        _updateValues();
+        _addEventListeners();
+        _checkCurrentMediaQuery();
+      }
+    },
+    destroy() {
+      for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+        _updateValues();
+        _removeEventListeners();
+      }
+
+      _ = null;
+    }
+  };
+};
