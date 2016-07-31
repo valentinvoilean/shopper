@@ -1,19 +1,22 @@
 import $ from 'jquery';
 window.ss = window.ss || {};
 
-ss.checkIfModuleExists = function (moduleName, cb) {
+ss.instances = [];
+
+ss.checkIfClassExists = function (className) {
   try {
-    ss[moduleName][cb]($(this));
+    $(this).attr('data-ss-instance', ss.instances.length);
+    ss.instances.push(new ss[className]($(this)));
   }
   catch (e) {
-    console.warn(`The module ${moduleName} does not exist!`);
+    console.warn(`The class ${className} does not exist!`);
   }
 };
 
 ss.initByState = (state) => {
   $(document).find(`[data-ss-state="${state}"]`).each(function () {
-    let moduleName = $(this).data('ss-init');
-    ss.checkIfModuleExists.call(this, moduleName, 'init');
+    let className = $(this).data('ss-init');
+    ss.checkIfClassExists.call(this, className);
   });
 };
 
@@ -25,16 +28,16 @@ ss.init = ($container, deepScan = false) => {
       if (deepScan) {
         // initialize all modules from the jQuery DOM element
         $container.find(`[data-ss-init]`).each(function () {
-          let moduleName = $(this).data('ss-init');
-          ss.checkIfModuleExists.call(this, moduleName, 'init');
+          let className = $(this).data('ss-init');
+          ss.checkIfClassExists.call(this, className);
         });
       }
       else {
         // initialize  the current element passed
         $container.each(function () {
-          let moduleName = $(this).data('ss-init');
-          if (moduleName) {
-            ss.checkIfModuleExists.call(this, moduleName, 'init');
+          let className = $(this).data('ss-init');
+          if (className) {
+            ss.checkIfClassExists.call(this, className);
           }
         });
       }
@@ -52,23 +55,21 @@ ss.init = ($container, deepScan = false) => {
 
 //destroy method
 ss.destroy = ($container, deepScan = false) => {
+  let destroyInstance = function () {
+    let currentInstance = $(this).data('ss-ss-instance');
+    ss.instances[currentInstance].destroy();
+    $(this).removeAttr('data-ss-instance');
+  };
+
   if ($container) {
     if ($container instanceof $) {
       if (deepScan) {
         // destroy all modules from the jQuery DOM element
-        $container.find(`[data-ss-init]`).each(function () {
-          let moduleName = $(this).data('ss-init');
-          ss.checkIfModuleExists.call(this, moduleName, 'destroy');
-        });
+        $container.find(`[data-ss-instance]`).each(destroyInstance);
       }
       else {
         // destroy  the current element passed
-        $container.each(function () {
-          let moduleName = $(this).data('ss-init');
-          if (moduleName) {
-            ss.checkIfModuleExists.call(this, moduleName, 'destroy');
-          }
-        });
+        $container.each(destroyInstance);
       }
 
     } else {
@@ -76,10 +77,6 @@ ss.destroy = ($container, deepScan = false) => {
     }
   }
   else {
-    $('body').find(`[data-ss-init]`).each(function () {
-      let moduleName = $(this).data('ss-init');
-      ss.checkIfModuleExists.call(this, moduleName, 'destroy');
-    });
+    $(document).find(`[data-ss-instance]`).each(destroyInstance);
   }
-
 };

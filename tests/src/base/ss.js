@@ -12,29 +12,28 @@ describe('SS', () => {
 
     describe('When a jQuery Element is passed', function() {
 
-      beforeAll(() => {
+      beforeEach(() => {
         this.$container = $('<div class="container"></div>').appendTo($('body'));
-        this.$test1 = $(`<div data-ss-init="test1"></div>`).appendTo(this.$container);
-        this.$test2 = $(`<div data-ss-init="test2"></div>`).appendTo(this.$container);
+        this.$test1 = $(`<div data-ss-init="Class1"></div>`).appendTo(this.$container);
+        this.$test2 = $(`<div data-ss-init="Class2"></div>`).appendTo(this.$container);
 
-        ss.test1 = {init: () => console.warn('test 1')};
-        ss.test2 = {init: () => console.warn('test 1')};
-        spyOn(ss.test1, 'init');
-        spyOn(ss.test2, 'init');
+        ss.Class1 = class { constructor() { console.warn('test 1'); }};
+        ss.Class2 = class { constructor() { console.warn('test 2'); }};
       });
 
-      it('should initialize the module of the jQuery Dom element if the deepscan is not activated', () => {
+      it('should create a new instance for the class passed inside the "data-ss-init" attribute', () => {
         ss.init(this.$test1);
-        expect(ss.test1.init).toHaveBeenCalled();
+        expect(this.$test1.data('ss-instance')).toBe(0);
       });
 
       it('should initialize all the modules from a jQuery DOM element', () => {
         ss.init(this.$container, true);
-        expect(ss.test1.init).toHaveBeenCalled();
-        expect(ss.test2.init).toHaveBeenCalled();
+        expect(this.$test1.attr('data-ss-instance')).toBeTruthy();
+        expect(this.$test2.attr('data-ss-instance')).toBeTruthy();
       });
 
-      afterAll(() => {
+      afterEach(() => {
+        // ss.destroy();
         this.$container.remove();
         this.$test1 = null;
         this.$test2 = null;
