@@ -3,7 +3,7 @@ import {MEDIA_QUERIES, MEDIA_QUERIES_MIN, MEDIA_QUERIES_MAX} from './config';
 
 window.ss = window.ss || {};
 
-ss.detectMediaQuery = function () {
+ss.mediaQueries = (function () {
 
   let
     _ = {},
@@ -47,7 +47,7 @@ ss.detectMediaQuery = function () {
       if (_.nextBP !== null) {
         $(ss).trigger(`${_.nextBP}:destroy`);
       }
-      $(ss).trigger(`${_.currentMaxMQ}:init`);
+      $(ss).trigger(`${_.currentMaxBP}:init`);
     },
 
     _addEventListeners = () => {
@@ -76,28 +76,25 @@ ss.detectMediaQuery = function () {
       }
     },
 
-    _updateValues = () => {
-      for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
+    _updateValues = (i) => {
+      _.currentMinBP = Object.keys(MEDIA_QUERIES_MIN)[i];
+      _.currentMinMQ = MEDIA_QUERIES_MIN[_.currentMinBP];
+      _.nextMinBP = i < 3 ? Object.keys(MEDIA_QUERIES_MIN)[i + 1] : null;
 
-        _.currentMinBP = Object.keys(MEDIA_QUERIES_MIN)[i];
-        _.currentMinMQ = MEDIA_QUERIES_MIN[_.currentMinBP];
-        _.nextMinBP = i < 4 ? Object.keys(MEDIA_QUERIES_MIN)[i + 1] : null;
+      _.currentBP = Object.keys(MEDIA_QUERIES)[i];
+      _.currentMQ = MEDIA_QUERIES[_.currentBP];
+      _.previousBP = i > 0 ? Object.keys(MEDIA_QUERIES)[i - 1] : null;
+      _.nextBP = i < 3 ? Object.keys(MEDIA_QUERIES)[i + 1] : null;
 
-        _.currentBP = Object.keys(MEDIA_QUERIES)[i];
-        _.currentMQ = MEDIA_QUERIES[_.currentBP];
-        _.previousBP = i > 0 ? Object.keys(MEDIA_QUERIES)[i - 1] : null;
-        _.nextBP = i < 4 ? Object.keys(MEDIA_QUERIES)[i + 1] : null;
-
-        _.currentMaxBP = Object.keys(MEDIA_QUERIES_MAX)[i];
-        _.currentMaxMQ = MEDIA_QUERIES_MAX[_.currentMaxBP];
-        _.previousMaxBP = i > 0 ? Object.keys(MEDIA_QUERIES_MAX)[i - 1] : null;
-      }
+      _.currentMaxBP = Object.keys(MEDIA_QUERIES_MAX)[i];
+      _.currentMaxMQ = MEDIA_QUERIES_MAX[_.currentMaxBP];
+      _.previousMaxBP = i > 0 ? Object.keys(MEDIA_QUERIES_MAX)[i - 1] : null;
     };
 
   return {
     init() {
       for (let i = 0, keysLength = Object.keys(MEDIA_QUERIES).length; i < keysLength; i++) {
-        _updateValues();
+        _updateValues(i);
         _addEventListeners();
         _checkCurrentMediaQuery();
       }
@@ -111,4 +108,4 @@ ss.detectMediaQuery = function () {
       _ = null;
     }
   };
-};
+})();
