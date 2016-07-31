@@ -3,6 +3,31 @@ import {MEDIA_QUERIES, MEDIA_QUERIES_MIN, MEDIA_QUERIES_MAX} from './config';
 
 window.ss = window.ss || {};
 
+/**
+ * MediaQuery module
+ * Used to detect current media query
+ *
+ * Usage:
+ * $(ss).on(MEDIA_QUERY, callback );
+ *
+ * Where:
+ *    MEDIA_QUERY can be : 'xs', 'sm', 'md', 'lg',
+ *                         'xsMin', 'smMin', 'mdMin','lgMin',
+ *                         'xsMax', 'smMax', 'mdMax', 'lgMax'
+ *    Callback: function name or anonymous function
+ *
+ *    e.g. :
+ *
+ *    function sayGoodbye = { alert('goodbye') }
+ *    $(ss).on('smMin', sayGoodbye })
+ *
+ *    or
+ *
+ *    $(ss).on('smMin', function() { alert('hello'); })
+ *
+ *
+ * @type {{init, destroy}}
+ */
 ss.mediaQueries = (function () {
 
   let
