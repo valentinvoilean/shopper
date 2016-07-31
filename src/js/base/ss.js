@@ -11,7 +11,7 @@ ss.checkIfModuleExists = function (moduleName, cb) {
 };
 
 ss.initByState = (state) => {
-  $('body').find(`[data-ss-state="${state}"]`).each(function () {
+  $(document).find(`[data-ss-state="${state}"]`).each(function () {
     let moduleName = $(this).data('ss-init');
     ss.checkIfModuleExists.call(this, moduleName, 'init');
   });

@@ -34,7 +34,10 @@
   <script src="{{ 'main.bundle.js' | asset_url }}" defer></script>
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }}"
+      class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}"
+      data-ss-init="mediaQueries"
+      data-ss-state="onReady">
 
   <header role="banner" class="mainHeader header">
     <div class="headerTop visible-sm visible-lg">

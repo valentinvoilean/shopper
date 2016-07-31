@@ -32,5 +32,3 @@ export const MEDIA_QUERIES_MAX = {
   mdMax: `screen and (max-width: ${VALUES_GRID.mdMax}px)`,
   lgMax: `screen and (min-width: ${VALUES_GRID.xsMin}px)`
 };
-
-console.log(MEDIA_QUERIES);
