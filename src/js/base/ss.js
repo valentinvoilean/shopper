@@ -72,7 +72,6 @@ ss.destroy = ($container, deepScan = false) => {
         // destroy  the current element passed
         $container.each(destroyInstance);
       }
-
     } else {
       console.error('The parameter passed it is not a jQuery element!');
     }

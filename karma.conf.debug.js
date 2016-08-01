@@ -8,8 +8,8 @@ const path = require('path');
 
 module.exports = function (config) {
   config.set({
-    autoWatch: false,
-    singleRun: true,
+    autoWatch: true,
+    singleRun: false,
 
     frameworks: ['jasmine'],
 
@@ -17,7 +17,7 @@ module.exports = function (config) {
       'tests/index.js'
     ],
 
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     preprocessors: {
       'tests/index.js': ['webpack']
@@ -44,22 +44,11 @@ module.exports = function (config) {
               path.resolve(__npm)
             ],
             loader: 'babel'
-          },
-          // transpile and instrument only testing sources with isparta
-          {
-            test: /\.js$/,
-            include: path.resolve(__src.js),
-            loader: 'isparta'
           }
         ]
       }
     },
 
-    reporters: [ 'coverage', 'spec'],
-
-    coverageReporter: {
-      dir : 'coverage/',
-      reporters: [{type: 'html'}]
-    }
+    reporters: ['spec']
   });
 };

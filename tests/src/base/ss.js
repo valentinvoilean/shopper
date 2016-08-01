@@ -64,7 +64,6 @@ describe('SS', () => {
 
       it('should destroy all the modules if no param was passed', () => {
         ss.destroy();
-        console.log(this.$container);
         expect(this.$test1.attr('data-ss-instance')).toBeFalsy();
         expect(this.$test2.attr('data-ss-instance')).toBeFalsy();
       });
