@@ -56,9 +56,10 @@ ss.init = ($container, deepScan = false) => {
 //destroy method
 ss.destroy = ($container, deepScan = false) => {
   let destroyInstance = function () {
-    let currentInstance = $(this).data('ss-ss-instance');
+    let currentInstance = $(this).data('ss-instance');
     ss.instances[currentInstance].destroy();
     $(this).removeAttr('data-ss-instance');
+    ss.instances[currentInstance] = null;
   };
 
   if ($container) {
