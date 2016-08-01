@@ -12,24 +12,9 @@ describe('SS', () => {
       this.$container = $('<div class="container"></div>').appendTo($('body'));
       this.$test1 = $('<div data-ss-init="Class1" data-ss-state="onReady"></div>').appendTo(this.$container);
       this.$test2 = $('<div data-ss-init="Class2" data-ss-state="onLoad"></div>').appendTo(this.$container);
-      this.$test3 = $('<div data-ss-init="Class3" data-ss-state="onReady"></div>').appendTo(this.$container);
 
-      ss.Class1 = class {
-        constructor() {
-          console.warn('test 1');
-        }
-        destroy() {
-          console.warn('destroy 1');
-        }
-      };
-      ss.Class2 = class {
-        constructor() {
-          console.warn('test 2');
-        }
-        destroy() {
-          console.warn('destroy 2');
-        }
-      };
+      ss.Class1 = class { destroy() {}; }; // eslint-disable-line
+      ss.Class2 = class { destroy() {}; }; // eslint-disable-line
     });
 
     describe('Init', () => {
@@ -63,6 +48,7 @@ describe('SS', () => {
       });
 
       it('should throw a warning if a module does not exist', () => {
+        this.$test3 = $('<div data-ss-init="Class3" data-ss-state="onReady"></div>').appendTo(this.$container);
         spyOn(console, 'warn');
         ss.initByState('onReady');
         expect(console.warn).toHaveBeenCalledWith('The class Class3 does not exist!');
@@ -78,13 +64,14 @@ describe('SS', () => {
 
       it('should destroy all the modules if no param was passed', () => {
         ss.destroy();
+        console.log(this.$container);
         expect(this.$test1.attr('data-ss-instance')).toBeFalsy();
         expect(this.$test2.attr('data-ss-instance')).toBeFalsy();
       });
 
       describe('When a jQuery Element is passed', () => {
 
-        fit('should destroy the module of the jQuery Dom element if the deepscan is not activated', () => {
+        it('should destroy the module of the jQuery Dom element if the deepscan is not activated', () => {
           ss.destroy(this.$test1);
           expect(this.$test1.attr('data-ss-instance')).toBeFalsy();
         });
