@@ -8,27 +8,16 @@ export const VALUES_GRID = {
   lgMin: 1200
 };
 
-export const VALUES = {
-  outOfIndex: -1
-};
-
 export const MEDIA_QUERIES = {
   xs: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
   sm: `screen and (min-width: ${VALUES_GRID.smMin}px) and (max-width: ${VALUES_GRID.smMax}px)`,
   md: `screen and (min-width: ${VALUES_GRID.mdMin}px) and (max-width: ${VALUES_GRID.mdMax}px)`,
-  lg: `screen and (min-width: ${VALUES_GRID.lgMin}px)`
-};
-
-export const MEDIA_QUERIES_MIN = {
+  lg: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
   xsMin: `screen and (min-width: ${VALUES_GRID.xsMin}px)`,
   smMin: `screen and (min-width: ${VALUES_GRID.smMin}px)`,
   mdMin: `screen and (min-width: ${VALUES_GRID.mdMin}px)`,
-  lgMin: `screen and (min-width: ${VALUES_GRID.lgMin}px)`
-};
-
-export const MEDIA_QUERIES_MAX = {
+  lgMin: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
   xsMax: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
   smMax: `screen and (max-width: ${VALUES_GRID.smMax}px)`,
-  mdMax: `screen and (max-width: ${VALUES_GRID.mdMax}px)`,
-  lgMax: `screen and (min-width: ${VALUES_GRID.xsMin}px)`
+  mdMax: `screen and (max-width: ${VALUES_GRID.mdMax}px)`
 };

@@ -10,6 +10,7 @@ ss.checkIfClassExists = function (className) {
   }
   catch (e) {
     console.warn(`The class ${className} does not exist!`);
+    console.error(e);
   }
 };
 
