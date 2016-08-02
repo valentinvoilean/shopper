@@ -26,9 +26,8 @@ window.ss = window.ss || {};
  *    $(ss).on('smMin', function() { alert('hello'); })
  *
  *
- * @type {{new()=>{_handleOrientationChange: ((mql, index?)), destroy: (())}}}
+ * @type {{new()=>{_handleMQChange: ((mql, index?)), destroy: (())}}}
  */
-
 ss.MediaQueries = class {
 
   constructor() {
@@ -55,6 +54,12 @@ ss.MediaQueries = class {
   // Private Methods //
   /////////////////////
 
+  /**
+   * Method to handle the media query change
+   * @param mql - current media query
+   * @param index - current breakpoint
+   * @private
+     */
   _handleMQChange(mql, index) {
     if (mql.matches) {
       $(ss).trigger(index);
