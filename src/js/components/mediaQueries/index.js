@@ -34,14 +34,20 @@ ss.MediaQueries = class {
   constructor() {
     $.each(MEDIA_QUERIES, (index, value) => {
       let mql = window.matchMedia(value);
-      mql.addListener((mql) => this._handleMQChange(mql, index));
+
+      // the default matchmedia's addListener method doesn't support extra parameters,
+      // therefore we need another extra function that can pass the current breakpoint name
+      mql.addListener(this.addMQListener = (mql) => {
+        this._handleMQChange(mql, index);
+      });
+
       this._handleMQChange(mql, index);
     });
   }
 
   destroy() {
     $.each(MEDIA_QUERIES, (index, value) => {
-      window.matchMedia(value).removeListener();
+      window.matchMedia(value).removeListener(this.addMQListener);
     });
   }
 
