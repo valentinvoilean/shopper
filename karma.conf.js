@@ -55,10 +55,10 @@ module.exports = function (config) {
       }
     },
 
-    reporters: [ 'coverage', 'spec'],
+    reporters: ['coverage', 'spec'],
 
     coverageReporter: {
-      dir : 'coverage/',
+      dir: 'coverage/',
       reporters: [{type: 'html'}]
     }
   });

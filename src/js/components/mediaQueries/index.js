@@ -34,8 +34,8 @@ ss.MediaQueries = class {
   constructor() {
     $.each(MEDIA_QUERIES, (index, value) => {
       let mql = window.matchMedia(value);
-      mql.addListener((mql)=> this._handleOrientationChange(mql, index));
-      this._handleOrientationChange(mql, index);
+      mql.addListener((mql) => this._handleMQChange(mql, index));
+      this._handleMQChange(mql, index);
     });
   }
 
@@ -49,7 +49,7 @@ ss.MediaQueries = class {
   // Private Methods //
   /////////////////////
 
-  _handleOrientationChange(mql, index) {
+  _handleMQChange(mql, index) {
     if (mql.matches) {
       $(ss).trigger(index);
     }
