@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 // import components
 import 'components/mediaQueries';
+import 'components/currency';
 
 // import base
 import 'base/ss';
