@@ -64,7 +64,8 @@ ss.MediaQueries = class {
     if (mql.matches) {
       $(ss).trigger(breakpointName);
 
-      if (breakpointName.indexOf('Min') === breakpointName.indexOf('Min') === -1) {
+      if (breakpointName.indexOf('Min') === -1
+        && breakpointName.indexOf('Max') === -1) {
         $(ss).trigger('mediaQueryChange', breakpointName);
       }
     }
