@@ -29,6 +29,7 @@ module.exports = function (config) {
       resolve: {
         extensions: ['', '.js'],
         alias: {
+          'common': `${__src.js}/common`,
           'components': `${__src.js}/components`,
           'config': `${__src.js}/config`,
           'base': `${__src.js}/base`

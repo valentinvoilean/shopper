@@ -1,5 +1,5 @@
 import 'components/mediaQueries';
-import {MEDIA_QUERIES} from 'components/mediaQueries/config';
+import {MEDIA_QUERIES} from 'common/values';
 
 describe('Media Queries', function () {
 
