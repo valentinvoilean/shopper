@@ -1,9 +1,9 @@
 export default class {
   constructor() {
-    console.log('mobile');
+    console.warn('mobile');
   };
 
   destroy() {
-    console.log('destroy mobile');
+    console.warn('destroy mobile');
   }
 }

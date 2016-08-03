@@ -1,9 +1,7 @@
 import $ from 'jquery';
-import {MEDIA_QUERIES} from './config';
+import {MEDIA_QUERIES} from 'common/values';
 
 window.ss = window.ss || {};
-ss.utils = ss.utils || {};
-ss.utils.initMediaQueries = [];
 
 /**
  * MediaQuery module
@@ -60,23 +58,12 @@ ss.MediaQueries = class {
    * Method to handle the media query change
    * @param mql - current media query
    * @param index - current breakpoint
-   * @private
-     */
-
-  /**
-   * Method to handle the media query change
-   * @param mql - current media query
-   * @param index - current breakpoint
    * @param setInitMQ - if is true, will update the ss.utils.initMediaQueries
      * @private
      */
-  _handleMQChange(mql, index, setInitMQ = false) {
+  _handleMQChange(mql, index) {
     if (mql.matches) {
       $(ss).trigger(index);
-
-      if (setInitMQ) {
-        ss.utils.initMediaQueries.push(index);
-      }
     }
   }
 };

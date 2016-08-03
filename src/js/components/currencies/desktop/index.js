@@ -1,9 +1,9 @@
 export default class {
   constructor() {
-    console.log('desktop');
+    console.warn('desktop');
   }
 
   destroy() {
-    console.log('destroy desktop');
+    console.warn('destroy desktop');
   }
 }
