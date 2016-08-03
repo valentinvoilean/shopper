@@ -57,13 +57,16 @@ ss.MediaQueries = class {
   /**
    * Method to handle the media query change
    * @param mql - current media query
-   * @param index - current breakpoint
-   * @param setInitMQ - if is true, will update the ss.utils.initMediaQueries
+   * @param breakpointName - current breakpoint
      * @private
      */
-  _handleMQChange(mql, index) {
+  _handleMQChange(mql, breakpointName) {
     if (mql.matches) {
-      $(ss).trigger(index);
+      $(ss).trigger(breakpointName);
+
+      if (breakpointName.indexOf('Min') === breakpointName.indexOf('Min') === -1) {
+        $(ss).trigger('mediaQueryChange', breakpointName);
+      }
     }
   }
 };
