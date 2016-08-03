@@ -4,10 +4,17 @@ window.ss = window.ss || {};
 ss.instances = [];
 ss.utils = ss.utils || {};
 
+import {classes} from './ss.config';
+
 ss.checkIfClassExists = function (className) {
   try {
     $(this).attr('data-ss-instance', ss.instances.length);
-    ss.instances.push(new ss[className]($(this)));
+
+    for (let i = 0, classesLength = classes.length; i < classesLength; i++) {
+      if (classes[i].name === className) {
+        ss.instances.push(new classes[i]($(this)));
+      }
+    }
   }
   catch (e) {
     console.warn(`The class ${className} does not exist!`);

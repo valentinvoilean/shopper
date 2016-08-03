@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Mobile from './mobile';
 import Desktop from './desktop';
 
-window.ss.Currencies = class {
+export default class Currencies {
   constructor() {
     this._addMediaQueryCallbacks();
     this._checkCurrentBreakpoint();

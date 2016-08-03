@@ -30,7 +30,7 @@ ss.utils.matchedMediaQueries = [];
  *
  * @type {{new()=>{_handleMQChange: ((mql, index?)), destroy: (())}}}
  */
-ss.MediaQueries = class {
+export default class MediaQueries {
 
   constructor() {
     $.each(MEDIA_QUERIES, (index, value) => {

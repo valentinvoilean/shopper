@@ -13,8 +13,8 @@ describe('SS', () => {
       this.$test1 = $('<div data-ss-init="Class1" data-ss-state="onReady"></div>').appendTo(this.$container);
       this.$test2 = $('<div data-ss-init="Class2" data-ss-state="onLoad"></div>').appendTo(this.$container);
 
-      ss.Class1 = class { destroy() {}; }; // eslint-disable-line
-      ss.Class2 = class { destroy() {}; }; // eslint-disable-line
+      class Class1 { destroy() {}; } // eslint-disable-line
+      class Class2 { destroy() {}; } // eslint-disable-line
     });
 
     describe('Init', () => {
@@ -47,7 +47,7 @@ describe('SS', () => {
         expect(console.error).toHaveBeenCalledWith('The parameter passed it is not a jQuery element!');
       });
 
-      it('should throw a warning if a module does not exist', () => {
+      it('should throw a warning if a class does not exist', () => {
         this.$test3 = $('<div data-ss-init="Class3" data-ss-state="onReady"></div>').appendTo(this.$container);
         spyOn(console, 'warn');
         ss.initByState('onReady');
