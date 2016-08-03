@@ -1,22 +1,38 @@
-export class setMediaQueryCallbacks {
+import $ from 'jquery';
+
+export class SetMediaQueryCallbacks {
   constructor(mediaQueryCallbacks) {
-    this.mediaQueryCallbacks = mediaQueryCallbacks;
-    this.addCallbacksToMQEvents();
+    if (mediaQueryCallbacks) {
+      this.mediaQueryCallbacks = mediaQueryCallbacks;
+      this._addCallbacksToMQEvents();
+    }
+    else {
+      throw new Error('No configuration object passed for media query callbacks!');
+    }
+
   }
 
   destroy() {
-    this.removeCallbacksFromMQEvents();
+    this._removeCallbacksFromMQEvents();
   }
 
-  addCallbacksToMQEvents() {
-    $.each(this.mediaQueryCallbacks, function(key, value) {
-      $(ss).on(key, value);
-    });
+  /////////////////////
+  // Private Methods //
+  /////////////////////
+
+  _addCallbacksToMQEvents() {
+    if (this.mediaQueryCallbacks) {
+      $.each(this.mediaQueryCallbacks, function (key, value) {
+        $(ss).on(key, value);
+      });
+    }
   }
 
-  removeCallbacksFromMQEvents() {
-    $.each(this.mediaQueryCallbacks, function(key, value) {
-      $(ss).on(key, value);
-    });
+  _removeCallbacksFromMQEvents() {
+    if (this.mediaQueryCallbacks) {
+      $.each(this.mediaQueryCallbacks, function (key, value) {
+        $(ss).off(key, value);
+      });
+    }
   }
 }

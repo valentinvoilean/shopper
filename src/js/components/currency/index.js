@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {setMediaQueryCallbacks} from 'components/utils';
+import {SetMediaQueryCallbacks} from 'components/utils';
 
 window.ss = window.ss || {};
 
@@ -17,11 +17,11 @@ let mediaQueriesConfig = {
   mdMax() { console.warn('mdMax'); }
 };
 
-ss.Currencies = class extends setMediaQueryCallbacks {
+ss.Currencies = class extends SetMediaQueryCallbacks {
   constructor() {
     super(mediaQueriesConfig);
 
-    $.getScript('/services/javascripts/currencies.js', function () {
+    $.getScript('https://cdn.shopify.com/s/javascripts/currencies.js', function () {
       console.warn(Currency);
     });
   }
