@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import {setMediaQueryCallbacks} from 'components/utils';
 
 window.ss = window.ss || {};
 
@@ -16,36 +17,13 @@ let mediaQueriesConfig = {
   mdMax() { console.warn('mdMax'); }
 };
 
-
-class setMediaQueryCallbacks {
-  constructor(mediaQueriesConfig) {
-    this.MQ_CONFIG = mediaQueriesConfig;
-    this.addCallbacksToMQEvents();
-  }
-
-  destroy() {
-    this.removeCallbacksFromMQEvents();
-  }
-
-  addCallbacksToMQEvents() {
-    $.each(this.MQ_CONFIG, function(key, value) {
-      $(ss).on(key, value);
-    });
-  }
-
-  removeCallbacksFromMQEvents() {
-    $.each(this.MQ_CONFIG, function(key, value) {
-      $(ss).on(key, value);
-    });
-  }
-}
-
 ss.Currencies = class extends setMediaQueryCallbacks {
   constructor() {
+    super(mediaQueriesConfig);
+
     $.getScript('/services/javascripts/currencies.js', function () {
       console.warn(Currency);
     });
-    super(mediaQueriesConfig);
   }
 
   destroy() {
