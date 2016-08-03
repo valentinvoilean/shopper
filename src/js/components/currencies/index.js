@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import Mobile from './mobile';
 import Desktop from './desktop';
-import {MEDIA_QUERIES} from 'common/values';
 
 window.ss.Currencies = class {
   constructor() {
@@ -28,7 +27,8 @@ window.ss.Currencies = class {
   }
 
   _checkCurrentBreakpoint() {
-    if (window.matchMedia(MEDIA_QUERIES.xsMax).matches) {
+    if (ss.utils && ss.utils.matchedMediaQueries
+      && ss.utils.matchedMediaQueries.indexOf('xsMax') > -1) {
       this._onChangedToMobile();
     }
     else {

@@ -2,6 +2,8 @@ import $ from 'jquery';
 import {MEDIA_QUERIES} from 'common/values';
 
 window.ss = window.ss || {};
+ss.utils = ss.utils || {};
+ss.utils.matchedMediaQueries = [];
 
 /**
  * MediaQuery module
@@ -40,7 +42,7 @@ ss.MediaQueries = class {
         this._handleMQChange(mql, index);
       });
 
-      this._handleMQChange(mql, index, true);
+      this._handleMQChange(mql, index);
     });
   }
 
@@ -68,6 +70,14 @@ ss.MediaQueries = class {
         && breakpointName.indexOf('Max') === -1) {
         $(ss).trigger('mediaQueryChange', breakpointName);
       }
+
+      $.each(ss.utils.matchedMediaQueries, (index, value) => {
+        if (!window.matchMedia(MEDIA_QUERIES[value]).matches) {
+          ss.utils.matchedMediaQueries.splice(index, 1);
+        }
+      });
+
+      ss.utils.matchedMediaQueries.push(breakpointName);
     }
   }
 };

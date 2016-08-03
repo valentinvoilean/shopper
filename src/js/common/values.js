@@ -9,15 +9,15 @@ export const VALUES_GRID = {
 };
 
 export const MEDIA_QUERIES = {
-  xs: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
-  sm: `screen and (min-width: ${VALUES_GRID.smMin}px) and (max-width: ${VALUES_GRID.smMax}px)`,
-  md: `screen and (min-width: ${VALUES_GRID.mdMin}px) and (max-width: ${VALUES_GRID.mdMax}px)`,
-  lg: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
   xsMin: `screen and (min-width: ${VALUES_GRID.xsMin}px)`,
-  smMin: `screen and (min-width: ${VALUES_GRID.smMin}px)`,
-  mdMin: `screen and (min-width: ${VALUES_GRID.mdMin}px)`,
-  lgMin: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
+  xs: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
   xsMax: `screen and (max-width: ${VALUES_GRID.xsMax}px)`,
+  smMin: `screen and (min-width: ${VALUES_GRID.smMin}px)`,
+  sm: `screen and (min-width: ${VALUES_GRID.smMin}px) and (max-width: ${VALUES_GRID.smMax}px)`,
   smMax: `screen and (max-width: ${VALUES_GRID.smMax}px)`,
-  mdMax: `screen and (max-width: ${VALUES_GRID.mdMax}px)`
+  mdMin: `screen and (min-width: ${VALUES_GRID.mdMin}px)`,
+  md: `screen and (min-width: ${VALUES_GRID.mdMin}px) and (max-width: ${VALUES_GRID.mdMax}px)`,
+  mdMax: `screen and (max-width: ${VALUES_GRID.mdMax}px)`,
+  lgMin: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
+  lg: `screen and (min-width: ${VALUES_GRID.lgMin}px)`
 };
