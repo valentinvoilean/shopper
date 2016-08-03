@@ -1,4 +1,4 @@
-import 'components/currency';
+import 'components/currencies';
 
 describe('currencies', function () {
   it('should be a function', function () {
