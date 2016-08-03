@@ -2,6 +2,7 @@ import $ from 'jquery';
 window.ss = window.ss || {};
 
 ss.instances = [];
+ss.utils = ss.utils || {};
 
 ss.checkIfClassExists = function (className) {
   try {
