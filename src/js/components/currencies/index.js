@@ -17,18 +17,17 @@ export default class Currencies {
   }
 
   _addMediaQueryCallbacks() {
-    $(ss).on('xsMax', $.proxy(this._onChangedToMobile, this));
-    $(ss).on('smMin', $.proxy(this._onChangedToDesktop, this));
+    $(window).on('xsMax', $.proxy(this._onChangedToMobile, this));
+    $(window).on('smMin', $.proxy(this._onChangedToDesktop, this));
   }
 
   _removeMediaQueryCallbacks() {
-    $(ss).off('xsMax', $.proxy(this._onChangedToMobile.bind(this)));
-    $(ss).off('smMin', $.proxy(this._onChangedToDesktop.bind(this)));
+    $(window).off('xsMax', $.proxy(this._onChangedToMobile.bind(this)));
+    $(window).off('smMin', $.proxy(this._onChangedToDesktop.bind(this)));
   }
 
   _checkCurrentBreakpoint() {
-    if (ss.utils && ss.utils.matchedMediaQueries
-      && ss.utils.matchedMediaQueries.indexOf('xsMax') > -1) {
+    if (info && info.matchedMediaQueries && info.matchedMediaQueries.indexOf('xsMax') > -1) {
       this._onChangedToMobile();
     }
     else {

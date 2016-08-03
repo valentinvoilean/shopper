@@ -3,7 +3,7 @@ import $ from 'jquery';
 export default class {
   constructor() {
     console.warn('desktop');
-    $(ss).on('mediaQueryChange', $.proxy(this._onMediaQueryChange, this));
+    $(window).on('mediaQueryChange', $.proxy(this._onMediaQueryChange, this));
   }
 
   destroy() {

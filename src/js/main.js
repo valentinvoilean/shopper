@@ -1,8 +1,5 @@
-// import components
-import 'components/mediaQueries';
-import 'components/currencies';
+import classes from 'common/classes';
+import Base from 'base';
 
-// import base
-import 'base/ss';
-
-ss.init();
+let base = new Base(classes);
+base.init();

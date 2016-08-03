@@ -1,16 +1,12 @@
 import $ from 'jquery';
 import {MEDIA_QUERIES} from 'common/values';
 
-window.ss = window.ss || {};
-ss.utils = ss.utils || {};
-ss.utils.matchedMediaQueries = [];
-
 /**
  * MediaQuery module
  * Used to detect current media query
  *
  * Usage:
- * $(ss).on(MEDIA_QUERY, callback );
+ * $(window).on(MEDIA_QUERY, callback );
  *
  * Where:
  *    MEDIA_QUERY can be : 'xs', 'sm', 'md', 'lg',
@@ -21,11 +17,11 @@ ss.utils.matchedMediaQueries = [];
  *    e.g. :
  *
  *    function sayGoodbye = { alert('goodbye') }
- *    $(ss).on('smMin', sayGoodbye })
+ *    $(window).on('smMin', sayGoodbye })
  *
  *    or
  *
- *    $(ss).on('smMin', function() { alert('hello'); })
+ *    $(window).on('smMin', function() { alert('hello'); })
  *
  *
  * @type {{new()=>{_handleMQChange: ((mql, index?)), destroy: (())}}}
@@ -33,6 +29,9 @@ ss.utils.matchedMediaQueries = [];
 export default class MediaQueries {
 
   constructor() {
+    window.info = window.info || {};
+    info.matchedMediaQueries = info.matchedMediaQueries || [];
+
     $.each(MEDIA_QUERIES, (index, value) => {
       let mql = window.matchMedia(value);
 
@@ -64,20 +63,20 @@ export default class MediaQueries {
      */
   _handleMQChange(mql, breakpointName) {
     if (mql.matches) {
-      $(ss).trigger(breakpointName);
+      $(window).triggerHandler(breakpointName);
 
       if (breakpointName.indexOf('Min') === -1
         && breakpointName.indexOf('Max') === -1) {
-        $(ss).trigger('mediaQueryChange', breakpointName);
+        $(window).triggerHandler('mediaQueryChange', breakpointName);
       }
 
-      $.each(ss.utils.matchedMediaQueries, (index, value) => {
+      $.each(info.matchedMediaQueries, (index, value) => {
         if (!window.matchMedia(MEDIA_QUERIES[value]).matches) {
-          ss.utils.matchedMediaQueries.splice(index, 1);
+          info.matchedMediaQueries.splice(index, 1);
         }
       });
 
-      ss.utils.matchedMediaQueries.push(breakpointName);
+      info.matchedMediaQueries.push(breakpointName);
     }
   }
 };
