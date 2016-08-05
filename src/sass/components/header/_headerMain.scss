@@ -3,10 +3,7 @@
   padding-bottom: 10px;
   @include flexbox;
   @include align-items(center);
-
-  @include breakpoint($screen-sm-min) {
-    @include align-self(flex-start);
-  }
+  @include justify-content(space-between);
 
   @include breakpoint($screen-md) {
     padding-top: 15px;
@@ -18,12 +15,18 @@
     padding-bottom: 20px;
   }
 
+  .menuIcon {
+    margin-right: auto;
+  }
+
   .logo {
     display: block;
     margin-left: 20px;
+    margin-right: 20px;
 
     @include breakpoint($screen-sm-min) {
       margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -38,5 +41,12 @@
     @include breakpoint($screen-lg) {
       max-height:50px;
     }
+  }
+
+  .cart {
+    width: 30px;
+    height: 30px;
+    fill: $c10;
+    margin-left: auto;
   }
 }

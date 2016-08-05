@@ -1,3 +1,4 @@
+<div class="hidden">{% include 'svg-sprite' %}</div>
 <header role="banner" class="mainHeader header">
   <div class="headerTop container hidden-xs">
     <div class="currencies" data-ss-init="Currencies" data-ss-state="onReady">
@@ -21,7 +22,7 @@
     </div>
   </div>
   <div class="headerMain container">
-    <div class="menuIcon menuIcon--arrow visible-xs" data-ss-init="Menu" data-ss-state="onReady">
+    <div class="menuIcon menuIcon--x visible-xs" data-ss-init="Menu" data-ss-state="onReady">
       <span>toggle menu</span>
     </div>
     {% if settings.use_logo %}
@@ -33,6 +34,11 @@
         {{ shop.name }}
       </a>
     {% endif %}
+
+    <svg class="cart">
+      <use xlink:href="#cart"></use>
+    </svg>
+
   </div>
   <div class="headerBottom">
     <div class="topInfo">Info</div>

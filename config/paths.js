@@ -11,6 +11,7 @@ module.exports = function (projectDir) {
   global.__tests = `${__base}/tests/src`;
   global.__src = {
     sass: `${__base}/src/sass`,
-    js: `${__base}/src/js`
+    js: `${__base}/src/js`,
+    svg: `${__base}/src/svg`
   };
 };
