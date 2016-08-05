@@ -1,0 +1,168 @@
+/* -----------------------------------------------------------------------------
+  HAMBURGER ICONS COMPONENT
+
+  Licensed under the MIT license, http://www.opensource.org/licenses/mit-license.php
+  Copyright 2014, Call Me Nick - https://github.com/callmenick/Animating-Hamburger-Icons
+----------------------------------------------------------------------------- */
+
+// vars
+
+$button-width: 18px;                    // The width of the button area
+$button-height: 14px;                   // The height of the button area
+$bar-thickness: 2px;                    // The thickness of the button bars
+$button-pad: 0;                      // The left/right padding between button area and bars.
+$button-bar-space: 4px;                // The spacing between button bars
+$button-transistion-duration: 0.3s;     // The transition duration
+
+/**
+ * Toggle Switch Globals
+ *
+ * All switches should take on the class `menuIcon` as well as their
+ * variant that will give them unique properties. This class is an overview
+ * class that acts as a reset for all versions of the icon.
+ */
+
+.menuIcon {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: $button-width;
+  height: $button-height;
+  font-size: 0;
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background $button-transistion-duration;
+}
+
+.menuIcon:focus {
+  outline: none;
+}
+
+.menuIcon span {
+  display: block;
+  position: absolute;
+  top: ($button-height / 2) - ($bar-thickness / 2);
+  left: $button-pad;
+  right: $button-pad;
+  height: $bar-thickness;
+  background-color: #000;
+  width: $button-width - 4;
+}
+
+.menuIcon span::before,
+.menuIcon span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: $button-width;
+  height: $bar-thickness;
+  background-color: #000;
+  content: "";
+}
+
+.menuIcon span::before {
+  top: -$bar-thickness - $button-bar-space;
+}
+
+.menuIcon span::after {
+  bottom: -$bar-thickness - $button-bar-space;
+}
+
+/**
+ * Style 1
+ *
+ * Hamburger to "x" (htx). Takes on a hamburger shape, bars slide
+ * down to center and transform into an "x".
+ */
+
+.menuIcon--x span {
+  transition: background 0s $button-transistion-duration;
+}
+
+.menuIcon--x span::before,
+.menuIcon--x span::after {
+  transition-duration: $button-transistion-duration, $button-transistion-duration;
+  transition-delay: $button-transistion-duration, 0s;
+}
+
+.menuIcon--x span::before {
+  transition-property: top, transform;
+}
+
+.menuIcon--x span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+
+.menuIcon--x.is-active span {
+  background: none;
+}
+
+.menuIcon--x.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menuIcon--x.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.menuIcon--x.is-active span::before,
+.menuIcon--x.is-active span::after {
+  transition-delay: 0s, $button-transistion-duration;
+}
+
+/**
+ * Style 2
+ *
+ * Hamburger to left-arrow (htla). Hamburger menu transforms to a left-pointing
+ * arrow. Usually indicates an off canvas menu sliding in from left that
+ * will be close on re-click of the icon.
+ */
+
+
+.menuIcon--arrow span {
+  transition: transform $button-transistion-duration;
+}
+
+.menuIcon--arrow span::before {
+  transform-origin: top right;
+  transition: transform $button-transistion-duration, width $button-transistion-duration, top $button-transistion-duration;
+}
+
+.menuIcon--arrow span::after {
+  transform-origin: bottom right;
+  transition: transform $button-transistion-duration, width $button-transistion-duration, bottom $button-transistion-duration;
+}
+
+/* active state, i.e. menu open */
+
+.menuIcon--arrow.is-active span {
+  transform: rotate(180deg);
+  width: $button-width;
+}
+
+.menuIcon--arrow.is-active span::before,
+.menuIcon--arrow.is-active span::after {
+  width: $button-width / 2;
+}
+
+.menuIcon--arrow.is-active span::before {
+  top: 0;
+  transform: translateX($button-width/2 - $button-pad) translateY($bar-thickness/2) rotate(45deg);
+}
+
+.menuIcon--arrow.is-active span::after {
+  bottom: 0;
+  transform: translateX($button-width/2 - $button-pad) translateY(-$bar-thickness/2) rotate(-45deg);
+}

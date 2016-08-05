@@ -1,19 +1,21 @@
 .headerMain {
+  padding-top: 10px;
+  padding-bottom: 10px;
   @include flexbox;
   @include align-items(center);
-  @include justify-content(center);
-  padding: 10px 0;
 
   @include breakpoint($screen-sm-min) {
-    @incldue align-self(flex-start);
+    @include align-self(flex-start);
   }
 
   @include breakpoint($screen-md) {
-    padding: 15px 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   @include breakpoint($screen-lg) {
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .logo {

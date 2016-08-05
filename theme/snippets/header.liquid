@@ -1,35 +1,36 @@
 <header role="banner" class="mainHeader header">
-  <div class="headerTop hidden-xs">
-    <div class="container">
-      <div class="currencies" data-ss-init="Currencies" data-ss-state="onReady">
-        <ul class="currencies__list">
-          <li class="currencies__item is-active">€EUR</li>
-          <li class="currencies__item">£GBP</li>
-          <li class="currencies__item">$USD</li>
-        </ul>
-      </div>
-      <div class="countries">
-        <ul class="countries__list">
-          <li class="countries__item">GB</li>
-          <li class="countries__item">ES</li>
-        </ul>
-      </div>
-      <div class="myAccount">
-        Sign In / Register
-      </div>
-      <div class="newsletter">
-        Newsletter
-      </div>
+  <div class="headerTop container hidden-xs">
+    <div class="currencies" data-ss-init="Currencies" data-ss-state="onReady">
+      <ul class="currencies__list">
+        <li class="currencies__item is-active">€EUR</li>
+        <li class="currencies__item">£GBP</li>
+        <li class="currencies__item">$USD</li>
+      </ul>
+    </div>
+    <div class="countries">
+      <ul class="countries__list">
+        <li class="countries__item">GB</li>
+        <li class="countries__item">ES</li>
+      </ul>
+    </div>
+    <div class="myAccount">
+      Sign In / Register
+    </div>
+    <div class="newsletter">
+      Newsletter
     </div>
   </div>
   <div class="headerMain container">
+    <div class="menuIcon menuIcon--arrow visible-xs">
+      <span>toggle menu</span>
+    </div>
     {% if settings.use_logo %}
-    <a class="logo" href="/">
-      <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
-    </a>
+      <a class="logo" href="/">
+        <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+      </a>
     {% else %}
       <a id="site-title" href="/">
-      {{ shop.name }}
+        {{ shop.name }}
       </a>
     {% endif %}
   </div>
