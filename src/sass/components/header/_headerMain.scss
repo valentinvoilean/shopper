@@ -1,3 +1,40 @@
 .headerMain {
-  height: 80px;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  padding: 10px 0;
+
+  @include breakpoint($screen-sm-min) {
+    @incldue align-self(flex-start);
+  }
+
+  @include breakpoint($screen-md) {
+    padding: 15px 0;
+  }
+
+  @include breakpoint($screen-lg) {
+    padding: 20px 0;
+  }
+
+  .logo {
+    display: block;
+    margin-left: 20px;
+
+    @include breakpoint($screen-sm-min) {
+      margin-left: 0;
+    }
+  }
+
+  .logo__img {
+    max-height:30px;
+    display: block;
+
+    @include breakpoint($screen-sm-min) {
+      max-height:40px;
+    }
+
+    @include breakpoint($screen-lg) {
+      max-height:50px;
+    }
+  }
 }

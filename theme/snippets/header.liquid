@@ -1,0 +1,40 @@
+<header role="banner" class="mainHeader header">
+  <div class="headerTop hidden-xs">
+    <div class="container">
+      <div class="currencies" data-ss-init="Currencies" data-ss-state="onReady">
+        <ul class="currencies__list">
+          <li class="currencies__item is-active">€EUR</li>
+          <li class="currencies__item">£GBP</li>
+          <li class="currencies__item">$USD</li>
+        </ul>
+      </div>
+      <div class="countries">
+        <ul class="countries__list">
+          <li class="countries__item">GB</li>
+          <li class="countries__item">ES</li>
+        </ul>
+      </div>
+      <div class="myAccount">
+        Sign In / Register
+      </div>
+      <div class="newsletter">
+        Newsletter
+      </div>
+    </div>
+  </div>
+  <div class="headerMain container">
+    {% if settings.use_logo %}
+    <a class="logo" href="/">
+      <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+    </a>
+    {% else %}
+      <a id="site-title" href="/">
+      {{ shop.name }}
+      </a>
+    {% endif %}
+  </div>
+  <div class="headerBottom">
+    <div class="topInfo">Info</div>
+    <div class="breadcrumb">Navigation</div>
+  </div>
+</header>
