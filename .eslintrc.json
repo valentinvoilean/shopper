@@ -23,7 +23,6 @@
     "default-case": "error",
     "dot-location": ["error", "property"],
     "eqeqeq": ["error", "always"],
-    "no-empty-function": "error",
     "no-extend-native": "error",
     "no-extra-bind": "error",
     "no-extra-label": "error",
