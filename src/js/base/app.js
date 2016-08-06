@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default class Base {
+export default class App {
   constructor(classes) {
     window.info = window.info || {};
     info.instances = info.instances || [];
@@ -73,13 +73,13 @@ export default class Base {
   checkIfClassExists($el, className) {
     let classExists = false;
 
-    for (let i = 0, classesLength = this.classes.length; i < classesLength; i++) {
-      if (this.classes[i].name === className) {
+    $.each(this.classes, function(index, value) {
+      if (index === className) {
         $el.attr('data-ss-instance', info.instances.length);
         classExists = true;
-        info.instances.push(new this.classes[i]($el));
+        info.instances.push(new value($el));
       }
-    }
+    });
 
     if (!classExists) {
       console.warn(`The class ${className} does not exist!`);

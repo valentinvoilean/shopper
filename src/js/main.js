@@ -1,5 +1,5 @@
 import classes from 'common/classes';
-import Base from 'base';
+import App from 'base/app';
 
-let base = new Base(classes);
-base.init();
+let app = new App(classes);
+app.init();

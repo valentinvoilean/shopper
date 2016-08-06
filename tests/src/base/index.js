@@ -1,9 +1,9 @@
-import Base from 'base';
+import App from 'base/app';
 import $ from 'jquery';
 
-describe('Base', () => {
+describe('App', () => {
 
-  it('should be a class', () => expect(typeof Base).toBe('function'));
+  it('should be a class', () => expect(typeof App).toBe('function'));
 
   describe('Init & Destroy', function() {
     beforeEach(() => {
@@ -14,8 +14,8 @@ describe('Base', () => {
       class Class1 { destroy() {}; } // eslint-disable-line
       class Class2 { destroy() {}; } // eslint-disable-line
 
-      let classes = [Class1, Class2];
-      this.instance = new Base(classes);
+      let classes = {Class1, Class2};
+      this.instance = new App(classes);
     });
 
     describe('Init', () => {
