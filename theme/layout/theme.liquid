@@ -38,9 +38,7 @@
       class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}"
       data-ss-init="MediaQueries"
       data-ss-state="onReady">
-
 {% include 'header' %}
-
   <main role="main">
       {{ content_for_layout }}
     <div class="container main">
