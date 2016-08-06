@@ -1161,10 +1161,15 @@ ul { margin:0; padding: 0;}
   }
 
   .cart {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     fill: $c10;
     margin-left: auto;
+
+    @include breakpoint($screen-sm-min) {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 
