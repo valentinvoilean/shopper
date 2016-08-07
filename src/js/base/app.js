@@ -1,11 +1,12 @@
 import $ from 'jquery';
+import {CLASSES} from './config';
 
 export default class App {
-  constructor(classes) {
+  constructor() {
     window.info = window.info || {};
     info.instances = info.instances || [];
 
-    this.classes = classes;
+    this.classes = CLASSES;
   }
 
   // init method
@@ -19,7 +20,7 @@ export default class App {
           // initialize all modules from the jQuery DOM element
           $container.find(`[data-ss-init]`).each(function () {
             let className = $(this).data('ss-init');
-            _self.checkIfClassExists($(this), className);
+            _self.checkIfClassExistsOnDom($(this), className);
           });
         }
         else {
@@ -27,7 +28,7 @@ export default class App {
           $container.each(function () {
             let className = $(this).data('ss-init');
             if (className) {
-              _self.checkIfClassExists($(this), className);
+              _self.checkIfClassExistsOnDom($(this), className);
             }
           });
         }
@@ -70,10 +71,10 @@ export default class App {
     }
   };
 
-  checkIfClassExists($el, className) {
+  checkIfClassExistsOnDom($el, className) {
     let classExists = false;
 
-    $.each(this.classes, function(index, value) {
+    $.each(this.classes.dom, function(index, value) {
       if (index === className) {
         $el.attr('data-ss-instance', info.instances.length);
         classExists = true;
@@ -89,9 +90,13 @@ export default class App {
   initByState(state) {
     let _self = this;
 
+    $.each(CLASSES[state], function(index, value) {
+      new value();
+    });
+
     $(document).find(`[data-ss-state="${state}"]`).each(function() {
       let className = $(this).data('ss-init');
-      _self.checkIfClassExists($(this), className);
+      _self.checkIfClassExistsOnDom($(this), className);
     });
   };
 }

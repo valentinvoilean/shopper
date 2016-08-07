@@ -18,8 +18,9 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.svg'],
     alias: {
+      'svg': __src.svg,
       'common': `${__src.js}/common`,
       'components': `${__src.js}/components`,
       'config': `${__src.js}/config`,
@@ -53,6 +54,10 @@ module.exports = {
         ],
         loader: 'babel'
       }
-    ]
+    ],
+    loaders: [{
+      test: /\.svg$/,
+      loader: 'svg-sprite'
+    }]
   }
 };
