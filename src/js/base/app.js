@@ -2,11 +2,11 @@ import $ from 'jquery';
 import {CLASSES} from './config';
 
 export default class App {
-  constructor() {
+  constructor(classes) {
     window.info = window.info || {};
     info.instances = info.instances || [];
 
-    this.classes = CLASSES;
+    this.classes = classes ? classes : CLASSES;
   }
 
   // init method
@@ -72,9 +72,10 @@ export default class App {
   };
 
   checkIfClassExistsOnDom($el, className) {
-    let classExists = false;
+    let classExists = false,
+      domClasses = this.classes.dom ? this.classes.dom : this.classes;
 
-    $.each(this.classes.dom, function(index, value) {
+    $.each(domClasses, function(index, value) {
       if (index === className) {
         $el.attr('data-ss-instance', info.instances.length);
         classExists = true;
@@ -90,9 +91,11 @@ export default class App {
   initByState(state) {
     let _self = this;
 
-    $.each(CLASSES[state], function(index, value) {
-      new value();
-    });
+    if (this.classes === CLASSES) {
+      $.each(CLASSES[state], function(index, value) {
+        new value();
+      });
+    }
 
     $(document).find(`[data-ss-state="${state}"]`).each(function() {
       let className = $(this).data('ss-init');
