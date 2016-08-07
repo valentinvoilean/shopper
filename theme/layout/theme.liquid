@@ -30,8 +30,6 @@
   <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
   {{ 'shopify_common.js'  | asset_url | script_tag }}
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-  <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-  <script src="{{ 'main.bundle.js' | asset_url }}" defer></script>
 </head>
 
 <body id="{{ page_title | handle }}"
@@ -40,6 +38,7 @@
       data-ss-state="onReady">
 {% include 'header' %}
   <main role="main">
+    <div id="app">test</div>
       {{ content_for_layout }}
     <div class="container main">
       <div class="row">
@@ -60,5 +59,7 @@
   </main>
 
   <footer role="contentinfo"></footer>
+  <script src="{{ 'vendors.js' | asset_url }}" ></script>
+  <script src="{{ 'main.bundle.js' | asset_url }}" ></script>
 </body>
 </html>

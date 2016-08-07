@@ -1,5 +1,5 @@
-import classes from 'common/classes';
-import App from 'base/app';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {App} from 'components/reactTest';
 
-let app = new App(classes);
-app.init();
+ReactDOM.render(<App/>, document.getElementById('app'));
