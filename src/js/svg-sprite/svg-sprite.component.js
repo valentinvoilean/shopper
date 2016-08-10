@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default class SVGSprite {
+export default class SVGSpriteComponent {
   constructor() {
     let files = require.context('svg/', false, /\.svg$/);
     files.keys().forEach(files);

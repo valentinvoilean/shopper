@@ -1,4 +1,4 @@
-import App from 'base/app';
+import AppComponent from './app.component';
 
-let app = new App();
+let app = new AppComponent();
 app.init();

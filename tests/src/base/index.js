@@ -1,4 +1,4 @@
-import App from 'base/app';
+import App from 'app.component.js';
 import $ from 'jquery';
 
 describe('App', () => {

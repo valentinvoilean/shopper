@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import {CLASSES} from './config';
+import {CLASSES} from './app.config';
 
-export default class App {
+export default class AppComponent {
   constructor(classes) {
     window.info = window.info || {};
     info.instances = info.instances || [];

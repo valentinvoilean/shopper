@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {MEDIA_QUERIES} from 'common/values';
+import {MEDIA_QUERIES} from 'shared/shared.js';
 
 /**
  * MediaQuery module
@@ -26,7 +26,7 @@ import {MEDIA_QUERIES} from 'common/values';
  *
  * @type {{new()=>{_handleMQChange: ((mql, index?)), destroy: (())}}}
  */
-export default class MediaQueries {
+export default class MediaQueriesComponent {
 
   constructor() {
     window.info = window.info || {};

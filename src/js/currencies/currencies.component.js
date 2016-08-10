@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import Mobile from './mobile';
-import Desktop from './desktop';
+import Mobile from './currencies.mobile.component';
+import Desktop from './currencies.desktop.component';
 
-export default class Menu {
+export default class CurrenciesComponent {
   constructor() {
     this._addMediaQueryCallbacks();
     this._checkCurrentBreakpoint();

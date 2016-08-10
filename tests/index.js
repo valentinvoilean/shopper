@@ -1,6 +1,6 @@
 const
-  testsContext = require.context('./src/', true, /(index|app).js$/),
-  componentsContext = require.context('../src/js/', true, /(index|app).js$/);
+  testsContext = require.context('./src/', true, /^.+\.component.js$/),
+  componentsContext = require.context('../src/js/', true, /^.+\.component.js$/);
 
 // require all `test/components/**/index.js`
 testsContext.keys().forEach(testsContext);
