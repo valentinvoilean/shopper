@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {MEDIA_QUERIES} from 'shared/shared.js';
+import {MEDIA_QUERIES} from 'js/shared/shared';
 
 /**
  * MediaQuery module

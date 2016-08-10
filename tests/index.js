@@ -1,5 +1,5 @@
 const
-  testsContext = require.context('./src/', true, /^.+\.component.js$/),
+  testsContext = require.context('./', true, /^.+\.spec.js$/),
   componentsContext = require.context('../src/js/', true, /^.+\.component.js$/);
 
 // require all `test/components/**/index.js`

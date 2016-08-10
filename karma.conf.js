@@ -30,10 +30,8 @@ module.exports = function (config) {
         extensions: ['', '.js'],
         alias: {
           'svg': __src.svg,
-          'common': `${__src.js}/common`,
-          'components': `${__src.js}/components`,
-          'config': `${__src.js}/config`,
-          'base': `${__src.js}/base`
+          'js': __src.js,
+          'jquery': `${__npm}/jquery/dist/jquery.min.js` //don't import all the module; use only the minified version
         }
       },
 

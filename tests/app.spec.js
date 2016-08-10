@@ -1,9 +1,9 @@
-import App from 'app.component.js';
+import AppComponent from 'js/app.component.js';
 import $ from 'jquery';
 
-describe('App', () => {
+describe('AppComponent', () => {
 
-  it('should be a class', () => expect(typeof App).toBe('function'));
+  it('should be a class', () => expect(typeof AppComponent).toBe('function'));
 
   describe('Init & Destroy', function() {
     beforeEach(() => {
@@ -15,7 +15,7 @@ describe('App', () => {
       class Class2 { destroy() {}; } // eslint-disable-line
 
       let classes = {Class1, Class2};
-      this.instance = new App(classes);
+      this.instance = new AppComponent(classes);
     });
 
     describe('Init', () => {

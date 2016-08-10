@@ -22,7 +22,6 @@ module.exports = {
     alias: {
       'svg': __src.svg,
       'js': __src.js,
-      'shared': `${__src.js}/shared`,
       'jquery': `${__npm}/jquery/dist/jquery.min.js` //don't import all the module; use only the minified version
     }
   },
