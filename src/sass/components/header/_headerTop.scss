@@ -46,9 +46,24 @@
     text-transform: uppercase;
   }
 
-  .newsletter {
+  .wishlist {
+    height: 15px;
+    width: 18px;
+    fill: transparent;
+    stroke: $c11;
+    stroke-width: 1px;
+    overflow: visible;
     float: right;
-    text-transform: uppercase;
-    margin-right: 40px;
+    margin-top: 2px;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    &.active {
+      fill: $c11;
+    }
   }
 }
