@@ -11,6 +11,52 @@
   @include breakpoint($screen-lg) {
     height: 30px;
   }
+}
+
+.headerTop > ul {
+  overflow: hidden;
+  height: 100%;
+
+  & > li {
+    list-style: none;
+    float: left;
+    cursor: pointer;
+
+    &:after {
+      content: "|";
+      color: $c12;
+      margin: 0 10px;
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+        margin: 0;
+      }
+    }
+  }
+}
+
+.headerTop__left {
+  float: left;
+}
+
+.headerTop__right {
+  float: right;
+
+  & > li > * {
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+    -webkit-transition: opacity 0.3s ease-out;
+  }
+
+  & > li:hover > * {
+    opacity: 1;
+  }
+}
+
+
+.headerTop {
 
   .currencies {
     float: left;
@@ -23,7 +69,7 @@
 
   .currencies__item {
     margin-right: 15px;
-    display: inline-block;
+    float: left;
 
     &.is-active {
       font-weight: 600;
@@ -43,30 +89,6 @@
   .countries__item {
     margin-right: 15px;
     display: inline-block;
-  }
-}
-
-.headerTop__right {
-  float: right;
-  overflow: hidden;
-  height: 100%;
-
-  li {
-    list-style: none;
-    float: left;
-
-    &:last-child {
-      &:after {
-        content: '';
-        margin: 0;
-      }
-    }
-
-    &:after {
-      content: "|";
-      color: $c12;
-      margin: 0 10px;
-    }
   }
 
   .myAccount {
@@ -90,11 +112,6 @@
     fill: $c11;
     overflow: visible;
     opacity: 0.4;
-
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
   }
 
   .wishlist {
@@ -116,13 +133,11 @@
     overflow: visible;
     opacity: 0.4;
 
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-
     &.active {
       fill: $c11;
     }
   }
 }
+
+
+

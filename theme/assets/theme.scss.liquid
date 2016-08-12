@@ -1043,7 +1043,7 @@ ul { margin:0; padding: 0;}
   }
 }
 
-.test {
+/*.test {
   height: 100%;
 }
 
@@ -1055,7 +1055,7 @@ ul { margin:0; padding: 0;}
   @include breakpoint($screen-md) {
     background: black;
   }
-}
+}*/
 
 .headerTop {
   font-family: 'Open Sans', sans-serif;
@@ -1070,6 +1070,52 @@ ul { margin:0; padding: 0;}
   @include breakpoint($screen-lg) {
     height: 30px;
   }
+}
+
+.headerTop > ul {
+  overflow: hidden;
+  height: 100%;
+
+  & > li {
+    list-style: none;
+    float: left;
+    cursor: pointer;
+
+    &:after {
+      content: "|";
+      color: $c12;
+      margin: 0 10px;
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+        margin: 0;
+      }
+    }
+  }
+}
+
+.headerTop__left {
+  float: left;
+}
+
+.headerTop__right {
+  float: right;
+
+  & > li > * {
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+    -webkit-transition: opacity 0.3s ease-out;
+  }
+
+  & > li:hover > * {
+    opacity: 1;
+  }
+}
+
+
+.headerTop {
 
   .currencies {
     float: left;
@@ -1082,7 +1128,7 @@ ul { margin:0; padding: 0;}
 
   .currencies__item {
     margin-right: 15px;
-    display: inline-block;
+    float: left;
 
     &.is-active {
       font-weight: 600;
@@ -1102,30 +1148,6 @@ ul { margin:0; padding: 0;}
   .countries__item {
     margin-right: 15px;
     display: inline-block;
-  }
-}
-
-.headerTop__right {
-  float: right;
-  overflow: hidden;
-  height: 100%;
-
-  li {
-    list-style: none;
-    float: left;
-
-    &:last-child {
-      &:after {
-        content: '';
-        margin: 0;
-      }
-    }
-
-    &:after {
-      content: "|";
-      color: $c12;
-      margin: 0 10px;
-    }
   }
 
   .myAccount {
@@ -1149,11 +1171,6 @@ ul { margin:0; padding: 0;}
     fill: $c11;
     overflow: visible;
     opacity: 0.4;
-
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
   }
 
   .wishlist {
@@ -1175,16 +1192,14 @@ ul { margin:0; padding: 0;}
     overflow: visible;
     opacity: 0.4;
 
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-
     &.active {
       fill: $c11;
     }
   }
 }
+
+
+
 
 .headerMain {
   padding-top: 10px;

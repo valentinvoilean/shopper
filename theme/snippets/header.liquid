@@ -1,18 +1,22 @@
 <header role="banner" class="mainHeader header">
   <div class="headerTop container hidden-xs">
-    <div class="currencies" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
-      <ul class="currencies__list">
-        <li class="currencies__item is-active">€EUR</li>
-        <li class="currencies__item">£GBP</li>
-        <li class="currencies__item">$USD</li>
-      </ul>
-    </div>
-    <div class="countries">
-      <ul class="countries__list">
-        <li class="countries__item">GB</li>
-        <li class="countries__item">ES</li>
-      </ul>
-    </div>
+
+    <ul class="headerTop__left">
+      <li class="currencies" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
+        <ul class="currencies__list">
+          <li class="currencies__item is-active">€EUR</li>
+          <li class="currencies__item">£GBP</li>
+          <li class="currencies__item">$USD</li>
+        </ul>
+      </li>
+      <li class="countries">
+        <ul class="countries__list">
+          <li class="countries__item">GB</li>
+          <li class="countries__item">ES</li>
+        </ul>
+      </li>
+    </ul>
+
     <ul class="headerTop__right">
       <li class="wishlist">
         <svg class="wishlist__icon">
@@ -28,6 +32,7 @@
     </ul>
 
   </div>
+
   <div class="headerMain container">
     <div class="menuIcon menuIcon--x visible-xs" data-ss-init="MenuComponent" data-ss-state="onReady">
       <span>toggle menu</span>
