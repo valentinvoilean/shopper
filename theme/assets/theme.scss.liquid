@@ -112,6 +112,9 @@ $page-link-color: #{'{{ settings.page_link_color }}'};
 $border-color: #{'{{ settings.page_border_color }}'};
 
 // Other Colors
+
+// Header colors
+$header-top-background: #fff;
 $header-icon-color: #D7D7D7;
 $header-icon-color--active: #444;
 
@@ -1063,6 +1066,7 @@ ul { margin:0; padding: 0;}
 }*/
 
 .headerTop {
+  background: $header-top-background;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: 22px;
@@ -1180,20 +1184,18 @@ ul { margin:0; padding: 0;}
   text-transform: uppercase;
   height: 22px;
   position: relative;
-  max-width: 22px;
   overflow: hidden;
-  transition: max-width .5s ease-in-out;
-  -webkit-transition: max-width .5s ease-in-out;
 
   @include breakpoint($screen-lg) {
     height: 30px;
   }
 
   &:hover {
-    max-width: 200px;
 
     .myAccount__text {
       color: $c2;
+      max-width: 200px;
+      margin-right: 10px;
     }
 
     .myAccount__icon {
@@ -1205,68 +1207,63 @@ ul { margin:0; padding: 0;}
     .myAccount__icon:first-child { display: none; }
     .myAccount__icon:last-child { display: block; }
   }
-}
 
-.myAccount__text {
-  transition: color .3s ease-out;
-  transition-delay: .3s;
-  -webkit-transition: color .3s ease-out;
-  -webkit-transition-delay: .3s;
-  color: $c13;
-  float: left;
-  white-space:nowrap;
-  margin-right: 22px;
-  padding-right: 10px;
-  line-height: 22px;
+  .myAccount__text {
+    transition: all .5s ease-out;
+    -webkit-transition: all .5s ease-out;
+    color: $c13;
+    float: left;
+    white-space:nowrap;
+    line-height: 22px;
+    max-width: 0;
+    overflow: hidden;
 
-  @include breakpoint($screen-lg) {
-    line-height: 30px;
+    @include breakpoint($screen-lg) {
+      line-height: 30px;
+    }
   }
-}
 
-.myAccount__img {
-  background: $page-background-color;
-  height: 17px;
-  width: 22px;
-  position: absolute;
-  top: 2px;
-  right: 0;
+  .myAccount__img {
+    height: 17px;
+    width: 22px;
+    margin-top: 2px;
+    right: 0;
+    float: right;
 
-  @include breakpoint($screen-lg) {
-    height: 20px;
-    top: 5px;
+    @include breakpoint($screen-lg) {
+      height: 20px;
+      margin-top: 5px;
+    }
   }
-}
 
-.myAccount__icon {
-  height: 100%;
-  width: 100%;
-  fill: $c14;
-  overflow: visible;
-  transition: fill 0.3s ease-out;
-  -webkit-transition: fill 0.3s ease-out;
+  .myAccount__icon {
+    transition: fill 0.3s ease-out;
+    -webkit-transition: fill 0.3s ease-out;
+    height: 100%;
+    width: 100%;
+    fill: $c14;
+    overflow: visible;
 
-  &:first-child { display: block; }
-  &:last-child { display: none; }
+    &:first-child { display: block; }
+    &:last-child { display: none; }
+  }
 }
   .wishlist {
   text-transform: uppercase;
   height: 22px;
   position: relative;
-  max-width: 18px;
   overflow: hidden;
-  transition: max-width .5s ease-in-out;
-  -webkit-transition: max-width .5s ease-in-out;
 
   @include breakpoint($screen-lg) {
     height: 30px;
   }
 
   &:hover {
-    max-width: 200px;
 
     .wishlist__text {
       color: $c2;
+      max-width: 200px;
+      margin-right: 10px;
     }
 
     .wishlist__icon {
@@ -1280,16 +1277,14 @@ ul { margin:0; padding: 0;}
   }
 
   .wishlist__text {
-    transition: color .3s ease-out;
-    transition-delay: .3s;
-    -webkit-transition: color .3s ease-out;
-    -webkit-transition-delay: .3s;
+    transition: all .5s ease-out;
+    -webkit-transition: all .5s ease-out;
     color: $c13;
     float: left;
     white-space: nowrap;
-    margin-right: 18px;
-    padding-right: 10px;
     line-height: 22px;
+    max-width: 0;
+    overflow: hidden;
 
     @include breakpoint($screen-lg) {
       line-height: 30px;
@@ -1297,26 +1292,25 @@ ul { margin:0; padding: 0;}
   }
 
   .wishlist__img {
-    background: $page-background-color;
     height: 15px;
     width: 18px;
-    position: absolute;
-    top: 3px;
+    margin-top: 3px;
     right: 0;
+    float: right;
 
     @include breakpoint($screen-lg) {
       height: 20px;
-      top: 5px;
+      margin-top: 5px;
     }
   }
 
   .wishlist__icon {
+    transition: fill 0.3s ease-out;
+    -webkit-transition: fill 0.3s ease-out;
     height: 100%;
     width: 100%;
     fill: $c14;
     overflow: visible;
-    transition: fill 0.3s ease-out;
-    -webkit-transition: fill 0.3s ease-out;
 
     &:first-child { display: block; }
     &:last-child { display: none; }
