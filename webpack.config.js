@@ -8,8 +8,8 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    vendors: ['babel-polyfill', 'jquery', 'jquery.currencies.js'],
-    main: ['babel-polyfill', `${__src.js}/main.js`]
+    vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js'],
+    main: [`${__src.js}/main.js`]
   },
 
   output: {
@@ -22,7 +22,8 @@ module.exports = {
     alias: {
       'svg': __src.svg,
       'js': __src.js,
-      'jquery': `${__npm}/jquery/dist/jquery.min.js` //don't import all the module; use only the minified version
+      'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
+      'prefixfree': `${__npm}/prefixfree/prefixfree.min.js` // use the minified version
     }
   },
 
