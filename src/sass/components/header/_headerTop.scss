@@ -9,11 +9,12 @@
   overflow: hidden;
 
   @include breakpoint($screen-lg) {
+    line-height: 30px;
     height: 30px;
   }
 }
 
-.headerTop > ul {
+.headerTop > .container > ul {
   overflow: hidden;
   height: 100%;
 
