@@ -21,19 +21,6 @@
     list-style: none;
     float: left;
     cursor: pointer;
-
-    &:after {
-      content: "|";
-      color: $c12;
-      margin: 0 10px;
-    }
-
-    &:last-child {
-      &:after {
-        content: '';
-        margin: 0;
-      }
-    }
   }
 }
 
@@ -43,18 +30,21 @@
 
 .headerTop__right {
   float: right;
-
-  & > li > * {
-    opacity: 0.4;
-    transition: opacity 0.3s ease-out;
-    -webkit-transition: opacity 0.3s ease-out;
-  }
-
-  & > li:hover > * {
-    opacity: 1;
-  }
 }
 
+.headerTop__separator {
+  height: 14px;
+  width: 1px;
+  background: $c12;
+  margin: 4px 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin: 8px 10px;
+  }
+
+  &:last-child { display: none; }
+}
 
 .headerTop {
 
@@ -91,52 +81,8 @@
     display: inline-block;
   }
 
-  .myAccount {
-    text-transform: uppercase;
-    height: 22px;
-    @include flexbox;
-    @include align-items(center);
-
-    @include breakpoint($screen-lg) {
-      height: 30px;
-    }
-  }
-
-  .myAccount__text {
-    margin-right: 10px;
-  }
-
-  .myAccount__icon {
-    height: 20px;
-    width: 21px;
-    fill: $c11;
-    overflow: visible;
-    opacity: 0.4;
-  }
-
-  .wishlist {
-    height: 22px;
-    @include flexbox;
-    @include align-items(center);
-
-    @include breakpoint($screen-lg) {
-      height: 30px;
-    }
-  }
-
-  .wishlist__icon {
-    height: 15px;
-    width: 18px;
-    fill: transparent;
-    stroke: $c11;
-    stroke-width: 1px;
-    overflow: visible;
-    opacity: 0.4;
-
-    &.active {
-      fill: $c11;
-    }
-  }
+  @import "header-myAccount";
+  @import "header-wishlist";
 }
 
 

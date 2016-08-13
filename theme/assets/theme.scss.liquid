@@ -125,6 +125,8 @@ $c9: #777;
 $c10: #9A9A9A;
 $c11: #696969;
 $c12: #E5E5E5;
+$c13: #A3A3A3;
+$c14: #D7D7D7;
 
 /*============================================================================
   #Sass Mixins
@@ -1080,19 +1082,6 @@ ul { margin:0; padding: 0;}
     list-style: none;
     float: left;
     cursor: pointer;
-
-    &:after {
-      content: "|";
-      color: $c12;
-      margin: 0 10px;
-    }
-
-    &:last-child {
-      &:after {
-        content: '';
-        margin: 0;
-      }
-    }
   }
 }
 
@@ -1102,18 +1091,21 @@ ul { margin:0; padding: 0;}
 
 .headerTop__right {
   float: right;
-
-  & > li > * {
-    opacity: 0.4;
-    transition: opacity 0.3s ease-out;
-    -webkit-transition: opacity 0.3s ease-out;
-  }
-
-  & > li:hover > * {
-    opacity: 1;
-  }
 }
 
+.headerTop__separator {
+  height: 14px;
+  width: 1px;
+  background: $c12;
+  margin: 4px 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin: 8px 10px;
+  }
+
+  &:last-child { display: none; }
+}
 
 .headerTop {
 
@@ -1151,51 +1143,151 @@ ul { margin:0; padding: 0;}
   }
 
   .myAccount {
-    text-transform: uppercase;
-    height: 22px;
-    @include flexbox;
-    @include align-items(center);
+  text-transform: uppercase;
+  height: 22px;
+  position: relative;
+  max-width: 22px;
+  overflow: hidden;
+  transition: max-width .5s ease-in-out;
+  -webkit-transition: max-width .5s ease-in-out;
 
-    @include breakpoint($screen-lg) {
-      height: 30px;
+  @include breakpoint($screen-lg) {
+    height: 30px;
+  }
+
+  &:hover {
+    max-width: 200px;
+
+    .myAccount__text {
+      color: $c2;
+    }
+
+    .myAccount__icon {
+      fill: $c2;
     }
   }
 
-  .myAccount__text {
-    margin-right: 10px;
+  &.active {
+    .myAccount__icon:first-child { display: none; }
+    .myAccount__icon:last-child { display: block; }
   }
+}
 
-  .myAccount__icon {
+.myAccount__text {
+  transition: color 0.3s ease-out;
+  transition-delay: .5s;
+  -webkit-transition: color .3s ease-out;
+  -webkit-transition-delay: .5s;
+  color: $c13;
+  float: left;
+  white-space:nowrap;
+  margin-right: 22px;
+  padding-right: 10px;
+  line-height: 22px;
+
+  @include breakpoint($screen-lg) {
+    line-height: 30px;
+  }
+}
+
+.myAccount__img {
+  background: $page-background-color;
+  height: 17px;
+  width: 22px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+
+  @include breakpoint($screen-lg) {
     height: 20px;
-    width: 21px;
-    fill: $c11;
-    overflow: visible;
-    opacity: 0.4;
+    top: 5px;
+  }
+}
+
+.myAccount__icon {
+  height: 100%;
+  width: 100%;
+  fill: $c14;
+  overflow: visible;
+  transition: fill 0.3s ease-out;
+  -webkit-transition: fill 0.3s ease-out;
+
+  &:first-child { display: block; }
+  &:last-child { display: none; }
+}
+  .wishlist {
+  text-transform: uppercase;
+  height: 22px;
+  position: relative;
+  max-width: 18px;
+  overflow: hidden;
+  transition: max-width .5s ease-in-out;
+  -webkit-transition: max-width .5s ease-in-out;
+
+  @include breakpoint($screen-lg) {
+    height: 30px;
   }
 
-  .wishlist {
-    height: 22px;
-    @include flexbox;
-    @include align-items(center);
+  &:hover {
+    max-width: 200px;
+
+    .wishlist__text {
+      color: $c2;
+    }
+
+    .wishlist__icon {
+      fill: $c2;
+    }
+  }
+
+  &.active {
+    .wishlist__icon:first-child { display: none; }
+    .wishlist__icon:last-child { display: block; }
+  }
+
+  .wishlist__text {
+    transition: color 0.3s ease-out;
+    transition-delay: .5s;
+    -webkit-transition: color 0.3s ease-out;
+    -webkit-transition-delay: .5s;
+    color: $c13;
+    float: left;
+    white-space: nowrap;
+    margin-right: 18px;
+    padding-right: 10px;
+    line-height: 22px;
 
     @include breakpoint($screen-lg) {
-      height: 30px;
+      line-height: 30px;
+    }
+  }
+
+  .wishlist__img {
+    background: $page-background-color;
+    height: 15px;
+    width: 18px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+
+    @include breakpoint($screen-lg) {
+      height: 20px;
+      top: 5px;
     }
   }
 
   .wishlist__icon {
-    height: 15px;
-    width: 18px;
-    fill: transparent;
-    stroke: $c11;
-    stroke-width: 1px;
+    height: 100%;
+    width: 100%;
+    fill: $c14;
     overflow: visible;
-    opacity: 0.4;
+    transition: fill 0.3s ease-out;
+    -webkit-transition: fill 0.3s ease-out;
 
-    &.active {
-      fill: $c11;
-    }
+    &:first-child { display: block; }
+    &:last-child { display: none; }
   }
+}
 }
 
 
