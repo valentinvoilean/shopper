@@ -2,17 +2,23 @@
   <div class="headerTop hidden-xs">
     <div class="container">
       <ul class="headerTop__left">
-        <li class="currencies" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
-          <ul class="currencies__list">
-            <li class="currencies__item is-active">€EUR</li>
-            <li class="currencies__item">£GBP</li>
-            <li class="currencies__item">$USD</li>
+        <li class="currencies headerTop__dropdown" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
+          <svg>
+            <use xlink:href="#arrow2"></use>
+          </svg>
+          <ul>
+            <li class="active">€EUR</li>
+            <li>£GBP</li>
+            <li>$USD</li>
           </ul>
         </li>
-        <li class="countries">
-          <ul class="countries__list">
-            <li class="countries__item">English</li>
-            <li class="countries__item">Espanol</li>
+        <li class="countries headerTop__dropdown">
+          <svg>
+            <use xlink:href="#arrow2"></use>
+          </svg>
+          <ul>
+            <li class="active">English</li>
+            <li>Espanol</li>
           </ul>
         </li>
       </ul>
@@ -20,26 +26,26 @@
       <ul class="headerTop__right">
         <li class="wishlist">
           <span class="wishlist__text">My Wishlist</span>
-          <picture class="wishlist__img">
+          <div class="wishlist__img">
             <svg class="wishlist__icon">
               <use xlink:href="#wishlist-1"></use>
             </svg>
             <svg class="wishlist__icon">
               <use xlink:href="#wishlist-2"></use>
             </svg>
-          </picture>
+          </div>
         </li>
         <li class="headerTop__separator"></li>
         <li class="myAccount">
           <span class="myAccount__text">Sign In - Register</span>
-          <picture class="myAccount__img">
+          <div class="myAccount__img">
             <svg class="myAccount__icon">
               <use xlink:href="#user-1"></use>
             </svg>
             <svg class="myAccount__icon">
               <use xlink:href="#user-2"></use>
             </svg>
-          </picture>
+          </div>
         </li>
       </ul>
     </div>

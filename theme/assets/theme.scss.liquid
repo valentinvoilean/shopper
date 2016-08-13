@@ -112,6 +112,9 @@ $page-link-color: #{'{{ settings.page_link_color }}'};
 $border-color: #{'{{ settings.page_border_color }}'};
 
 // Other Colors
+$header-icon-color: #D7D7D7;
+$header-icon-color--active: #444;
+
 $c0: #000;
 $c1: #E6E6E6;
 $c2: #444;
@@ -1064,7 +1067,7 @@ ul { margin:0; padding: 0;}
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
-  color: $c2;
+
   height: 22px;
   border-bottom: 1px solid $border-color;
   overflow: hidden;
@@ -1108,41 +1111,71 @@ ul { margin:0; padding: 0;}
   &:last-child { display: none; }
 }
 
-.headerTop {
+.headerTop__dropdown {
 
-  .currencies {
+  & > svg {
+    height: 8px;
+    width: 8px;
+    margin-top: 7px;
+    margin-right: 5px;
+    fill: $header-icon-color;
     float: left;
-    text-transform: uppercase;
-  }
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    cursor: pointer;
+    transition: transform .3s ease-in-out, fill .3s linear;
+    -webkit-transition: -webkit-transform .3s ease-in-out, fill .3s linear;
 
-  .currencies__list {
-    list-style: none;
-  }
-
-  .currencies__item {
-    margin-right: 15px;
-    float: left;
-
-    &.is-active {
-      font-weight: 600;
+    @include breakpoint($screen-lg) {
+      margin-top: 10px;
     }
   }
 
-  .countries {
-    float: left;
-    margin-left: 40px;
-    text-transform: uppercase;
-  }
-
-  .countries__list {
+  & > ul {
     list-style: none;
+    float: left;
+
+    & > li {
+      display: inline-block;
+      max-width: 0;
+      overflow: hidden;
+      transition: all .3s linear;
+      -webkit-transition: all .3s linear;
+      color: $c14;
+
+      &:hover,
+      &.active {
+        max-width: 200px;
+        color: $header-icon-color--active;
+      }
+    }
   }
 
-  .countries__item {
-    margin-right: 15px;
-    display: inline-block;
-  }
+  &:hover {
+    & > svg {
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      fill: $header-icon-color--active;
+    }
 
+    & > ul > li {
+      max-width: 200px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.headerTop {
+  .currencies {
+  float: left;
+  text-transform: uppercase;
+}
+
+  .countries {
+  float: left;
+  margin-left: 20px;
+  text-transform: uppercase;
+}
   .myAccount {
   text-transform: uppercase;
   height: 22px;
