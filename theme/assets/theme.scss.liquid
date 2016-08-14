@@ -710,20 +710,26 @@ ul { margin:0; padding: 0;}
   }
 }*/
 
+$headerTopTablet-height:      40px;
+$headerTopDesktop-height:     30px;
+$headerTop-separatorHeight:   14px;
+$headerTopTabletIcon-height:  24px;
+$headerTopDesktopIcon-height: 20px;
+
 .headerTop {
   background: $header-top-background;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  line-height: 22px;
+  line-height: $headerTopTablet-height;
   font-weight: 400;
 
-  height: 22px;
+  height: $headerTopTablet-height;
   border-bottom: 1px solid $border-color;
   overflow: hidden;
 
   @include breakpoint($screen-lg) {
-    line-height: 30px;
-    height: 30px;
+    line-height: $headerTopDesktop-height;
+    height: $headerTopDesktop-height;
   }
 }
 
@@ -738,34 +744,29 @@ ul { margin:0; padding: 0;}
   }
 }
 
-.headerTop__left {
+.headerTopLeft {
   float: left;
-}
 
-.headerTop__right {
-  float: right;
-}
+  .headerTopLeft__item {
+    margin-right: 20px;
 
-.headerTop__separator {
-  height: 14px;
-  width: 1px;
-  background: $c12;
-  margin: 4px 10px;
-  cursor: default;
+    &:hover {
+      .headerTopLeft__img {
+        transform: rotate(0deg);
+        fill: $header-icon-color--active;
+      }
 
-  @include breakpoint($screen-lg) {
-    margin: 8px 10px;
+      .headerTopLeft__option {
+        max-width: 200px;
+        margin-right: 10px;
+      }
+    }
   }
 
-  &:last-child { display: none; }
-}
-
-.headerTop__dropdown {
-
-  & > svg {
+  .headerTopLeft__img {
     height: 8px;
     width: 8px;
-    margin-top: 7px;
+    margin-top: 16px;
     margin-right: 5px;
     fill: $header-icon-color;
     float: left;
@@ -778,182 +779,112 @@ ul { margin:0; padding: 0;}
     }
   }
 
-  & > ul {
+  .headerTopLeft__options {
     list-style: none;
     float: left;
-
-    & > li {
-      display: inline-block;
-      max-width: 0;
-      overflow: hidden;
-      transition: all .3s linear;
-      color: $c14;
-
-      &:hover,
-      &.active {
-        max-width: 200px;
-        color: $header-icon-color--active;
-      }
-    }
+    text-transform: uppercase;
   }
 
-  &:hover {
-    & > svg {
-      transform: rotate(0deg);
-      fill: $header-icon-color--active;
-    }
+  .headerTopLeft__option {
+    float: left;
+    max-width: 0;
+    overflow: hidden;
+    transition: all .3s linear;
+    color: $c14;
 
-    & > ul > li {
+    &:hover,
+    &.active {
       max-width: 200px;
-      margin-right: 10px;
+      color: $header-icon-color--active;
     }
   }
 }
-
-.headerTop {
-  .currencies {
-  float: left;
-  text-transform: uppercase;
+.headerTopRight {
+  float: right;
 }
 
-  .countries {
-  float: left;
-  margin-left: 20px;
+.headerTopRight__item {
   text-transform: uppercase;
-}
-  .myAccount {
-  text-transform: uppercase;
-  height: 22px;
+  height: $headerTopTablet-height;
   position: relative;
   overflow: hidden;
 
   @include breakpoint($screen-lg) {
-    height: 30px;
+    height: $headerTopDesktop-height;
   }
 
   &:hover {
 
-    .myAccount__text {
+    .headerTopRight__text {
       color: $c2;
       max-width: 200px;
       margin-right: 10px;
     }
 
-    .myAccount__icon {
+    .headerTopRight__icon {
       fill: $c2;
     }
   }
 
   &.active {
-    .myAccount__icon:first-child { display: none; }
-    .myAccount__icon:last-child { display: block; }
-  }
-
-  .myAccount__text {
-    transition: all .5s ease-out;
-    color: $c13;
-    float: left;
-    white-space:nowrap;
-    line-height: 22px;
-    max-width: 0;
-    overflow: hidden;
-
-    @include breakpoint($screen-lg) {
-      line-height: 30px;
-    }
-  }
-
-  .myAccount__img {
-    height: 17px;
-    width: 22px;
-    margin-top: 2px;
-    right: 0;
-    float: right;
-
-    @include breakpoint($screen-lg) {
-      height: 20px;
-      margin-top: 5px;
-    }
-  }
-
-  .myAccount__icon {
-    transition: fill 0.3s ease-out;
-    height: 100%;
-    width: 100%;
-    fill: $c14;
-    overflow: visible;
-
-    &:first-child { display: block; }
-    &:last-child { display: none; }
+    .headerTopRight__icon:first-child { display: none; }
+    .headerTopRight__icon:last-child { display: block; }
   }
 }
-  .wishlist {
-  text-transform: uppercase;
-  height: 22px;
-  position: relative;
+
+.headerTopRight__text {
+  transition: all .5s ease-out;
+  color: $c13;
+  float: left;
+  white-space: nowrap;
+  line-height: $headerTopTablet-height;
+  max-width: 0;
   overflow: hidden;
 
   @include breakpoint($screen-lg) {
-    height: 30px;
-  }
-
-  &:hover {
-
-    .wishlist__text {
-      color: $c2;
-      max-width: 200px;
-      margin-right: 10px;
-    }
-
-    .wishlist__icon {
-      fill: $c2;
-    }
-  }
-
-  &.active {
-    .wishlist__icon:first-child { display: none; }
-    .wishlist__icon:last-child { display: block; }
-  }
-
-  .wishlist__text {
-    transition: all .5s ease-out;
-    color: $c13;
-    float: left;
-    white-space: nowrap;
-    line-height: 22px;
-    max-width: 0;
-    overflow: hidden;
-
-    @include breakpoint($screen-lg) {
-      line-height: 30px;
-    }
-  }
-
-  .wishlist__img {
-    height: 15px;
-    width: 18px;
-    margin-top: 3px;
-    right: 0;
-    float: right;
-
-    @include breakpoint($screen-lg) {
-      height: 20px;
-      margin-top: 5px;
-    }
-  }
-
-  .wishlist__icon {
-    transition: fill 0.3s ease-out;
-    -webkit-transition: fill 0.3s ease-out;
-    height: 100%;
-    width: 100%;
-    fill: $c14;
-    overflow: visible;
-
-    &:first-child { display: block; }
-    &:last-child { display: none; }
+    line-height: $headerTopDesktop-height;
   }
 }
+
+.headerTopRight__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+  float: right;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+  }
+}
+
+.headerTopRight__icon {
+  transition: fill 0.3s ease-out;
+  -webkit-transition: fill 0.3s ease-out;
+  height: 100%;
+  width: 100%;
+  fill: $c14;
+  overflow: visible;
+
+  &:first-child { display: block; }
+  &:last-child { display: none; }
+}
+
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $c12;
+  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
+  }
+
+  &:last-child { display: none; }
 }
 
 

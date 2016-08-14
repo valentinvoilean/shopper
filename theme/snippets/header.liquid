@@ -1,48 +1,48 @@
 <header role="banner" class="mainHeader header">
   <div class="headerTop hidden-xs">
     <div class="container">
-      <ul class="headerTop__left">
-        <li class="currencies headerTop__dropdown" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
-          <svg>
+      <ul class="headerTopLeft">
+        <li class="currencies headerTopLeft__item" data-ss-init="CurrenciesComponent" data-ss-state="onReady">
+          <svg class="headerTopLeft__img">
             <use xlink:href="#arrow2"></use>
           </svg>
-          <ul>
-            <li class="active">€EUR</li>
-            <li>£GBP</li>
-            <li>$USD</li>
+          <ul class="headerTopLeft__options">
+            <li class="active headerTopLeft__option">€EUR</li>
+            <li class="headerTopLeft__option">£GBP</li>
+            <li class="headerTopLeft__option">$USD</li>
           </ul>
         </li>
-        <li class="countries headerTop__dropdown">
-          <svg>
+        <li class="countries headerTopLeft__item">
+          <svg class="headerTopLeft__img">
             <use xlink:href="#arrow2"></use>
           </svg>
-          <ul>
-            <li class="active">English</li>
-            <li>Espanol</li>
+          <ul class="headerTopLeft__options">
+            <li class="headerTopLeft__option active">English</li>
+            <li class="headerTopLeft__option">Espanol</li>
           </ul>
         </li>
       </ul>
 
-      <ul class="headerTop__right">
-        <li class="wishlist">
-          <span class="wishlist__text">My Wishlist</span>
-          <div class="wishlist__img">
-            <svg class="wishlist__icon">
+      <ul class="headerTopRight">
+        <li class="headerTopRight__item wishlist">
+          <span class="headerTopRight__text">My Wishlist</span>
+          <div class="headerTopRight__img">
+            <svg class="headerTopRight__icon">
               <use xlink:href="#wishlist-1"></use>
             </svg>
-            <svg class="wishlist__icon">
+            <svg class="headerTopRight__icon">
               <use xlink:href="#wishlist-2"></use>
             </svg>
           </div>
         </li>
         <li class="headerTop__separator"></li>
-        <li class="myAccount">
-          <span class="myAccount__text">Sign In - Register</span>
-          <div class="myAccount__img">
-            <svg class="myAccount__icon">
+        <li class="headerTopRight__item myAccount">
+          <span class="headerTopRight__text">Sign In - Register</span>
+          <div class="headerTopRight__img">
+            <svg class="headerTopRight__icon">
               <use xlink:href="#user-1"></use>
             </svg>
-            <svg class="myAccount__icon">
+            <svg class="headerTopRight__icon">
               <use xlink:href="#user-2"></use>
             </svg>
           </div>

@@ -1,17 +1,23 @@
+$headerTopTablet-height:      40px;
+$headerTopDesktop-height:     30px;
+$headerTop-separatorHeight:   14px;
+$headerTopTabletIcon-height:  24px;
+$headerTopDesktopIcon-height: 20px;
+
 .headerTop {
   background: $header-top-background;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  line-height: 22px;
+  line-height: $headerTopTablet-height;
   font-weight: 400;
 
-  height: 22px;
+  height: $headerTopTablet-height;
   border-bottom: 1px solid $border-color;
   overflow: hidden;
 
   @include breakpoint($screen-lg) {
-    line-height: 30px;
-    height: 30px;
+    line-height: $headerTopDesktop-height;
+    height: $headerTopDesktop-height;
   }
 }
 
@@ -26,84 +32,8 @@
   }
 }
 
-.headerTop__left {
-  float: left;
-}
-
-.headerTop__right {
-  float: right;
-}
-
-.headerTop__separator {
-  height: 14px;
-  width: 1px;
-  background: $c12;
-  margin: 4px 10px;
-  cursor: default;
-
-  @include breakpoint($screen-lg) {
-    margin: 8px 10px;
-  }
-
-  &:last-child { display: none; }
-}
-
-.headerTop__dropdown {
-
-  & > svg {
-    height: 8px;
-    width: 8px;
-    margin-top: 7px;
-    margin-right: 5px;
-    fill: $header-icon-color;
-    float: left;
-    transform: rotate(90deg);
-    cursor: pointer;
-    transition: transform .3s ease-in-out, fill .3s linear;
-
-    @include breakpoint($screen-lg) {
-      margin-top: 10px;
-    }
-  }
-
-  & > ul {
-    list-style: none;
-    float: left;
-
-    & > li {
-      display: inline-block;
-      max-width: 0;
-      overflow: hidden;
-      transition: all .3s linear;
-      color: $c14;
-
-      &:hover,
-      &.active {
-        max-width: 200px;
-        color: $header-icon-color--active;
-      }
-    }
-  }
-
-  &:hover {
-    & > svg {
-      transform: rotate(0deg);
-      fill: $header-icon-color--active;
-    }
-
-    & > ul > li {
-      max-width: 200px;
-      margin-right: 10px;
-    }
-  }
-}
-
-.headerTop {
-  @import "header-currencies.scss";
-  @import "header-countries";
-  @import "header-myAccount";
-  @import "header-wishlist";
-}
+@import "headerTop-left";
+@import "headerTop-right";
 
 
 

@@ -1,0 +1,87 @@
+.headerTopRight {
+  float: right;
+}
+
+.headerTopRight__item {
+  text-transform: uppercase;
+  height: $headerTopTablet-height;
+  position: relative;
+  overflow: hidden;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktop-height;
+  }
+
+  &:hover {
+
+    .headerTopRight__text {
+      color: $c2;
+      max-width: 200px;
+      margin-right: 10px;
+    }
+
+    .headerTopRight__icon {
+      fill: $c2;
+    }
+  }
+
+  &.active {
+    .headerTopRight__icon:first-child { display: none; }
+    .headerTopRight__icon:last-child { display: block; }
+  }
+}
+
+.headerTopRight__text {
+  transition: all .5s ease-out;
+  color: $c13;
+  float: left;
+  white-space: nowrap;
+  line-height: $headerTopTablet-height;
+  max-width: 0;
+  overflow: hidden;
+
+  @include breakpoint($screen-lg) {
+    line-height: $headerTopDesktop-height;
+  }
+}
+
+.headerTopRight__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+  float: right;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+  }
+}
+
+.headerTopRight__icon {
+  transition: fill 0.3s ease-out;
+  -webkit-transition: fill 0.3s ease-out;
+  height: 100%;
+  width: 100%;
+  fill: $c14;
+  overflow: visible;
+
+  &:first-child { display: block; }
+  &:last-child { display: none; }
+}
+
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $c12;
+  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
+  }
+
+  &:last-child { display: none; }
+}
