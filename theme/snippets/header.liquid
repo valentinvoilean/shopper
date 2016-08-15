@@ -25,7 +25,7 @@
 
       <ul class="headerTopRight">
         <li class="headerTopRight__item wishlist">
-          <a href="#" class="headerTopRight__link is-active">My Wishlist</a>
+          <a href="#wishlist" class="headerTopRight__link is-active">My Wishlist</a>
           <div class="headerTopRight__img">
             <svg class="headerTopRight__icon">
               <use xlink:href="#wishlist-1"></use>
@@ -47,11 +47,11 @@
             <a class="headerTopRight__link" href="/account/login">Log in</a>
             {% if shop.customer_accounts_optional %}
               <span class="headerTopRight__separator"> - </span>
-              <a class="headerTopRight__link" href="/account/register">Register</a>
+              <a class="headerTopRight__link is-active" href="/account/register">Register</a>
             {% endif %}
           {% endif %}
           {% if customer %}
-          <a href="/account" class="headerTopRight__customer">
+          <a href="/account" class="headerTopRight__group">
             <span class="headerTopRight__text">Hi {{ customer.first_name }} !</span>
             <div class="headerTopRight__img">
               <div class="headerTopRight__gravatar">
@@ -63,11 +63,13 @@
             </div>
           </a>
           {% else %}
-          <div class="headerTopRight__img">
-            <svg class="headerTopRight__icon">
-              <use xlink:href="#user-1"></use>
-            </svg>
-          </div>
+          <a href="/account/register" class="headerTopRight__group">
+            <div class="headerTopRight__img">
+              <svg class="headerTopRight__icon">
+                <use xlink:href="#user-1"></use>
+              </svg>
+            </div>
+          </a>
           {% endif %}
         </li>
         {% endif %}
