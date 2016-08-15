@@ -815,8 +815,7 @@ $headerTopDesktopIcon-height: 20px;
 
   &:hover {
 
-    .headerTopRight__text {
-      color: $c2;
+    .headerTopRight__link {
       max-width: 200px;
       margin-right: 10px;
     }
@@ -825,20 +824,52 @@ $headerTopDesktopIcon-height: 20px;
       fill: $c2;
     }
   }
+
+  &.is-active:hover {
+    .headerTopRight__link {
+      color: $c2;
+    }
+  }
 }
 
-.headerTopRight__text {
+.headerTopRight__link {
   transition: all .5s ease-out;
-  color: $c13;
   float: left;
   white-space: nowrap;
   line-height: $headerTopTablet-height;
   max-width: 0;
   overflow: hidden;
+  color: $c14;
 
   @include breakpoint($screen-lg) {
     line-height: $headerTopDesktop-height;
   }
+}
+
+a.headerTopRight__link:hover {
+  color: $c2;
+  cursor: pointer;
+}
+
+.headerTopRight__text {
+  white-space: nowrap;
+  line-height: $headerTopTablet-height;
+  margin-left: 10px;
+  text-transform: uppercase;
+  float: right;
+  color: $c2;
+
+  @include breakpoint($screen-lg) {
+    line-height: $headerTopDesktop-height;
+  }
+}
+
+.headerTopRight__separator {
+  @extend .headerTopRight__text;
+  float: left;
+  margin-left: -5px;
+  margin-right: 5px;
+  color: $c14;
 }
 
 .headerTopRight__gravatar {

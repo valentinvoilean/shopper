@@ -24,8 +24,8 @@
       </ul>
 
       <ul class="headerTopRight">
-        <li class="headerTopRight__item wishlist">
-          <span class="headerTopRight__text">My Wishlist</span>
+        <li class="headerTopRight__item wishlist is-active">
+          <a href="#" class="headerTopRight__link">My Wishlist</a>
           <div class="headerTopRight__img">
             <svg class="headerTopRight__icon">
               <use xlink:href="#wishlist-1"></use>
@@ -39,30 +39,36 @@
 
         {% if shop.customer_accounts_enabled %}
         <li class="headerTopRight__item myAccount">
-          <span class="headerTopRight__text">
-            {% if customer %}
-              Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
-            {% else %}
-              {{ 'Log in' | customer_login_link }}
-              {% if shop.customer_accounts_optional %}
-              - {{ 'Register' | customer_register_link }}
-              {% endif %}
+          {% if customer %}
+            <a class="headerTopRight__link" href="/account">My Account</a>
+            <span class="headerTopRight__separator">-</span>
+            <a class="headerTopRight__link" href="/account/logout">Log out</a>
+          {% else %}
+            <a class="headerTopRight__link" href="/account/login">Log in</a>
+            {% if shop.customer_accounts_optional %}
+              <span class="headerTopRight__separator"> - </span>
+              <a class="headerTopRight__link" href="/account/register">Register</a>
             {% endif %}
-          </span>
-          <div class="headerTopRight__img">
-            {% if customer %}
-            <div class="headerTopRight__gravatar">
-              <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
+          {% endif %}
+          {% if customer %}
+          <a href="/account" class="headerTopRight__customer">
+            <span class="headerTopRight__text">Hi {{ customer.first_name }} !</span>
+            <div class="headerTopRight__img">
+              <div class="headerTopRight__gravatar">
+                <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
+              </div>
+              <svg class="headerTopRight__icon">
+                <use xlink:href="#user-2"></use>
+              </svg>
             </div>
-            <svg class="headerTopRight__icon">
-              <use xlink:href="#user-2"></use>
-            </svg>
-            {% else %}
+          </a>
+          {% else %}
+          <div class="headerTopRight__img">
             <svg class="headerTopRight__icon">
               <use xlink:href="#user-1"></use>
             </svg>
-            {% endif %}
           </div>
+          {% endif %}
         </li>
         {% endif %}
 
