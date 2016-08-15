@@ -825,8 +825,8 @@ $headerTopDesktopIcon-height: 20px;
     }
   }
 
-  &.is-active:hover {
-    .headerTopRight__link {
+  &:hover {
+    .headerTopRight__link.is-active {
       color: $c2;
     }
   }
@@ -855,7 +855,7 @@ a.headerTopRight__link:hover {
   white-space: nowrap;
   line-height: $headerTopTablet-height;
   margin-left: 10px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   float: right;
   color: $c2;
 

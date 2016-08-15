@@ -24,8 +24,8 @@
       </ul>
 
       <ul class="headerTopRight">
-        <li class="headerTopRight__item wishlist is-active">
-          <a href="#" class="headerTopRight__link">My Wishlist</a>
+        <li class="headerTopRight__item wishlist">
+          <a href="#" class="headerTopRight__link is-active">My Wishlist</a>
           <div class="headerTopRight__img">
             <svg class="headerTopRight__icon">
               <use xlink:href="#wishlist-1"></use>
@@ -40,9 +40,9 @@
         {% if shop.customer_accounts_enabled %}
         <li class="headerTopRight__item myAccount">
           {% if customer %}
-            <a class="headerTopRight__link" href="/account">My Account</a>
-            <span class="headerTopRight__separator">-</span>
-            <a class="headerTopRight__link" href="/account/logout">Log out</a>
+          <a class="headerTopRight__link" href="/account/logout">Log out</a>
+          <span class="headerTopRight__separator">-</span>
+          <a class="headerTopRight__link is-active" href="/account">My Account</a>
           {% else %}
             <a class="headerTopRight__link" href="/account/login">Log in</a>
             {% if shop.customer_accounts_optional %}
