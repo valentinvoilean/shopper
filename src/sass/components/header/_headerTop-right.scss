@@ -24,11 +24,6 @@
       fill: $c2;
     }
   }
-
-  &.active {
-    .headerTopRight__icon:first-child { display: none; }
-    .headerTopRight__icon:last-child { display: block; }
-  }
 }
 
 .headerTopRight__text {
@@ -45,7 +40,27 @@
   }
 }
 
+.headerTopRight__gravatar {
+  overflow: hidden;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  & + .headerTopRight__icon {
+    border-radius: 100px;
+  }
+}
+
 .headerTopRight__img {
+  position: relative;
   height: $headerTopTabletIcon-height;
   width: $headerTopTabletIcon-height + 2;
   margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
@@ -65,9 +80,6 @@
   width: 100%;
   fill: $c14;
   overflow: visible;
-
-  &:first-child { display: block; }
-  &:last-child { display: none; }
 }
 
 .headerTop__separator {

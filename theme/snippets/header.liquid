@@ -36,17 +36,36 @@
           </div>
         </li>
         <li class="headerTop__separator"></li>
+
+        {% if shop.customer_accounts_enabled %}
         <li class="headerTopRight__item myAccount">
-          <span class="headerTopRight__text">Sign In - Register</span>
+          <span class="headerTopRight__text">
+            {% if customer %}
+              Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
+            {% else %}
+              {{ 'Log in' | customer_login_link }}
+              {% if shop.customer_accounts_optional %}
+              - {{ 'Register' | customer_register_link }}
+              {% endif %}
+            {% endif %}
+          </span>
           <div class="headerTopRight__img">
-            <svg class="headerTopRight__icon">
-              <use xlink:href="#user-1"></use>
-            </svg>
+            {% if customer %}
+            <div class="headerTopRight__gravatar">
+              <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
+            </div>
             <svg class="headerTopRight__icon">
               <use xlink:href="#user-2"></use>
             </svg>
+            {% else %}
+            <svg class="headerTopRight__icon">
+              <use xlink:href="#user-1"></use>
+            </svg>
+            {% endif %}
           </div>
         </li>
+        {% endif %}
+
       </ul>
     </div>
   </div>
