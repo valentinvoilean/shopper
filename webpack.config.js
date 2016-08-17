@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js'],
+    vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js', 'modernizr'],
     main: [`${__src.js}/main.js`]
   },
 
@@ -23,7 +23,8 @@ module.exports = {
       'svg': __src.svg,
       'js': __src.js,
       'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
-      'prefixfree': `${__npm}/prefixfree/prefixfree.min.js` // use the minified version
+      'prefixfree': `${__npm}/prefixfree/prefixfree.min.js`, // use the minified version
+      modernizr$: path.resolve(__dirname, '.modernizrrc')
     }
   },
 
@@ -53,9 +54,15 @@ module.exports = {
         loader: 'babel'
       }
     ],
-    loaders: [{
-      test: /\.svg$/,
-      loader: 'svg-sprite'
-    }]
+    loaders: [
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite',
+      },
+      {
+        test: /\.modernizrrc$/,
+        loader: "modernizr"
+      }
+    ]
   }
 };

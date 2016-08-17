@@ -31,7 +31,8 @@ module.exports = function (config) {
         alias: {
           'svg': __src.svg,
           'js': __src.js,
-          'jquery': `${__npm}/jquery/dist/jquery.min.js` //don't import all the module; use only the minified version
+          'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
+          modernizr$: path.resolve(__dirname, '.modernizrrc')
         }
       },
 
@@ -44,6 +45,12 @@ module.exports = function (config) {
               path.resolve(__npm)
             ],
             loader: 'babel'
+          }
+        ],
+        loaders: [
+          {
+            test: /\.modernizrrc$/,
+            loader: "modernizr"
           }
         ]
       }
