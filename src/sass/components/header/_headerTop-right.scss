@@ -22,6 +22,11 @@
     .headerTopRight__icon {
       fill: $c2;
     }
+
+    .headerTopRight__text {
+      max-width: 0;
+      margin-right: 0;
+    }
   }
 
   &:hover {
@@ -57,10 +62,14 @@ a.headerTopRight__link:hover {
 .headerTopRight__text {
   white-space: nowrap;
   line-height: $headerTopTablet-height;
-  margin-left: 10px;
+  margin-right: 10px;
   text-transform: capitalize;
   float: right;
   color: $c2;
+  max-width: 200px;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 
   @include breakpoint($screen-lg) {
     line-height: $headerTopDesktop-height;
@@ -68,11 +77,15 @@ a.headerTopRight__link:hover {
 }
 
 .headerTopRight__separator {
-  @extend .headerTopRight__text;
+  line-height: $headerTopTablet-height;
   float: left;
   margin-left: -5px;
   margin-right: 5px;
   color: $c14;
+
+  @include breakpoint($screen-lg) {
+    line-height: $headerTopDesktop-height;
+  }
 }
 
 .headerTopRight__gravatar {
