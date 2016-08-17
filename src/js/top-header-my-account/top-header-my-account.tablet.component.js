@@ -42,21 +42,6 @@ export default class {
     this._resetClasses(e);
   }
 
-  _expandLeftSide() {
-    this.$el.find('.myAccount__leftSide')
-      .addClass(SHARED_CLASSES.animate)
-      .addClass(SHARED_CLASSES.expanded);
-  }
-
-  _collapseLeftSide() {
-    this.$el.find('.myAccount__leftSide')
-      .one('transitionend', function () {
-        $(this).removeClass(SHARED_CLASSES.animate);
-        $(this).parent().removeClass(SHARED_CLASSES.active);
-      })
-      .removeClass(SHARED_CLASSES.expanded);
-  }
-
   _preventLinkOnFirstClick(e) {
     if (this.$el.hasClass(SHARED_CLASSES.active)) {
       return true;
@@ -64,7 +49,17 @@ export default class {
     else {
       e.preventDefault();
       this.$el.addClass(SHARED_CLASSES.active);
-      this._expandLeftSide();
+
+      this.$el.find('.myAccount__leftSide')
+        .addClass(SHARED_CLASSES.animate)
+        .one('transitionend', () => {
+          this.$el
+            .find('.myAccount__rightSide')
+            .find('.myAccount__link')
+            .addClass(SHARED_CLASSES.animate)
+            .removeClass(SHARED_CLASSES.expanded);
+        })
+        .addClass(SHARED_CLASSES.expanded);
     }
   }
 
@@ -72,8 +67,16 @@ export default class {
     if (!this.$el.is(e.target) // if the target of the click isn't the container...
       && this.$el.has(e.target).length === 0) // ... nor a descendant of the container
     {
-      this._collapseLeftSide();
-      //  this.$el.removeClass(SHARED_CLASSES.active);
+      this.$el.find('.myAccount__leftSide')
+        .one('transitionend', () => {
+          this.$el
+            .find('.myAccount__rightSide')
+            .find('.myAccount__link')
+            .addClass(SHARED_CLASSES.expanded);
+
+          this.$el.removeClass(SHARED_CLASSES.active);
+        })
+        .removeClass(SHARED_CLASSES.expanded);
     }
   }
 };

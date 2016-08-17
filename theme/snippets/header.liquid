@@ -25,12 +25,12 @@
 
       <ul class="headerTopRight">
         <li class="headerTopRight__item wishlist">
-          <a href="#wishlist" class="headerTopRight__link is-active">My Wishlist</a>
-          <div class="headerTopRight__img">
-            <svg class="headerTopRight__icon">
+          <a href="#wishlist" class="headerTopRight__link wishlist__link is-active">My Wishlist</a>
+          <div class="wishlist__img">
+            <svg class="wishlist__icon">
               <use xlink:href="#wishlist-1"></use>
             </svg>
-            <svg class="headerTopRight__icon">
+            <svg class="wishlist__icon">
               <use xlink:href="#wishlist-2"></use>
             </svg>
           </div>
@@ -42,12 +42,12 @@
           <div class="myAccount__leftSide">
             {% if customer %}
             <a class="headerTopRight__link myAccount__link" href="/account/logout">Log out</a>
-            <span class="headerTopRight__separator">-</span>
+            <span class="headerTopRight__separator myAccount__separator">-</span>
             <a class="headerTopRight__link myAccount__link is-active" href="/account">My Account</a>
             {% else %}
             <a class="headerTopRight__link myAccount__link" href="/account/login">Log in</a>
             {% if shop.customer_accounts_optional %}
-            <span class="headerTopRight__separator"> - </span>
+            <span class="headerTopRight__separator myAccount__separator"> - </span>
             <a class="headerTopRight__link myAccount__link is-active" href="/account/register">Register</a>
             {% endif %}
             {% endif %}
@@ -55,19 +55,19 @@
 
           <div class="myAccount__rightSide">
             {% if customer %}
-            <a class="headerTopRight__link myAccount__link is-active" href="/account">Hi, {{ customer.first_name }} !</a>
-
-            <a href="/account" class="headerTopRight__img">
-              <div class="headerTopRight__gravatar">
+            <a href="/account" class="myAccount__img">
+              <div class="myAccount__gravatar">
                 <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
               </div>
-              <svg class="headerTopRight__icon">
+              <svg class="myAccount__icon">
                 <use xlink:href="#user-2"></use>
               </svg>
             </a>
+
+            <a class="headerTopRight__link myAccount__link is-active is-expanded" href="/account">Hi, {{ customer.first_name }} !</a>
             {% else %}
-            <a href="/account/register" class="headerTopRight__img">
-              <svg class="headerTopRight__icon">
+            <a href="/account/register" class="myAccount__img">
+              <svg class="myAccount__icon">
                 <use xlink:href="#user-1"></use>
               </svg>
             </a>
@@ -86,13 +86,13 @@
       <span>toggle menu</span>
     </div>
     {% if settings.use_logo %}
-      <a class="logo" href="/">
-        <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
-      </a>
+    <a class="logo" href="/">
+      <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+    </a>
     {% else %}
-      <a id="site-title" href="/">
-        {{ shop.name }}
-      </a>
+    <a id="site-title" href="/">
+      {{ shop.name }}
+    </a>
     {% endif %}
     <svg class="cart">
       <use xlink:href="#cart"></use>

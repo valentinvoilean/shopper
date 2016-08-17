@@ -1,0 +1,47 @@
+.wishlist__img {
+  position: relative;
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+  float: right;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+  }
+}
+
+.wishlist__icon {
+  transition: fill 0.3s ease-out;
+  -webkit-transition: fill 0.3s ease-out;
+  height: 100%;
+  width: 100%;
+  fill: $c14;
+  overflow: visible;
+}
+
+.wishlist__gravatar {
+  overflow: hidden;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  & + .headerTopRight__icon {
+    border-radius: 100px;
+  }
+}
+
+.wishlist.is-active {
+  .wishlist__icon {
+    fill: $c2;
+  }
+}

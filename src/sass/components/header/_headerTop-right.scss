@@ -19,6 +19,11 @@
   line-height: $headerTopTablet-height;
   overflow: hidden;
   color: $c14;
+  margin-right: 10px;
+
+  &.is-active {
+    color: $c2;
+  }
 
   @include breakpoint($screen-lg) {
     line-height: $headerTopDesktop-height;
@@ -37,48 +42,6 @@
   }
 }
 
-.headerTopRight__gravatar {
-  overflow: hidden;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 100%;
-  max-height: 100%;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  & + .headerTopRight__icon {
-    border-radius: 100px;
-  }
-}
-
-.headerTopRight__img {
-  position: relative;
-  height: $headerTopTabletIcon-height;
-  width: $headerTopTabletIcon-height + 2;
-  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-  float: right;
-
-  @include breakpoint($screen-lg) {
-    height: $headerTopDesktopIcon-height;
-    width: $headerTopDesktopIcon-height + 2;
-    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
-  }
-}
-
-.headerTopRight__icon {
-  transition: fill 0.3s ease-out;
-  -webkit-transition: fill 0.3s ease-out;
-  height: 100%;
-  width: 100%;
-  fill: $c14;
-  overflow: visible;
-}
-
 .headerTop__separator {
   height: $headerTop-separatorHeight;
   width: 1px;
@@ -93,20 +56,6 @@
   }
 
   &:last-child { display: none; }
-}
-
-.headerTopRight__item.is-active {
-  .headerTopRight__link {
-    margin-right: 10px;
-  }
-
-  .headerTopRight__icon {
-    fill: $c2;
-  }
-}
-
-.headerTopRight__link.is-active {
-  color: $c2;
 }
 
 .no-touchevents {

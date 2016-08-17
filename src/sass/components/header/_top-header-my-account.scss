@@ -1,21 +1,86 @@
 .myAccount__leftSide,
 .myAccount__rightSide {
   float: left;
+  overflow: hidden;
 }
 
 .myAccount__leftSide {
   max-width: 0;
+  white-space: nowrap;
+
+  &.is-expanded {
+    max-width: 200px;
+  }
+
+  &.is-animated {
+    transition: all .3s ease-in-out;
+  }
+}
+
+.myAccount__leftSide .myAccount__separator,
+.myAccount__leftSide .myAccount__link {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.myAccount__rightSide .myAccount__link {
+  float: right;
+  max-width: 0;
+
+  &.is-animated {
+    transition: all .3s ease-in-out;
+  }
+
+  &.is-expanded {
+    max-width: 200px;
+  }
+}
+
+.myAccount__img {
+  position: relative;
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+  float: right;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+  }
+}
+
+.myAccount__icon {
+  transition: fill 0.3s ease-in-out;
+  -webkit-transition: fill 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  fill: $c14;
+  overflow: visible;
+}
+
+.myAccount__gravatar {
   overflow: hidden;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  & + .headerTopRight__icon {
+    border-radius: 100px;
+  }
 }
 
-.myAccount__leftSide.is-expanded {
-  max-width: 200px;
-}
-
-.myAccount__leftSide.is-animated {
-  transition: all .5s ease-out;
-}
-
-.myAccount__link {
-
+.myAccount.is-active {
+  .myAccount__icon {
+    fill: $c2;
+  }
 }
