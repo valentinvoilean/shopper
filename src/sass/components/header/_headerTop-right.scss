@@ -11,29 +11,6 @@
   @include breakpoint($screen-lg) {
     height: $headerTopDesktop-height;
   }
-
-  &:hover {
-
-    .headerTopRight__link {
-      max-width: 200px;
-      margin-right: 10px;
-    }
-
-    .headerTopRight__icon {
-      fill: $c2;
-    }
-
-    .headerTopRight__text {
-      max-width: 0;
-      margin-right: 0;
-    }
-  }
-
-  &:hover {
-    .headerTopRight__link.is-active {
-      color: $c2;
-    }
-  }
 }
 
 .headerTopRight__group {
@@ -52,11 +29,6 @@
   @include breakpoint($screen-lg) {
     line-height: $headerTopDesktop-height;
   }
-}
-
-a.headerTopRight__link:hover {
-  color: $c2;
-  cursor: pointer;
 }
 
 .headerTopRight__text {
@@ -144,4 +116,34 @@ a.headerTopRight__link:hover {
   }
 
   &:last-child { display: none; }
+}
+
+.no-touchevents {
+  .headerTopRight__item {
+    &:hover {
+
+      .headerTopRight__link {
+        max-width: 200px;
+        margin-right: 10px;
+      }
+
+      .headerTopRight__icon {
+        fill: $c2;
+      }
+
+      .headerTopRight__text {
+        max-width: 0;
+        margin-right: 0;
+      }
+
+      .headerTopRight__link.is-active {
+        color: $c2;
+      }
+    }
+  }
+
+  .headerTopRight__link:hover {
+    color: $c2;
+    cursor: pointer;
+  }
 }
