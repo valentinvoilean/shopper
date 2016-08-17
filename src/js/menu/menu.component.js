@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Mobile from './menu.mobile.component';
 import Desktop from './menu.desktop.component';
 

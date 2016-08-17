@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import TopHeaderIconsComponent from 'js/top-header-icons/top-header-icons.component';
 
 describe('Top Header Icons Component', () => {
@@ -6,7 +5,24 @@ describe('Top Header Icons Component', () => {
     expect(typeof TopHeaderIconsComponent).toBe('function');
   });
 
+  beforeEach(function () {
+    let html = require("html!./top-header-icons.fixture.html");
+    $('body').append($(html));
+  });
+
   describe('On Touch Device', () => {
+    it('should call the touch init method', function () {
+      window.Modernizr = {
+        touchevents: true
+      };
+
+      spyOn(TopHeaderIconsComponent.prototype, '_initOnTouchDevice');
+      let instance = new TopHeaderIconsComponent($('#headerTopRight'));
+
+      expect(TopHeaderIconsComponent.prototype._initOnTouchDevice).toHaveBeenCalled();
+      instance.destroy();
+    });
+
     describe('When the user is Logged In', () => {
       describe('on touch the icon', () => {
         it('should hide the welcome message', function () {
@@ -44,7 +60,19 @@ describe('Top Header Icons Component', () => {
     });
   });
 
-  describe('On Desktop Device', () => {
+  describe('On Non-Touch Device', () => {
+    it('should call the non-touch init method', function () {
+      window.Modernizr = {
+        touchevents: false
+      };
+
+      spyOn(TopHeaderIconsComponent.prototype, '_init');
+      let instance = new TopHeaderIconsComponent($('#headerTopRight'));
+
+      expect(TopHeaderIconsComponent.prototype._init).toHaveBeenCalled();
+      instance.destroy();
+    });
+
     describe('When the user is Logged In', () => {
       describe('on mouse over the icon group', () => {
         describe('on mouse over the icon', () => {

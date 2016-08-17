@@ -14,6 +14,7 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     files: [
+      `${__npm}/jquery/dist/jquery.min.js`,
       'tests/index.js'
     ],
 

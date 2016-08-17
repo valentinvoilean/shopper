@@ -1,3 +1,4 @@
+import 'jquery';
 import 'modernizr';
 import AppComponent from './app.component';
 

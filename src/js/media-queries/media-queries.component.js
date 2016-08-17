@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import {MEDIA_QUERIES} from 'js/shared/shared';
 
 /**

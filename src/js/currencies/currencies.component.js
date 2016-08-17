@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Mobile from './currencies.mobile.component';
 import Desktop from './currencies.desktop.component';
 

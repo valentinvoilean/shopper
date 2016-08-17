@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import {CLASSES} from './app.config';
 
 export default class AppComponent {

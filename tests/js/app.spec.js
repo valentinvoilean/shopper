@@ -1,5 +1,4 @@
 import AppComponent from 'js/app.component.js';
-import $ from 'jquery';
 
 describe('AppComponent', () => {
 
