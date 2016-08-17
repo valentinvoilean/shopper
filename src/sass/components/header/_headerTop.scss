@@ -30,6 +30,8 @@ $headerTopDesktopIcon-height: 20px;
     float: left;
     cursor: pointer;
   }
+
+  @import "_top-header-my-account";
 }
 
 @import "headerTop-left";

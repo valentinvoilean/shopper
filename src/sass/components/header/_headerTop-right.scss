@@ -13,35 +13,12 @@
   }
 }
 
-.headerTopRight__group {
-  float: right;
-}
-
 .headerTopRight__link {
-  transition: all .5s ease-out;
   float: left;
   white-space: nowrap;
   line-height: $headerTopTablet-height;
-  max-width: 0;
   overflow: hidden;
   color: $c14;
-
-  @include breakpoint($screen-lg) {
-    line-height: $headerTopDesktop-height;
-  }
-}
-
-.headerTopRight__text {
-  white-space: nowrap;
-  line-height: $headerTopTablet-height;
-  margin-right: 10px;
-  text-transform: capitalize;
-  float: right;
-  color: $c2;
-  max-width: 200px;
-  overflow: hidden;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
 
   @include breakpoint($screen-lg) {
     line-height: $headerTopDesktop-height;
@@ -118,22 +95,30 @@
   &:last-child { display: none; }
 }
 
+.headerTopRight__item.is-active {
+  .headerTopRight__link {
+    margin-right: 10px;
+  }
+
+  .headerTopRight__icon {
+    fill: $c2;
+  }
+}
+
+.headerTopRight__link.is-active {
+  color: $c2;
+}
+
 .no-touchevents {
   .headerTopRight__item {
     &:hover {
 
       .headerTopRight__link {
-        max-width: 200px;
         margin-right: 10px;
       }
 
       .headerTopRight__icon {
         fill: $c2;
-      }
-
-      .headerTopRight__text {
-        max-width: 0;
-        margin-right: 0;
       }
 
       .headerTopRight__link.is-active {

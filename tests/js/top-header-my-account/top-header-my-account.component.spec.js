@@ -1,13 +1,8 @@
-import TopHeaderIconsComponent from 'js/top-header-icons/top-header-icons.component';
+import TopHeaderMyAccountComponent from 'js/top-header-my-account/top-header-my-account.component';
 
-describe('Top Header Icons Component', () => {
+describe('Top Header My Account Component', () => {
   it('should be a function', function () {
-    expect(typeof TopHeaderIconsComponent).toBe('function');
-  });
-
-  beforeEach(function () {
-    let html = require("html!./top-header-icons.fixture.html");
-    $('body').append($(html));
+    expect(typeof TopHeaderMyAccountComponent).toBe('function');
   });
 
   describe('On Touch Device', () => {
@@ -16,11 +11,34 @@ describe('Top Header Icons Component', () => {
         touchevents: true
       };
 
-      spyOn(TopHeaderIconsComponent.prototype, '_initOnTouchDevice');
-      let instance = new TopHeaderIconsComponent($('#headerTopRight'));
+      spyOn(TopHeaderMyAccountComponent.prototype, '_initOnTouchDevice');
+      let instance = new TopHeaderMyAccountComponent($('#headerTopRight'));
 
-      expect(TopHeaderIconsComponent.prototype._initOnTouchDevice).toHaveBeenCalled();
+      expect(TopHeaderMyAccountComponent.prototype._initOnTouchDevice).toHaveBeenCalled();
       instance.destroy();
+    });
+
+    describe('When the user is Logged Out', () => {
+      beforeEach(function () {
+        let html = require("html!./top-header-my-account.fixture--logged-out.html");
+        $('body').append($(html));
+      });
+
+      describe('on touch the icon', () => {
+        it('should show the links', function () {
+          expect(true).toBe(false);
+        });
+      });
+
+      describe('on touch outside', () => {
+        it('should hide the links', function () {
+          expect(true).toBe(false);
+        });
+      });
+
+      afterEach(function () {
+        $('.myAccount').remove();
+      });
     });
 
     describe('When the user is Logged In', () => {
@@ -44,20 +62,6 @@ describe('Top Header Icons Component', () => {
         });
       });
     });
-
-    describe('When the user is Logged Out', () => {
-      describe('on touch the icon', () => {
-        it('should show the links', function () {
-          expect(true).toBe(false);
-        });
-      });
-
-      describe('on touch outside', () => {
-        it('should hide the links', function () {
-          expect(true).toBe(false);
-        });
-      });
-    });
   });
 
   describe('On Non-Touch Device', () => {
@@ -66,10 +70,10 @@ describe('Top Header Icons Component', () => {
         touchevents: false
       };
 
-      spyOn(TopHeaderIconsComponent.prototype, '_init');
-      let instance = new TopHeaderIconsComponent($('#headerTopRight'));
+      spyOn(TopHeaderMyAccountComponent.prototype, '_init');
+      let instance = new TopHeaderMyAccountComponent($('#headerTopRight'));
 
-      expect(TopHeaderIconsComponent.prototype._init).toHaveBeenCalled();
+      expect(TopHeaderMyAccountComponent.prototype._init).toHaveBeenCalled();
       instance.destroy();
     });
 

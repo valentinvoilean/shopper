@@ -2,10 +2,10 @@ import SVGSpriteComponent from './svg-sprite/svg-sprite.component';
 import MediaQueriesComponent from './media-queries/media-queries.component';
 import MenuComponent from './menu/menu.component';
 import CurrenciesComponent from './currencies/currencies.component';
-import TopHeaderIconsComponent from './top-header-icons/top-header-icons.component';
+import TopHeaderMyAccountComponent from './top-header-my-account/top-header-my-account.component';
 
 export const CLASSES = {
-  dom: {MenuComponent, CurrenciesComponent, TopHeaderIconsComponent},
+  dom: {MenuComponent, CurrenciesComponent, TopHeaderMyAccountComponent},
   onReady: {MediaQueriesComponent},
   onLoad: {SVGSpriteComponent}
 };

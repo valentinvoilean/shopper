@@ -1,0 +1,21 @@
+.myAccount__leftSide,
+.myAccount__rightSide {
+  float: left;
+}
+
+.myAccount__leftSide {
+  max-width: 0;
+  overflow: hidden;
+}
+
+.myAccount__leftSide.is-expanded {
+  max-width: 200px;
+}
+
+.myAccount__leftSide.is-animated {
+  transition: all .5s ease-out;
+}
+
+.myAccount__link {
+
+}

@@ -21,3 +21,9 @@ export const MEDIA_QUERIES = {
   lgMin: `screen and (min-width: ${VALUES_GRID.lgMin}px)`,
   lg: `screen and (min-width: ${VALUES_GRID.lgMin}px)`
 };
+
+export const SHARED_CLASSES = {
+  active: 'is-active',
+  expanded: 'is-expanded',
+  animate: 'is-animated'
+};

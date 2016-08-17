@@ -23,7 +23,7 @@
         </li>
       </ul>
 
-      <ul class="headerTopRight" data-ss-init="TopHeaderIconsComponent" data-ss-state="onReady">
+      <ul class="headerTopRight">
         <li class="headerTopRight__item wishlist">
           <a href="#wishlist" class="headerTopRight__link is-active">My Wishlist</a>
           <div class="headerTopRight__img">
@@ -38,39 +38,42 @@
         <li class="headerTop__separator"></li>
 
         {% if shop.customer_accounts_enabled %}
-        <li class="headerTopRight__item myAccount">
-          {% if customer %}
-          <a class="headerTopRight__link" href="/account/logout">Log out</a>
-          <span class="headerTopRight__separator">-</span>
-          <a class="headerTopRight__link is-active" href="/account">My Account</a>
-          {% else %}
-            <a class="headerTopRight__link" href="/account/login">Log in</a>
+        <li class="headerTopRight__item myAccount" data-ss-init="TopHeaderMyAccountComponent" data-ss-state="onReady">
+          <div class="myAccount__leftSide">
+            {% if customer %}
+            <a class="headerTopRight__link myAccount__link" href="/account/logout">Log out</a>
+            <span class="headerTopRight__separator">-</span>
+            <a class="headerTopRight__link myAccount__link is-active" href="/account">My Account</a>
+            {% else %}
+            <a class="headerTopRight__link myAccount__link" href="/account/login">Log in</a>
             {% if shop.customer_accounts_optional %}
-              <span class="headerTopRight__separator"> - </span>
-              <a class="headerTopRight__link is-active" href="/account/register">Register</a>
+            <span class="headerTopRight__separator"> - </span>
+            <a class="headerTopRight__link myAccount__link is-active" href="/account/register">Register</a>
             {% endif %}
-          {% endif %}
-          {% if customer %}
-          <a href="/account" class="headerTopRight__group">
-            <div class="headerTopRight__img">
+            {% endif %}
+          </div>
+
+          <div class="myAccount__rightSide">
+            {% if customer %}
+            <a class="headerTopRight__link myAccount__link is-active" href="/account">Hi, {{ customer.first_name }} !</a>
+
+            <a href="/account" class="headerTopRight__img">
               <div class="headerTopRight__gravatar">
                 <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
               </div>
               <svg class="headerTopRight__icon">
                 <use xlink:href="#user-2"></use>
               </svg>
-            </div>
-            <span class="headerTopRight__text">Hi, {{ customer.first_name }} !</span>
-          </a>
-          {% else %}
-          <a href="/account/register" class="headerTopRight__group">
-            <div class="headerTopRight__img">
+            </a>
+            {% else %}
+            <a href="/account/register" class="headerTopRight__img">
               <svg class="headerTopRight__icon">
                 <use xlink:href="#user-1"></use>
               </svg>
-            </div>
-          </a>
-          {% endif %}
+            </a>
+            {% endif %}
+          </div>
+
         </li>
         {% endif %}
 
