@@ -61,13 +61,9 @@ export default class TopHeaderMyAccountComponent {
     }
   }
 
-  _activateLink(e) {
+  _activateLink() {
     $(this).addClass(SHARED_CLASSES.active);
     $(this).siblings().removeClass(SHARED_CLASSES.active);
-
-    if (Modernizr.touchevents) {
-      e.stopPropagation();
-    }
   }
 
   _activateItem(e) {
