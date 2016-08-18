@@ -20,8 +20,15 @@ export default class {
   destroy() {
     this._removeEventHandlers();
     this.$el.removeClass(SHARED_CLASSES.animate);
+    this.$leftSide.removeClass(SHARED_CLASSES.animate);
+    this.$welcomeMessage.removeClass(SHARED_CLASSES.animate);
     this.$el.removeClass(SHARED_CLASSES.active);
+    this.$leftSide.width('');
+    this.$welcomeMessage.width('');
     this.$el = null;
+    this.$leftSide = null;
+    this.$rightSide = null;
+    this.$welcomeMessage = null;
   }
 
   _calculateWidths() {
