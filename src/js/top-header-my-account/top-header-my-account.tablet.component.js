@@ -46,7 +46,8 @@ export default class {
 
   _removeEventHandlers() {
     this.$el.off('click', $.proxy(this._activateItem, this));
-    $(document).off('click', $.proxy(this._deactivateItem, this));
+    $(document).off('click', $.proxy(this._resetClasses, this));
+    this.$link.off('click', this._activateLink);
   }
 
   _activateLink(e) {
@@ -56,14 +57,6 @@ export default class {
   }
 
   _activateItem(e) {
-    this._preventLinkOnFirstClick(e);
-  }
-
-  _deactivateItem(e) {
-    this._resetClasses(e);
-  }
-
-  _preventLinkOnFirstClick(e) {
     if (this.$el.hasClass(SHARED_CLASSES.active)) {
       return true;
     }

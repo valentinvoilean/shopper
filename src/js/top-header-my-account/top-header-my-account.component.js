@@ -15,5 +15,6 @@ export default class TopHeaderMyAccountComponent {
   destroy() {
     this.instance.destroy();
     this.$el = null;
+    this.instance = null;
   }
 };
