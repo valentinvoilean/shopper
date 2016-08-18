@@ -748,81 +748,107 @@ $headerTopDesktopIcon-height: 20px;
     cursor: pointer;
   }
 
-  .myAccount__leftSide,
-.myAccount__rightSide {
-  float: left;
-  overflow: hidden;
+  .myAccount {
+  text-transform: uppercase;
+
+  .myAccount__link {
+    float: left;
+    color: $c14;
+    margin-right: 10px;
+    transition: color .3s ease-in-out;
+
+    &.is-active {
+      color: $c2;
+    }
+  }
+
+  &.is-active {
+    .myAccount__icon {
+      fill: $c2;
+    }
+  }
 }
 
+// Left Side - hidden links
 .myAccount__leftSide {
   white-space: nowrap;
   visibility: hidden;
-
-  &.is-animated {
-    transition: all .3s ease-in-out;
-  }
-}
-
-.myAccount__leftSide .myAccount__separator,
-.myAccount__leftSide .myAccount__link {
-  float: none;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.myAccount__rightSide .myAccount__link {
-  float: right;
-
-  &.is-animated {
-    transition: all .3s ease-in-out;
-  }
-}
-
-.myAccount__img {
-  position: relative;
-  height: $headerTopTabletIcon-height;
-  width: $headerTopTabletIcon-height + 2;
-  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-  float: right;
-
-  @include breakpoint($screen-lg) {
-    height: $headerTopDesktopIcon-height;
-    width: $headerTopDesktopIcon-height + 2;
-    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
-  }
-}
-
-.myAccount__icon {
-  transition: fill 0.3s ease-in-out;
-  -webkit-transition: fill 0.3s ease-in-out;
-  height: 100%;
-  width: 100%;
-  fill: $c14;
-  overflow: visible;
-}
-
-.myAccount__gravatar {
+  float: left;
   overflow: hidden;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 100%;
-  max-height: 100%;
 
-  img {
+  &.is-animated {
+    transition: all .3s ease-in-out;
+  }
+
+  .myAccount__separator,
+  .myAccount__link {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .myAccount__separator {
+    margin-left: -5px;
+    margin-right: 5px;
+    color: $c14;
+  }
+}
+
+// Right Side - welcome message + icon
+.myAccount__rightSide {
+  float: left;
+  overflow: hidden;
+
+  .myAccount__link {
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+
+
+    &.is-animated {
+      transition: width .3s ease-in-out;
+    }
+  }
+
+  .myAccount__img {
+    position: relative;
+    height: $headerTopTabletIcon-height;
+    width: $headerTopTabletIcon-height + 2;
+    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+    float: right;
+
+    @include breakpoint($screen-lg) {
+      height: $headerTopDesktopIcon-height;
+      width: $headerTopDesktopIcon-height + 2;
+      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+    }
+  }
+
+  .myAccount__icon {
+    transition: fill 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    fill: $c14;
+    overflow: visible;
+  }
+
+  .myAccount__gravatar {
+    overflow: hidden;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
     max-width: 100%;
     max-height: 100%;
-  }
 
-  & + .headerTopRight__icon {
-    border-radius: 100px;
-  }
-}
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-.myAccount.is-active {
-  .myAccount__icon {
-    fill: $c2;
+    & + .headerTopRight__icon {
+      border-radius: 100px;
+    }
   }
 }
   .wishlist__img {
@@ -872,6 +898,26 @@ $headerTopDesktopIcon-height: 20px;
     fill: $c2;
   }
 }
+}
+
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $c12;
+  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
+  }
+
+  &:last-child { display: none; }
+}
+
+.headerTopRight {
+  float: right;
 }
 
 .headerTopLeft {
@@ -929,90 +975,6 @@ $headerTopDesktopIcon-height: 20px;
     }
   }
 }
-.headerTopRight {
-  float: right;
-}
-
-.headerTopRight__item {
-  text-transform: uppercase;
-  height: $headerTopTablet-height;
-  position: relative;
-  overflow: hidden;
-
-  @include breakpoint($screen-lg) {
-    height: $headerTopDesktop-height;
-  }
-}
-
-.headerTopRight__link {
-  float: left;
-  white-space: nowrap;
-  line-height: $headerTopTablet-height;
-  overflow: hidden;
-  color: $c14;
-  margin-right: 10px;
-
-  &.is-active {
-    color: $c2;
-  }
-
-  @include breakpoint($screen-lg) {
-    line-height: $headerTopDesktop-height;
-  }
-}
-
-.headerTopRight__separator {
-  line-height: $headerTopTablet-height;
-  float: left;
-  margin-left: -5px;
-  margin-right: 5px;
-  color: $c14;
-
-  @include breakpoint($screen-lg) {
-    line-height: $headerTopDesktop-height;
-  }
-}
-
-.headerTop__separator {
-  height: $headerTop-separatorHeight;
-  width: 1px;
-  background: $c12;
-  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: default;
-
-  @include breakpoint($screen-lg) {
-    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
-  }
-
-  &:last-child { display: none; }
-}
-
-.no-touchevents {
-  .headerTopRight__item {
-    &:hover {
-
-      .headerTopRight__link {
-        margin-right: 10px;
-      }
-
-      .headerTopRight__icon {
-        fill: $c2;
-      }
-
-      .headerTopRight__link.is-active {
-        color: $c2;
-      }
-    }
-  }
-
-  .headerTopRight__link:hover {
-    color: $c2;
-    cursor: pointer;
-  }
-}
-
 
 .headerMain {
   padding-top: 10px;

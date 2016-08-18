@@ -31,10 +31,28 @@ $headerTopDesktopIcon-height: 20px;
     cursor: pointer;
   }
 
-  @import "_top-header-my-account";
-  @import "_top-header-wishlist";
+  @import "top-header-my-account";
+  @import "top-header-wishlist";
+}
+
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $c12;
+  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  @include breakpoint($screen-lg) {
+    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
+  }
+
+  &:last-child { display: none; }
+}
+
+.headerTopRight {
+  float: right;
 }
 
 @import "headerTop-left";
-@import "headerTop-right";
-
