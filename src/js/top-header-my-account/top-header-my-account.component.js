@@ -24,6 +24,7 @@ export default class TopHeaderMyAccountComponent {
     this.$el.add(this.$leftSide).add(this.$welcomeMessage).removeClass(SHARED_CLASSES.animate);
     this.$el.removeClass(SHARED_CLASSES.active);
     this.$leftSide.add(this.$welcomeMessage).width('');
+    this.$leftSide.addClass(SHARED_CLASSES.outsideViewport);
     this.$el = null;
     this.$leftSide = null;
     this.$rightSide = null;
@@ -33,7 +34,7 @@ export default class TopHeaderMyAccountComponent {
   _calculateWidths() {
     this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
     this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
-    this.$leftSide.width(0).addClass(SHARED_CLASSES.visible);
+    this.$leftSide.width(0).removeClass(SHARED_CLASSES.outsideViewport);
     this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
   }
 

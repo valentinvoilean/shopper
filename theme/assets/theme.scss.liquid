@@ -545,6 +545,12 @@ $c14: #D7D7D7;
   visibility: visible !important;
 }
 
+.is-outside-viewport {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+}
+
 .is-collapsed {
   width: 0 !important;
   border: 0 !important;
@@ -779,7 +785,6 @@ $headerTopDesktopIcon-height: 20px;
 // Left Side - hidden links
 .myAccount__leftSide {
   white-space: nowrap;
-  visibility: hidden;
   float: left;
   overflow: hidden;
 
