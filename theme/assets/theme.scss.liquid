@@ -537,8 +537,12 @@ $c14: #D7D7D7;
 .show {
   display: block !important;
 }
-.invisible {
-  visibility: hidden;
+.is-invisible {
+  visibility: hidden !important;
+}
+
+.is-visible {
+  visibility: visible !important;
 }
 
 .hidden {
@@ -751,12 +755,8 @@ $headerTopDesktopIcon-height: 20px;
 }
 
 .myAccount__leftSide {
-  max-width: 0;
   white-space: nowrap;
-
-  &.is-expanded {
-    max-width: 200px;
-  }
+  visibility: hidden;
 
   &.is-animated {
     transition: all .3s ease-in-out;
@@ -772,14 +772,9 @@ $headerTopDesktopIcon-height: 20px;
 
 .myAccount__rightSide .myAccount__link {
   float: right;
-  max-width: 0;
 
   &.is-animated {
     transition: all .3s ease-in-out;
-  }
-
-  &.is-expanded {
-    max-width: 200px;
   }
 }
 

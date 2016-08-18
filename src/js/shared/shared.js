@@ -25,5 +25,6 @@ export const MEDIA_QUERIES = {
 export const SHARED_CLASSES = {
   active: 'is-active',
   expanded: 'is-expanded',
-  animate: 'is-animated'
+  animate: 'is-animated',
+  visible: 'is-visible'
 };

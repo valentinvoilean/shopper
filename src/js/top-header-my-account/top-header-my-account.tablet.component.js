@@ -5,8 +5,15 @@ export default class {
   constructor($el) {
     this.$el = $el;
     this.$link = $el.find(`.${CLASSES.link}`);
-    this.$el.addClass(SHARED_CLASSES.animate);
+    this.$leftSide = $el.find(`.${CLASSES.leftSide}`);
+    this.$rightSide = $el.find(`.${CLASSES.rightSide}`);
+    this.$welcomeMessage = this.$rightSide.find(`.${CLASSES.link}`);
 
+    this.$el.addClass(SHARED_CLASSES.animate);
+    this.$leftSide.addClass(SHARED_CLASSES.animate);
+    this.$welcomeMessage.addClass(SHARED_CLASSES.animate);
+
+    this._calculateWidths();
     this._addEventHandlers();
   }
 
@@ -15,6 +22,13 @@ export default class {
     this.$el.removeClass(SHARED_CLASSES.animate);
     this.$el.removeClass(SHARED_CLASSES.active);
     this.$el = null;
+  }
+
+  _calculateWidths() {
+    this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
+    this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
+    this.$leftSide.width(0).addClass(SHARED_CLASSES.visible);
+    this.$welcomeMessage.width(this.$welcomeMessage.data('width'));
   }
 
   _addEventHandlers() {
@@ -50,16 +64,11 @@ export default class {
       e.preventDefault();
       this.$el.addClass(SHARED_CLASSES.active);
 
-      this.$el.find('.myAccount__leftSide')
-        .addClass(SHARED_CLASSES.animate)
+      this.$leftSide
         .one('transitionend', () => {
-          this.$el
-            .find('.myAccount__rightSide')
-            .find('.myAccount__link')
-            .addClass(SHARED_CLASSES.animate)
-            .removeClass(SHARED_CLASSES.expanded);
+          this.$welcomeMessage.width(0);
         })
-        .addClass(SHARED_CLASSES.expanded);
+        .width(this.$leftSide.data('width'));
     }
   }
 
@@ -67,16 +76,12 @@ export default class {
     if (!this.$el.is(e.target) // if the target of the click isn't the container...
       && this.$el.has(e.target).length === 0) // ... nor a descendant of the container
     {
-      this.$el.find('.myAccount__leftSide')
+      this.$leftSide
         .one('transitionend', () => {
-          this.$el
-            .find('.myAccount__rightSide')
-            .find('.myAccount__link')
-            .addClass(SHARED_CLASSES.expanded);
-
+          this.$welcomeMessage.width(this.$welcomeMessage.data('width'));
           this.$el.removeClass(SHARED_CLASSES.active);
         })
-        .removeClass(SHARED_CLASSES.expanded);
+        .width(0);
     }
   }
 };

@@ -5,12 +5,8 @@
 }
 
 .myAccount__leftSide {
-  max-width: 0;
   white-space: nowrap;
-
-  &.is-expanded {
-    max-width: 200px;
-  }
+  visibility: hidden;
 
   &.is-animated {
     transition: all .3s ease-in-out;
@@ -26,14 +22,9 @@
 
 .myAccount__rightSide .myAccount__link {
   float: right;
-  max-width: 0;
 
   &.is-animated {
     transition: all .3s ease-in-out;
-  }
-
-  &.is-expanded {
-    max-width: 200px;
   }
 }
 

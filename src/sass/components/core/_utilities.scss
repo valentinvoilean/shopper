@@ -23,8 +23,12 @@
 .show {
   display: block !important;
 }
-.invisible {
-  visibility: hidden;
+.is-invisible {
+  visibility: hidden !important;
+}
+
+.is-visible {
+  visibility: visible !important;
 }
 
 .hidden {
