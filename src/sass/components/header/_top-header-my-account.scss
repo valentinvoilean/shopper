@@ -54,6 +54,7 @@
     float: right;
     white-space: nowrap;
     overflow: hidden;
+    text-transform: capitalize;
 
     &.is-animated {
       transition: all .3s ease-in-out;
@@ -63,13 +64,13 @@
   .myAccount__img {
     position: relative;
     height: $headerTopTabletIcon-height;
-    width: $headerTopTabletIcon-height + 2;
+    width: $headerTopTabletIcon-height;
     margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
     float: right;
 
     @include breakpoint($screen-lg) {
       height: $headerTopDesktopIcon-height;
-      width: $headerTopDesktopIcon-height + 2;
+      width: $headerTopDesktopIcon-height;
       margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
     }
   }
@@ -83,8 +84,6 @@
   }
 
   .myAccount__gravatar {
-    overflow: hidden;
-    border-radius: 100px;
     position: absolute;
     top: 0;
     right: 0;
@@ -94,10 +93,12 @@
     img {
       max-width: 100%;
       max-height: 100%;
+      border-radius: 100px;
     }
 
-    & + .headerTopRight__icon {
+    & + .myAccount__icon {
       border-radius: 100px;
+      overflow: hidden;
     }
   }
 }
