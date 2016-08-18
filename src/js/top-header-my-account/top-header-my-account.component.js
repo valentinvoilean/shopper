@@ -34,7 +34,7 @@ export default class TopHeaderMyAccountComponent {
     this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
     this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
     this.$leftSide.width(0).addClass(SHARED_CLASSES.visible);
-    this.$welcomeMessage.width(this.$welcomeMessage.data('width'));
+    this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
   }
 
   _addEventHandlers() {
@@ -100,7 +100,7 @@ export default class TopHeaderMyAccountComponent {
   _slideInLeftSide() {
     this.$leftSide
       .one('transitionend', () => {
-        this.$welcomeMessage.width(0);
+        this.$welcomeMessage.addClass(SHARED_CLASSES.collapsed);
       })
       .width(this.$leftSide.data('width'));
   }
@@ -108,7 +108,7 @@ export default class TopHeaderMyAccountComponent {
   _slideOutLeftSide() {
     this.$leftSide
       .one('transitionend', () => {
-        this.$welcomeMessage.width(this.$welcomeMessage.data('width'));
+        this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
         this.$el.removeClass(SHARED_CLASSES.active);
       })
       .width(0);

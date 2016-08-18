@@ -545,6 +545,12 @@ $c14: #D7D7D7;
   visibility: visible !important;
 }
 
+.is-collapsed {
+  width: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
 .hidden {
   display: none !important;
 }
@@ -754,7 +760,7 @@ $headerTopDesktopIcon-height: 20px;
   .myAccount__link {
     float: left;
     color: $c14;
-    margin-right: 10px;
+    padding-right: 10px;
     transition: color .3s ease-in-out;
 
     &.is-active {
@@ -804,9 +810,8 @@ $headerTopDesktopIcon-height: 20px;
     white-space: nowrap;
     overflow: hidden;
 
-
     &.is-animated {
-      transition: width .3s ease-in-out;
+      transition: all .3s ease-in-out;
     }
   }
 

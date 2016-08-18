@@ -26,5 +26,6 @@ export const SHARED_CLASSES = {
   active: 'is-active',
   expanded: 'is-expanded',
   animate: 'is-animated',
-  visible: 'is-visible'
+  visible: 'is-visible',
+  collapsed: 'is-collapsed'
 };
