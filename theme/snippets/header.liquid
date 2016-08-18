@@ -24,8 +24,8 @@
       </ul>
 
       <ul class="headerTopRight">
-        <li class="headerTopRight__item wishlist">
-          <a href="#wishlist" class="headerTopRight__link wishlist__link is-active">My Wishlist</a>
+        <li class="wishlist">
+          <a href="#wishlist" class="wishlist__link is-active">My Wishlist</a>
           <div class="wishlist__img">
             <svg class="wishlist__icon">
               <use xlink:href="#wishlist-1"></use>
@@ -38,17 +38,17 @@
         <li class="headerTop__separator"></li>
 
         {% if shop.customer_accounts_enabled %}
-        <li class="headerTopRight__item myAccount" data-ss-init="TopHeaderMyAccountComponent" data-ss-state="onReady">
+        <li class="myAccount" data-ss-init="TopHeaderMyAccountComponent" data-ss-state="onReady">
           <div class="myAccount__leftSide">
             {% if customer %}
-            <a class="headerTopRight__link myAccount__link" href="/account/logout">Log out</a>
-            <span class="headerTopRight__separator myAccount__separator">-</span>
-            <a class="headerTopRight__link myAccount__link is-active" href="/account">My Account</a>
+            <a class="myAccount__link" href="/account/logout">Log out</a>
+            <span class="myAccount__separator">-</span>
+            <a class="myAccount__link is-active" href="/account">My Account</a>
             {% else %}
-            <a class="headerTopRight__link myAccount__link" href="/account/login">Log in</a>
+            <a class="myAccount__link" href="/account/login">Log in</a>
             {% if shop.customer_accounts_optional %}
-            <span class="headerTopRight__separator myAccount__separator"> - </span>
-            <a class="headerTopRight__link myAccount__link is-active" href="/account/register">Register</a>
+            <span class="myAccount__separator"> - </span>
+            <a class="myAccount__link is-active" href="/account/register">Register</a>
             {% endif %}
             {% endif %}
           </div>
@@ -64,7 +64,7 @@
               </svg>
             </a>
 
-            <a class="headerTopRight__link myAccount__link is-active" href="/account">Hi, {{ customer.first_name }} !</a>
+            <a class="myAccount__link is-active" href="/account">Hi, {{ customer.first_name }} !</a>
             {% else %}
             <a href="/account/register" class="myAccount__img">
               <svg class="myAccount__icon">

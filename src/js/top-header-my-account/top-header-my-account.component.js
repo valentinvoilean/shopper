@@ -38,7 +38,7 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _addEventHandlers() {
-    if (Modernizr.touchevents) {
+    if (window.Modernizr.touchevents) {
       this.$el.on('click', $.proxy(this._activateItem, this));
       $(document).on('click', $.proxy(this._deactivateItem, this));
       this.$link.on('click', this._activateLink);
@@ -50,7 +50,7 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _removeEventHandlers() {
-    if (Modernizr.touchevents) {
+    if (window.Modernizr.touchevents) {
       this.$el.off('click', $.proxy(this._activateItem, this));
       $(document).off('click', $.proxy(this._deactivateItem, this));
       this.$link.off('click', this._activateLink);
@@ -67,7 +67,7 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _activateItem(e) {
-    if (Modernizr.touchevents) {
+    if (window.Modernizr.touchevents) {
       this._preventClickFirstTime(e);
     } else {
       this._slideInLeftSide();
@@ -75,7 +75,7 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _deactivateItem(e) {
-    if (Modernizr.touchevents) {
+    if (window.Modernizr.touchevents) {
       if (!this.$el.is(e.target) // if the target of the click isn't the container...
         && this.$el.has(e.target).length === 0) // ... nor a descendant of the container
       {

@@ -1,9 +1,13 @@
-<li class="headerTopRight__item myAccount">
-  <a class="headerTopRight__link" href="/account/login">Log in</a>
-  <span class="headerTopRight__separator"> - </span>
-  <a class="headerTopRight__link is-active" href="/account/register">Register</a>
-  <a href="/account/register" class="headerTopRight__group">
-    <div class="headerTopRight__img"></div>
-  </a>
-</li>
+<li class="myAccount" data-ss-init="TopHeaderMyAccountComponent" data-ss-state="onReady">
+  <div class="myAccount__leftSide">
+    <a class="myAccount__link" href="/account/login">Log in</a>
+    <span class="myAccount__separator"> - </span>
+    <a class="myAccount__link is-active" href="/account/register">Register</a>
+  </div>
 
+  <div class="myAccount__rightSide">
+    <a href="/account/register" class="myAccount__img">
+      <svg class="myAccount__icon"></svg>
+    </a>
+  </div>
+</li>
