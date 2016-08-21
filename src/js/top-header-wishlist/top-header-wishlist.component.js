@@ -16,8 +16,11 @@ export default class TopHeaderWishlistComponent {
 
   destroy() {
     this._removeEventHandlers();
-    this.$link.removeClass(SHARED_CLASSES.animate);
-    this.$el.add(this.$link).removeClass(SHARED_CLASSES.active);
+    this.$link
+      .removeClass(`${SHARED_CLASSES.animate} ${SHARED_CLASSES.active}`)
+      .addClass(SHARED_CLASSES.outsideViewport)
+      .width('');
+    this.$el.removeClass(SHARED_CLASSES.active);
     this.$el = null;
     this.$link = null;
   }
@@ -84,7 +87,7 @@ export default class TopHeaderWishlistComponent {
   }
 
   _slideOutLeftSide() {
-    this.$link.removeClass(SHARED_CLASSES.active);
+    this.$el.add(this.$link).removeClass(SHARED_CLASSES.active);
     this.$link.width(0);
   }
 };
