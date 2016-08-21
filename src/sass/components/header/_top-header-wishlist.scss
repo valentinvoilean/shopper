@@ -1,47 +1,51 @@
-.wishlist__img {
-  position: relative;
-  height: $headerTopTabletIcon-height;
-  width: $headerTopTabletIcon-height + 2;
-  margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-  float: right;
+.wishlist {
+  text-transform: uppercase;
+  cursor: pointer;
 
-  @include breakpoint($screen-lg) {
-    height: $headerTopDesktopIcon-height;
-    width: $headerTopDesktopIcon-height + 2;
-    margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
-  }
-}
+  .wishlist__link {
+    color: $c14;
+    margin-right: 10px;
+    cursor: pointer;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: capitalize;
 
-.wishlist__icon {
-  transition: fill 0.3s ease-out;
-  -webkit-transition: fill 0.3s ease-out;
-  height: 100%;
-  width: 100%;
-  fill: $c14;
-  overflow: visible;
-}
+    &.is-active {
+      color: $c2;
+    }
 
-.wishlist__gravatar {
-  overflow: hidden;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 100%;
-  max-height: 100%;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
+    &.is-animated {
+      transition: all .3s ease-in-out;
+    }
   }
 
-  & + .headerTopRight__icon {
-    border-radius: 100px;
-  }
-}
+  .wishlist__img {
+    position: relative;
+    height: $headerTopTabletIcon-height;
+    width: $headerTopTabletIcon-height + 2;
+    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+    float: right;
 
-.wishlist.is-active {
+    @include breakpoint($screen-lg) {
+      height: $headerTopDesktopIcon-height;
+      width: $headerTopDesktopIcon-height + 2;
+      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+    }
+  }
+
   .wishlist__icon {
-    fill: $c2;
+    transition: fill 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    fill: $c14;
+    overflow: visible;
+  }
+
+  &:hover,
+  &.is-active {
+    .wishlist__icon {
+      fill: $c2;
+    }
   }
 }

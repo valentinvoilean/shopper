@@ -1,18 +1,14 @@
 import {SHARED_CLASSES} from 'js/shared/shared';
-import {CLASSES} from './top-header-my-account.config';
+import {CLASSES} from './top-header-wishlist.config';
 
-export default class TopHeaderMyAccountComponent {
+export default class TopHeaderWishlistComponent {
   constructor($el) {
     this.$el = $el;
     this.$link = $el.find(`.${CLASSES.link}`);
-    this.$leftSide = $el.find(`.${CLASSES.leftSide}`);
-    this.$rightSide = $el.find(`.${CLASSES.rightSide}`);
-    this.$welcomeMessage = this.$rightSide.find(`.${CLASSES.link}`);
 
     // We add the animation class after initialization because
     // if we want to destroy it later to not wait until the animation finishes
-    this.$leftSide.addClass(SHARED_CLASSES.animate);
-    this.$welcomeMessage.addClass(SHARED_CLASSES.animate);
+    this.$link.addClass(SHARED_CLASSES.animate);
 
     this._calculateWidths();
     this._addEventHandlers();
@@ -20,32 +16,24 @@ export default class TopHeaderMyAccountComponent {
 
   destroy() {
     this._removeEventHandlers();
-    this.$leftSide.add(this.$welcomeMessage).removeClass(SHARED_CLASSES.animate);
-    this.$el.removeClass(SHARED_CLASSES.active);
-    this.$leftSide.add(this.$welcomeMessage).width('');
-    this.$leftSide.addClass(SHARED_CLASSES.outsideViewport);
+    this.$link.removeClass(SHARED_CLASSES.animate);
+    this.$el.add(this.$link).removeClass(SHARED_CLASSES.active);
     this.$el = null;
-    this.$leftSide = null;
-    this.$rightSide = null;
-    this.$welcomeMessage = null;
+    this.$link = null;
   }
 
   _calculateWidths() {
-    this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
-    this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
-    this.$leftSide.width(0).removeClass(SHARED_CLASSES.outsideViewport);
-    this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
+    this.$link.attr('data-width', this.$link.outerWidth());
+    this.$link.width(0).removeClass(SHARED_CLASSES.outsideViewport);
   }
 
   _addEventHandlers() {
     if (window.Modernizr.touchevents) {
       this.$el.on('click', $.proxy(this._activateItem, this));
       $(document).on('click', $.proxy(this._deactivateItem, this));
-      this.$link.on('click', this._activateLink);
     } else {
       this.$el.on('mouseover', $.proxy(this._activateItem, this));
       this.$el.on('mouseout', $.proxy(this._deactivateItem, this));
-      this.$link.on('mouseover', this._activateLink);
     }
   }
 
@@ -53,17 +41,10 @@ export default class TopHeaderMyAccountComponent {
     if (window.Modernizr.touchevents) {
       this.$el.off('click', $.proxy(this._activateItem, this));
       $(document).off('click', $.proxy(this._deactivateItem, this));
-      this.$link.off('click', this._activateLink);
     } else {
       this.$el.off('mouseover', $.proxy(this._activateItem, this));
       this.$el.off('mouseout', $.proxy(this._deactivateItem, this));
-      this.$link.off('mouseover', this._activateLink);
     }
-  }
-
-  _activateLink() {
-    $(this).addClass(SHARED_CLASSES.active);
-    $(this).siblings().removeClass(SHARED_CLASSES.active);
   }
 
   _activateItem(e) {
@@ -98,19 +79,12 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _slideInLeftSide() {
-    this.$leftSide
-      .one('transitionend', () => {
-        this.$welcomeMessage.addClass(SHARED_CLASSES.collapsed);
-      })
-      .width(this.$leftSide.data('width'));
+    this.$link.width(this.$link.data('width'));
+    this.$link.addClass(SHARED_CLASSES.active);
   }
 
   _slideOutLeftSide() {
-    this.$leftSide
-      .one('transitionend', () => {
-        this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
-        this.$el.removeClass(SHARED_CLASSES.active);
-      })
-      .width(0);
+    this.$link.removeClass(SHARED_CLASSES.active);
+    this.$link.width(0);
   }
 };
