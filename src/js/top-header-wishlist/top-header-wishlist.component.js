@@ -6,10 +6,6 @@ export default class TopHeaderWishlistComponent {
     this.$el = $el;
     this.$link = $el.find(`.${CLASSES.link}`);
 
-    // We add the animation class after initialization because
-    // if we want to destroy it later to not wait until the animation finishes
-    this.$link.addClass(SHARED_CLASSES.animate);
-
     this._calculateWidths();
     this._addEventHandlers();
   }
@@ -27,7 +23,9 @@ export default class TopHeaderWishlistComponent {
 
   _calculateWidths() {
     this.$link.attr('data-width', this.$link.outerWidth());
-    this.$link.width(0).removeClass(SHARED_CLASSES.outsideViewport);
+    this.$link.addClass(SHARED_CLASSES.collapsed)
+      .removeClass(SHARED_CLASSES.outsideViewport)
+      .addClass(SHARED_CLASSES.animate);
   }
 
   _addEventHandlers() {
@@ -54,7 +52,7 @@ export default class TopHeaderWishlistComponent {
     if (window.Modernizr.touchevents) {
       this._preventClickFirstTime(e);
     } else {
-      this._slideInLeftSide();
+      this._slideInLink();
     }
   }
 
@@ -63,10 +61,10 @@ export default class TopHeaderWishlistComponent {
       if (!this.$el.is(e.target) // if the target of the click isn't the container...
         && this.$el.has(e.target).length === 0) // ... nor a descendant of the container
       {
-        this._slideOutLeftSide();
+        this._slideOutLink();
       }
     } else {
-      this._slideOutLeftSide();
+      this._slideOutLink();
     }
   }
 
@@ -77,17 +75,17 @@ export default class TopHeaderWishlistComponent {
     else {
       e.preventDefault();
       this.$el.addClass(SHARED_CLASSES.active);
-      this._slideInLeftSide();
+      this._slideInLink();
     }
   }
 
-  _slideInLeftSide() {
-    this.$link.width(this.$link.data('width'));
+  _slideInLink() {
+    this.$link.innerWidth(this.$link.data('width')).removeClass(SHARED_CLASSES.collapsed);
     this.$link.addClass(SHARED_CLASSES.active);
   }
 
-  _slideOutLeftSide() {
+  _slideOutLink() {
     this.$el.add(this.$link).removeClass(SHARED_CLASSES.active);
-    this.$link.width(0);
+    this.$link.addClass(SHARED_CLASSES.collapsed);
   }
 };
