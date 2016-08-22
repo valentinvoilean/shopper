@@ -1,7 +1,7 @@
 import {SHARED_CLASSES} from 'js/shared/shared';
-import {CLASSES} from './top-header-wishlist.config';
+import {CLASSES, EVENT_NAMESPACE} from './top-header-wish-list.config';
 
-export default class TopHeaderWishlistComponent {
+export default class TopHeaderWishListComponent {
   constructor($el) {
     this.$el = $el;
     this.$link = $el.find(`.${CLASSES.link}`);
@@ -24,28 +24,22 @@ export default class TopHeaderWishlistComponent {
   _calculateWidths() {
     this.$link.attr('data-width', this.$link.outerWidth());
     this.$link.addClass(SHARED_CLASSES.collapsed)
-      .removeClass(SHARED_CLASSES.outsideViewport)
-      .addClass(SHARED_CLASSES.animate);
+      .removeClass(SHARED_CLASSES.outsideViewport);
   }
 
   _addEventHandlers() {
     if (window.Modernizr.touchevents) {
-      this.$el.on('click', $.proxy(this._activateItem, this));
-      $(document).on('click', $.proxy(this._deactivateItem, this));
+      this.$el.on(`click${EVENT_NAMESPACE}`, $.proxy(this._activateItem, this));
+      $(document).on(`click${EVENT_NAMESPACE}`, $.proxy(this._deactivateItem, this));
     } else {
-      this.$el.on('mouseover', $.proxy(this._activateItem, this));
-      this.$el.on('mouseout', $.proxy(this._deactivateItem, this));
+      this.$el.on(`mouseover${EVENT_NAMESPACE}`, $.proxy(this._activateItem, this));
+      this.$el.on(`mouseout${EVENT_NAMESPACE}`, $.proxy(this._deactivateItem, this));
     }
   }
 
   _removeEventHandlers() {
-    if (window.Modernizr.touchevents) {
-      this.$el.off('click', $.proxy(this._activateItem, this));
-      $(document).off('click', $.proxy(this._deactivateItem, this));
-    } else {
-      this.$el.off('mouseover', $.proxy(this._activateItem, this));
-      this.$el.off('mouseout', $.proxy(this._deactivateItem, this));
-    }
+    this.$el.off(EVENT_NAMESPACE);
+    $(document).off(EVENT_NAMESPACE);
   }
 
   _activateItem(e) {
@@ -80,6 +74,7 @@ export default class TopHeaderWishlistComponent {
   }
 
   _slideInLink() {
+    this.$link.addClass(SHARED_CLASSES.animate);
     this.$link.innerWidth(this.$link.data('width')).removeClass(SHARED_CLASSES.collapsed);
     this.$link.addClass(SHARED_CLASSES.active);
   }

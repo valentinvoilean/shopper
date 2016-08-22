@@ -4,3 +4,5 @@ export const CLASSES = {
   rightSide: 'myAccount__rightSide',
   image: 'myAccount__img'
 };
+
+export const EVENT_NAMESPACE = '.topHeaderMyAccount';

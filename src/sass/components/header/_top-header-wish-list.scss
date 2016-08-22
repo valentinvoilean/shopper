@@ -1,8 +1,8 @@
-.wishlist {
+.wishList {
   text-transform: uppercase;
   cursor: pointer;
 
-  .wishlist__link {
+  .wishList__link {
     color: $c14;
     padding-right: 10px;
     cursor: pointer;
@@ -20,7 +20,7 @@
     }
   }
 
-  .wishlist__img {
+  .wishList__img {
     position: relative;
     height: $headerTopTabletIcon-height;
     width: $headerTopTabletIcon-height + 2;
@@ -34,7 +34,7 @@
     }
   }
 
-  .wishlist__icon {
+  .wishList__icon {
     transition: fill 0.3s ease-in-out;
     height: 100%;
     width: 100%;
@@ -44,7 +44,7 @@
 
   &:hover,
   &.is-active {
-    .wishlist__icon {
+    .wishList__icon {
       fill: $c2;
     }
   }

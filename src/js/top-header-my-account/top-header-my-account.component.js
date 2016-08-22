@@ -1,5 +1,5 @@
 import {SHARED_CLASSES} from 'js/shared/shared';
-import {CLASSES} from './top-header-my-account.config';
+import {CLASSES, EVENT_NAMESPACE} from './top-header-my-account.config';
 
 export default class TopHeaderMyAccountComponent {
   constructor($el) {
@@ -8,11 +8,6 @@ export default class TopHeaderMyAccountComponent {
     this.$leftSide = $el.find(`.${CLASSES.leftSide}`);
     this.$rightSide = $el.find(`.${CLASSES.rightSide}`);
     this.$welcomeMessage = this.$rightSide.find(`.${CLASSES.link}`);
-
-    // We add the animation class after initialization because
-    // if we want to destroy it later to not wait until the animation finishes
-    this.$leftSide.addClass(SHARED_CLASSES.animate);
-    this.$welcomeMessage.addClass(SHARED_CLASSES.animate);
 
     this._calculateWidths();
     this._addEventHandlers();
@@ -33,32 +28,25 @@ export default class TopHeaderMyAccountComponent {
   _calculateWidths() {
     this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
     this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
-    this.$leftSide.width(0).removeClass(SHARED_CLASSES.outsideViewport);
+    this.$leftSide.addClass(SHARED_CLASSES.collapsed).removeClass(SHARED_CLASSES.outsideViewport);
     this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
   }
 
   _addEventHandlers() {
     if (window.Modernizr.touchevents) {
-      this.$el.on('click', $.proxy(this._activateItem, this));
-      $(document).on('click', $.proxy(this._deactivateItem, this));
-      this.$link.on('click', this._activateLink);
+      this.$el.on(`click${EVENT_NAMESPACE}`, $.proxy(this._activateItem, this));
+      $(document).on(`click${EVENT_NAMESPACE}`, $.proxy(this._deactivateItem, this));
+      this.$link.on(`click${EVENT_NAMESPACE}`, this._activateLink);
     } else {
-      this.$el.on('mouseover', $.proxy(this._activateItem, this));
-      this.$el.on('mouseout', $.proxy(this._deactivateItem, this));
-      this.$link.on('mouseover', this._activateLink);
+      this.$el.on(`mouseover${EVENT_NAMESPACE}`, $.proxy(this._activateItem, this));
+      this.$el.on(`mouseout${EVENT_NAMESPACE}`, $.proxy(this._deactivateItem, this));
+      this.$link.on(`mouseover${EVENT_NAMESPACE}`, this._activateLink);
     }
   }
 
   _removeEventHandlers() {
-    if (window.Modernizr.touchevents) {
-      this.$el.off('click', $.proxy(this._activateItem, this));
-      $(document).off('click', $.proxy(this._deactivateItem, this));
-      this.$link.off('click', this._activateLink);
-    } else {
-      this.$el.off('mouseover', $.proxy(this._activateItem, this));
-      this.$el.off('mouseout', $.proxy(this._deactivateItem, this));
-      this.$link.off('mouseover', this._activateLink);
-    }
+    this.$el.off(EVENT_NAMESPACE);
+    $(document).off(EVENT_NAMESPACE);
   }
 
   _activateLink() {
@@ -100,9 +88,13 @@ export default class TopHeaderMyAccountComponent {
   _slideInLeftSide() {
     this.$leftSide
       .one('transitionend', () => {
-        this.$welcomeMessage.addClass(SHARED_CLASSES.collapsed);
+        this.$welcomeMessage
+          .addClass(SHARED_CLASSES.animate)
+          .addClass(SHARED_CLASSES.collapsed);
       })
-      .width(this.$leftSide.data('width'));
+      .addClass(SHARED_CLASSES.animate)
+      .width(this.$leftSide.data('width'))
+      .removeClass(SHARED_CLASSES.collapsed);
   }
 
   _slideOutLeftSide() {
@@ -111,6 +103,6 @@ export default class TopHeaderMyAccountComponent {
         this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
         this.$el.removeClass(SHARED_CLASSES.active);
       })
-      .width(0);
+      .addClass(SHARED_CLASSES.collapsed);
   }
 };

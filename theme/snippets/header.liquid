@@ -24,14 +24,14 @@
       </ul>
 
       <ul class="headerTopRight">
-        <li class="wishlist" data-ss-init="TopHeaderWishlistComponent" data-ss-state="onReady">
-          <a href="#wishlist" class="wishlist__link is-outside-viewport">My Wishlist</a>
-          <div class="wishlist__img">
-            <svg class="wishlist__icon">
-              <use xlink:href="#wishlist-1"></use>
+        <li class="wishList" data-ss-init="TopHeaderWishListComponent" data-ss-state="onReady">
+          <a href="#wishList" class="wishList__link is-outside-viewport">My Wishlist</a>
+          <div class="wishList__img">
+            <svg class="wishList__icon">
+              <use xlink:href="#wish-list-1"></use>
             </svg>
-            <svg class="wishlist__icon">
-              <use xlink:href="#wishlist-2"></use>
+            <svg class="wishList__icon">
+              <use xlink:href="#wish-list-2"></use>
             </svg>
           </div>
         </li>
@@ -57,7 +57,7 @@
             {% if customer %}
             <a href="/account" class="myAccount__img">
               <div class="myAccount__gravatar">
-                <img src="http://www.gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
+                <img src="//gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
               </div>
               <svg class="myAccount__icon">
                 <use xlink:href="#user-2"></use>
