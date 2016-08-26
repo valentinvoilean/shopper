@@ -185,6 +185,21 @@
       },
       {
         "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_header_wishlist",
+        "default": false,
+        "label": "Display the Header WishList?"
+      },
+      {
+        "type": "page",
+        "id": "wishlist_page",
+        "label": "WishList Page"
+      },
+      {
+        "type": "header",
         "content": "Social links"
       },
       {

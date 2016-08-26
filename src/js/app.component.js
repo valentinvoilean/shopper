@@ -88,7 +88,8 @@ export default class AppComponent {
   };
 
   initByState(state) {
-    let _self = this;
+    let _self = this,
+        $components;
 
     if (this.classes === CLASSES) {
       $.each(CLASSES[state], function(index, value) {
@@ -96,7 +97,12 @@ export default class AppComponent {
       });
     }
 
-    $(document).find(`[data-ss-state="${state}"]`).each(function() {
+    if (state === 'onLoad') {
+      $components = $(document).find(`[data-ss-state="${state}"]`);
+    }
+    else $components = $(document).find('[data-ss-init]:not([data-ss-state])');
+
+    $components.each(function() {
       let className = $(this).data('ss-init');
       _self.checkIfClassExistsOnDom($(this), className);
     });

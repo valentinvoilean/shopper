@@ -1,0 +1,38 @@
+{% if shop.customer_accounts_enabled %}
+<li class="myAccount" data-ss-init="TopHeaderMyAccountComponent">
+  <div class="myAccount__leftSide is-outside-viewport">
+    {% if customer %}
+    <a class="myAccount__link" href="/account/logout">Log out</a>
+    <span class="myAccount__separator">-</span>
+    <a class="myAccount__link is-active" href="/account">My Account</a>
+    {% else %}
+    <a class="myAccount__link" href="/account/login">Log in</a>
+    {% if shop.customer_accounts_optional %}
+    <span class="myAccount__separator"> - </span>
+    <a class="myAccount__link is-active" href="/account/register">Register</a>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="myAccount__rightSide">
+    {% if customer %}
+    <a href="/account" class="myAccount__img">
+      <div class="myAccount__gravatar">
+        <img src="//gravatar.com/avatar/{{ customer.email | md5 }}?s=40&d=blank" />
+      </div>
+      <svg class="myAccount__icon">
+        <use xlink:href="#user-2"></use>
+      </svg>
+    </a>
+
+    <a class="myAccount__link is-active" href="/account">Hi, {{ customer.first_name }} !</a>
+    {% else %}
+    <a href="/account/register" class="myAccount__img">
+      <svg class="myAccount__icon">
+        <use xlink:href="#user-1"></use>
+      </svg>
+    </a>
+    {% endif %}
+  </div>
+</li>
+{% endif %}

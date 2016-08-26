@@ -7,7 +7,7 @@ describe('AppComponent', () => {
   describe('Init & Destroy', function() {
     beforeEach(() => {
       this.$container = $('<div class="container"></div>').appendTo($('body'));
-      this.$test1 = $('<div data-ss-init="Class1" data-ss-state="onReady"></div>').appendTo(this.$container);
+      this.$test1 = $('<div data-ss-init="Class1"></div>').appendTo(this.$container);
       this.$test2 = $('<div data-ss-init="Class2" data-ss-state="onLoad"></div>').appendTo(this.$container);
 
       class Class1 { destroy() {}; } // eslint-disable-line
@@ -48,7 +48,7 @@ describe('AppComponent', () => {
       });
 
       it('should throw a warning if a class does not exist', () => {
-        this.$test3 = $('<div data-ss-init="Class3" data-ss-state="onReady"></div>').appendTo(this.$container);
+        this.$test3 = $('<div data-ss-init="Class3"></div>').appendTo(this.$container);
         spyOn(console, 'warn');
         this.instance.initByState('onReady');
         expect(console.warn).toHaveBeenCalledWith('The class Class3 does not exist!');

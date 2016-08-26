@@ -5,7 +5,8 @@
       "page_background_color": "#fff",
       "page_text_color": "#44423E",
       "page_link_color": "#000",
-      "page_border_color": "#F2F2F2"
+      "page_border_color": "#F2F2F2",
+      "use_header_wishlist": true
     },
     "Slate": {
       "customer_layout": "theme",

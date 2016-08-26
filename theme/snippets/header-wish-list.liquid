@@ -1,0 +1,17 @@
+{% if settings.use_header_wishlist %}
+<li class="wishList"
+    data-ss-init="TopHeaderWishListComponent">
+  <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
+     class="wishList__link is-outside-viewport">My Wishlist</a>
+  <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
+     class="wishList__img">
+    <svg class="wishList__icon">
+      <use xlink:href="#wish-list-1"></use>
+    </svg>
+    <svg class="wishList__icon">
+      <use xlink:href="#wish-list-2"></use>
+    </svg>
+  </a>
+</li>
+<li class="headerTop__separator"></li>
+{% endif %}

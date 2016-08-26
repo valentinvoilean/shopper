@@ -8,6 +8,7 @@ export default class TopHeaderWishListComponent {
 
     this._calculateWidths();
     this._addEventHandlers();
+    this._validatePageLink();
   }
 
   destroy() {
@@ -19,6 +20,12 @@ export default class TopHeaderWishListComponent {
     this.$el.removeClass(SHARED_CLASSES.active);
     this.$el = null;
     this.$link = null;
+  }
+
+  _validatePageLink() {
+    if (this.$link.attr('href').length < 1) {
+      alert('No WishList Page Found! Please update it inside the Theme -> Customize Theme -> Header -> WishList Page')
+    }
   }
 
   _calculateWidths() {
