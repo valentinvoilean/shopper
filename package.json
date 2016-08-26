@@ -41,6 +41,7 @@
     "karma-webpack": "1.8.0",
     "node-normalize-scss": "1.3.2",
     "prefixfree": "1.0.0",
+    "run-sequence": "1.2.2",
     "sass-module-importer": "1.2.1",
     "svg-sprite-loader": "0.0.26",
     "webpack": "1.13.1"
