@@ -24,6 +24,8 @@
       <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
       <button type="submit">Add to Wishlist</button>
     </form>
+    {% else %}
+    <p>Product Already In Wishlist</p>
     {% endif %}
   {% endif %}
 </div>

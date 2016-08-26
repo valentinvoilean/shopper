@@ -2,13 +2,34 @@ import {CLASSES, EVENT_NAMESPACE} from './wish-list.config';
 
 export default class WishListComponent {
   constructor() {
-    this.addEventListener();
+    this.addEventListeners();
   }
 
-  addEventListener() {
+  destroy() {
+    this.removeEventListeners();
+  }
+
+  addEventListeners() {
     $(document).on(`submit${EVENT_NAMESPACE}`, `.${CLASSES.form}`, $.proxy(this._postToWishlist, this));
     $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.removeButton}`, $.proxy(this._removeFromWishlist, this));
     $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.addToCart}`, $.proxy(this._addToCart, this));
+  }
+
+  removeEventListeners() {
+    $(document).off(EVENT_NAMESPACE);
+  }
+
+  _postToWishlist(e) {
+    let
+      $currentForm = $(e.currentTarget),
+      postData = $currentForm.serializeArray(),
+      formURL = $currentForm.attr('action');
+
+    e.preventDefault();
+
+    $.post(formURL, postData)
+      .done(() => console.warn('Data loaded'))
+      .fail(() => console.warn('Something went wrong. Please try again!'));
   }
 
   _addToCart(e) {
@@ -19,28 +40,6 @@ export default class WishListComponent {
     $('#product-select').attr('value', variantID);
     this._removeFromWishlist($(this));
     $('#add-variant').submit();
-  }
-
-  _postToWishlist(e) {
-    let postData, formURL, $currentForm;
-
-    e.preventDefault();
-    $currentForm = $(e.currentTarget);
-    postData = $currentForm.serializeArray();
-    formURL = $currentForm.attr('action');
-
-    $.ajax({
-      url : formURL,
-      type: 'POST',
-      data : postData,
-      success:function(data, textStatus) {
-        console.warn(textStatus);
-        $currentForm.parent().empty().html('<p>This product is in your <a href="/pages/wish-list">wishlist</a></p>');
-      },
-      error: function() {
-        $currentForm.append("<p>I'm afraid that didn't work.</p>");
-      }
-    });
   }
 
   _removeFromWishlist(e) {
