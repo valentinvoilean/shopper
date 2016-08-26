@@ -74,7 +74,7 @@ export default class AppComponent {
     let classExists = false,
       domClasses = this.classes.dom ? this.classes.dom : this.classes;
 
-    $.each(domClasses, function(index, value) {
+    $.each(domClasses, function (index, value) {
       if (index === className) {
         $el.attr('data-ss-instance', info.instances.length);
         classExists = true;
@@ -89,10 +89,10 @@ export default class AppComponent {
 
   initByState(state) {
     let _self = this,
-        $components;
+      $components;
 
     if (this.classes === CLASSES) {
-      $.each(CLASSES[state], function(index, value) {
+      $.each(CLASSES[state], function (index, value) {
         new value();
       });
     }
@@ -100,9 +100,11 @@ export default class AppComponent {
     if (state === 'onLoad') {
       $components = $(document).find(`[data-ss-state="${state}"]`);
     }
-    else $components = $(document).find('[data-ss-init]:not([data-ss-state])');
+    else {
+      $components = $(document).find('[data-ss-init]:not([data-ss-state])');
+    }
 
-    $components.each(function() {
+    $components.each(function () {
       let className = $(this).data('ss-init');
       _self.checkIfClassExistsOnDom($(this), className);
     });

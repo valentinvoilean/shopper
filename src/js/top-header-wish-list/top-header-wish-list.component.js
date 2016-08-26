@@ -24,7 +24,7 @@ export default class TopHeaderWishListComponent {
 
   _validatePageLink() {
     if (this.$link.attr('href').length < 1) {
-      alert('No WishList Page Found! Please update it inside the Theme -> Customize Theme -> Header -> WishList Page')
+      console.warn('No WishList Page Found! Please update it inside the Customize Theme -> Header -> WishList Page');
     }
   }
 

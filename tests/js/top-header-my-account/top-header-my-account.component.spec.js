@@ -1,5 +1,5 @@
 import TopHeaderMyAccountComponent from 'js/top-header-my-account/top-header-my-account.component';
-const html = require("html!./top-header-my-account.fixture.html");
+const html = require('html!./top-header-my-account.fixture.html');
 
 describe('Top Header My Account Component', () => {
   beforeAll(() => {
@@ -102,7 +102,7 @@ describe('Top Header My Account Component', () => {
           expect($link.siblings('.myAccount__link').hasClass('is-active')).toBeFalsy();
           instance.destroy();
         });
-      })
+      });
 
     });
 
