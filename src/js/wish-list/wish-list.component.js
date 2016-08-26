@@ -22,11 +22,12 @@ export default class WishListComponent {
   }
 
   _postToWishlist(e) {
-    let postData, formURL;
+    let postData, formURL, $currentForm;
 
     e.preventDefault();
-    postData = $(this).serializeArray();
-    formURL = $(this).attr('action');
+    $currentForm = $(e.currentTarget);
+    postData = $currentForm.serializeArray();
+    formURL = $currentForm.attr('action');
 
     $.ajax({
       url : formURL,
@@ -34,10 +35,10 @@ export default class WishListComponent {
       data : postData,
       success:function(data, textStatus) {
         console.warn(textStatus);
-        $('.js-wish-list').empty().html('<p>This product is in your <a href="/pages/wish-list">wishlist</a></p>');
+        $currentForm.parent().empty().html('<p>This product is in your <a href="/pages/wish-list">wishlist</a></p>');
       },
       error: function() {
-        $(this).append("<p>I'm afraid that didn't work.</p>");
+        $currentForm.append("<p>I'm afraid that didn't work.</p>");
       }
     });
   }
