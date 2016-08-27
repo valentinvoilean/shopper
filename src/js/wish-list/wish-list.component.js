@@ -23,18 +23,9 @@ export default class WishListComponent {
     let
       options = $(e.currentTarget).data('ss-options'),
       postData = [
-        {
-          name: 'form_type',
-          value: 'customer'
-        },
-        {
-          name: 'contact[email]',
-          value: options['email']
-        },
-        {
-          name: 'contact[tags]',
-          value: options['product']
-        }
+        {name: 'form_type', value: 'customer'},
+        {name: 'contact[email]', value: options['email']},
+        {name: 'contact[tags]', value: options['variantID']}
       ];
 
     $.post('/contact', postData)
