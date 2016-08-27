@@ -10,7 +10,7 @@ export default class WishListComponent {
   }
 
   addEventListeners() {
-    $(document).on(`submit${EVENT_NAMESPACE}`, `.${CLASSES.form}`, $.proxy(this._postToWishlist, this));
+    $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.button}`, $.proxy(this._postToWishlist, this));
     $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.removeButton}`, $.proxy(this._removeFromWishlist, this));
     $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.addToCart}`, $.proxy(this._addToCart, this));
   }
@@ -21,13 +21,23 @@ export default class WishListComponent {
 
   _postToWishlist(e) {
     let
-      $currentForm = $(e.currentTarget),
-      postData = $currentForm.serializeArray(),
-      formURL = $currentForm.attr('action');
+      options = $(e.currentTarget).data('ss-options'),
+      postData = [
+        {
+          name: 'form_type',
+          value: 'customer'
+        },
+        {
+          name: 'contact[email]',
+          value: options['email']
+        },
+        {
+          name: 'contact[tags]',
+          value: options['product']
+        }
+      ];
 
-    e.preventDefault();
-
-    $.post(formURL, postData)
+    $.post('/contact', postData)
       .done(() => console.warn('Data loaded'))
       .fail(() => console.warn('Something went wrong. Please try again!'));
   }

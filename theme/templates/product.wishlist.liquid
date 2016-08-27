@@ -1,4 +1,4 @@
-<div class="js-wish-list">
+<div class="productWishlist">
   {% if customer %}
     {% assign value = product.selected_or_first_available_variant.id %}
     {% capture productID %}{{ product.selected_or_first_available_variant.id }}{% endcapture %}
@@ -17,13 +17,8 @@
     {% endunless %}
 
     {% if display %}
-    <form class="wishList__form" action="/contact" method="post">
-      <input name="form_type" type="hidden" value="customer">
-      <input name="utf8" type="hidden" value="✓">
-      <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
-      <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
-      <button type="submit">Add to Wishlist</button>
-    </form>
+    <button class="wishList__button"
+            data-ss-options='{"email": "{{ customer.email }}", "product": "{{ value }}" }'>Add to Wishlist</button>
     {% else %}
     <p>Product Already In Wishlist</p>
     {% endif %}

@@ -1,5 +1,5 @@
 export const CLASSES = {
-  form: 'wishList__form',
+  button: 'wishList__button',
   removeButton: 'wishList__removeButton',
   addToCart: 'wishList__addToCartButton'
 };
