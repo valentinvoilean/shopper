@@ -2,22 +2,22 @@
 
 {% assign wish_list_active = false %}
 {% assign wish_list_length = 0 %}
+{% assign used = "" %}
 
 {% if customer %}
   {% for tag in customer.tags %}
 
-    {% assign the_test = 'nutthin' %}
+    {% assign the_test = '' %}
     {% capture tag_id %}{{ tag }}{% endcapture %}
     {% assign tag_size = tag_id.size %}
 
-    {% for tag in customer.tags %}
-      {% capture cur_tag %}{{ tag }}{% endcapture %}
-      {% if cur_tag contains tag_id %}
-        {% assign difference = tag_size | minus:cur_tag.size %}
+    {% for current_tag in customer.tags %}
+      {% if current_tag contains tag_id %}
+        {% assign difference = tag_size | minus:current_tag.size %}
         {% if difference == 0 %}
           {% assign the_test = tag_id %}
         {% else %}
-          {% assign the_test = 'nutthin' %}
+          {% assign the_test = '' %}
         {% endif %}
       {% endif %}
     {% endfor %}

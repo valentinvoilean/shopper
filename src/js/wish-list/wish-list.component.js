@@ -29,7 +29,7 @@ export default class WishListComponent {
       ];
 
     $.post('/contact', postData)
-      .done(() => console.warn('Data loaded'))
+      .done((data) => console.log(data))
       .fail(() => console.warn('Something went wrong. Please try again!'));
   }
 
