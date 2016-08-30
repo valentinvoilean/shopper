@@ -1,6 +1,9 @@
+export const NAMESPACE = '.wishList';
+
 export const CLASSES = {
-  link: 'wishList__link',
-  image: 'wishList__img'
+  link: `${NAMESPACE}__link`,
+  counter: `${NAMESPACE}__counter`,
+  image: `${NAMESPACE}__img`
 };
 
 export const EVENT_NAMESPACE = '.topHeaderWishList';

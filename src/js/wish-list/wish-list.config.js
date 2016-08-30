@@ -1,7 +1,8 @@
-export const CLASSES = {
-  button: 'wishList__button',
-  removeButton: 'wishList__removeButton',
-  addToCart: 'wishList__addToCartButton'
-};
+export const NAMESPACE = '.wishList';
 
-export const EVENT_NAMESPACE = '.wishList';
+export const CLASSES = {
+  button: `${NAMESPACE}__button`,
+  removeButton: `${NAMESPACE}__removeButton`,
+  addToCart: `${NAMESPACE}__addToCartButton`,
+  counter: `${NAMESPACE}__counter`
+};

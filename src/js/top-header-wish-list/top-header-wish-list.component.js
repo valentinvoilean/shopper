@@ -4,7 +4,9 @@ import {CLASSES, EVENT_NAMESPACE} from './top-header-wish-list.config';
 export default class TopHeaderWishListComponent {
   constructor($el) {
     this.$el = $el;
-    this.$link = $el.find(`.${CLASSES.link}`);
+    this.$link = $el.find(CLASSES.link);
+    this.$counter = $el.find(CLASSES.counter);
+    this.$image = $el.find(CLASSES.image);
 
     this._calculateWidths();
     this._addEventHandlers();
@@ -42,11 +44,18 @@ export default class TopHeaderWishListComponent {
       this.$el.on(`mouseover${EVENT_NAMESPACE}`, $.proxy(this._activateItem, this));
       this.$el.on(`mouseout${EVENT_NAMESPACE}`, $.proxy(this._deactivateItem, this));
     }
+
+    this.$counter.on(`update${EVENT_NAMESPACE}`, $.proxy(this._updateCounter, this));
   }
 
   _removeEventHandlers() {
     this.$el.off(EVENT_NAMESPACE);
     $(document).off(EVENT_NAMESPACE);
+  }
+
+  _updateCounter(e, data) {
+    this.$counter.html(data.counter > 0 ? data.counter : '');
+    this.$image.toggleClass(SHARED_CLASSES.active, data.counter > 0);
   }
 
   _activateItem(e) {

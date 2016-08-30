@@ -1,4 +1,4 @@
-import {CLASSES, EVENT_NAMESPACE} from './wish-list.config';
+import {CLASSES, NAMESPACE} from './wish-list.config';
 
 export default class WishListComponent {
   constructor() {
@@ -10,13 +10,13 @@ export default class WishListComponent {
   }
 
   addEventListeners() {
-    $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.button}`, $.proxy(this._postToWishlist, this));
-    $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.removeButton}`, $.proxy(this._removeFromWishlist, this));
-    $(document).on(`click${EVENT_NAMESPACE}`, `.${CLASSES.addToCart}`, $.proxy(this._addToCart, this));
+    $(document).on(`click${NAMESPACE}`, CLASSES.button, $.proxy(this._postToWishlist, this));
+    $(document).on(`click${NAMESPACE}`, CLASSES.removeButton, $.proxy(this._removeFromWishlist, this));
+    $(document).on(`click${NAMESPACE}`, CLASSES.addToCart, $.proxy(this._addToCart, this));
   }
 
   removeEventListeners() {
-    $(document).off(EVENT_NAMESPACE);
+    $(document).off(NAMESPACE);
   }
 
   _postToWishlist(e) {
@@ -29,7 +29,10 @@ export default class WishListComponent {
       ];
 
     $.post('/contact', postData)
-      .done((data) => console.log(data))
+      .done((data) => {
+        let counter = parseInt($(data).find(CLASSES.counter).text());
+        $(CLASSES.counter).trigger('update', {counter: counter});
+      })
       .fail(() => console.warn('Something went wrong. Please try again!'));
   }
 

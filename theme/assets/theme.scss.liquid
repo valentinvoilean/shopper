@@ -886,22 +886,16 @@ $headerTopDesktopIcon-height: 20px;
     }
   }
 
-  .wishList__img {
-    position: relative;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
-
-    @include breakpoint($screen-lg) {
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
-    }
-  }
-
   .wishList__icon {
     transition: fill 0.3s ease-in-out;
     height: $headerTopTabletIcon-height;
     width: $headerTopTabletIcon-height + 2;
     fill: $c14;
     overflow: visible;
+
+    &:last-child {
+      display: none;
+    }
 
     @include breakpoint($screen-lg) {
       height: $headerTopDesktopIcon-height;
@@ -915,6 +909,31 @@ $headerTopDesktopIcon-height: 20px;
     float: right;
     color: $c14;
     margin-left: 2px;
+    display: none;
+  }
+
+  .wishList__img {
+    position: relative;
+    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
+    float: right;
+
+    @include breakpoint($screen-lg) {
+      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+    }
+  }
+
+  .wishList__img.is-active {
+    .wishList__icon {
+      display: none;
+
+      &:last-child {
+        display: block;
+      }
+    }
+
+    .wishList__counter {
+      display: block;
+    }
   }
 
   &:hover,
