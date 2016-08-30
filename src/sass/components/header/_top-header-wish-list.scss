@@ -22,30 +22,43 @@
 
   .wishList__img {
     position: relative;
-    height: $headerTopTabletIcon-height;
-    width: $headerTopTabletIcon-height + 2;
     margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
     float: right;
 
     @include breakpoint($screen-lg) {
-      height: $headerTopDesktopIcon-height;
-      width: $headerTopDesktopIcon-height + 2;
       margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
     }
   }
 
   .wishList__icon {
     transition: fill 0.3s ease-in-out;
-    height: 100%;
-    width: 100%;
+    height: $headerTopTabletIcon-height;
+    width: $headerTopTabletIcon-height + 2;
     fill: $c14;
     overflow: visible;
+
+    @include breakpoint($screen-lg) {
+      height: $headerTopDesktopIcon-height;
+      width: $headerTopDesktopIcon-height + 2;
+    }
+  }
+
+  .wishList__counter {
+    font-size: 10px;
+    line-height: 10px;
+    float: right;
+    color: $c14;
+    margin-left: 2px;
   }
 
   &:hover,
   &.is-active {
     .wishList__icon {
       fill: $c2;
+    }
+
+    .wishList__counter {
+      color: $c2;
     }
   }
 }

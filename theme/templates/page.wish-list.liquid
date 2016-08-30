@@ -2,57 +2,58 @@
 <ul class="wishlist">
   {% assign wish_list_active = false %}
   {% for tag in customer.tags %}
-  {% assign the_test = 'nutthin' %}
-  {% capture tag_id %}{{ tag }}{% endcapture %}
-  {% assign tag_size = tag_id.size %}
-  {% for tag in customer.tags %}
-  {% capture cur_tag %}{{ tag }}{% endcapture %}
-  {% if cur_tag contains tag_id %}
-  {% assign difference = tag_size | minus:cur_tag.size %}
-  {% if difference == 0 %}
-  {% assign the_test = tag_id %}
-  {% else %}
-  {% assign the_test = 'nutthin' %}
-  {% endif %}
-  {% endif %}
-  {% endfor %}
+    {% assign the_test = 'nutthin' %}
+    {% capture tag_id %}{{ tag }}{% endcapture %}
+    {% assign tag_size = tag_id.size %}
 
-  {% for collection in collections %}
-  {% paginate collection.products by collection.all_products_count %}
-  {% for product in collection.products %}
-  {% for variant in product.variants %}
-  {% capture variant_id %}{{ variant.id }}{% endcapture %}
-  {% unless used contains variant_id %}
-  {% capture diff %}{{ tag_size | minus:variant_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
-  {% assign check = diff | split:'.' %}
-  {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
-  {% if display and the_test contains variant_id %}
-  {% assign wish_list_active = true %}
-  <li id="x{{ tag_id }}">
-    <div>
-      <div>
-        <a href="{{ variant.url }}">
-          <img src="{{ variant | img_url: 'compact' }}"  alt="{{ product.title | escape }}" />
-        </a>
-      </div>
-      <div>
-        <a href="{{ variant.url }}">
-          {{ product.title }} - {{ variant.title }}
-        </a> - {{ variant.price | money }}
-      </div>
-      <div>
-        <a class="wishList__addToCartButton" href='#' data-id="{{ variant_id }}">Add to Cart</a><br>or<br>
-        <a href="#" class="wishList__removeButton"></span>Remove from Wish List</a>
-      </div>
-    </div>
-  </li>
-  {% capture used %}{{ variant_id }} {{ used }}{% endcapture %}
-  {% endif %}
-  {% endunless %}
-  {% endfor %}
-  {% endfor %}
-  {% endpaginate %}
-  {% endfor %}
+    {% for tag in customer.tags %}
+      {% capture cur_tag %}{{ tag }}{% endcapture %}
+      {% if cur_tag contains tag_id %}
+        {% assign difference = tag_size | minus:cur_tag.size %}
+        {% if difference == 0 %}
+          {% assign the_test = tag_id %}
+        {% else %}
+          {% assign the_test = 'nutthin' %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% for collection in collections %}
+      {% paginate collection.products by collection.all_products_count %}
+        {% for product in collection.products %}
+          {% for variant in product.variants %}
+            {% capture variant_id %}{{ variant.id }}{% endcapture %}
+            {% unless used contains variant_id %}
+              {% capture diff %}{{ tag_size | minus:variant_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+              {% assign check = diff | split:'.' %}
+              {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
+              {% if display and the_test contains variant_id %}
+                {% assign wish_list_active = true %}
+                <li id="x{{ tag_id }}">
+                  <div>
+                    <div>
+                      <a href="{{ variant.url }}">
+                        <img src="{{ variant | img_url: 'compact' }}"  alt="{{ product.title | escape }}" />
+                      </a>
+                    </div>
+                    <div>
+                      <a href="{{ variant.url }}">
+                        {{ product.title }} - {{ variant.title }}
+                      </a> - {{ variant.price | money }}
+                    </div>
+                    <div>
+                      <a class="wishList__addToCartButton" href='#' data-id="{{ variant_id }}">Add to Cart</a><br>or<br>
+                      <a href="#" class="wishList__removeButton"></span>Remove from Wish List</a>
+                    </div>
+                  </div>
+                </li>
+                {% capture used %}{{ variant_id }} {{ used }}{% endcapture %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+      {% endpaginate %}
+    {% endfor %}
   {% endfor %}
 </ul>
 

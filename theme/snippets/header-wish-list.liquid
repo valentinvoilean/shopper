@@ -1,16 +1,66 @@
 {% if settings.use_header_wishlist %}
+
+{% assign wish_list_active = false %}
+{% assign wish_list_length = 0 %}
+
+{% if customer %}
+  {% for tag in customer.tags %}
+
+    {% assign the_test = 'nutthin' %}
+    {% capture tag_id %}{{ tag }}{% endcapture %}
+    {% assign tag_size = tag_id.size %}
+
+    {% for tag in customer.tags %}
+      {% capture cur_tag %}{{ tag }}{% endcapture %}
+      {% if cur_tag contains tag_id %}
+        {% assign difference = tag_size | minus:cur_tag.size %}
+        {% if difference == 0 %}
+          {% assign the_test = tag_id %}
+        {% else %}
+          {% assign the_test = 'nutthin' %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% for collection in collections %}
+      {% paginate collection.products by collection.all_products_count %}
+        {% for product in collection.products %}
+          {% for variant in product.variants %}
+            {% capture variant_id %}{{ variant.id }}{% endcapture %}
+            {% unless used contains variant_id %}
+              {% capture diff %}{{ tag_size | minus:variant_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+              {% assign check = diff | split:'.' %}
+              {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
+              {% if display and the_test contains variant_id %}
+                {% assign wish_list_active = true %}
+                {% capture wish_list_length %}{{ wish_list_length | plus:1 }}{% endcapture %}
+                {% capture used %}{{ variant_id }} {{ used }}{% endcapture %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+      {% endpaginate %}
+    {% endfor %}
+
+  {% endfor %}
+{% endif %}
+
 <li class="wishList"
     data-ss-init="TopHeaderWishListComponent">
   <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
      class="wishList__link is-outside-viewport">My Wishlist</a>
   <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
      class="wishList__img">
-    <svg class="wishList__icon">
-      <use xlink:href="#wish-list-1"></use>
-    </svg>
+    {% if wish_list_active %}
+    <div class="wishList__counter">{{wish_list_length}}</div>
     <svg class="wishList__icon">
       <use xlink:href="#wish-list-2"></use>
     </svg>
+    {% else %}
+    <svg class="wishList__icon">
+      <use xlink:href="#wish-list-1"></use>
+    </svg>
+    {% endif %}
   </a>
 </li>
 <li class="headerTop__separator"></li>
