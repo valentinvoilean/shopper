@@ -36,7 +36,7 @@ export default class WishListComponent {
       $button = $(e.currentTarget),
       $currentProduct = $button.closest('li'),
       $wishList = $currentProduct.parent(),
-      options = $button.data('ss-options');
+      options = $currentProduct.data('ss-options');
 
     $.post('/contact', [
       {name: 'form_type', value: 'customer'},
@@ -65,13 +65,19 @@ export default class WishListComponent {
   }
 
   _addToCart(e) {
-    let variantID;
+    let
+      $button = $(e.currentTarget),
+      $currentProduct = $button.closest('li'),
+      options = $currentProduct.data('ss-options');
 
-    e.preventDefault();
-    variantID = $(this).attr('data-id');
-    $('#product-select').attr('value', variantID);
-    this._removeFromWishlist($(this));
-    $('#add-variant').submit();
+    $.post('/cart/add', [
+      {name: 'id', value: options['variantID']}
+    ])
+      .done(() => {
+        this._removeFromWishlist(e);
+        console.warn('Product added to cart !');
+      })
+      .fail(() => console.warn('Something went wrong. Please try again!'));
   }
 
   _updateEmailList() {
