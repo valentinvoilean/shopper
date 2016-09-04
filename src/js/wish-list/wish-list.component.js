@@ -28,7 +28,7 @@ export default class WishListComponent {
       {name: 'contact[tags]', value: options['tagID']}
     ])
       .done(this._updateCounter)
-      .fail(() => console.warn('Something went wrong. Please try again!'));
+      .fail(() => console.warn('Can not add item to wishlist!'));
   }
 
   _removeFromWishlist(e) {
@@ -52,11 +52,13 @@ export default class WishListComponent {
         } else {
           $('#wishlist-email-link').empty().html('<p>Your wish list is currently empty.</p>');
         }
-
+      })
+      .fail(() => console.warn('Can not remove item from wishlist!'))
+      .always(() => {
         $currentProduct = null;
         $button = null;
-      })
-      .fail(() => console.warn('Something went wrong. Please try again!'));
+        $wishList = null;
+      });
   }
 
   _updateCounter(data) {
@@ -77,45 +79,40 @@ export default class WishListComponent {
         this._removeFromWishlist(e);
         console.warn('Product added to cart !');
       })
-      .fail(() => console.warn('Something went wrong. Please try again!'));
+      .fail(() => console.warn('Can not add variant to cart!'))
+      .always(() => {
+        $currentProduct = null;
+        $button = null;
+      });
   }
 
   _updateEmailList() {
-    let currentURL = window.location.protocol + '//' + window.location.host + window.location.pathname;
-    $.ajax({
-      url: currentURL,
-      type: 'GET',
-      success: function (data, textStatus) {
-        console.warn(textStatus);
-        let newEmailLink = $(data).find('#wishlist-email-link a');
-        $('#wishlist-email-link').html(newEmailLink);
-      }
-    });
+    let currentURL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+
+    $.get(currentURL)
+      .done((data) => {
+        let newEmailLink = $(data).find(CLASSES.email);
+        $(CLASSES.email).html(newEmailLink);
+        newEmailLink = null;
+      })
+      .fail(() => console.warn('Can not update email list!'));
   }
 
   selectCallback(variant) {
+    let
+      $wishListProduct = $(CLASSES.product),
+      currentURL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`,
+      newURL = currentURL + '?variant=' + variant.id;
 
-    // you will be using something like this if you are using Shopify's option_selection.js as a callback to
-    // update your images and stuff when the user chooses another variant from a product select element.
-    // Just add the bits below to what you already have in there. This will ensure when the customer picks another
-    // variant, the wish list form will update to the current variant.
-    //Update wishlist form
-    let $wishList = $('.js-wish-list');
-    let currentURL = window.location.protocol + '//' + window.location.host + window.location.pathname;
-    let newURL = currentURL + '?variant=' + variant.id;
-
-    $.ajax({
-      type: 'GET',
-      url: newURL,
-      success:function(data) {
-        $wishList.empty();
-        let newData = $(data).find('.js-wish-list').html();
-        $wishList.html(newData);
-
-        // reset event listener for posting to wish list
-        this._postToWishlist();
-      }
-    });
+    $.get(newURL)
+      .done((data) => {
+        $wishListProduct.empty();
+        let newData = $(data).find(CLASSES.product).html();
+        $wishListProduct.html(newData);
+      })
+      .fail(() => console.warn('Something went wrong. Please try again!'))
+      .always(() => {
+        $wishListProduct = null;
+      });
   }
-
 };
