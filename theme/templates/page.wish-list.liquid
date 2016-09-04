@@ -30,7 +30,7 @@
               {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
               {% if display and the_test contains variant_id %}
                 {% assign wish_list_active = true %}
-                <li id="x{{ tag_id }}">
+                <li>
                   <div>
                     <div>
                       <a href="{{ variant.url }}">
@@ -44,7 +44,8 @@
                     </div>
                     <div>
                       <a class="wishList__addToCartButton" href='#' data-id="{{ variant_id }}">Add to Cart</a><br>or<br>
-                      <a href="#" class="wishList__removeButton"></span>Remove from Wish List</a>
+                      <button class="wishList__removeButton"
+                              data-ss-options='{"email": "{{ customer.email }}", "tagID": "x{{ tag_id }}" }'>Remove from Wish List</button>
                     </div>
                   </div>
                 </li>
@@ -57,13 +58,6 @@
     {% endfor %}
   {% endfor %}
 </ul>
-
-<form method='post' action='/contact' id='remove' accept-charset='UTF-8'>
-  <input name='form_type' type='hidden' value='customer'/>
-  <input name='utf8' type='hidden' value='✓'>
-  <input type='hidden' name='contact[email]' value='{{ customer.email }}'/>
-  <input type='hidden' name='contact[tags]' id='remove-value' value='' />
-</form>
 
 <form action='/cart/add' id='add-variant' method='post'>
   <input type='hidden' name='id' id='product-select' value='' />

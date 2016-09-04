@@ -20,20 +20,48 @@ export default class WishListComponent {
   }
 
   _postToWishlist(e) {
-    let
-      options = $(e.currentTarget).data('ss-options'),
-      postData = [
-        {name: 'form_type', value: 'customer'},
-        {name: 'contact[email]', value: options['email']},
-        {name: 'contact[tags]', value: options['variantID']}
-      ];
+    let options = $(e.currentTarget).data('ss-options');
 
-    $.post('/contact', postData)
+    $.post('/contact', [
+      {name: 'form_type', value: 'customer'},
+      {name: 'contact[email]', value: options['email']},
+      {name: 'contact[tags]', value: options['tagID']}
+    ])
+      .done(this._updateCounter)
+      .fail(() => console.warn('Something went wrong. Please try again!'));
+  }
+
+  _removeFromWishlist(e) {
+    let
+      $button = $(e.currentTarget),
+      $currentProduct = $button.closest('li'),
+      $wishList = $currentProduct.parent(),
+      options = $button.data('ss-options');
+
+    $.post('/contact', [
+      {name: 'form_type', value: 'customer'},
+      {name: 'contact[email]', value: options['email']},
+      {name: 'contact[tags]', value: options['tagID']}
+    ])
       .done((data) => {
-        let counter = parseInt($(data).find(CLASSES.counter).text());
-        $(CLASSES.counter).trigger('update', {counter: counter});
+        this._updateCounter(data);
+        $currentProduct.remove();
+
+        if ($wishList.children('li').length) {
+          this._updateEmailList();
+        } else {
+          $('#wishlist-email-link').empty().html('<p>Your wish list is currently empty.</p>');
+        }
+
+        $currentProduct = null;
+        $button = null;
       })
       .fail(() => console.warn('Something went wrong. Please try again!'));
+  }
+
+  _updateCounter(data) {
+    let counter = parseInt($(data).find(CLASSES.counter).text());
+    $(CLASSES.counter).trigger('update', {counter: counter});
   }
 
   _addToCart(e) {
@@ -44,38 +72,6 @@ export default class WishListComponent {
     $('#product-select').attr('value', variantID);
     this._removeFromWishlist($(this));
     $('#add-variant').submit();
-  }
-
-  _removeFromWishlist(e) {
-    e.preventDefault();
-    let $this = $(e.currentTarget);
-    // select parent li element
-    let $elem = $this.closest('li');
-    // get the id which is the selected variant tag
-    let tagID = $elem.attr('id');
-    let $form = $('#remove');
-
-    // set the value of the input in the form to the selected variant
-    $('#remove-value').attr('value', tagID);
-    let postData = $form.serializeArray();
-    let formURL = $form.attr('action');
-    $.ajax({
-      url : formURL,
-      type: 'POST',
-      data : postData,
-      success:function(data, textStatus) {
-        console.warn(textStatus);
-        $elem.remove();
-        if ($('ul.wishlist li').length === 0) {
-          $('#wishlist-email-link').empty().html('<p>Your wish list is currently empty.</p>');
-        } else {
-          this._updateEmailList();
-        }
-      },
-      error: function() {
-        $(this).append(`<p>I'm afraid that didn't work.</p>`);
-      }
-    });
   }
 
   _updateEmailList() {
