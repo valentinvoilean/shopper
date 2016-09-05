@@ -5,7 +5,7 @@ $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
 
 .headerTop {
-  background: $header-top-background;
+  background: $header-top-background-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: $headerTopTablet-height;
@@ -38,7 +38,7 @@ $headerTopDesktopIcon-height: 20px;
 .headerTop__separator {
   height: $headerTop-separatorHeight;
   width: 1px;
-  background: $c12;
+  background: $header-top-separator-color;
   margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
   margin-left: 10px;
   margin-right: 10px;

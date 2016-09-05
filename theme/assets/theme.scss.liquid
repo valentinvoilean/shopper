@@ -113,12 +113,20 @@ $border-color: #{'{{ settings.page_border_color }}'};
 
 // Other Colors
 
-// Header colors
-$header-top-background: #fff;
+// Header Top colors
+$header-top-background-color: #fff;
+
 $header-icon-color: #D7D7D7;
 $header-icon-color--active: #444;
 
-$c0: #000;
+$header-top-dropdown-option: #D7D7D7;
+$header-top-dropdown-option--active: #444;
+
+$header-top-separator-color: #E5E5E5;
+
+// Header Middle colors
+$header-main-cart-color: #9A9A9A;
+
 $c1: #E6E6E6;
 $c2: #444;
 $c3: #2F5A59;
@@ -734,7 +742,7 @@ $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
 
 .headerTop {
-  background: $header-top-background;
+  background: $header-top-background-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: $headerTopTablet-height;
@@ -952,7 +960,7 @@ $headerTopDesktopIcon-height: 20px;
 .headerTop__separator {
   height: $headerTop-separatorHeight;
   width: 1px;
-  background: $c12;
+  background: $header-top-separator-color;
   margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
   margin-left: 10px;
   margin-right: 10px;
@@ -1015,12 +1023,12 @@ $headerTopDesktopIcon-height: 20px;
     max-width: 0;
     overflow: hidden;
     transition: all .3s linear;
-    color: $c14;
+    color: $header-top-dropdown-option;
 
     &:hover,
     &.active {
       max-width: 200px;
-      color: $header-icon-color--active;
+      color: $header-top-dropdown-option--active;
     }
   }
 }
@@ -1073,7 +1081,7 @@ $headerTopDesktopIcon-height: 20px;
   .cart {
     width: 25px;
     height: 25px;
-    fill: $c10;
+    fill: $header-main-cart-color;
     margin-left: auto;
 
     @include breakpoint($screen-sm-min) {

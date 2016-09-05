@@ -46,7 +46,7 @@
   .cart {
     width: 25px;
     height: 25px;
-    fill: $c10;
+    fill: $header-main-cart-color;
     margin-left: auto;
 
     @include breakpoint($screen-sm-min) {

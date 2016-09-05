@@ -44,12 +44,12 @@
     max-width: 0;
     overflow: hidden;
     transition: all .3s linear;
-    color: $c14;
+    color: $header-top-dropdown-option;
 
     &:hover,
     &.active {
       max-width: 200px;
-      color: $header-icon-color--active;
+      color: $header-top-dropdown-option--active;
     }
   }
 }
