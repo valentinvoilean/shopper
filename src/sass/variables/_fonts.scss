@@ -1,0 +1,35 @@
+$base-font-family:       {{ settings.base_font_family }};
+$h1-font-family:         {{ settings.h1_font_family }};
+$h2-font-family:         {{ settings.h2_font_family }};
+$h3-font-family:         {{ settings.h3_font_family }};
+$h4-font-family:         {{ settings.h4_font_family }};
+$h5-font-family:         {{ settings.h5_font_family }};
+$h6-font-family:         {{ settings.h6_font_family }};
+
+$mobile-base-font-size:  {{ settings.mobile_base_font_size }};
+$tablet-base-font-size:  {{ settings.tablet_base_font_size }};
+$desktop-base-font-size: {{ settings.desktop_base_font_size }};
+
+$mobile-h1-font-size:    {{ settings.mobile_h1_font_size }};
+$tablet-h1-font-size:    {{ settings.tablet_h1_font_size }};
+$desktop-h1-font-size:   {{ settings.desktop_h1_font_size }};
+
+$mobile-h2-font-size:    {{ settings.mobile_h2_font_size }};
+$tablet-h2-font-size:    {{ settings.tablet_h2_font_size }};
+$desktop-h2-font-size:   {{ settings.desktop_h2_font_size }};
+
+$mobile-h3-font-size:    {{ settings.mobile_h3_font_size }};
+$tablet-h3-font-size:    {{ settings.tablet_h3_font_size }};
+$desktop-h3-font-size:   {{ settings.desktop_h3_font_size }};
+
+$mobile-h4-font-size:    {{ settings.mobile_h4_font_size }};
+$tablet-h4-font-size:    {{ settings.tablet_h4_font_size }};
+$desktop-h4-font-size:   {{ settings.desktop_h4_font_size }};
+
+$mobile-h5-font-size:    {{ settings.mobile_h5_font_size }};
+$tablet-h5-font-size:    {{ settings.tablet_h5_font_size }};
+$desktop-h5-font-size:   {{ settings.desktop_h5_font_size }};
+
+$mobile-h6-font-size:    {{ settings.mobile_h6_font_size }};
+$tablet-h6-font-size:    {{ settings.tablet_h6_font_size }};
+$desktop-h6-font-size:   {{ settings.desktop_h6_font_size }};

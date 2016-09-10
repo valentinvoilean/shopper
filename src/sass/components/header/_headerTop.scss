@@ -6,16 +6,20 @@ $headerTopDesktopIcon-height: 20px;
 
 .headerTop {
   background: $header-top-background-color;
-  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: $headerTopTablet-height;
   font-weight: 400;
 
   height: $headerTopTablet-height;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $mobile-border-color;
   overflow: hidden;
 
+  @include breakpoint($screen-md) {
+    border-color: $tablet-border-color;
+  }
+
   @include breakpoint($screen-lg) {
+    border-color: $desktop-border-color;
     line-height: $headerTopDesktop-height;
     height: $headerTopDesktop-height;
   }

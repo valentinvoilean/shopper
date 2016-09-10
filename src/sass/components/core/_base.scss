@@ -4,13 +4,114 @@
 }
 
 body {
-  background: $page-background-color;
-  color: $page-text-color;
+  background: $mobile-page-background-color;
+  color: $mobile-page-text-color;
+
+  font-family: $base-font-family;
+  font-size: $mobile-base-font-size;
+
+  @include breakpoint($screen-md) {
+    background: $tablet-page-background-color;
+    color: $tablet-page-text-color;
+    font-size: $tablet-base-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    background: $desktop-page-background-color;
+    color: $desktop-page-text-color;
+    font-size: $desktop-base-font-size;
+  }
+}
+
+h1 {
+  font-family: $h1-font-family;
+  font-size: $mobile-h1-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h1-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h1-font-size;
+  }
+}
+
+h2 {
+  font-family: $h2-font-family;
+  font-size: $mobile-h2-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h2-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h2-font-size;
+  }
+}
+
+h3 {
+  font-family: $h3-font-family;
+  font-size: $mobile-h3-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h3-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h3-font-size;
+  }
+}
+
+h4 {
+  font-family: $h4-font-family;
+  font-size: $mobile-h4-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h4-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h4-font-size;
+  }
+}
+
+h5 {
+  font-family: $h5-font-family;
+  font-size: $mobile-h5-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h5-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h5-font-size;
+  }
+}
+
+h6 {
+  font-family: $h6-font-family;
+  font-size: $mobile-h6-font-size;
+
+  @include breakpoint($screen-md) {
+    font-size: $tablet-h6-font-size;
+  }
+
+  @include breakpoint($screen-lg) {
+    font-size: $desktop-h6-font-size;
+  }
 }
 
 a {
-  color: $page-link-color;
+  color: $mobile-page-link-color;
   text-decoration: none;
+
+  @include breakpoint($screen-md) {
+    color: $tablet-page-link-color;
+  }
+
+  @include breakpoint($screen-lg) {
+    color: $desktop-page-link-color;
+  }
 }
 
 ul { margin:0; padding: 0;}
@@ -23,16 +124,3 @@ ul { margin:0; padding: 0;}
   }
 }
 
-/*.test {
-  height: 100%;
-}
-
-.testBackground {
-  background: rgba(0, 120, 162, 0.23);
-  width: 100%;
-  height: 100%;
-
-  @include breakpoint($screen-md) {
-    background: black;
-  }
-}*/

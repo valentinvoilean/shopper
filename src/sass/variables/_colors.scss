@@ -1,8 +1,19 @@
 // Page Colors
-$page-background-color: #{'{{ settings.page_background_color }}'};
-$page-text-color: #{'{{ settings.page_text_color }}'};
-$page-link-color: #{'{{ settings.page_link_color }}'};
-$border-color: #{'{{ settings.page_border_color }}'};
+$mobile-page-background-color: #{'{{ settings.mobile_page_background_color }}'};
+$tablet-page-background-color: #{'{{ settings.tablet_page_background_color }}'};
+$desktop-page-background-color: #{'{{ settings.desktop_page_background_color }}'};
+
+$mobile-page-text-color: #{'{{ settings.mobile_page_text_color }}'};
+$tablet-page-text-color: #{'{{ settings.tablet_page_text_color }}'};
+$desktop-page-text-color: #{'{{ settings.desktop_page_text_color }}'};
+
+$mobile-page-link-color: #{'{{ settings.mobile_page_link_color }}'};
+$tablet-page-link-color: #{'{{ settings.tablet_page_link_color }}'};
+$desktop-page-link-color: #{'{{ settings.desktop_page_link_color }}'};
+
+$mobile-border-color: #{'{{ settings.mobile_page_border_color }}'};
+$tablet-border-color: #{'{{ settings.tablet_page_border_color }}'};
+$desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 
 // Other Colors
 
