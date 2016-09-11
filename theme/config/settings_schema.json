@@ -1090,6 +1090,143 @@
     ]
   },
   {
+    "name": "Wishlist",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "paragraph",
+        "content": "In order to enable the wishlist, make sure to ENABLE the [customer accounts](/admin/settings/checkout) & CREATE the wishlist page using the 'page.wishlist' template like in the following [example](https://help.shopify.com/assets/images/themes/alt-template-select.jpg) from [Alternate templates](https://help.shopify.com/themes/development/templates#alternate-templates)."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_header_wishlist",
+        "default": false,
+        "label": "Enable the theme's built-in Wishlist plugin ?",
+        "info": "The wishlist items are saved for each customer account in part. Make sure you have the Customer Accounts enabled [here](/admin/settings/checkout)."
+      },
+      {
+        "type": "checkbox",
+        "id": "wishlist_sharing",
+        "default": false,
+        "label": "Enable Wishlist Sharing",
+        "info": "This option allows the customer to email his wishlist to other people. "
+      },
+      {
+        "type": "page",
+        "id": "wishlist_page",
+        "label": "Wishlist Page",
+        "info": "Please select the wishlist page previously created using the 'page.wishlist' template."
+      }
+    ]
+  },
+  {
+    "name": "Currency",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https://help.shopify.com/manual/using-themes/troubleshooting/help-script-find-money-formats)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Enable currency conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency ($10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency ($10.00 CAD)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "INR GBP CAD USD AUD EUR JPY",
+        "info": "Use the country's ISO [currency code](http://www.xe.com/iso4217.php). Separate your currency codes with a space."
+      },
+      {
+        "type": "text",
+        "id": "default_currency",
+        "label": "Default currency",
+        "default": "USD"
+      }
+    ]
+  },
+  {
+    "name": "Multi-Language Store",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For the moment, Shopify doesn't offer a multi-language solution, therefore you need to create multiple stores using the same theme with different language configuration."
+      },
+      {
+        "type": "header",
+        "content": "Languages"
+      },
+      {
+        "type": "paragraph",
+        "content": "Syntax: label|link|state(optional)"
+      },
+      {
+        "type": "paragraph",
+        "content": "'label' = the name of language name"
+      },
+      {
+        "type": "paragraph",
+        "content": "'link' = the link to the other store"
+      },
+      {
+        "type": "paragraph",
+        "content": "'state' = set it to 'active' for the current store"
+      },
+      {
+        "type": "text",
+        "id": "language_1",
+        "label": "Language 1",
+        "info": "e.g. English|http://en.shopper.com|active"
+      },
+      {
+        "type": "text",
+        "id": "language_2",
+        "label": "Language 2",
+        "info": "e.g. Español|http://es.shopper.com"
+      },
+      {
+        "type": "text",
+        "id": "language_3",
+        "label": "Language 3",
+        "info": "e.g. Deutsch|http://de.shopper.com"
+      },
+      {
+        "type": "text",
+        "id": "language_4",
+        "label": "Language 4",
+        "info": "e.g. Français|http://fr.shopper.com"
+      },
+      {
+        "type": "text",
+        "id": "language_5",
+        "label": "Language 5",
+        "info": "e.g. Italiano|http://it.shopper.com"
+      }
+    ]
+  },
+  {
     "name": "Header",
     "settings": [
       {
@@ -1111,21 +1248,6 @@
       {
         "type": "paragraph",
         "content": "Recommend the optimal width and height for your logo here."
-      },
-      {
-        "type": "header",
-        "content": "Wishlist"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_header_wishlist",
-        "default": false,
-        "label": "Display the Header WishList?"
-      },
-      {
-        "type": "page",
-        "id": "wishlist_page",
-        "label": "WishList Page"
       },
       {
         "type": "header",
