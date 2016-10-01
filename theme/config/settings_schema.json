@@ -1227,11 +1227,11 @@
     ]
   },
   {
-    "name": "Header",
+    "name": "Logo",
     "settings": [
       {
         "type": "header",
-        "content": "Logo Options"
+        "content": "Logo image"
       },
       {
         "type": "checkbox",
@@ -1246,9 +1246,144 @@
         "max-height": 1200
       },
       {
-        "type": "paragraph",
-        "content": "Recommend the optimal width and height for your logo here."
+        "type": "checkbox",
+        "id": "use_logo_retina",
+        "label": "Use Custom Logo for retina displays ?"
       },
+      {
+        "type": "image",
+        "id": "logo_retina.png",
+        "label": "Custom Retina Logo",
+        "max-width": 1200,
+        "max-height": 1200,
+        "info":  "Retina displays have different aspect ratio, usually double than the regular displays. Please check this [link](https://en.wikipedia.org/wiki/Retina_Display) for more informations."
+      },
+      {
+        "type": "header",
+        "content": "Logo Sizes"
+      },
+      {
+        "type": "paragraph",
+        "content": "If you want to specify different widths than the default theme's ones, please updated the next inputs."
+      },
+      {
+        "type": "paragraph",
+        "content": "It is your responsibility if the header doesn't look good afterwards. Please do this only if you really know what to do!"
+      },
+      {
+        "type": "text",
+        "id": "logo_desktop_width",
+        "label": "Desktop Logo Width",
+        "info": "default: 100px"
+      },
+      {
+        "type": "text",
+        "id": "logo_tablet_width",
+        "label": "Tablet Logo Width",
+        "info": "default: 100px"
+      },
+      {
+        "type": "text",
+        "id": "logo_mobile_width",
+        "label": "Mobile Logo Width",
+        "info": "default: 100px"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header Style"
+      },
+      {
+        "type":      "radio",
+        "id":        "header_template_desktop",
+        "label":     "Desktop / Large Screen",
+        "options": [
+          { "value": "1", "label": "Template 1 - Logo left side" },
+          { "value": "2", "label": "Template 2 - Logo centered" }
+        ],
+        "default":   "1",
+        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
+      },
+      {
+        "type":      "radio",
+        "id":        "header_template_tablet",
+        "label":     "Tablet",
+        "options": [
+          { "value": "1", "label": "Template 1 - Logo left side" },
+          { "value": "2", "label": "Template 2 - Logo centered" }
+        ],
+        "default":   "1",
+        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
+      },
+      {
+        "type":      "radio",
+        "id":        "header_template_mobile",
+        "label":     "Mobile",
+        "options": [
+          { "value": "1", "label": "Template 1 - Logo left side" },
+          { "value": "2", "label": "Template 2 - Logo centered" }
+        ],
+        "default":   "1",
+        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
+      }
+    ]
+  },
+  {
+    "name": "Header Template 1",
+    "settings": [
+      {
+        "type": "header",
+        "content": "My Account"
+      },
+      {
+        "type": "select",
+        "id": "header_template_1_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top Right"},
+          { "value": "top_left", "label": "Top Left"},
+          { "value": "middle_left", "label": "Middle Left"},
+          { "value": "middle_right", "label": "Middle Right"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "header_template_1_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top Right"},
+          { "value": "top_left", "label": "Top Left"},
+          { "value": "middle_left", "label": "Middle Left"},
+          { "value": "middle_right", "label": "Middle Right"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "header_template_1_position_mobile",
+        "options": [
+          { "value": "right", "label": "Right"},
+          { "value": "menu", "label": "Inside the menu flyout"}
+        ],
+        "label": "Position on Mobile screens"
+      }
+    ]
+  },
+  {
+    "name": "Header Template 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      }
+    ]
+  },
+  {
+    "name": "Social Links",
+    "settings": [
       {
         "type": "header",
         "content": "Social links"
