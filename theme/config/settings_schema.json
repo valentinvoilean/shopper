@@ -1090,6 +1090,1300 @@
     ]
   },
   {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo position"
+      },
+      {
+        "type": "paragraph",
+        "content": "The logo position influence the rest of header components."
+      },
+      {
+        "type": "paragraph",
+        "content": "Please choose the position for each device screen in part."
+      },
+      {
+        "type": "radio",
+        "id": "logo_position_desktop",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left side"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left",
+        "label": "Desktop / Large Screen"
+      },
+      {
+        "type": "radio",
+        "id": "logo_position_tablet",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left side"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left",
+        "label": "Tablet"
+      },
+      {
+        "type": "radio",
+        "id": "logo_position_mobile",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left side"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "center",
+        "label": "Mobile"
+      },
+      {
+        "type": "paragraph",
+        "content": "Depending on the option chosen, some positions might not be available for the rest of header's components."
+      },
+      {
+        "type": "header",
+        "content": "Menu"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Left' & 'Right' positions are not available when the logo is centered. The 'Center' position will be used instead."
+      },
+      {
+        "type": "radio",
+        "id": "menu_position_desktop",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "right",
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "radio",
+        "id": "menu_position_tablet",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "right",
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "paragraph",
+        "content": "In mobile, the menu is displayed like a flyout when the menu icon is clicked."
+      },
+      {
+        "type": "header",
+        "content": "Search"
+      },
+      {
+        "type": "select",
+        "id": "search_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "main_right",
+            "label": "Main area - right"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "search_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "main_right",
+            "label": "Main area - right"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "search_position_mobile",
+        "options": [
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "My Account"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Main area - left side' position is not available when the logo is in the left side. The 'Top-Left' position will be used instead."
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
+            "value": "main_right",
+            "label": "Main area - right"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
+            "value": "main_right",
+            "label": "Main area - right"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_mobile",
+        "options": [
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_mobile",
+        "options": [
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Currency"
+      },
+      {
+        "type": "select",
+        "id": "currency_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "currency_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "currency_position_mobile",
+        "options": [
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Language switcher"
+      },
+      {
+        "type": "paragraph",
+        "content": "By default the language switcher is displayed on the same side like the currency selector."
+      },
+      {
+        "type": "select",
+        "id": "language_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "language_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "language_position_mobile",
+        "options": [
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Social Icons"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Main Area - Left' position is not available when the logo is in the left side. The 'Top area - left side' position will be used instead."
+      },
+      {
+        "type": "select",
+        "id": "social_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "social_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "social_position_mobile",
+        "options": [
+          {
+            "value": "menu",
+            "label": "Inside the menu flyout"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Welcome Message"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_desktop",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "top_center",
+            "label": "Top area - center"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          },
+          {
+            "value": "bottom_center",
+            "label": "Bottom bar - center"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "top_center",
+            "label": "Top area - center"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          },
+          {
+            "value": "bottom_center",
+            "label": "Bottom bar - center"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_mobile",
+        "options": [
+          {
+            "value": "top_center",
+            "label": "Top area - center"
+          },
+          {
+            "value": "bottom_center",
+            "label": "Bottom bar - center"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Breadcrumb"
+      },
+      {
+        "type": "select",
+        "id": "breadcrumb_position_desktop",
+        "options": [
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "below",
+            "label": "Below the bottom bar"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "breadcrumb_position_tablet",
+        "options": [
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "below",
+            "label": "Below the bottom bar"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "breadcrumb_position_mobile",
+        "options": [
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "below",
+            "label": "Below the bottom bar"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Custom Link 1"
+      },
+      {
+        "type": "text",
+        "id": "link1_label",
+        "label": "Link label"
+      },
+      {
+        "type": "text",
+        "id": "link1_link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "link1_position_desktop",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "link1_position_tablet",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "link_position_mobile",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Custom Link 2"
+      },
+      {
+        "type": "text",
+        "id": "link2_label",
+        "label": "Link label"
+      },
+      {
+        "type": "text",
+        "id": "link2_link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "link2_position_desktop",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "link2_position_tablet",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "link2_position_mobile",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Custom Link 3"
+      },
+      {
+        "type": "text",
+        "id": "link3_label",
+        "label": "Link label"
+      },
+      {
+        "type": "text",
+        "id": "link3_link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "link3_position_desktop",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "link3_position_tablet",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "link3_position_mobile",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Custom Link 4"
+      },
+      {
+        "type": "text",
+        "id": "link4_label",
+        "label": "Link label"
+      },
+      {
+        "type": "text",
+        "id": "link4_link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "link4_position_desktop",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "link4_position_tablet",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "link4_position_mobile",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Custom Link 5"
+      },
+      {
+        "type": "text",
+        "id": "link5_label",
+        "label": "Link label"
+      },
+      {
+        "type": "text",
+        "id": "link5_link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "link5_position_desktop",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "link5_position_tablet",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "link5_position_mobile",
+        "options": [
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "middle_left",
+            "label": "Middle area - left side"
+          },
+          {
+            "value": "bottom_left",
+            "label": "Bottom bar - left side"
+          },
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "middle_right",
+            "label": "Middle area - right side"
+          },
+          {
+            "value": "bottom_right",
+            "label": "Bottom bar - right side"
+          }
+        ],
+        "label": "Position on Mobile screens"
+      }
+    ]
+  },
+  {
+    "name": "Social Links",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social links"
+      },
+      {
+        "type": "paragraph",
+        "content": "All links, except the email one, must begin with http:\/\/, https:\/\/ or \/\/. The email must be your email address with no mailto: prefix. Leave the text box blank if you don't want to use the corresponding icon."
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "text",
+        "id": "googleplus_url",
+        "label": "Google+ URL"
+      },
+      {
+        "type": "text",
+        "id": "flickr_url",
+        "label": "Flickr URL"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "linkedin_url",
+        "label": "Linkedin URL"
+      },
+      {
+        "type": "text",
+        "id": "vimeo_url",
+        "label": "Vimeo URL"
+      },
+      {
+        "type": "text",
+        "id": "youtube_url",
+        "label": "Youtube URL"
+      },
+      {
+        "type": "text",
+        "id": "tumblr_url",
+        "label": "Tumblr URL"
+      },
+      {
+        "type": "text",
+        "id": "wordpress_url",
+        "label": "Wordpress URL"
+      },
+      {
+        "type": "text",
+        "id": "yelp_url",
+        "label": "Yelp URL"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email"
+      },
+      {
+        "type": "blog",
+        "id": "featured_blog",
+        "label": "Blog feed"
+      },
+      {
+        "type": "select",
+        "id": "social_icons_style",
+        "label": "Social icons style",
+        "options": [
+          {
+            "value": "",
+            "label": "Silhouette"
+          },
+          {
+            "value": "-circle",
+            "label": "Circle"
+          },
+          {
+            "value": "-rounded",
+            "label": "Rounded corners"
+          },
+          {
+            "value": "-square",
+            "label": "Square"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Wishlist",
     "settings": [
       {
@@ -1256,7 +2550,7 @@
         "label": "Custom Retina Logo",
         "max-width": 1200,
         "max-height": 1200,
-        "info":  "Retina displays have different aspect ratio, usually double than the regular displays. Please check this [link](https://en.wikipedia.org/wiki/Retina_Display) for more informations."
+        "info": "Retina displays have different aspect ratio, usually double than the regular displays. Please check this [link](https://en.wikipedia.org/wiki/Retina_Display) for more informations."
       },
       {
         "type": "header",
@@ -1287,434 +2581,6 @@
         "id": "logo_mobile_width",
         "label": "Mobile Logo Width",
         "info": "default: 100px"
-      }
-    ]
-  },
-  {
-    "name": "Header",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Logo position"
-      },
-      {
-        "type": "paragraph",
-        "content": "The logo position influence the rest of header components."
-      },
-      {
-        "type": "paragraph",
-        "content": "Please choose the position for each device screen in part."
-      },
-      {
-        "type":      "radio",
-        "id":        "logo_position_desktop",
-        "label":     "Desktop / Large Screen",
-        "options": [
-          { "value": "left", "label": "Left side" },
-          { "value": "center", "label": "Center" }
-        ],
-        "default":   "left"
-      },
-      {
-        "type":      "radio",
-        "id":        "logo_position_tablet",
-        "label":     "Tablet",
-        "options": [
-          { "value": "left", "label": "Left side" },
-          { "value": "center", "label": "Center" }
-        ],
-        "default":   "left"
-      },
-      {
-        "type":      "radio",
-        "id":        "logo_position_mobile",
-        "label":     "Mobile",
-        "options": [
-          { "value": "left", "label": "Left side" },
-          { "value": "center", "label": "Center" }
-        ],
-        "default":   "left"
-      },
-      {
-        "type": "paragraph",
-        "content": "Depending on the option chosen, some positions might not be available for the rest of header's components."
-      },
-      {
-        "type": "header",
-        "content": "Menu"
-      },
-      {
-        "type": "paragraph",
-        "content": "The 'Left' & 'Right' positions are not available when the logo is centered. The 'Center' position will be used instead."
-      },
-      {
-        "type": "radio",
-        "id": "menu_position_desktop",
-        "options": [
-          { "value": "left", "label": "Left"},
-          { "value": "right", "label": "Right"},
-          { "value": "center", "label": "Center"}
-        ],
-        "default":   "right",
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "radio",
-        "id": "menu_position_tablet",
-        "options": [
-          { "value": "left", "label": "Left"},
-          { "value": "right", "label": "Right"},
-          { "value": "center", "label": "Center"}
-        ],
-        "default":   "right",
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "paragraph",
-        "content": "In mobile, the menu is displayed like a flyout when the menu icon is clicked."
-      },
-      {
-        "type": "header",
-        "content": "Search"
-      },
-      {
-        "type": "select",
-        "id": "search_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "main_right", "label": "Main area - right"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "search_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "main_right", "label": "Main area - right"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "select",
-        "id": "search_position_mobile",
-        "options": [
-          { "value": "right", "label": "Right"},
-          { "value": "menu", "label": "Inside the menu flyout"}
-        ],
-        "label": "Position on Mobile screens"
-      },
-      {
-        "type": "header",
-        "content": "My Account"
-      },
-      {
-        "type": "paragraph",
-        "content": "The 'Main area - left side' position is not available when the logo is in the left side. The 'Top-Left' position will be used instead."
-      },
-      {
-        "type": "select",
-        "id": "my_account_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "main_left", "label": "Main area - left side"},
-          { "value": "main_right", "label": "Main area - right"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "my_account_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "main_left", "label": "Main area - left side"},
-          { "value": "main_right", "label": "Main area - right"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "select",
-        "id": "my_account_position_mobile",
-        "options": [
-          { "value": "right", "label": "Right"},
-          { "value": "menu", "label": "Inside the menu flyout"}
-        ],
-        "label": "Position on Mobile screens"
-      },
-      {
-        "type": "header",
-        "content": "Wishlist"
-      },
-      {
-        "type": "select",
-        "id": "wishlist_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "wishlist_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "select",
-        "id": "wishlist_position_mobile",
-        "options": [
-          { "value": "right", "label": "Right"},
-          { "value": "menu", "label": "Inside the menu flyout"}
-        ],
-        "label": "Position on Mobile screens"
-      },
-      {
-        "type": "header",
-        "content": "Currency"
-      },
-      {
-        "type": "select",
-        "id": "currency_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "currency_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "paragraph",
-        "content": "On mobile, the currency is always displayed inside the menu flyout."
-      },
-      {
-        "type": "header",
-        "content": "Language switcher"
-      },
-      {
-        "type": "paragraph",
-        "content": "By default the language switcher is displayed on the same side like the currency selector."
-      },
-      {
-        "type": "select",
-        "id": "language_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "language_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "paragraph",
-        "content": "On mobile, the language switcher is always displayed inside the menu flyout."
-      },
-      {
-        "type": "header",
-        "content": "Social Icons"
-      },
-      {
-        "type": "paragraph",
-        "content": "The 'Main Area - Left' position is not available when the logo is in the left side. The 'Top area - left side' position will be used instead."
-      },
-      {
-        "type": "select",
-        "id": "social_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "main_left", "label": "Main area - left side"},
-          { "value": "bottom_left", "label": "Bottom bar - left side"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "social_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "main_left", "label": "Main area - left side"},
-          { "value": "bottom_left", "label": "Bottom bar - left side"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "paragraph",
-        "content": "On mobile, the social icons are always displayed inside the menu flyout."
-      },
-      {
-        "type": "header",
-        "content": "Welcome Message"
-      },
-      {
-        "type": "select",
-        "id": "welcome_position_desktop",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "top_center", "label": "Top area - center"},
-          { "value": "bottom_left", "label": "Bottom bar - left side"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"},
-          { "value": "bottom_center", "label": "Bottom bar - center"},
-          { "value": "none", "label": "Don't display the welcome message"}
-        ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "welcome_position_tablet",
-        "options": [
-          { "value": "top_right", "label": "Top area - right side"},
-          { "value": "top_left", "label": "Top area - left side"},
-          { "value": "top_center", "label": "Top area - center"},
-          { "value": "bottom_left", "label": "Bottom bar - left side"},
-          { "value": "bottom_right", "label": "Bottom bar - right side"},
-          { "value": "bottom_center", "label": "Bottom bar - center"},
-          { "value": "none", "label": "Don't display the welcome message"}
-        ],
-        "label": "Position on Tablet screens"
-      },
-      {
-        "type": "select",
-        "id": "welcome_position_mobile",
-        "options": [
-          { "value": "top_center", "label": "Top area - center"},
-          { "value": "bottom_center", "label": "Bottom bar - center"},
-          { "value": "none", "label": "Don't display the welcome message"}
-        ],
-        "label": "Position on Tablet screens"
-      }
-    ]
-  },
-  {
-    "name": "Social Links",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Social links"
-      },
-      {
-        "type": "paragraph",
-        "content": "All links, except the email one, must begin with http:\/\/, https:\/\/ or \/\/. The email must be your email address with no mailto: prefix. Leave the text box blank if you don't want to use the corresponding icon."
-      },
-      {
-        "type": "text",
-        "id": "facebook_url",
-        "label": "Facebook URL"
-      },
-      {
-        "type": "text",
-        "id": "twitter_url",
-        "label": "Twitter URL"
-      },
-      {
-        "type": "text",
-        "id": "pinterest_url",
-        "label": "Pinterest URL"
-      },
-      {
-        "type": "text",
-        "id": "googleplus_url",
-        "label": "Google+ URL"
-      },
-      {
-        "type": "text",
-        "id": "flickr_url",
-        "label": "Flickr URL"
-      },
-      {
-        "type": "text",
-        "id": "instagram_url",
-        "label": "Instagram URL"
-      },
-      {
-        "type": "text",
-        "id": "linkedin_url",
-        "label": "Linkedin URL"
-      },
-      {
-        "type": "text",
-        "id": "vimeo_url",
-        "label": "Vimeo URL"
-      },
-      {
-        "type": "text",
-        "id": "youtube_url",
-        "label": "Youtube URL"
-      },
-      {
-        "type": "text",
-        "id": "tumblr_url",
-        "label": "Tumblr URL"
-      },
-      {
-        "type": "text",
-        "id": "wordpress_url",
-        "label": "Wordpress URL"
-      },
-      {
-        "type": "text",
-        "id": "yelp_url",
-        "label": "Yelp URL"
-      },
-      {
-        "type": "text",
-        "id": "contact_email",
-        "label": "Email"
-      },
-      {
-        "type": "blog",
-        "id": "featured_blog",
-        "label": "Blog feed"
-      },
-      {
-        "type": "select",
-        "id": "social_icons_style",
-        "label": "Social icons style",
-        "options": [
-          {
-            "value": "",
-            "label": "Silhouette"
-          },
-          {
-            "value": "-circle",
-            "label": "Circle"
-          },
-          {
-            "value": "-rounded",
-            "label": "Rounded corners"
-          },
-          {
-            "value": "-square",
-            "label": "Square"
-          }
-        ]
       }
     ]
   },
