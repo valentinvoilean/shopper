@@ -1295,89 +1295,320 @@
     "settings": [
       {
         "type": "header",
-        "content": "Header Style"
+        "content": "Logo position"
+      },
+      {
+        "type": "paragraph",
+        "content": "The logo position influence the rest of header components."
+      },
+      {
+        "type": "paragraph",
+        "content": "Please choose the position for each device screen in part."
       },
       {
         "type":      "radio",
-        "id":        "header_template_desktop",
+        "id":        "logo_position_desktop",
         "label":     "Desktop / Large Screen",
         "options": [
-          { "value": "1", "label": "Template 1 - Logo left side" },
-          { "value": "2", "label": "Template 2 - Logo centered" }
+          { "value": "left", "label": "Left side" },
+          { "value": "center", "label": "Center" }
         ],
-        "default":   "1",
-        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
+        "default":   "left"
       },
       {
         "type":      "radio",
-        "id":        "header_template_tablet",
+        "id":        "logo_position_tablet",
         "label":     "Tablet",
         "options": [
-          { "value": "1", "label": "Template 1 - Logo left side" },
-          { "value": "2", "label": "Template 2 - Logo centered" }
+          { "value": "left", "label": "Left side" },
+          { "value": "center", "label": "Center" }
         ],
-        "default":   "1",
-        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
+        "default":   "left"
       },
       {
         "type":      "radio",
-        "id":        "header_template_mobile",
+        "id":        "logo_position_mobile",
         "label":     "Mobile",
         "options": [
-          { "value": "1", "label": "Template 1 - Logo left side" },
-          { "value": "2", "label": "Template 2 - Logo centered" }
+          { "value": "left", "label": "Left side" },
+          { "value": "center", "label": "Center" }
         ],
-        "default":   "1",
-        "info":      "Depending on the option chosen, the logo will be displayed on the left or will be centered."
-      }
-    ]
-  },
-  {
-    "name": "Header Template 1",
-    "settings": [
+        "default":   "left"
+      },
+      {
+        "type": "paragraph",
+        "content": "Depending on the option chosen, some positions might not be available for the rest of header's components."
+      },
       {
         "type": "header",
-        "content": "My Account"
+        "content": "Menu"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Left' & 'Right' positions are not available when the logo is centered. The 'Center' position will be used instead."
+      },
+      {
+        "type": "radio",
+        "id": "menu_position_desktop",
+        "options": [
+          { "value": "left", "label": "Left"},
+          { "value": "right", "label": "Right"},
+          { "value": "center", "label": "Center"}
+        ],
+        "default":   "right",
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "radio",
+        "id": "menu_position_tablet",
+        "options": [
+          { "value": "left", "label": "Left"},
+          { "value": "right", "label": "Right"},
+          { "value": "center", "label": "Center"}
+        ],
+        "default":   "right",
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "paragraph",
+        "content": "In mobile, the menu is displayed like a flyout when the menu icon is clicked."
+      },
+      {
+        "type": "header",
+        "content": "Search"
       },
       {
         "type": "select",
-        "id": "header_template_1_position_desktop",
+        "id": "search_position_desktop",
         "options": [
-          { "value": "top_right", "label": "Top Right"},
-          { "value": "top_left", "label": "Top Left"},
-          { "value": "middle_left", "label": "Middle Left"},
-          { "value": "middle_right", "label": "Middle Right"}
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "main_right", "label": "Main area - right"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"}
         ],
         "label": "Position on Large/Desktop screens"
       },
       {
         "type": "select",
-        "id": "header_template_1_position_tablet",
+        "id": "search_position_tablet",
         "options": [
-          { "value": "top_right", "label": "Top Right"},
-          { "value": "top_left", "label": "Top Left"},
-          { "value": "middle_left", "label": "Middle Left"},
-          { "value": "middle_right", "label": "Middle Right"}
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "main_right", "label": "Main area - right"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"}
         ],
         "label": "Position on Tablet screens"
       },
       {
         "type": "select",
-        "id": "header_template_1_position_mobile",
+        "id": "search_position_mobile",
         "options": [
           { "value": "right", "label": "Right"},
           { "value": "menu", "label": "Inside the menu flyout"}
         ],
         "label": "Position on Mobile screens"
-      }
-    ]
-  },
-  {
-    "name": "Header Template 2",
-    "settings": [
+      },
       {
         "type": "header",
-        "content": "Content"
+        "content": "My Account"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Main area - left side' position is not available when the logo is in the left side. The 'Top-Left' position will be used instead."
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "main_left", "label": "Main area - left side"},
+          { "value": "main_right", "label": "Main area - right"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "main_left", "label": "Main area - left side"},
+          { "value": "main_right", "label": "Main area - right"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_mobile",
+        "options": [
+          { "value": "right", "label": "Right"},
+          { "value": "menu", "label": "Inside the menu flyout"}
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_mobile",
+        "options": [
+          { "value": "right", "label": "Right"},
+          { "value": "menu", "label": "Inside the menu flyout"}
+        ],
+        "label": "Position on Mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Currency"
+      },
+      {
+        "type": "select",
+        "id": "currency_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "currency_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "paragraph",
+        "content": "On mobile, the currency is always displayed inside the menu flyout."
+      },
+      {
+        "type": "header",
+        "content": "Language switcher"
+      },
+      {
+        "type": "paragraph",
+        "content": "By default the language switcher is displayed on the same side like the currency selector."
+      },
+      {
+        "type": "select",
+        "id": "language_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "language_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "paragraph",
+        "content": "On mobile, the language switcher is always displayed inside the menu flyout."
+      },
+      {
+        "type": "header",
+        "content": "Social Icons"
+      },
+      {
+        "type": "paragraph",
+        "content": "The 'Main Area - Left' position is not available when the logo is in the left side. The 'Top area - left side' position will be used instead."
+      },
+      {
+        "type": "select",
+        "id": "social_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "main_left", "label": "Main area - left side"},
+          { "value": "bottom_left", "label": "Bottom bar - left side"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "social_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "main_left", "label": "Main area - left side"},
+          { "value": "bottom_left", "label": "Bottom bar - left side"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "paragraph",
+        "content": "On mobile, the social icons are always displayed inside the menu flyout."
+      },
+      {
+        "type": "header",
+        "content": "Welcome Message"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_desktop",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "top_center", "label": "Top area - center"},
+          { "value": "bottom_left", "label": "Bottom bar - left side"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"},
+          { "value": "bottom_center", "label": "Bottom bar - center"},
+          { "value": "none", "label": "Don't display the welcome message"}
+        ],
+        "label": "Position on Large/Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_tablet",
+        "options": [
+          { "value": "top_right", "label": "Top area - right side"},
+          { "value": "top_left", "label": "Top area - left side"},
+          { "value": "top_center", "label": "Top area - center"},
+          { "value": "bottom_left", "label": "Bottom bar - left side"},
+          { "value": "bottom_right", "label": "Bottom bar - right side"},
+          { "value": "bottom_center", "label": "Bottom bar - center"},
+          { "value": "none", "label": "Don't display the welcome message"}
+        ],
+        "label": "Position on Tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "welcome_position_mobile",
+        "options": [
+          { "value": "top_center", "label": "Top area - center"},
+          { "value": "bottom_center", "label": "Bottom bar - center"},
+          { "value": "none", "label": "Don't display the welcome message"}
+        ],
+        "label": "Position on Tablet screens"
       }
     ]
   },
