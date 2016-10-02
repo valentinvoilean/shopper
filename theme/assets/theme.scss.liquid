@@ -13,31 +13,8 @@
   #Sass Mixins
   #Normalize
   #Grid Setup
-  #Basic Styles
-  #Helper Classes
-  #Typography
-  #Rich Text Editor
-  #Links and Buttons
-  #Lists
-  #Tables
-  #Reponsive Tables
-  #OOCSS Media Object
-  #Images and Iframes
-  #Forms
-  #Icons
-  #Pagination
-  #Site Header
-  #Site Nav and Dropdowns
-  #Mobile Nav
-  #Drawers
-  #Site Footer
-  #Product and Collection Grids
-  #Collection Filters
-  #Breadcrumbs
-  #Product Page
-  #Notes and Form Feedback
-  #Cart Page
-  #Ajax Cart Styles
+  #Base
+  #Header
 ==============================================================================*/
 
 /*============================================================================
@@ -154,29 +131,6 @@ $desktop-page-link-color: #{'{{ settings.desktop_page_link_color }}'};
 $mobile-border-color: #{'{{ settings.mobile_page_border_color }}'};
 $tablet-border-color: #{'{{ settings.tablet_page_border_color }}'};
 $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
-
-// Other Colors
-
-// Header Top colors
-$header-top-background-color: #fff;
-
-$header-icon-color: #D7D7D7;
-$header-icon-color--active: #444;
-
-$header-link-color: #D7D7D7;
-$header-link-color--active: #444;
-
-$header-top-dropdown-option: #D7D7D7;
-$header-top-dropdown-option--active: #444;
-
-$header-top-separator-color: #E5E5E5;
-
-// Header Middle colors
-$header-main-cart-color: #9A9A9A;
-
-// Header Bottom colors
-$header-bottom-top-info-color: #FFF;
-$header-bottom-top-info-background: #343434;
 /*============================================================================
   #Sass Mixins
 ==============================================================================*/
@@ -726,7 +680,9 @@ $header-bottom-top-info-background: #343434;
 @include breakpoint($screen-lg) {
   @include responsive-invisibility('.hidden-lg');
 }
-// Import all components
+/*============================================================================
+  #Base
+==============================================================================*/
 * {
   box-sizing: border-box;
   outline: none;
@@ -854,11 +810,30 @@ ul { margin:0; padding: 0;}
 }
 
 
+/*============================================================================
+  #Header
+==============================================================================*/
 $headerTopTablet-height:      40px;
 $headerTopDesktop-height:     30px;
 $headerTop-separatorHeight:   14px;
 $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
+
+$logoWidthMobile:  {{ settings.logo_mobile_width }};
+$logoWidthTablet:  {{ settings.logo_tablet_width }};
+$logoWidthDesktop: {{ settings.logo_desktop_width }};
+
+$header-top-background-color: #fff;
+$header-icon-color: #D7D7D7;
+$header-icon-color--active: #444;
+$header-link-color: #D7D7D7;
+$header-link-color--active: #444;
+$header-top-dropdown-option: #D7D7D7;
+$header-top-dropdown-option--active: #444;
+$header-top-separator-color: #E5E5E5;
+$header-main-cart-color: #9A9A9A;
+$header-bottom-top-info-color: #FFF;
+$header-bottom-top-info-background: #343434;
 
 .headerTop {
   background: $header-top-background-color;
@@ -1188,15 +1163,15 @@ $headerTopDesktopIcon-height: 20px;
   }
 
   .logo__img {
-    max-height:30px;
+    max-width: $logoWidthMobile;
     display: block;
 
     @include breakpoint($screen-sm-min) {
-      max-height:40px;
+      max-width: $logoWidthTablet;
     }
 
     @include breakpoint($screen-lg) {
-      max-height:50px;
+      max-width: $logoWidthDesktop;
     }
   }
 

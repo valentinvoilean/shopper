@@ -31,15 +31,15 @@
   }
 
   .logo__img {
-    max-height:30px;
+    max-width: $logoWidthMobile;
     display: block;
 
     @include breakpoint($screen-sm-min) {
-      max-height:40px;
+      max-width: $logoWidthTablet;
     }
 
     @include breakpoint($screen-lg) {
-      max-height:50px;
+      max-width: $logoWidthDesktop;
     }
   }
 

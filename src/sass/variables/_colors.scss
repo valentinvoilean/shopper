@@ -14,26 +14,3 @@ $desktop-page-link-color: #{'{{ settings.desktop_page_link_color }}'};
 $mobile-border-color: #{'{{ settings.mobile_page_border_color }}'};
 $tablet-border-color: #{'{{ settings.tablet_page_border_color }}'};
 $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
-
-// Other Colors
-
-// Header Top colors
-$header-top-background-color: #fff;
-
-$header-icon-color: #D7D7D7;
-$header-icon-color--active: #444;
-
-$header-link-color: #D7D7D7;
-$header-link-color--active: #444;
-
-$header-top-dropdown-option: #D7D7D7;
-$header-top-dropdown-option--active: #444;
-
-$header-top-separator-color: #E5E5E5;
-
-// Header Middle colors
-$header-main-cart-color: #9A9A9A;
-
-// Header Bottom colors
-$header-bottom-top-info-color: #FFF;
-$header-bottom-top-info-background: #343434;

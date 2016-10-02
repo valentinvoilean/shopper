@@ -1,3 +1,25 @@
+$headerTopTablet-height:      40px;
+$headerTopDesktop-height:     30px;
+$headerTop-separatorHeight:   14px;
+$headerTopTabletIcon-height:  26px;
+$headerTopDesktopIcon-height: 20px;
+
+$logoWidthMobile:  {{ settings.logo_mobile_width }};
+$logoWidthTablet:  {{ settings.logo_tablet_width }};
+$logoWidthDesktop: {{ settings.logo_desktop_width }};
+
+$header-top-background-color: #fff;
+$header-icon-color: #D7D7D7;
+$header-icon-color--active: #444;
+$header-link-color: #D7D7D7;
+$header-link-color--active: #444;
+$header-top-dropdown-option: #D7D7D7;
+$header-top-dropdown-option--active: #444;
+$header-top-separator-color: #E5E5E5;
+$header-main-cart-color: #9A9A9A;
+$header-bottom-top-info-color: #FFF;
+$header-bottom-top-info-background: #343434;
+
 @import 'headerTop';
 @import 'headerMain';
 @import 'headerBottom';

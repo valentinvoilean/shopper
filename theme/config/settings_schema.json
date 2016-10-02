@@ -2568,19 +2568,22 @@
         "type": "text",
         "id": "logo_desktop_width",
         "label": "Desktop Logo Width",
-        "info": "default: 100px"
+        "info": "default: 140px",
+        "default": "140px"
       },
       {
         "type": "text",
         "id": "logo_tablet_width",
         "label": "Tablet Logo Width",
-        "info": "default: 100px"
+        "info": "default: 95px",
+        "default": "95px"
       },
       {
         "type": "text",
         "id": "logo_mobile_width",
         "label": "Mobile Logo Width",
-        "info": "default: 100px"
+        "info": "default: 75px",
+        "default": "75px"
       }
     ]
   },

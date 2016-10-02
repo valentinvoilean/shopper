@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js', 'modernizr'],
+    vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
     main: [`${__src.js}/main.js`]
   },
 
