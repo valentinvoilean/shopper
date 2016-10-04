@@ -9,6 +9,22 @@ export default class TopHeaderMyAccountComponent {
     this.$rightSide = $el.find(`.${CLASSES.rightSide}`);
     this.$welcomeMessage = this.$rightSide.find(`.${CLASSES.link}`);
 
+    this.settings = {
+      linksStyle: {
+        mobile: '{{ settings.my_account_link_style_mobile }}',
+        tablet: '{{ settings.my_account_link_style_tablet }}',
+        desktop: '{{ settings.my_account_link_style_desktop }}'
+      },
+      linksActions: {
+        mobile: '{{ settings.my_account_link_action_mobile }}',
+        tablet: '{{ settings.my_account_link_action_tablet }}',
+        desktop: '{{ settings.my_account_link_action_desktop }}'
+      },
+      logoSrc: "{{ 'logo.png' | asset_url }}"
+    };
+
+    console.warn(this.settings);
+
     this._calculateWidths();
     this._addEventHandlers();
   }

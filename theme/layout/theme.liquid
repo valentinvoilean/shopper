@@ -30,6 +30,18 @@
   <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
   {{ 'shopify_common.js'  | asset_url | script_tag }}
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+  <script>
+    var shopSettings = {
+      loggedIn: "{{ customer }}",
+      registrationEnabled: "{{ shop.customer_accounts_optional }}",
+      customerEmail: "{{ customer.email }}",
+      customerName: "{{ customer.first_name }}"
+    };
+
+    console.log(shopSettings);
+  </script>
+
   <script src="{{ 'vendors.js' | asset_url }}" defer></script>
   <script src="{{ 'main.bundle.js' | asset_url }}" defer></script>
 </head>
