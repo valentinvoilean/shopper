@@ -2611,6 +2611,160 @@
     ]
   },
   {
+    "name": "My Account",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Links style"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_style_desktop",
+        "options": [
+          { "value": "0", "label": "No links visible"},
+          { "value": "1", "label": "Slide in/out links"},
+          { "value": "2", "label": "Always visible"}
+        ],
+        "default": "1",
+        "label": "Links style on large/desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_style_tablet",
+        "options": [
+          { "value": "0", "label": "No links visible"},
+          { "value": "1", "label": "Slide in/out links"},
+          { "value": "2", "label": "Always visible"}
+        ],
+        "default": "1",
+        "label": "Links style on tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_style_mobile",
+        "options": [
+          { "value": "1", "label": "Slide in/out links"},
+          { "value": "2", "label": "Always visible"}
+        ],
+        "default": "1",
+        "label": "Links style on mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Links actions"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_action_desktop",
+        "options": [
+          { "value": "0", "label": "Shadowbox"},
+          { "value": "1", "label": "Tooltip"},
+          { "value": "2", "label": "Jump to page"}
+        ],
+        "default": "1",
+        "label": "Links action on large/desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_action_tablet",
+        "options": [
+          { "value": "0", "label": "Shadowbox"},
+          { "value": "1", "label": "Tooltip"},
+          { "value": "2", "label": "Jump to page"}
+        ],
+        "default": "0",
+        "label": "Links action on tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_link_action_mobile",
+        "options": [
+          { "value": "0", "label": "Shadowbox"},
+          { "value": "1", "label": "Jump to page"}
+        ],
+        "default": "0",
+        "label": "Links action on mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Shadowbox settings"
+      },
+      {
+        "type": "select",
+        "id": "my_account_shadowbox_animation_desktop",
+        "options": [
+          { "value": "0", "label": "None"},
+          { "value": "1", "label": "Fade in"},
+          { "value": "2", "label": "Slide in from top"}
+        ],
+        "default": "2",
+        "label": "Shadowbox animation on large/desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_shadowbox_animation_tablet",
+        "options": [
+          { "value": "0", "label": "None"},
+          { "value": "1", "label": "Fade in"},
+          { "value": "2", "label": "Slide in from top"}
+        ],
+        "default": "2",
+        "label": "Shadowbox animation on tablet screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_shadowbox_animation_mobile",
+        "options": [
+          { "value": "0", "label": "None"},
+          { "value": "1", "label": "Fade in"},
+          { "value": "2", "label": "Slide in from top"}
+        ],
+        "default": "1",
+        "label": "Shadowbox animation on mobile screens"
+      },
+      {
+        "type": "header",
+        "content": "Tooltip settings"
+      },
+      {
+        "type": "select",
+        "id": "my_account_tooltip_animation_desktop",
+        "options": [
+          { "value": "0", "label": "None"},
+          { "value": "1", "label": "Fade in"},
+          { "value": "2", "label": "Slide in from top"}
+        ],
+        "default": "2",
+        "label": "Tooltip animation on large/desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_tooltip_animation_tablet",
+        "options": [
+          { "value": "0", "label": "None"},
+          { "value": "1", "label": "Fade in"},
+          { "value": "2", "label": "Slide in from top"}
+        ],
+        "default": "2",
+        "label": "Tooltip animation on tablet screens"
+      },
+      {
+        "type": "header",
+        "content": "Form styles"
+      },
+      {
+        "type": "select",
+        "id": "my_account_form",
+        "options": [
+          { "value": "0", "label": "Classic"},
+          { "value": "1", "label": "Light"}
+        ],
+        "default": "1",
+        "label": "Form components style"
+      }
+    ]
+  },
+  {
     "name": "Collection pages",
     "settings": [
       {
