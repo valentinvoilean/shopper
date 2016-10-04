@@ -5,7 +5,7 @@ const
   webpack = require('webpack');
 
 module.exports = {
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
 
   entry: {
     vendors: ['prefixfree', 'babel-polyfill', 'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
@@ -33,7 +33,15 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    /*new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    })*/
   ],
 
   module: {
@@ -57,11 +65,11 @@ module.exports = {
     loaders: [
       {
         test: /\.svg$/,
-        loader: 'svg-sprite',
+        loader: 'svg-sprite'
       },
       {
         test: /\.modernizrrc$/,
-        loader: "modernizr"
+        loader: 'modernizr'
       }
     ]
   }
