@@ -1,32 +1,15 @@
 <header role="banner" class="mainHeader header">
   <div class="headerTop hidden-xs">
-    <div class="container">
-      <ul class="headerTopLeft">
-        <li class="currencies headerTopLeft__item" data-ss-init="CurrenciesComponent">
-          <svg class="headerTopLeft__img">
-            <use xlink:href="#arrow2"></use>
-          </svg>
-          <ul class="headerTopLeft__options">
-            <li class="active headerTopLeft__option">€EUR</li>
-            <li class="headerTopLeft__option">£GBP</li>
-            <li class="headerTopLeft__option">$USD</li>
-          </ul>
-        </li>
-        <li class="countries headerTopLeft__item">
-          <svg class="headerTopLeft__img">
-            <use xlink:href="#arrow2"></use>
-          </svg>
-          <ul class="headerTopLeft__options">
-            <li class="headerTopLeft__option active">English</li>
-            <li class="headerTopLeft__option">Espanol</li>
-          </ul>
-        </li>
-      </ul>
+    <div class="container noClear">
+      <div>
+        {% include 'header-currency' %}
+        {% include 'header-language' %}
+      </div>
 
-      <ul class="headerTopRight">
+      <div>
         {% include 'header-wish-list' %}
         {% include 'header-my-account' %}
-      </ul>
+      </div>
     </div>
   </div>
 

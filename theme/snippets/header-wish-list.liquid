@@ -45,7 +45,7 @@
   {% endfor %}
 {% endif %}
 
-<li class="wishList"
+<div class="wishList"
     data-ss-init="TopHeaderWishListComponent">
   <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
      class="wishList__link is-outside-viewport">My Wishlist</a>
@@ -59,6 +59,6 @@
       <use xlink:href="#wish-list-2"></use>
     </svg>
   </a>
-</li>
-<li class="headerTop__separator"></li>
+</div>
+<div class="headerTop__separator"></div>
 {% endif %}

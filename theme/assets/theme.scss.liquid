@@ -145,6 +145,14 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   *zoom: 1;
 }
 
+.noClear {
+  &:after {
+    content: initial !important;
+    display: none !important;
+    clear: none !important;
+  }
+}
+
 @mixin clearfix() {
   &:after {
     content: '';
@@ -856,12 +864,16 @@ $header-bottom-top-info-background: #343434;
   }
 }
 
-.headerTop > .container > ul {
+.headerTop > .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerTop > .container > div {
   overflow: hidden;
   height: 100%;
 
-  & > li {
-    list-style: none;
+  & > div {
     float: left;
     cursor: pointer;
   }
@@ -1071,65 +1083,65 @@ $header-bottom-top-info-background: #343434;
   &:last-child { display: none; }
 }
 
-.headerTopRight {
-  float: right;
-}
+.currency,
+.language {
+  margin-right: 20px;
 
-.headerTopLeft {
-  float: left;
-
-  .headerTopLeft__item {
-    margin-right: 20px;
-
-    &:hover {
-      .headerTopLeft__img {
-        transform: rotate(0deg);
-        fill: $header-icon-color--active;
-      }
-
-      .headerTopLeft__option {
-        max-width: 200px;
-        margin-right: 10px;
-      }
+  &:hover {
+    .currency__img,
+    .language__img {
+      transform: rotate(0deg);
+      fill: $header-icon-color--active;
     }
-  }
 
-  .headerTopLeft__img {
-    height: 8px;
-    width: 8px;
-    margin-top: 16px;
-    margin-right: 5px;
-    fill: $header-icon-color;
-    float: left;
-    transform: rotate(90deg);
-    cursor: pointer;
-    transition: transform .3s ease-in-out, fill .3s linear;
-
-    @include breakpoint($screen-lg) {
-      margin-top: 10px;
-    }
-  }
-
-  .headerTopLeft__options {
-    list-style: none;
-    float: left;
-    text-transform: uppercase;
-  }
-
-  .headerTopLeft__option {
-    float: left;
-    max-width: 0;
-    overflow: hidden;
-    transition: all .3s linear;
-    color: $header-top-dropdown-option;
-
-    &:hover,
-    &.active {
+    .currency__option,
+    .language__option {
       max-width: 200px;
-      color: $header-top-dropdown-option--active;
+      margin-right: 10px;
     }
   }
 }
+
+.currency__img,
+.language__img {
+  height: 8px;
+  width: 8px;
+  margin-top: 16px;
+  margin-right: 5px;
+  fill: $header-icon-color;
+  float: left;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: transform .3s ease-in-out, fill .3s linear;
+
+  @include breakpoint($screen-lg) {
+    margin-top: 10px;
+  }
+}
+
+.currency__select,
+.language__select {
+  list-style: none;
+  float: left;
+  text-transform: uppercase;
+}
+
+.currency__option,
+.language__option {
+  float: left;
+  max-width: 0;
+  overflow: hidden;
+  transition: all .3s linear;
+  color: $header-top-dropdown-option;
+
+  &:hover,
+  &.active {
+    max-width: 200px;
+    color: $header-top-dropdown-option--active;
+  }
+}
+
+
 .headerMain {
   padding-top: 10px;
   padding-bottom: 10px;

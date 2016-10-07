@@ -1,5 +1,5 @@
 {% if shop.customer_accounts_enabled %}
-<li class="myAccount" data-ss-init="TopHeaderMyAccountComponent">
+<div class="myAccount" data-ss-init="TopHeaderMyAccountComponent">
   <div class="myAccount__leftSide is-outside-viewport">
     {% if customer %}
     <a class="myAccount__link" href="/account/logout">Log out</a>
@@ -34,5 +34,5 @@
     </a>
     {% endif %}
   </div>
-</li>
+</div>
 {% endif %}
