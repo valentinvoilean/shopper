@@ -1,0 +1,17 @@
+<div class="headerTop hidden-xs">
+  <div class="container noClear">
+    <div>
+      {% include 'header-currency' %}
+      {% include 'header-language' %}
+    </div>
+
+    <div>
+      {% if settings.wishlist_position_desktop == 'top_right' %}
+        {% include 'header-wish-list' %}
+      {% endif %}
+      {% if settings.my_account_position_desktop == 'top_right' %}
+        {% include 'header-my-account' %}
+      {% endif %}
+    </div>
+  </div>
+</div>
