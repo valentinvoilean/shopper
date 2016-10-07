@@ -880,6 +880,7 @@ $header-bottom-top-info-background: #343434;
 
   .myAccount {
   text-transform: uppercase;
+  display: flex;
 
   .myAccount__link {
     float: left;
@@ -899,12 +900,26 @@ $header-bottom-top-info-background: #343434;
       fill: $header-icon-color--active;
     }
   }
+
+  &.myAccount--leftSide {
+    flex-direction: row-reverse;
+    margin-right: 20px;
+
+    .myAccount__link {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+    .myAccount__separator {
+      margin-left: 5px;
+      margin-right: -5px;
+    }
+  }
 }
 
-// Left Side - hidden links
-.myAccount__leftSide {
-  white-space: nowrap;
-  float: left;
+// Hidden Side - hidden links
+.myAccount__hiddenSide {
+  display: flex;
   overflow: hidden;
 
   &.is-animated {
@@ -913,8 +928,6 @@ $header-bottom-top-info-background: #343434;
 
   .myAccount__separator,
   .myAccount__link {
-    float: none;
-    display: inline-block;
     vertical-align: top;
   }
 
@@ -926,8 +939,7 @@ $header-bottom-top-info-background: #343434;
 }
 
 // Right Side - welcome message + icon
-.myAccount__rightSide {
-  float: left;
+.myAccount__visibleSide {
   overflow: hidden;
   cursor: pointer;
 

@@ -1,6 +1,7 @@
 {% if shop.customer_accounts_enabled %}
-<div class="myAccount" data-ss-init="TopHeaderMyAccountComponent">
-  <div class="myAccount__leftSide is-outside-viewport">
+<div class="myAccount {% if position == "left" %}myAccount--leftSide{% endif %}"
+     data-ss-init="TopHeaderMyAccountComponent">
+  <div class="myAccount__hiddenSide is-outside-viewport">
     {% if customer %}
     <a class="myAccount__link" href="/account/logout">Log out</a>
     <span class="myAccount__separator">-</span>
@@ -14,7 +15,7 @@
     {% endif %}
   </div>
 
-  <div class="myAccount__rightSide">
+  <div class="myAccount__visibleSide">
     {% if customer %}
     <a href="/account" class="myAccount__img">
       <div class="myAccount__gravatar">

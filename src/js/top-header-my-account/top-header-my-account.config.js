@@ -1,7 +1,7 @@
 export const CLASSES = {
   link: 'myAccount__link',
-  leftSide: 'myAccount__leftSide',
-  rightSide: 'myAccount__rightSide',
+  leftSide: 'myAccount__hiddenSide',
+  rightSide: 'myAccount__visibleSide',
   image: 'myAccount__img'
 };
 

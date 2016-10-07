@@ -1,6 +1,11 @@
 <div class="headerTop hidden-xs">
   <div class="container noClear">
     <div>
+      {% if settings.my_account_position_desktop == 'top_left' %}
+        {% assign position = 'left' %}
+        {% include 'header-my-account' %}
+      {% endif %}
+
       {% include 'header-currency' %}
       {% include 'header-language' %}
     </div>
@@ -10,6 +15,7 @@
         {% include 'header-wish-list' %}
       {% endif %}
       {% if settings.my_account_position_desktop == 'top_right' %}
+        {% assign position = 'right' %}
         {% include 'header-my-account' %}
       {% endif %}
     </div>
