@@ -1229,26 +1229,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "search_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "main_right",
-            "label": "Main area - right"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1294,30 +1275,7 @@
             "label": "Main area - right"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "my_account_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "main_left",
-            "label": "Main area - left side"
-          },
-          {
-            "value": "main_right",
-            "label": "Main area - right"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1355,26 +1313,7 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "wishlist_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "hide",
-            "label": "Don't display it"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1416,26 +1355,7 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "currency_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "hide",
-            "label": "Don't display it"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1477,26 +1397,7 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "language_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "hide",
-            "label": "Don't display it"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1550,38 +1451,7 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "social_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "main_left",
-            "label": "Main area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          },
-          {
-            "value": "hide",
-            "label": "Don't display it"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1635,42 +1505,7 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "welcome_position_tablet",
-        "options": [
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "top_center",
-            "label": "Top area - center"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          },
-          {
-            "value": "bottom_center",
-            "label": "Bottom bar - center"
-          },
-          {
-            "value": "hide",
-            "label": "Don't display it"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1708,22 +1543,7 @@
             "label": "Below the bottom bar"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "breadcrumb_position_tablet",
-        "options": [
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "below",
-            "label": "Below the bottom bar"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1783,38 +1603,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "link1_position_tablet",
-        "options": [
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "middle_left",
-            "label": "Middle area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "middle_right",
-            "label": "Middle area - right side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1890,38 +1679,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "link2_position_tablet",
-        "options": [
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "middle_left",
-            "label": "Middle area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "middle_right",
-            "label": "Middle area - right side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -1997,38 +1755,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "link3_position_tablet",
-        "options": [
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "middle_left",
-            "label": "Middle area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "middle_right",
-            "label": "Middle area - right side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -2104,38 +1831,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "link4_position_tablet",
-        "options": [
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "middle_left",
-            "label": "Middle area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "middle_right",
-            "label": "Middle area - right side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
@@ -2211,38 +1907,7 @@
             "label": "Bottom bar - right side"
           }
         ],
-        "label": "Position on Large/Desktop screens"
-      },
-      {
-        "type": "select",
-        "id": "link5_position_tablet",
-        "options": [
-          {
-            "value": "top_left",
-            "label": "Top area - left side"
-          },
-          {
-            "value": "middle_left",
-            "label": "Middle area - left side"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Bottom bar - left side"
-          },
-          {
-            "value": "top_right",
-            "label": "Top area - right side"
-          },
-          {
-            "value": "middle_right",
-            "label": "Middle area - right side"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Bottom bar - right side"
-          }
-        ],
-        "label": "Position on Tablet screens"
+        "label": "Position on Tablet/Desktop screens"
       },
       {
         "type": "select",
