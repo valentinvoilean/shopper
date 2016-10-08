@@ -1,0 +1,16 @@
+{% if settings.use_logo %}
+<a class="logo" href="/">
+  {% if settings.use_logo_retina %}
+  <img class="logo__img"
+       src="{{ 'logo.png' | asset_url }}"
+       srcset="{{ 'logo.png' | asset_url }} 1x, {{ 'logo_retina.png' | asset_url }} 2x"
+       alt="{{ shop.name }}">
+  {% else %}
+  <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+  {% endif %}
+</a>
+{% else %}
+<a id="site-title" href="/">
+  {{ shop.name }}
+</a>
+{% endif %}

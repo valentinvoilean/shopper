@@ -1109,48 +1109,32 @@
         "id": "logo_position_desktop",
         "options": [
           {
-            "value": "left",
+            "value": "logo--firstPositionDesktop",
             "label": "Left side"
           },
           {
-            "value": "center",
+            "value": "",
             "label": "Center"
           }
         ],
-        "default": "left",
-        "label": "Desktop / Large Screen"
-      },
-      {
-        "type": "radio",
-        "id": "logo_position_tablet",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left side"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          }
-        ],
-        "default": "left",
-        "label": "Tablet"
+        "default": "logo--firstPositionDesktop",
+        "label": "Logo position on Tablet / Desktop"
       },
       {
         "type": "radio",
         "id": "logo_position_mobile",
         "options": [
           {
-            "value": "left",
+            "value": "logo--firstPositionMobile",
             "label": "Left side"
           },
           {
-            "value": "center",
+            "value": "",
             "label": "Center"
           }
         ],
-        "default": "center",
-        "label": "Mobile"
+        "default": "logo--firstPositionMobile",
+        "label": "Logo position on Mobile devices"
       },
       {
         "type": "paragraph",

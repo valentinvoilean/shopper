@@ -1180,6 +1180,18 @@ $header-bottom-top-info-background: #343434;
     }
   }
 
+  .logo--firstPositionMobile {
+    @include breakpoint($screen-xs) {
+      order: -1;
+    }
+  }
+
+  .logo--firstPositionDesktop {
+    @include breakpoint($screen-sm-min) {
+      order: -1;
+    }
+  }
+
   .logo__img {
     max-width: $logoWidthMobile;
     display: block;
