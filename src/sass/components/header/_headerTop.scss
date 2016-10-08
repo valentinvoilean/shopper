@@ -20,14 +20,14 @@
 }
 
 .headerTop > .container {
-  display: flex;
-  justify-content: space-between;
+  @include flexbox;
+  @include justify-content(space-between);
   height: inherit;
 }
 
 .headerTop__items {
-  display: flex;
-  align-items: center;
+  @include flexbox;
+  @include align-items(center);
   overflow: hidden;
   height: inherit;
 

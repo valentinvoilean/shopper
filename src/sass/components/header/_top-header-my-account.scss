@@ -1,7 +1,7 @@
 .myAccount {
+  @include flexbox;
+  @include align-items(center);
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
 
   .myAccount__link {
     color: $header-link-color;

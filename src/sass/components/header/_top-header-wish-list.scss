@@ -1,8 +1,8 @@
 .wishList {
+  @include flexbox;
+  @include align-items(center);
   text-transform: uppercase;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 
   .wishList__link {
     color: $header-link-color;
