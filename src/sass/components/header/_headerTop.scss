@@ -22,16 +22,14 @@
 .headerTop > .container {
   display: flex;
   justify-content: space-between;
+  height: inherit;
 }
 
-.headerTop > .container > div {
+.headerTop__items {
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  height: 100%;
-
-  & > div {
-    float: left;
-    cursor: pointer;
-  }
+  height: inherit;
 
   @import "top-header-my-account";
   @import "top-header-wish-list";
@@ -41,14 +39,9 @@
   height: $headerTop-separatorHeight;
   width: 1px;
   background: $header-top-separator-color;
-  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
   margin-left: 10px;
   margin-right: 10px;
   cursor: default;
-
-  @include breakpoint($screen-lg) {
-    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
-  }
 
   &:last-child { display: none; }
 }

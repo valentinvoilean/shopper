@@ -867,27 +867,26 @@ $header-bottom-top-info-background: #343434;
 .headerTop > .container {
   display: flex;
   justify-content: space-between;
+  height: inherit;
 }
 
-.headerTop > .container > div {
+.headerTop__items {
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  height: 100%;
-
-  & > div {
-    float: left;
-    cursor: pointer;
-  }
+  height: inherit;
 
   .myAccount {
   text-transform: uppercase;
   display: flex;
+  align-items: center;
 
   .myAccount__link {
-    float: left;
     color: $header-link-color;
     padding-right: 10px;
     transition: color .3s ease-in-out;
     cursor: pointer;
+    white-space: nowrap;
 
     &.is-active {
       color: $header-link-color--active;
@@ -919,8 +918,9 @@ $header-bottom-top-info-background: #343434;
 
 // Hidden Side - hidden links
 .myAccount__hiddenSide {
-  display: flex;
+  display: block;
   overflow: hidden;
+  white-space: nowrap;
 
   &.is-animated {
     transition: all .3s ease-in-out;
@@ -958,13 +958,11 @@ $header-bottom-top-info-background: #343434;
     position: relative;
     height: $headerTopTabletIcon-height;
     width: $headerTopTabletIcon-height + 2;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
     float: right;
 
     @include breakpoint($screen-lg) {
       height: $headerTopDesktopIcon-height;
       width: $headerTopDesktopIcon-height + 2;
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
     }
   }
 
@@ -997,6 +995,8 @@ $header-bottom-top-info-background: #343434;
   .wishList {
   text-transform: uppercase;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   .wishList__link {
     color: $header-link-color;
@@ -1044,11 +1044,10 @@ $header-bottom-top-info-background: #343434;
 
   .wishList__img {
     position: relative;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
+    height: $headerTopTabletIcon-height;
 
     @include breakpoint($screen-lg) {
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+      height: $headerTopDesktopIcon-height;
     }
   }
 
@@ -1083,14 +1082,9 @@ $header-bottom-top-info-background: #343434;
   height: $headerTop-separatorHeight;
   width: 1px;
   background: $header-top-separator-color;
-  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
   margin-left: 10px;
   margin-right: 10px;
   cursor: default;
-
-  @include breakpoint($screen-lg) {
-    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
-  }
 
   &:last-child { display: none; }
 }

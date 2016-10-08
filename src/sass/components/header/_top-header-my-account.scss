@@ -1,13 +1,14 @@
 .myAccount {
   text-transform: uppercase;
   display: flex;
+  align-items: center;
 
   .myAccount__link {
-    float: left;
     color: $header-link-color;
     padding-right: 10px;
     transition: color .3s ease-in-out;
     cursor: pointer;
+    white-space: nowrap;
 
     &.is-active {
       color: $header-link-color--active;
@@ -39,8 +40,9 @@
 
 // Hidden Side - hidden links
 .myAccount__hiddenSide {
-  display: flex;
+  display: block;
   overflow: hidden;
+  white-space: nowrap;
 
   &.is-animated {
     transition: all .3s ease-in-out;
@@ -78,13 +80,11 @@
     position: relative;
     height: $headerTopTabletIcon-height;
     width: $headerTopTabletIcon-height + 2;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
     float: right;
 
     @include breakpoint($screen-lg) {
       height: $headerTopDesktopIcon-height;
       width: $headerTopDesktopIcon-height + 2;
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
     }
   }
 

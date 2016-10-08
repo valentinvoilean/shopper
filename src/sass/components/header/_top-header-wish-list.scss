@@ -1,6 +1,8 @@
 .wishList {
   text-transform: uppercase;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   .wishList__link {
     color: $header-link-color;
@@ -48,11 +50,10 @@
 
   .wishList__img {
     position: relative;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
+    height: $headerTopTabletIcon-height;
 
     @include breakpoint($screen-lg) {
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+      height: $headerTopDesktopIcon-height;
     }
   }
 
