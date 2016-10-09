@@ -9,8 +9,7 @@
     {% comment %} <!-- My Account - Main Area - Left Side  --> {% endcomment %}
     {% if settings.logo_position_desktop == '' %}
     {% if settings.my_account_position_desktop == 'main_left' %}
-    {% assign position = 'left' %}
-    {% include 'header-my-account' %}
+    {% include 'header-my-account' with position:'left', isVisibleOnDesktop:'true' %}
     {% endif %}
     {% endif %}
   </div>
@@ -29,9 +28,11 @@
 
   <div class="headerMain__items">
     {% comment %} <!-- My Account - Main Area - Right Side --> {% endcomment %}
-    {% if settings.my_account_position_desktop == 'main_right' %}
-    {% assign position = 'right' %}
-    {% include 'header-my-account' %}
+    {% if settings.my_account_position_desktop == 'main_right'%} {% assign isVisibleOnDesktop = 'true' %} {% endif %}
+    {% if settings.my_account_position_mobile == 'right'%} {% assign isVisibleOnMobile = 'true' %} {% endif %}
+
+    {% if settings.my_account_position_desktop == 'main_right' or settings.my_account_position_mobile == 'right' %}
+    {% include 'header-my-account' with isVisibleOnDesktop, isVisibleOnMobile %}
     {% endif %}
 
     {% comment %} <!-- Cart - Main Area - Right Side --> {% endcomment %}

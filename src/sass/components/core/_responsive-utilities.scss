@@ -20,15 +20,29 @@
 .visible-xs-block,
 .visible-xs-inline,
 .visible-xs-inline-block,
+.visible-xs-flex,
+
+.visible-sm-block,
+.visible-sm-block,
 .visible-sm-block,
 .visible-sm-inline,
+.visible-sm-min-inline,
+.visible-sm-max-inline,
 .visible-sm-inline-block,
+.visible-sm-min-inline-block,
+.visible-sm-max-inline-block,
+.visible-sm-flex,
+.visible-sm-min-flex,
+.visible-sm-max-flex,
+
 .visible-md-block,
 .visible-md-inline,
 .visible-md-inline-block,
+.visible-md-flex,
 .visible-lg-block,
 .visible-lg-inline,
-.visible-lg-inline-block {
+.visible-lg-inline-block,
+.visible-lg-flex {
   display: none !important;
 }
 
@@ -50,6 +64,11 @@
     display: inline-block !important;
   }
 }
+.visible-xs-flex {
+  @include breakpoint($screen-xs) {
+    display: flex !important;
+  }
+}
 
 @include breakpoint($screen-sm) {
   @include responsive-visibility('.visible-sm');
@@ -59,14 +78,59 @@
     display: block !important;
   }
 }
+.visible-sm-min-block {
+  @include breakpoint($screen-sm-min) {
+    display: block !important;
+  }
+}
+.visible-sm-max-block {
+  @include breakpoint($screen-sm-max) {
+    display: block !important;
+  }
+}
 .visible-sm-inline {
   @include breakpoint($screen-sm) {
+    display: inline !important;
+  }
+}
+.visible-sm-min-inline {
+  @include breakpoint($screen-sm-min) {
+    display: inline !important;
+  }
+}
+.visible-sm-max-inline {
+  @include breakpoint($screen-sm-max) {
     display: inline !important;
   }
 }
 .visible-sm-inline-block {
   @include breakpoint($screen-sm) {
     display: inline-block !important;
+  }
+}
+.visible-sm-min-inline-block {
+  @include breakpoint($screen-sm-min) {
+    display: inline-block !important;
+  }
+}
+.visible-sm-max-inline-block {
+  @include breakpoint($screen-sm-max) {
+    display: inline-block !important;
+  }
+}
+.visible-sm-flex {
+  @include breakpoint($screen-sm) {
+    display: flex !important;
+  }
+}
+.visible-sm-min-flex {
+  @include breakpoint($screen-sm-min) {
+    display: flex !important;
+  }
+}
+.visible-sm-max-flex {
+  @include breakpoint($screen-sm-max) {
+    display: flex !important;
   }
 }
 
@@ -88,6 +152,11 @@
     display: inline-block !important;
   }
 }
+.visible-md-flex {
+  @include breakpoint($screen-md) {
+    display: flex !important;
+  }
+}
 
 @include breakpoint($screen-lg) {
   @include responsive-visibility('.visible-lg');
@@ -105,6 +174,11 @@
 .visible-lg-inline-block {
   @include breakpoint($screen-lg) {
     display: inline-block !important;
+  }
+}
+.visible-lg-flex {
+  @include breakpoint($screen-lg) {
+    display: flex !important;
   }
 }
 

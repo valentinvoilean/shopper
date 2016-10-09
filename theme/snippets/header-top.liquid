@@ -3,15 +3,13 @@
     <div class="headerTop__items">
       {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_left' %}
-      {% assign position = 'left' %}
-      {% include 'header-my-account' %}
+      {% include 'header-my-account' with position:'left'%}
       {% endif %}
 
       {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
       {% unless settings.logo_position_desktop == '' %}
       {% if settings.my_account_position_desktop == 'main_left' %}
-      {% assign position = 'left' %}
-      {% include 'header-my-account' %}
+      {% include 'header-my-account' with position:'left'%}
       {% endif %}
       {% endunless %}
 
@@ -30,7 +28,6 @@
 
       {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_right' %}
-        {% assign position = 'right' %}
         {% include 'header-my-account' %}
       {% endif %}
     </div>
