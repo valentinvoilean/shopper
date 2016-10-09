@@ -190,8 +190,24 @@
   @include responsive-invisibility('.hidden-sm');
 }
 
+@include breakpoint($screen-sm-min) {
+  @include responsive-invisibility('.hidden-sm-min');
+}
+
+@include breakpoint($screen-sm-max) {
+  @include responsive-invisibility('.hidden-sm-max');
+}
+
 @include breakpoint($screen-md) {
   @include responsive-invisibility('.hidden-md');
+}
+
+@include breakpoint($screen-md-min) {
+  @include responsive-invisibility('.hidden-md-min');
+}
+
+@include breakpoint($screen-md-max) {
+  @include responsive-invisibility('.hidden-md-max');
 }
 
 @include breakpoint($screen-lg) {

@@ -14,10 +14,6 @@
     flex-direction: row-reverse;
     margin-right: 20px;
 
-    @include breakpoint($screen-xs) {
-      display: none;
-    }
-
     .myAccount__link {
       padding-right: 0;
       padding-left: 10px;
@@ -95,9 +91,27 @@
 
 // Hidden Side - hidden links
 .myAccount__hiddenSide {
-  display: block;
+  display: none;
   overflow: hidden;
   white-space: nowrap;
+
+  @include breakpoint($screen-sm) {
+    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_tablet }}'}
+    }
+  }
+
+  @include breakpoint($screen-md-min) {
+    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_desktop }}'}
+    }
+  }
 
   &.is-animated {
     transition: all .3s ease-in-out;

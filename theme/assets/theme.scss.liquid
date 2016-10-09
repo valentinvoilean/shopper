@@ -1110,8 +1110,24 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   @include responsive-invisibility('.hidden-sm');
 }
 
+@include breakpoint($screen-sm-min) {
+  @include responsive-invisibility('.hidden-sm-min');
+}
+
+@include breakpoint($screen-sm-max) {
+  @include responsive-invisibility('.hidden-sm-max');
+}
+
 @include breakpoint($screen-md) {
   @include responsive-invisibility('.hidden-md');
+}
+
+@include breakpoint($screen-md-min) {
+  @include responsive-invisibility('.hidden-md-min');
+}
+
+@include breakpoint($screen-md-max) {
+  @include responsive-invisibility('.hidden-md-max');
 }
 
 @include breakpoint($screen-lg) {
@@ -1487,10 +1503,6 @@ $header-bottom-top-info-background: #343434;
     flex-direction: row-reverse;
     margin-right: 20px;
 
-    @include breakpoint($screen-xs) {
-      display: none;
-    }
-
     .myAccount__link {
       padding-right: 0;
       padding-left: 10px;
@@ -1568,9 +1580,27 @@ $header-bottom-top-info-background: #343434;
 
 // Hidden Side - hidden links
 .myAccount__hiddenSide {
-  display: block;
+  display: none;
   overflow: hidden;
   white-space: nowrap;
+
+  @include breakpoint($screen-sm) {
+    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_tablet }}'}
+    }
+  }
+
+  @include breakpoint($screen-md-min) {
+    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_desktop }}'}
+    }
+  }
 
   &.is-animated {
     transition: all .3s ease-in-out;

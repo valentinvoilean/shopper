@@ -2270,33 +2270,23 @@
         "type": "select",
         "id": "my_account_link_style_desktop",
         "options": [
-          { "value": "0", "label": "No links visible"},
-          { "value": "1", "label": "Slide in/out links"},
-          { "value": "2", "label": "Always visible"}
+          { "value": "none", "label": "No links visible"},
+          { "value": "slide", "label": "Slide in/out links"},
+          { "value": "block", "label": "Always visible"}
         ],
-        "default": "1",
+        "default": "slide",
         "label": "Links style on large/desktop screens"
       },
       {
         "type": "select",
         "id": "my_account_link_style_tablet",
         "options": [
-          { "value": "0", "label": "No links visible"},
-          { "value": "1", "label": "Slide in/out links"},
-          { "value": "2", "label": "Always visible"}
+          { "value": "none", "label": "No links visible"},
+          { "value": "slide", "label": "Slide in/out links"},
+          { "value": "block", "label": "Always visible"}
         ],
-        "default": "1",
+        "default": "slide",
         "label": "Links style on tablet screens"
-      },
-      {
-        "type": "select",
-        "id": "my_account_link_style_mobile",
-        "options": [
-          { "value": "1", "label": "Slide in/out links"},
-          { "value": "2", "label": "Always visible"}
-        ],
-        "default": "1",
-        "label": "Links style on mobile screens"
       },
       {
         "type": "header",
