@@ -7,7 +7,7 @@
       {% endif %}
 
       {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
-      {% unless settings.logo_position_desktop == '' %}
+      {% unless settings.logo_position_desktop == 'center' %}
       {% if settings.my_account_position_desktop == 'main_left' %}
       {% include 'header-my-account' with position:'left'%}
       {% endif %}
@@ -23,12 +23,12 @@
     <div class="headerTop__items">
       {% comment %} <!-- Wishlist - Top Area - Right Side --> {% endcomment %}
       {% if settings.wishlist_position_desktop == 'top_right' %}
-        {% include 'header-wish-list' %}
+      {% include 'header-wish-list' %}
       {% endif %}
 
       {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_right' %}
-        {% include 'header-my-account' %}
+      {% include 'header-my-account' %}
       {% endif %}
     </div>
   </div>

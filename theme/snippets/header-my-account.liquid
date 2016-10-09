@@ -1,23 +1,10 @@
 {% if shop.customer_accounts_enabled %}
 
-{% assign leftSideClass = '' %}
-{% assign desktopVisibilityClass = '' %}
-{% assign mobileVisibilityClass = '' %}
-
 {% if position == 'left' %}
 {% assign leftSideClass = 'myAccount--leftSide'%}
 {% endif %}
 
-{% if isVisibleOnDesktop == 'true' %}
-{% assign desktopVisibilityClass = 'visible-sm-min-flex'%}
-{% endif %}
-
-{% if isVisibleOnMobile == 'true' %}
-{% assign mobileVisibilityClass = 'visible-xs-flex'%}
-{% endif %}
-
-<div class="myAccount {{leftSideClass}} {{mobileVisibilityClass}} {{desktopVisibilityClass}}"
-     data-ss-init="TopHeaderMyAccountComponent">
+<div class="myAccount {{leftSideClass}}" data-ss-init="TopHeaderMyAccountComponent">
   <div class="myAccount__hiddenSide is-outside-viewport">
     {% if customer %}
     <a class="myAccount__link" href="/account/logout">Log out</a>

@@ -1109,15 +1109,15 @@
         "id": "logo_position_desktop",
         "options": [
           {
-            "value": "logo--firstPositionDesktop",
+            "value": "left",
             "label": "Left side"
           },
           {
-            "value": "",
+            "value": "center",
             "label": "Center"
           }
         ],
-        "default": "logo--firstPositionDesktop",
+        "default": "left",
         "label": "Logo position on Tablet / Desktop"
       },
       {
@@ -1125,15 +1125,15 @@
         "id": "logo_position_mobile",
         "options": [
           {
-            "value": "logo--firstPositionMobile",
+            "value": "left",
             "label": "Left side"
           },
           {
-            "value": "",
+            "value": "center",
             "label": "Center"
           }
         ],
-        "default": "logo--firstPositionMobile",
+        "default": "center",
         "label": "Logo position on Mobile devices"
       },
       {

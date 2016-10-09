@@ -1396,6 +1396,23 @@ $header-bottom-top-info-background: #343434;
     padding-bottom: 20px;
   }
 
+  .headerMain__items {
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  &.center .headerMain__items {
+    width: 100%;
+  }
+
   .menuIcon {
     margin-right: auto;
   }
@@ -1408,18 +1425,6 @@ $header-bottom-top-info-background: #343434;
     @include breakpoint($screen-sm-min) {
       margin-left: 0;
       margin-right: 0;
-    }
-  }
-
-  .logo--firstPositionMobile {
-    @include breakpoint($screen-xs) {
-      @include order(-1);
-    }
-  }
-
-  .logo--firstPositionDesktop {
-    @include breakpoint($screen-sm-min) {
-      @include order(-1);
     }
   }
 
@@ -1444,22 +1449,6 @@ $header-bottom-top-info-background: #343434;
     @include breakpoint($screen-sm-min) {
       width: 30px;
       height: 30px;
-    }
-  }
-}
-
-.headerMain--stretchedItems {
-  .headerMain__items {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    &:first-child {
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      justify-content: flex-end;
     }
   }
 }
