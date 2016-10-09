@@ -4,6 +4,9 @@ $headerTop-separatorHeight:   14px;
 $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
 
+$headerMainTabletMyAccountIcon-height:  25px;
+$headerMainDesktopMyAccountIcon-height: 30px;
+
 $logoWidthMobile:  {{ settings.logo_mobile_width }};
 $logoWidthTablet:  {{ settings.logo_tablet_width }};
 $logoWidthDesktop: {{ settings.logo_desktop_width }};
@@ -23,3 +26,6 @@ $header-bottom-top-info-background: #343434;
 @import 'headerTop';
 @import 'headerMain';
 @import 'headerBottom';
+
+@import "header-my-account";
+@import "header-wish-list";

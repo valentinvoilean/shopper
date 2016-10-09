@@ -1,6 +1,6 @@
 .headerMain {
   @include flexbox;
-  @include align-items(center);
+  @include align-items(flex-start);
   @include justify-content(space-between);
   padding-top: 10px;
   padding-bottom: 10px;
@@ -59,11 +59,26 @@
     width: 25px;
     height: 25px;
     fill: $header-main-cart-color;
-    margin-left: auto;
 
     @include breakpoint($screen-sm-min) {
       width: 30px;
       height: 30px;
+    }
+  }
+}
+
+.headerMain--stretchedItems {
+  .headerMain__items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
     }
   }
 }

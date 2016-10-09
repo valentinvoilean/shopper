@@ -1,18 +1,40 @@
-<div class="headerMain container noClear">
+<div class="headerMain container noClear
+    {% if settings.logo_position_mobile == '' %}headerMain--stretchedItems{% endif %}">
   <div class="headerMain__items">
+    {% comment %} <!-- Menu Burger Icon --> {% endcomment %}
     {% if settings.logo_position_mobile == '' %}
-      {% include 'header-menu-mobile' %}
+    {% include 'header-menu-mobile' %}
+    {% endif %}
+
+    {% comment %} <!-- My Account - Main Area - Left Side  --> {% endcomment %}
+    {% if settings.logo_position_desktop == '' %}
+    {% if settings.my_account_position_desktop == 'main_left' %}
+    {% assign position = 'left' %}
+    {% include 'header-my-account' %}
+    {% endif %}
     {% endif %}
   </div>
 
+  {% comment %} <!-- The order of the main elements is changed with CSS flexbox --> {% endcomment %}
   <div class="headerMain__items {{settings.logo_position_mobile}} {{settings.logo_position_desktop}}">
+
+    {% comment %} <!-- Menu Burger Icon --> {% endcomment %}
     {% unless settings.logo_position_mobile == '' %}
-      {% include 'header-menu-mobile' %}
+    {% include 'header-menu-mobile' %}
     {% endunless %}
+
+    {% comment %} <!-- Logo --> {% endcomment %}
     {% include 'header-logo' %}
   </div>
 
   <div class="headerMain__items">
+    {% comment %} <!-- My Account - Main Area - Right Side --> {% endcomment %}
+    {% if settings.my_account_position_desktop == 'main_right' %}
+    {% assign position = 'right' %}
+    {% include 'header-my-account' %}
+    {% endif %}
+
+    {% comment %} <!-- Cart - Main Area - Right Side --> {% endcomment %}
     {% include 'header-cart' %}
   </div>
 </div>

@@ -1,19 +1,34 @@
 <div class="headerTop hidden-xs">
   <div class="container noClear">
     <div class="headerTop__items">
+      {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_left' %}
-        {% assign position = 'left' %}
-        {% include 'header-my-account' %}
+      {% assign position = 'left' %}
+      {% include 'header-my-account' %}
       {% endif %}
 
+      {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
+      {% unless settings.logo_position_desktop == '' %}
+      {% if settings.my_account_position_desktop == 'main_left' %}
+      {% assign position = 'left' %}
+      {% include 'header-my-account' %}
+      {% endif %}
+      {% endunless %}
+
+      {% comment %} <!-- Currency - Top Area - Left Side --> {% endcomment %}
       {% include 'header-currency' %}
+
+      {% comment %} <!-- Language - Top Area - Left Side --> {% endcomment %}
       {% include 'header-language' %}
     </div>
 
     <div class="headerTop__items">
+      {% comment %} <!-- Wishlist - Top Area - Right Side --> {% endcomment %}
       {% if settings.wishlist_position_desktop == 'top_right' %}
         {% include 'header-wish-list' %}
       {% endif %}
+
+      {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_right' %}
         {% assign position = 'right' %}
         {% include 'header-my-account' %}

@@ -30,9 +30,6 @@
   @include align-items(center);
   overflow: hidden;
   height: inherit;
-
-  @import "top-header-my-account";
-  @import "top-header-wish-list";
 }
 
 .headerTop__separator {

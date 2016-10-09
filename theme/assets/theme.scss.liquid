@@ -1182,6 +1182,9 @@ $headerTop-separatorHeight:   14px;
 $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
 
+$headerMainTabletMyAccountIcon-height:  25px;
+$headerMainDesktopMyAccountIcon-height: 30px;
+
 $logoWidthMobile:  {{ settings.logo_mobile_width }};
 $logoWidthTablet:  {{ settings.logo_tablet_width }};
 $logoWidthDesktop: {{ settings.logo_desktop_width }};
@@ -1230,23 +1233,185 @@ $header-bottom-top-info-background: #343434;
   @include align-items(center);
   overflow: hidden;
   height: inherit;
+}
 
-  .myAccount {
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $header-top-separator-color;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  &:last-child { display: none; }
+}
+
+.currency,
+.language {
+  margin-right: 20px;
+
+  &:hover {
+    .currency__img,
+    .language__img {
+      transform: rotate(0deg);
+      fill: $header-icon-color--active;
+    }
+
+    .currency__option,
+    .language__option {
+      max-width: 200px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.currency__img,
+.language__img {
+  height: 8px;
+  width: 8px;
+  margin-top: 16px;
+  margin-right: 5px;
+  fill: $header-icon-color;
+  float: left;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: transform .3s ease-in-out, fill .3s linear;
+
+  @include breakpoint($screen-lg) {
+    margin-top: 10px;
+  }
+}
+
+.currency__select,
+.language__select {
+  list-style: none;
+  float: left;
+  text-transform: uppercase;
+}
+
+.currency__option,
+.language__option {
+  float: left;
+  max-width: 0;
+  overflow: hidden;
+  transition: all .3s linear;
+  color: $header-top-dropdown-option;
+
+  &:hover,
+  &.active {
+    max-width: 200px;
+    color: $header-top-dropdown-option--active;
+  }
+}
+
+
+.headerMain {
+  @include flexbox;
+  @include align-items(flex-start);
+  @include justify-content(space-between);
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @include breakpoint($screen-md) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  @include breakpoint($screen-lg) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .menuIcon {
+    margin-right: auto;
+  }
+
+  .logo {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @include breakpoint($screen-sm-min) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .logo--firstPositionMobile {
+    @include breakpoint($screen-xs) {
+      @include order(-1);
+    }
+  }
+
+  .logo--firstPositionDesktop {
+    @include breakpoint($screen-sm-min) {
+      @include order(-1);
+    }
+  }
+
+  .logo__img {
+    max-width: $logoWidthMobile;
+    display: block;
+
+    @include breakpoint($screen-sm-min) {
+      max-width: $logoWidthTablet;
+    }
+
+    @include breakpoint($screen-lg) {
+      max-width: $logoWidthDesktop;
+    }
+  }
+
+  .cart {
+    width: 25px;
+    height: 25px;
+    fill: $header-main-cart-color;
+
+    @include breakpoint($screen-sm-min) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.headerMain--stretchedItems {
+  .headerMain__items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.headerBottom {
+  overflow: hidden;
+
+  .topInfo {
+    height: 25px;
+    width: 100%;
+    float: left;
+    color: $header-bottom-top-info-color;
+    background: $header-bottom-top-info-background;
+  }
+
+  .breadcrumb {
+    height: 25px;
+    width: 100%;
+    float: left;
+  }
+}
+
+.myAccount {
   @include flexbox;
   @include align-items(center);
   text-transform: uppercase;
-
-  .myAccount__link {
-    color: $header-link-color;
-    padding-right: 10px;
-    transition: color .3s ease-in-out;
-    cursor: pointer;
-    white-space: nowrap;
-
-    &.is-active {
-      color: $header-link-color--active;
-    }
-  }
 
   &:hover,
   &.is-active {
@@ -1259,6 +1424,10 @@ $header-bottom-top-info-background: #343434;
     flex-direction: row-reverse;
     margin-right: 20px;
 
+    @include breakpoint($screen-xs) {
+      display: none;
+    }
+
     .myAccount__link {
       padding-right: 0;
       padding-left: 10px;
@@ -1269,6 +1438,69 @@ $header-bottom-top-info-background: #343434;
       margin-right: -5px;
     }
   }
+}
+
+.myAccount__link {
+  color: $header-link-color;
+  padding-right: 10px;
+  transition: color .3s ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &.is-active {
+    color: $header-link-color--active;
+  }
+}
+
+.myAccount__img {
+  position: relative;
+  float: right;
+}
+
+.headerTop .myAccount__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+  }
+}
+
+.headerMain .myAccount__img {
+  height: $headerMainTabletMyAccountIcon-height;
+  width: $headerMainTabletMyAccountIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerMainDesktopMyAccountIcon-height;
+    width: $headerMainDesktopMyAccountIcon-height + 2;
+  }
+}
+
+.myAccount__icon {
+  transition: fill 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  fill: $header-icon-color;
+  overflow: visible;
+}
+
+.myAccount__gravatar {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100px;
+  }
+}
+
+.myAccount__gravatar + .myAccount__icon {
+  border-radius: 100px;
+  overflow: hidden;
 }
 
 // Hidden Side - hidden links
@@ -1308,46 +1540,8 @@ $header-bottom-top-info-background: #343434;
       transition: all .3s ease-in-out;
     }
   }
-
-  .myAccount__img {
-    position: relative;
-    height: $headerTopTabletIcon-height;
-    width: $headerTopTabletIcon-height + 2;
-    float: right;
-
-    @include breakpoint($screen-lg) {
-      height: $headerTopDesktopIcon-height;
-      width: $headerTopDesktopIcon-height + 2;
-    }
-  }
-
-  .myAccount__icon {
-    transition: fill 0.3s ease-in-out;
-    height: 100%;
-    width: 100%;
-    fill: $header-icon-color;
-    overflow: visible;
-  }
-
-  .myAccount__gravatar {
-    position: absolute;
-    top: 0;
-    right: 1px;
-    height: 100%;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 100px;
-    }
-
-    & + .myAccount__icon {
-      border-radius: 100px;
-      overflow: hidden;
-    }
-  }
 }
-  .wishList {
+.wishList {
   @include flexbox;
   @include align-items(center);
   text-transform: uppercase;
@@ -1432,166 +1626,6 @@ $header-bottom-top-info-background: #343434;
     }
   }
 }
-}
-
-.headerTop__separator {
-  height: $headerTop-separatorHeight;
-  width: 1px;
-  background: $header-top-separator-color;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: default;
-
-  &:last-child { display: none; }
-}
-
-.currency,
-.language {
-  margin-right: 20px;
-
-  &:hover {
-    .currency__img,
-    .language__img {
-      transform: rotate(0deg);
-      fill: $header-icon-color--active;
-    }
-
-    .currency__option,
-    .language__option {
-      max-width: 200px;
-      margin-right: 10px;
-    }
-  }
-}
-
-.currency__img,
-.language__img {
-  height: 8px;
-  width: 8px;
-  margin-top: 16px;
-  margin-right: 5px;
-  fill: $header-icon-color;
-  float: left;
-  transform: rotate(90deg);
-  cursor: pointer;
-  transition: transform .3s ease-in-out, fill .3s linear;
-
-  @include breakpoint($screen-lg) {
-    margin-top: 10px;
-  }
-}
-
-.currency__select,
-.language__select {
-  list-style: none;
-  float: left;
-  text-transform: uppercase;
-}
-
-.currency__option,
-.language__option {
-  float: left;
-  max-width: 0;
-  overflow: hidden;
-  transition: all .3s linear;
-  color: $header-top-dropdown-option;
-
-  &:hover,
-  &.active {
-    max-width: 200px;
-    color: $header-top-dropdown-option--active;
-  }
-}
-
-
-.headerMain {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  @include breakpoint($screen-md) {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  @include breakpoint($screen-lg) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .menuIcon {
-    margin-right: auto;
-  }
-
-  .logo {
-    display: block;
-    margin-left: 20px;
-    margin-right: 20px;
-
-    @include breakpoint($screen-sm-min) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  .logo--firstPositionMobile {
-    @include breakpoint($screen-xs) {
-      @include order(-1);
-    }
-  }
-
-  .logo--firstPositionDesktop {
-    @include breakpoint($screen-sm-min) {
-      @include order(-1);
-    }
-  }
-
-  .logo__img {
-    max-width: $logoWidthMobile;
-    display: block;
-
-    @include breakpoint($screen-sm-min) {
-      max-width: $logoWidthTablet;
-    }
-
-    @include breakpoint($screen-lg) {
-      max-width: $logoWidthDesktop;
-    }
-  }
-
-  .cart {
-    width: 25px;
-    height: 25px;
-    fill: $header-main-cart-color;
-    margin-left: auto;
-
-    @include breakpoint($screen-sm-min) {
-      width: 30px;
-      height: 30px;
-    }
-  }
-}
-
-.headerBottom {
-  overflow: hidden;
-
-  .topInfo {
-    height: 25px;
-    width: 100%;
-    float: left;
-    color: $header-bottom-top-info-color;
-    background: $header-bottom-top-info-background;
-  }
-
-  .breadcrumb {
-    height: 25px;
-    width: 100%;
-    float: left;
-  }
-}
-
 /* -----------------------------------------------------------------------------
   HAMBURGER ICONS COMPONENT
 
