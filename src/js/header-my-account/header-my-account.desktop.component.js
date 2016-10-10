@@ -17,7 +17,7 @@ export default class {
 
     this._addEventHandlers();
 
-    if (this.settings.linksStyle.desktop === 'slide') {
+    if (this.settings.linksStyle === 'slide') {
       this._calculateWidths();
       this.$leftSide.addClass(SHARED_CLASSES.collapsed);
       this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
@@ -97,7 +97,7 @@ export default class {
   }
 
   _slideInLeftSide() {
-    if (this.settings.linksStyle.desktop === 'slide') {
+    if (this.settings.linksStyle === 'slide') {
       this.$leftSide
         .one('transitionend', () => {
           this.$welcomeMessage
@@ -111,7 +111,7 @@ export default class {
   }
 
   _slideOutLeftSide() {
-    if (this.settings.linksStyle.desktop === 'slide') {
+    if (this.settings.linksStyle === 'slide') {
       this.$leftSide
         .one('transitionend', () => {
           this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
