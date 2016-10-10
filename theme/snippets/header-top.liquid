@@ -3,20 +3,24 @@
 {% endif %}
 
 {% if mediaQuery == 'desktop' %}
-{% assign headerClass = 'visible-lg-flex'%}
+{% assign headerClass = 'visible-md-flex visible-lg-flex'%}
 {% endif %}
+
+{% assign myAccountPosition = 'my_account_position_' | append: mediaQuery %}
+{% assign logoPosition = 'logo_position_' | append: mediaQuery %}
+{% assign wishlistPosition = 'wishlist_position_' | append: mediaQuery %}
 
 <div class="headerTop {{headerClass}}">
   <div class="container noClear">
     <div class="headerTop__items">
       {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
-      {% if settings.my_account_position_desktop == 'top_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery%}
+      {% if settings[myAccountPosition] == 'top_left' %}
+        {% include 'header-my-account', mediaQuery %}
       {% endif %}
 
       {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
-      {% unless settings.logo_position_desktop == 'center' %}
-      {% if settings.my_account_position_desktop == 'main_left' %}
+      {% unless settings[logoPosition] == 'center' %}
+      {% if settings[myAccountPosition] == 'main_left' %}
       {% include 'header-my-account', position:'left', mediaQuery%}
       {% endif %}
       {% endunless %}
@@ -30,12 +34,12 @@
 
     <div class="headerTop__items">
       {% comment %} <!-- Wishlist - Top Area - Right Side --> {% endcomment %}
-      {% if settings.wishlist_position_desktop == 'top_right' %}
+      {% if settings[wishlistPosition] == 'top_right' %}
       {% include 'header-wish-list' %}
       {% endif %}
 
       {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
-      {% if settings.my_account_position_desktop == 'top_right' %}
+      {% if settings[myAccountPosition] == 'top_right' %}
       {% include 'header-my-account', mediaQuery %}
       {% endif %}
     </div>

@@ -1118,7 +1118,23 @@
           }
         ],
         "default": "left",
-        "label": "Logo position on Tablet / Desktop"
+        "label": "Logo position on Desktop"
+      },
+      {
+        "type": "radio",
+        "id": "logo_position_tablet",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left side"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left",
+        "label": "Logo position on Tablet"
       },
       {
         "type": "radio",
@@ -1259,7 +1275,30 @@
             "label": "Main area - right side"
           }
         ],
-        "label": "Position on Tablet/Desktop screens"
+        "label": "Position on Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "my_account_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
+            "value": "main_right",
+            "label": "Main area - right side"
+          }
+        ],
+        "label": "Position on Tablet screens"
       },
       {
         "type": "select",
@@ -1297,7 +1336,26 @@
             "label": "Don't display it"
           }
         ],
-        "label": "Position on Tablet/Desktop screens"
+        "label": "Position on Desktop screens"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_position_tablet",
+        "options": [
+          {
+            "value": "top_right",
+            "label": "Top area - right side"
+          },
+          {
+            "value": "top_left",
+            "label": "Top area - left side"
+          },
+          {
+            "value": "hide",
+            "label": "Don't display it"
+          }
+        ],
+        "label": "Position on Tablet screens"
       },
       {
         "type": "select",
