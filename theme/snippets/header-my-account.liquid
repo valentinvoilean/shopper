@@ -4,16 +4,7 @@
 {% assign leftSideClass = 'myAccount--leftSide'%}
 {% endif %}
 
-{% case settings.my_account_link_style_tablet %}
-  {% when '0' %}
-    {% assign myAccountLinksStateDesktop = 'myAccount--leftSide'%}
-  {% when '1' %}
-
-  {% when '2' %}
-
-{% endcase %}
-
-<div class="myAccount {{leftSideClass}}" data-ss-init="HeaderMyAccountComponent">
+<div class="myAccount {{leftSideClass}}" data-ss-init="HeaderMyAccountComponent" data-ss-mq="{{mediaQuery}}">
   <div class="myAccount__hiddenSide hidden-xs is-outside-viewport">
     {% if customer %}
     <a class="myAccount__link" href="/account/logout">Log out</a>
