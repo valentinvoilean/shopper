@@ -1,15 +1,23 @@
-<div class="headerTop visible-sm-flex">
+{% if mediaQuery == 'tablet' %}
+{% assign headerClass = 'visible-sm-flex'%}
+{% endif %}
+
+{% if mediaQuery == 'desktop' %}
+{% assign headerClass = 'visible-lg-flex'%}
+{% endif %}
+
+<div class="headerTop {{headerClass}}">
   <div class="container noClear">
     <div class="headerTop__items">
       {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery: 'tablet'%}
+      {% include 'header-my-account', position:'left', mediaQuery%}
       {% endif %}
 
       {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
       {% unless settings.logo_position_desktop == 'center' %}
       {% if settings.my_account_position_desktop == 'main_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery: 'tablet'%}
+      {% include 'header-my-account', position:'left', mediaQuery%}
       {% endif %}
       {% endunless %}
 
@@ -28,43 +36,7 @@
 
       {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
       {% if settings.my_account_position_desktop == 'top_right' %}
-      {% include 'header-my-account', mediaQuery: 'tablet' %}
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-<div class="headerTop visible-md-flex visible-lg-flex">
-  <div class="container noClear">
-    <div class="headerTop__items">
-      {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
-      {% if settings.my_account_position_desktop == 'top_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery: 'desktop'%}
-      {% endif %}
-
-      {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
-      {% unless settings.logo_position_desktop == 'center' %}
-      {% if settings.my_account_position_desktop == 'main_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery: 'desktop'%}
-      {% endif %}
-      {% endunless %}
-
-      {% comment %} <!-- Currency - Top Area - Left Side --> {% endcomment %}
-      {% include 'header-currency' %}
-
-      {% comment %} <!-- Language - Top Area - Left Side --> {% endcomment %}
-      {% include 'header-language' %}
-    </div>
-
-    <div class="headerTop__items">
-      {% comment %} <!-- Wishlist - Top Area - Right Side --> {% endcomment %}
-      {% if settings.wishlist_position_desktop == 'top_right' %}
-      {% include 'header-wish-list' %}
-      {% endif %}
-
-      {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
-      {% if settings.my_account_position_desktop == 'top_right' %}
-      {% include 'header-my-account', mediaQuery: 'desktop' %}
+      {% include 'header-my-account', mediaQuery %}
       {% endif %}
     </div>
   </div>
