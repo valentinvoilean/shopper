@@ -2,7 +2,11 @@
   {% include 'header-top', mediaQuery: 'tablet' %}
   {% include 'header-top', mediaQuery: 'desktop' %}
 
-  {% include 'header-main' %}
-  {% include 'header-bottom' %}
-</header>
+  {% include 'header-main', mediaQuery: 'mobile' %}
+  {% include 'header-main', mediaQuery: 'tablet' %}
+  {% include 'header-main', mediaQuery: 'desktop' %}
 
+  {% include 'header-bottom', mediaQuery: 'mobile' %}
+  {% include 'header-bottom', mediaQuery: 'tablet' %}
+  {% include 'header-bottom', mediaQuery: 'desktop' %}
+</header>
