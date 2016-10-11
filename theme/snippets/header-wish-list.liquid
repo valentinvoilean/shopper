@@ -62,9 +62,9 @@
     {% assign mobileClass = 'visible-xs-flex'%}
   {% endif %}
 
-  {% if settings.my_account_position_desktop == position
-  or settings.my_account_position_tablet == position
-  or settings.my_account_position_mobile == position %}
+  {% if settings.wishlist_position_desktop == position
+     or settings.wishlist_position_tablet == position
+     or settings.wishlist_position_mobile == position %}
     <div class="wishList test {{ mobileClass }} {{ tabletClass }} {{ desktopClass }}"
         data-ss-init="TopHeaderWishListComponent">
       <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
