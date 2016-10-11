@@ -1305,7 +1305,7 @@
         "id": "my_account_position_mobile",
         "options": [
           {
-            "value": "right",
+            "value": "main_right",
             "label": "Right"
           },
           {
@@ -1332,6 +1332,14 @@
             "label": "Top area - left side"
           },
           {
+            "value": "main_right",
+            "label": "Main area - right side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
             "value": "hide",
             "label": "Don't display it"
           }
@@ -1351,6 +1359,14 @@
             "label": "Top area - left side"
           },
           {
+            "value": "main_right",
+            "label": "Main area - right side"
+          },
+          {
+            "value": "main_left",
+            "label": "Main area - left side"
+          },
+          {
             "value": "hide",
             "label": "Don't display it"
           }
@@ -1362,7 +1378,7 @@
         "id": "wishlist_position_mobile",
         "options": [
           {
-            "value": "right",
+            "value": "main_right",
             "label": "Right"
           },
           {
