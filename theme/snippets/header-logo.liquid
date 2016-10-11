@@ -2,17 +2,9 @@
 {% assign tabletClass = '' %}
 {% assign mobileClass = '' %}
 
-{% if settings.logo_position_desktop == position %}
-  {% assign desktopClass = 'visible-md-min'%}
-{% endif %}
-
-{% if settings.logo_position_tablet == position %}
-  {% assign tabletClass = 'visible-sm'%}
-{% endif %}
-
-{% if settings.logo_position_mobile == position %}
-  {% assign mobileClass = 'visible-xs'%}
-{% endif %}
+{% if settings.logo_position_desktop == position %}{% assign desktopClass = 'visible-md-min'%}{% endif %}
+{% if settings.logo_position_tablet == position %}{% assign tabletClass = 'visible-sm'%}{% endif %}
+{% if settings.logo_position_mobile == position %}{% assign mobileClass = 'visible-xs'%}{% endif %}
 
 {% if settings.logo_position_desktop == position
 or settings.logo_position_tablet == position

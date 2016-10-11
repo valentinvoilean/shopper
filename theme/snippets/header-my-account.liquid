@@ -6,21 +6,12 @@
   {% assign mobileClass = '' %}
 
   {% if position == 'top_left' or position == 'main_left' %}
-  {% assign horizontalPosition = 'myAccount--leftSide'%}
+    {% assign horizontalPosition = 'myAccount--leftSide'%}
   {% endif %}
 
-  {% if settings.my_account_position_desktop == position %}
-    {% assign desktopClass = 'visible-md-min-flex'%}
-  {% endif %}
-
-  {% if settings.my_account_position_tablet == position %}
-    {% assign tabletClass = 'visible-sm-flex'%}
-  {% endif %}
-
-  {% if settings.my_account_position_mobile == position %}
-    {% assign mobileClass = 'visible-xs-flex'%}
-  {% endif %}
-
+  {% if settings.my_account_position_desktop == position %}{% assign desktopClass = 'visible-md-min-flex'%}{% endif %}
+  {% if settings.my_account_position_tablet == position %}{% assign tabletClass = 'visible-sm-flex'%}{% endif %}
+  {% if settings.my_account_position_mobile == position %}{% assign mobileClass = 'visible-xs-flex'%}{% endif %}
 
   {% if settings.my_account_position_desktop == position
      or settings.my_account_position_tablet == position

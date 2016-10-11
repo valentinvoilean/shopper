@@ -50,17 +50,9 @@
     {% endfor %}
   {% endif %}
 
-  {% if settings.wishlist_position_desktop == position %}
-    {% assign desktopClass = 'visible-md-min-flex'%}
-  {% endif %}
-
-  {% if settings.wishlist_position_tablet == position %}
-    {% assign tabletClass = 'visible-sm-flex'%}
-  {% endif %}
-
-  {% if settings.wishlist_position_mobile == position %}
-    {% assign mobileClass = 'visible-xs-flex'%}
-  {% endif %}
+  {% if settings.wishlist_position_desktop == position %}{% assign desktopClass = 'visible-md-min-flex'%}{% endif %}
+  {% if settings.wishlist_position_tablet == position %}{% assign tabletClass = 'visible-sm-flex'%}{% endif %}
+  {% if settings.wishlist_position_mobile == position %}{% assign mobileClass = 'visible-xs-flex'%}{% endif %}
 
   {% if settings.wishlist_position_desktop == position
      or settings.wishlist_position_tablet == position
