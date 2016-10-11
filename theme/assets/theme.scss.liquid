@@ -754,28 +754,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   }
 }
 
-// Responsive utilities
-
-//
-// More easily include all the states for responsive-utilities.less.
-// [converter] $parent hack
-@mixin responsive-visibility($parent) {
-  #{$parent} {
-    display: block !important;
-  }
-  table#{$parent}  { display: table !important; }
-  tr#{$parent}     { display: table-row !important; }
-  th#{$parent},
-  td#{$parent}     { display: table-cell !important; }
-}
-
-// [converter] $parent hack
-@mixin responsive-invisibility($parent) {
-  #{$parent} {
-    display: none !important;
-  }
-}
-
 /*============================================================================
   #Normalize
 ==============================================================================*/
@@ -921,119 +899,43 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 //
 // Responsive: Utility classes
 // --------------------------------------------------
-
-.visible-xs-block,
-.visible-xs-inline,
-.visible-xs-inline-block,
-.visible-xs-flex,
-
-.visible-sm-block,
-.visible-sm-min-block,
-.visible-sm-max-block,
-
-.visible-sm-inline,
-.visible-sm-min-inline,
-.visible-sm-max-inline,
-
-.visible-sm-inline-block,
-.visible-sm-min-inline-block,
-.visible-sm-max-inline-block,
-
-.visible-sm-flex,
-.visible-sm-min-flex,
-.visible-sm-max-flex,
-
-.visible-md-block,
-.visible-md-min-block,
-.visible-md-max-block,
-
-.visible-md-inline,
-.visible-md-min-inline,
-.visible-md-max-inline,
-
-.visible-md-min-inline-block,
-.visible-md-max-inline-block,
-.visible-md-inline-block,
-
-.visible-md-min-flex,
-.visible-md-max-flex,
-.visible-md-flex,
-
-.visible-lg-block,
-.visible-lg-inline,
-.visible-lg-inline-block,
-.visible-lg-flex {
-  display: none !important;
+@mixin returnInitialStateClasses($mediaQueries){
+  @each $mq in $mediaQueries {
+    .visible-#{$mq}-min,
+    .visible-#{$mq}-min-inline,
+    .visible-#{$mq}-min-inline-block,
+    .visible-#{$mq}-min-flex,
+    .visible-#{$mq},
+    .visible-#{$mq}-inline,
+    .visible-#{$mq}-inline-block,
+    .visible-#{$mq}-flex,
+    .visible-#{$mq}-max,
+    .visible-#{$mq}-max-inline,
+    .visible-#{$mq}-max-inline-block,
+    .visible-#{$mq}-max-flex {
+      display: none !important;
+    }
+  }
 }
 
-@include breakpoint($screen-xs) {
-  @include responsive-visibility('.visible-xs');
-  .hidden-xs { display: none !important; }
-  .visible-xs-block { display: block !important; }
-  .visible-xs-inline { display: inline !important; }
-  .visible-xs-inline-block { display: inline-block !important; }
-  .visible-xs-flex { display: flex !important; }
-
+@mixin returnResponsiveClasses($mq){
+  .visible-#{$mq} {display:block !important;}
+  .hidden-#{$mq} { display: none !important; }
+  .visible-#{$mq}-inline { display: inline !important; }
+  .visible-#{$mq}-inline-block { display: inline-block !important; }
+  .visible-#{$mq}-flex { display: flex !important; }
 }
 
-@include breakpoint($screen-sm) {
-  @include responsive-visibility('.visible-sm');
-  .hidden-sm { display: none !important; }
-  .visible-sm-block { display: block !important; }
-  .visible-sm-inline { display: inline !important; }
-  .visible-sm-inline-block { display: inline-block !important; }
-  .visible-sm-flex { display: flex !important; }
-}
+@include returnInitialStateClasses(('xs','sm','md','lg'));
 
-@include breakpoint($screen-sm-min) {
-  .hidden-sm-min { display: none !important; }
-  .visible-sm-min-block { display: block !important; }
-  .visible-sm-min-inline { display: inline !important; }
-  .visible-sm-min-inline-block { display: inline-block !important; }
-  .visible-sm-min-flex { display: flex !important; }
-}
-
-@include breakpoint($screen-sm-max) {
-  .hidden-sm-max { display: none !important; }
-  .visible-sm-max-block { display: block !important; }
-  .visible-sm-max-inline { display: inline !important; }
-  .visible-sm-max-inline-block { display: inline-block !important; }
-  .visible-sm-max-flex { display: flex !important; }
-}
-
-@include breakpoint($screen-md) {
-  @include responsive-visibility('.visible-md');
-  .hidden-md { display: none !important; }
-  .visible-md-block { display: block !important; }
-  .visible-md-inline { display: inline !important; }
-  .visible-md-inline-block { display: inline-block !important; }
-  .visible-md-flex { display: flex !important; }
-}
-
-@include breakpoint($screen-md-min) {
-  .hidden-md-min { display: none !important; }
-  .visible-md-min-block { display: block !important; }
-  .visible-md-min-inline { display: inline !important; }
-  .visible-md-min-inline-block { display: inline-block !important; }
-  .visible-md-min-flex { display: flex !important; }
-}
-
-@include breakpoint($screen-md-max) {
-  .hidden-md-max { display: none !important; }
-  .visible-md-max-block { display: block !important; }
-  .visible-md-max-inline { display: inline !important; }
-  .visible-md-max-inline-block { display: inline-block !important; }
-  .visible-md-max-flex { display: flex !important; }
-}
-
-@include breakpoint($screen-lg) {
-  @include responsive-visibility('.visible-lg');
-  .hidden-lg { display: none !important; }
-  .visible-lg-block { display: block !important; }
-  .visible-lg-inline { display: inline !important; }
-  .visible-lg-inline-block { display: inline-block !important; }
-  .visible-lg-flex { display: flex !important; }
-}
+@include breakpoint($screen-xs)     { @include returnResponsiveClasses('xs'); }
+@include breakpoint($screen-sm)     { @include returnResponsiveClasses('sm'); }
+@include breakpoint($screen-sm-min) { @include returnResponsiveClasses('sm-min'); }
+@include breakpoint($screen-sm-max) { @include returnResponsiveClasses('sm-max'); }
+@include breakpoint($screen-md)     { @include returnResponsiveClasses('md'); }
+@include breakpoint($screen-md-min) { @include returnResponsiveClasses('md-min'); }
+@include breakpoint($screen-md-max) { @include returnResponsiveClasses('md-max'); }
+@include breakpoint($screen-lg)     { @include returnResponsiveClasses('lg'); }
 
 /*============================================================================
   #Base
