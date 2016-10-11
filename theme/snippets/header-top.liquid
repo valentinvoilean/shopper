@@ -1,47 +1,15 @@
-{% if mediaQuery == 'tablet' %}
-{% assign headerClass = 'visible-sm-flex'%}
-{% endif %}
 
-{% if mediaQuery == 'desktop' %}
-{% assign headerClass = 'visible-md-flex visible-lg-flex'%}
-{% endif %}
-
-{% assign myAccountPosition = 'my_account_position_' | append: mediaQuery %}
-{% assign logoPosition = 'logo_position_' | append: mediaQuery %}
-{% assign wishlistPosition = 'wishlist_position_' | append: mediaQuery %}
-
-<div class="headerTop {{headerClass}}">
+<div class="headerTop">
   <div class="container noClear">
     <div class="headerTop__items">
-      {% comment %} <!-- My Account - Top Area - Left Side --> {% endcomment %}
-      {% if settings[myAccountPosition] == 'top_left' %}
-        {% include 'header-my-account', mediaQuery %}
-      {% endif %}
-
-      {% comment %} <!-- When the logo is not centered, the "My account" is displayed in the top left side --> {% endcomment %}
-      {% unless settings[logoPosition] == 'center' %}
-      {% if settings[myAccountPosition] == 'main_left' %}
-      {% include 'header-my-account', position:'left', mediaQuery%}
-      {% endif %}
-      {% endunless %}
-
-      {% comment %} <!-- Currency - Top Area - Left Side --> {% endcomment %}
-      {% include 'header-currency' %}
-
-      {% comment %} <!-- Language - Top Area - Left Side --> {% endcomment %}
-      {% include 'header-language' %}
+      {% include 'header-my-account', position: 'top_left' %}
     </div>
 
     <div class="headerTop__items">
-      {% comment %} <!-- Wishlist - Top Area - Right Side --> {% endcomment %}
-      {% if settings[wishlistPosition] == 'top_right' %}
-      {% include 'header-wish-list' %}
-      {% endif %}
+    </div>
 
-      {% comment %} <!-- My Account - Top Area - Right Side --> {% endcomment %}
-      {% if settings[myAccountPosition] == 'top_right' %}
-      {% include 'header-my-account', mediaQuery %}
-      {% endif %}
+    <div class="headerTop__items">
+      {% include 'header-my-account', position: 'top_right' %}
     </div>
   </div>
 </div>

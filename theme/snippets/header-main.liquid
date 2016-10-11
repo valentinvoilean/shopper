@@ -1,46 +1,11 @@
-<!-- Header - Main Area - Mobile -->
-<div class="headerMain visible-xs-flex {{settings.logo_position_mobile}} container noClear">
-  <div class="headerMain__items">
-    {% comment %} <!-- Menu Burger Icon --> {% endcomment %}
-    {% include 'header-menu-mobile' %}
-
-    {% comment %} <!-- My Account - Main Area - Left Side  --> {% endcomment %}
-    {% if settings.logo_position_mobile == 'left' %}
-    {% include 'header-logo' %}
-    {% endif %}
-  </div>
-
-  {% comment %} <!-- Logo --> {% endcomment %}
-  {% if settings.logo_position_mobile == 'center' %}
-  <div class="headerMain__items">
-    {% include 'header-logo' %}
-  </div>
-  {% endif %}
-
-  <div class="headerMain__items">
-    {% comment %} <!-- My Account - Main Area - Right Side --> {% endcomment %}
-    {% if settings.my_account_position_mobile == 'right' %}
-    {% include 'header-my-account'%}
-    {% endif %}
-
-    {% comment %} <!-- Cart - Main Area - Right Side --> {% endcomment %}
-    {% include 'header-cart' %}
-  </div>
-</div>
-
-
-<!-- Header - Main Area - Desktop -->
-<div class="headerMain visible-sm-min-flex {{settings.logo_position_desktop}} container noClear">
+<div class="headerMain container noClear">
   <div class="headerMain__items">
     {% comment %} <!-- Logo --> {% endcomment %}
     {% if settings.logo_position_desktop == 'left' %}
     {% include 'header-logo' %}
     {% endif %}
 
-    {% comment %} <!-- My Account - Main Area - Left Side  --> {% endcomment %}
-    {% if settings.my_account_position_desktop == 'main_left' and settings.logo_position_desktop != 'left' %}
-    {% include 'header-my-account' with position:'left'%}
-    {% endif %}
+    {% include 'header-my-account' with position:'main_left'%}
   </div>
 
   <div class="headerMain__items">
@@ -51,10 +16,7 @@
   </div>
 
   <div class="headerMain__items">
-    {% comment %} <!-- My Account - Main Area - Right Side --> {% endcomment %}
-    {% if settings.my_account_position_desktop == 'main_right'%}
-    {% include 'header-my-account'%}
-    {% endif %}
+    {% include 'header-my-account' with position: 'right'%}
 
     {% comment %} <!-- Cart - Main Area - Right Side --> {% endcomment %}
     {% include 'header-cart' %}
