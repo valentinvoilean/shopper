@@ -12,5 +12,6 @@ class Hello extends React.Component {
       );
   }
 }
+console.log('bad');
 
 ReactDOM.render(<Hello/>, document.body);

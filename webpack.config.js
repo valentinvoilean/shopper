@@ -43,22 +43,19 @@ module.exports = {
     })*/
   ],
 
+  eslint: {
+    failOnError: true
+  },
+
   module: {
     noParse: [
       `${__npm}/jquery`
     ],
     preLoaders: [
-      // transpile all files except testing sources with babel as usual
       {
-        test: /\.js$/,
-        exclude: [
-          path.resolve(__npm),
-          path.resolve(__config),
-          path.resolve(__theme),
-          path.resolve(__tests),
-          path.resolve('./coverage')
-        ],
-        loader: 'babel'
+        test: /\.js?$/,
+        loaders: ['eslint'],
+        include: __src.js
       }
     ],
     loaders: [
@@ -69,6 +66,11 @@ module.exports = {
       {
         test: /\.modernizrrc$/,
         loader: 'modernizr'
+      },
+      {
+        test: /\.js$/,
+        include : __src.js,
+        loader: 'babel'
       }
     ]
   }
