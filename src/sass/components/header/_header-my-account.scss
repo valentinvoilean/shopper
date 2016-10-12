@@ -1,0 +1,147 @@
+.myAccount {
+  @include flexbox;
+  @include align-items(center);
+  text-transform: uppercase;
+
+  &:hover,
+  &.is-active {
+    .myAccount__icon {
+      fill: $header-icon-color--active;
+    }
+  }
+
+  &.myAccount--leftSide {
+    flex-direction: row-reverse;
+    margin-right: 20px;
+
+    .myAccount__link {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+    .myAccount__separator {
+      margin-left: 5px;
+      margin-right: -5px;
+    }
+  }
+}
+
+.myAccount__link {
+  color: $header-link-color;
+  padding-right: 10px;
+  transition: color .3s ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &.is-active {
+    color: $header-link-color--active;
+  }
+}
+
+.myAccount__img {
+  position: relative;
+  float: right;
+}
+
+.headerTop .myAccount__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+  }
+}
+
+.headerMain .myAccount__img {
+  height: $headerMainTabletMyAccountIcon-height;
+  width: $headerMainTabletMyAccountIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerMainDesktopMyAccountIcon-height;
+    width: $headerMainDesktopMyAccountIcon-height + 2;
+  }
+}
+
+.myAccount__icon {
+  transition: fill 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  fill: $header-icon-color;
+  overflow: visible;
+}
+
+.myAccount__gravatar {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100px;
+  }
+}
+
+.myAccount__gravatar + .myAccount__icon {
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+// Hidden Side - hidden links
+.myAccount__hiddenSide {
+  display: none;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @include breakpoint($screen-sm) {
+    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_tablet }}'}
+    }
+  }
+
+  @include breakpoint($screen-md-min) {
+    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_desktop }}'}
+    }
+  }
+
+  &.is-animated {
+    transition: all .3s ease-in-out;
+  }
+
+  .myAccount__separator,
+  .myAccount__link {
+    vertical-align: top;
+  }
+
+  .myAccount__separator {
+    margin-left: -5px;
+    margin-right: 5px;
+    color: $header-top-separator-color;
+  }
+}
+
+// Right Side - welcome message + icon
+.myAccount__visibleSide {
+  overflow: hidden;
+  cursor: pointer;
+
+  .myAccount__link {
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: capitalize;
+
+    &.is-animated {
+      transition: all .3s ease-in-out;
+    }
+  }
+}

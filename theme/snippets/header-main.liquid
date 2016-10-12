@@ -1,0 +1,17 @@
+<div class="headerMain container noClear">
+  <div class="headerMain__items">
+    {% include 'header-logo', position: 'left' %}
+    {% include 'header-my-account', position:'main_left' %}
+    {% include 'header-wish-list', position:'main_left' %}
+  </div>
+
+  <div class="headerMain__items">
+    {% include 'header-logo', position: 'center' %}
+  </div>
+
+  <div class="headerMain__items">
+    {% include 'header-my-account', position: 'main_right' %}
+    {% include 'header-wish-list', position:'main_right' %}
+    {% include 'header-cart' %}
+  </div>
+</div>

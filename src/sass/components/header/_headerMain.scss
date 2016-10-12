@@ -1,9 +1,9 @@
 .headerMain {
+  @include flexbox;
+  @include align-items(flex-start);
+  @include justify-content(space-between);
   padding-top: 10px;
   padding-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   @include breakpoint($screen-md) {
     padding-top: 15px;
@@ -13,6 +13,23 @@
   @include breakpoint($screen-lg) {
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+
+  .headerMain__items {
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  &.center .headerMain__items {
+    width: 100%;
   }
 
   .menuIcon {
@@ -47,7 +64,6 @@
     width: 25px;
     height: 25px;
     fill: $header-main-cart-color;
-    margin-left: auto;
 
     @include breakpoint($screen-sm-min) {
       width: 30px;

@@ -145,6 +145,14 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   *zoom: 1;
 }
 
+.noClear {
+  &:after {
+    content: initial !important;
+    display: none !important;
+    clear: none !important;
+  }
+}
+
 @mixin clearfix() {
   &:after {
     content: '';
@@ -153,6 +161,361 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   *zoom: 1;
 }
 
+// Flexbox Mixins
+// http://philipwalton.github.io/solved-by-flexbox/
+// https://github.com/philipwalton/solved-by-flexbox
+//
+// Copyright (c) 2013 Brian Franco
+//
+//----------------------------------------------------------------------
+
+// Flexbox Containers
+//
+// The 'flex' value causes an element to generate a block-level flex
+// container box.
+//
+// The 'inline-flex' value causes an element to generate a inline-level
+// flex container box.
+//
+// display: flex | inline-flex
+//
+// http://w3.org/tr/css3-flexbox/#flex-containers
+//
+// (Placeholder selectors for each type, for those who rather @extend)
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+%flexbox { @include flexbox; }
+
+//----------------------------------
+
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+%inline-flex { @include inline-flex; }
+
+//----------------------------------------------------------------------
+
+// Flexbox Direction
+//
+// The 'flex-direction' property specifies how flex items are placed in
+// the flex container, by setting the direction of the flex container's
+// main axis. This determines the direction that flex items are laid out in.
+//
+// Values: row | row-reverse | column | column-reverse
+// Default: row
+//
+// http://w3.org/tr/css3-flexbox/#flex-direction-property
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+// Shorter version:
+@mixin flex-dir($args...) { @include flex-direction($args...); }
+
+//----------------------------------------------------------------------
+
+// Flexbox Wrap
+//
+// The 'flex-wrap' property controls whether the flex container is single-line
+// or multi-line, and the direction of the cross-axis, which determines
+// the direction new lines are stacked in.
+//
+// Values: nowrap | wrap | wrap-reverse
+// Default: nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-wrap-property
+
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Flow (shorthand)
+//
+// The 'flex-flow' property is a shorthand for setting the 'flex-direction'
+// and 'flex-wrap' properties, which together define the flex container's
+// main and cross axes.
+//
+// Values: <flex-direction> | <flex-wrap>
+// Default: row nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-flow-property
+
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Order
+//
+// The 'order' property controls the order in which flex items appear within
+// their flex container, by assigning them to ordinal groups.
+//
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#order-property
+
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -moz-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Grow
+//
+// The 'flex-grow' property sets the flex grow factor. Negative numbers
+// are invalid.
+//
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#flex-grow-property
+
+@mixin flex-grow($int: 0) {
+  -webkit-box-flex: $int;
+  -webkit-flex-grow: $int;
+  -moz-flex-grow: $int;
+  -ms-flex-positive: $int;
+  flex-grow: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Shrink
+//
+// The 'flex-shrink' property sets the flex shrink factor. Negative numbers
+// are invalid.
+//
+// Default: 1
+//
+// http://w3.org/tr/css3-flexbox/#flex-shrink-property
+
+@mixin flex-shrink($int: 1) {
+  -webkit-flex-shrink: $int;
+  -moz-flex-shrink: $int;
+  -ms-flex-negative: $int;
+  flex-shrink: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Basis
+//
+// The 'flex-basis' property sets the flex basis. Negative lengths are invalid.
+//
+// Values: Like "width"
+// Default: auto
+//
+// http://www.w3.org/TR/css3-flexbox/#flex-basis-property
+
+@mixin flex-basis($value: auto) {
+  -webkit-flex-basis: $value;
+  -moz-flex-basis: $value;
+  -ms-flex-preferred-size: $value;
+  flex-basis: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox "Flex" (shorthand)
+//
+// The 'flex' property specifies the components of a flexible length: the
+// flex grow factor and flex shrink factor, and the flex basis. When an
+// element is a flex item, 'flex' is consulted instead of the main size
+// property to determine the main size of the element. If an element is
+// not a flex item, 'flex' has no effect.
+//
+// Values: none | <flex-grow> <flex-shrink> || <flex-basis>
+// Default: See individual properties (1 1 0).
+//
+// http://w3.org/tr/css3-flexbox/#flex-property
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Justify Content
+//
+// The 'justify-content' property aligns flex items along the main axis
+// of the current line of the flex container. This is done after any flexible
+// lengths and any auto margins have been resolved. Typically it helps distribute
+// extra free space leftover when either all the flex items on a line are
+// inflexible, or are flexible but have reached their maximum size. It also
+// exerts some control over the alignment of items when they overflow the line.
+//
+// Note: 'space-*' values not supported in older syntaxes.
+//
+// Values: flex-start | flex-end | center | space-between | space-around
+// Default: flex-start
+//
+// http://w3.org/tr/css3-flexbox/#justify-content-property
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+// Shorter version:
+@mixin flex-just($args...) { @include justify-content($args...); }
+
+//----------------------------------------------------------------------
+
+// Flexbox Align Items
+//
+// Flex items can be aligned in the cross axis of the current line of the
+// flex container, similar to 'justify-content' but in the perpendicular
+// direction. 'align-items' sets the default alignment for all of the flex
+// container's items, including anonymous flex items. 'align-self' allows
+// this default alignment to be overridden for individual flex items. (For
+// anonymous flex items, 'align-self' always matches the value of 'align-items'
+// on their associated flex container.)
+//
+// Values: flex-start | flex-end | center | baseline | stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-items-property
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+//----------------------------------
+
+// Flexbox Align Self
+//
+// Values: auto | flex-start | flex-end | center | baseline | stretch
+// Default: auto
+
+@mixin align-self($value: auto) {
+  // No Webkit Box Fallback.
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Align Content
+//
+// The 'align-content' property aligns a flex container's lines within the
+// flex container when there is extra space in the cross-axis, similar to
+// how 'justify-content' aligns individual items within the main-axis. Note,
+// this property has no effect when the flexbox has only a single line.
+//
+// Values: flex-start | flex-end | center | space-between | space-around | stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-content-property
+
+@mixin align-content($value: stretch) {
+  // No Webkit Box Fallback.
+  -webkit-align-content: $value;
+  -moz-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
 // Center-align a block level element
 
 @mixin center-block() {
@@ -391,28 +754,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   }
 }
 
-// Responsive utilities
-
-//
-// More easily include all the states for responsive-utilities.less.
-// [converter] $parent hack
-@mixin responsive-visibility($parent) {
-  #{$parent} {
-    display: block !important;
-  }
-  table#{$parent}  { display: table !important; }
-  tr#{$parent}     { display: table-row !important; }
-  th#{$parent},
-  td#{$parent}     { display: table-cell !important; }
-}
-
-// [converter] $parent hack
-@mixin responsive-invisibility($parent) {
-  #{$parent} {
-    display: none !important;
-  }
-}
-
 /*============================================================================
   #Normalize
 ==============================================================================*/
@@ -558,128 +899,44 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 //
 // Responsive: Utility classes
 // --------------------------------------------------
-
-@at-root {
-  @-ms-viewport {
-    width: device-width;
+@mixin returnInitialStateClasses($mediaQueries){
+  @each $mq in $mediaQueries {
+    .visible-#{$mq}-min,
+    .visible-#{$mq}-min-inline,
+    .visible-#{$mq}-min-inline-block,
+    .visible-#{$mq}-min-flex,
+    .visible-#{$mq},
+    .visible-#{$mq}-inline,
+    .visible-#{$mq}-inline-block,
+    .visible-#{$mq}-flex,
+    .visible-#{$mq}-max,
+    .visible-#{$mq}-max-inline,
+    .visible-#{$mq}-max-inline-block,
+    .visible-#{$mq}-max-flex {
+      display: none !important;
+    }
   }
 }
 
-
-// Visibility utilities
-// Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
-
-@include responsive-invisibility('.visible-xs');
-@include responsive-invisibility('.visible-sm');
-@include responsive-invisibility('.visible-md');
-@include responsive-invisibility('.visible-lg');
-
-.visible-xs-block,
-.visible-xs-inline,
-.visible-xs-inline-block,
-.visible-sm-block,
-.visible-sm-inline,
-.visible-sm-inline-block,
-.visible-md-block,
-.visible-md-inline,
-.visible-md-inline-block,
-.visible-lg-block,
-.visible-lg-inline,
-.visible-lg-inline-block {
-  display: none !important;
+@mixin returnResponsiveClasses($mq){
+  .visible-#{$mq} {display:block !important;}
+  .hidden-#{$mq} { display: none !important; }
+  .visible-#{$mq}-inline { display: inline !important; }
+  .visible-#{$mq}-inline-block { display: inline-block !important; }
+  .visible-#{$mq}-flex { display: flex !important; }
 }
 
-@include breakpoint($screen-xs) {
-  @include responsive-visibility('.visible-xs');
-}
-.visible-xs-block {
-  @include breakpoint($screen-xs) {
-    display: block !important;
-  }
-}
-.visible-xs-inline {
-  @include breakpoint($screen-xs) {
-    display: inline !important;
-  }
-}
-.visible-xs-inline-block {
-  @include breakpoint($screen-xs) {
-    display: inline-block !important;
-  }
-}
+@include returnInitialStateClasses(('xs','sm','md','lg'));
 
-@include breakpoint($screen-sm) {
-  @include responsive-visibility('.visible-sm');
-}
-.visible-sm-block {
-  @include breakpoint($screen-sm) {
-    display: block !important;
-  }
-}
-.visible-sm-inline {
-  @include breakpoint($screen-sm) {
-    display: inline !important;
-  }
-}
-.visible-sm-inline-block {
-  @include breakpoint($screen-sm) {
-    display: inline-block !important;
-  }
-}
+@include breakpoint($screen-xs)     { @include returnResponsiveClasses('xs'); }
+@include breakpoint($screen-sm)     { @include returnResponsiveClasses('sm'); }
+@include breakpoint($screen-sm-min) { @include returnResponsiveClasses('sm-min'); }
+@include breakpoint($screen-sm-max) { @include returnResponsiveClasses('sm-max'); }
+@include breakpoint($screen-md)     { @include returnResponsiveClasses('md'); }
+@include breakpoint($screen-md-min) { @include returnResponsiveClasses('md-min'); }
+@include breakpoint($screen-md-max) { @include returnResponsiveClasses('md-max'); }
+@include breakpoint($screen-lg)     { @include returnResponsiveClasses('lg'); }
 
-@include breakpoint($screen-md) {
-  @include responsive-visibility('.visible-md');
-}
-.visible-md-block {
-  @include breakpoint($screen-md) {
-    display: block !important;
-  }
-}
-.visible-md-inline {
-  @include breakpoint($screen-md) {
-    display: inline !important;
-  }
-}
-.visible-md-inline-block {
-  @include breakpoint($screen-md) {
-    display: inline-block !important;
-  }
-}
-
-@include breakpoint($screen-lg) {
-  @include responsive-visibility('.visible-lg');
-}
-.visible-lg-block {
-  @include breakpoint($screen-lg) {
-    display: block !important;
-  }
-}
-.visible-lg-inline {
-  @include breakpoint($screen-lg) {
-    display: inline !important;
-  }
-}
-.visible-lg-inline-block {
-  @include breakpoint($screen-lg) {
-    display: inline-block !important;
-  }
-}
-
-@include breakpoint($screen-xs) {
-  @include responsive-invisibility('.hidden-xs');
-}
-
-@include breakpoint($screen-sm) {
-  @include responsive-invisibility('.hidden-sm');
-}
-
-@include breakpoint($screen-md) {
-  @include responsive-invisibility('.hidden-md');
-}
-
-@include breakpoint($screen-lg) {
-  @include responsive-invisibility('.hidden-lg');
-}
 /*============================================================================
   #Base
 ==============================================================================*/
@@ -819,6 +1076,9 @@ $headerTop-separatorHeight:   14px;
 $headerTopTabletIcon-height:  26px;
 $headerTopDesktopIcon-height: 20px;
 
+$headerMainTabletMyAccountIcon-height:  25px;
+$headerMainDesktopMyAccountIcon-height: 30px;
+
 $logoWidthMobile:  {{ settings.logo_mobile_width }};
 $logoWidthTablet:  {{ settings.logo_tablet_width }};
 $logoWidthDesktop: {{ settings.logo_desktop_width }};
@@ -856,30 +1116,185 @@ $header-bottom-top-info-background: #343434;
   }
 }
 
-.headerTop > .container > ul {
+.headerTop > .container {
+  @include flexbox;
+  @include justify-content(space-between);
+  height: inherit;
+}
+
+.headerTop__items {
+  @include flexbox;
+  @include align-items(center);
   overflow: hidden;
-  height: 100%;
+  height: inherit;
+}
 
-  & > li {
-    list-style: none;
-    float: left;
-    cursor: pointer;
-  }
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $header-top-separator-color;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
 
-  .myAccount {
-  text-transform: uppercase;
+  &:last-child { display: none; }
+}
 
-  .myAccount__link {
-    float: left;
-    color: $header-link-color;
-    padding-right: 10px;
-    transition: color .3s ease-in-out;
-    cursor: pointer;
+.currency,
+.language {
+  margin-right: 20px;
 
-    &.is-active {
-      color: $header-link-color--active;
+  &:hover {
+    .currency__img,
+    .language__img {
+      transform: rotate(0deg);
+      fill: $header-icon-color--active;
+    }
+
+    .currency__option,
+    .language__option {
+      max-width: 200px;
+      margin-right: 10px;
     }
   }
+}
+
+.currency__img,
+.language__img {
+  height: 8px;
+  width: 8px;
+  margin-top: 16px;
+  margin-right: 5px;
+  fill: $header-icon-color;
+  float: left;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: transform .3s ease-in-out, fill .3s linear;
+
+  @include breakpoint($screen-lg) {
+    margin-top: 10px;
+  }
+}
+
+.currency__select,
+.language__select {
+  list-style: none;
+  float: left;
+  text-transform: uppercase;
+}
+
+.currency__option,
+.language__option {
+  float: left;
+  max-width: 0;
+  overflow: hidden;
+  transition: all .3s linear;
+  color: $header-top-dropdown-option;
+
+  &:hover,
+  &.active {
+    max-width: 200px;
+    color: $header-top-dropdown-option--active;
+  }
+}
+
+
+.headerMain {
+  @include flexbox;
+  @include align-items(flex-start);
+  @include justify-content(space-between);
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @include breakpoint($screen-md) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  @include breakpoint($screen-lg) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .headerMain__items {
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  &.center .headerMain__items {
+    width: 100%;
+  }
+
+  .menuIcon {
+    margin-right: auto;
+  }
+
+  .logo {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @include breakpoint($screen-sm-min) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .logo__img {
+    max-width: $logoWidthMobile;
+    display: block;
+
+    @include breakpoint($screen-sm-min) {
+      max-width: $logoWidthTablet;
+    }
+
+    @include breakpoint($screen-lg) {
+      max-width: $logoWidthDesktop;
+    }
+  }
+
+  .cart {
+    width: 25px;
+    height: 25px;
+    fill: $header-main-cart-color;
+
+    @include breakpoint($screen-sm-min) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.headerBottom {
+  overflow: hidden;
+
+  .topInfo {
+    height: 25px;
+    width: 100%;
+    float: left;
+    color: $header-bottom-top-info-color;
+    background: $header-bottom-top-info-background;
+  }
+
+  .breadcrumb {
+    height: 25px;
+    width: 100%;
+    float: left;
+  }
+}
+
+.myAccount {
+  @include flexbox;
+  @include align-items(center);
+  text-transform: uppercase;
 
   &:hover,
   &.is-active {
@@ -887,13 +1302,109 @@ $header-bottom-top-info-background: #343434;
       fill: $header-icon-color--active;
     }
   }
+
+  &.myAccount--leftSide {
+    flex-direction: row-reverse;
+    margin-right: 20px;
+
+    .myAccount__link {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+    .myAccount__separator {
+      margin-left: 5px;
+      margin-right: -5px;
+    }
+  }
 }
 
-// Left Side - hidden links
-.myAccount__leftSide {
+.myAccount__link {
+  color: $header-link-color;
+  padding-right: 10px;
+  transition: color .3s ease-in-out;
+  cursor: pointer;
   white-space: nowrap;
-  float: left;
+
+  &.is-active {
+    color: $header-link-color--active;
+  }
+}
+
+.myAccount__img {
+  position: relative;
+  float: right;
+}
+
+.headerTop .myAccount__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+  }
+}
+
+.headerMain .myAccount__img {
+  height: $headerMainTabletMyAccountIcon-height;
+  width: $headerMainTabletMyAccountIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerMainDesktopMyAccountIcon-height;
+    width: $headerMainDesktopMyAccountIcon-height + 2;
+  }
+}
+
+.myAccount__icon {
+  transition: fill 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  fill: $header-icon-color;
+  overflow: visible;
+}
+
+.myAccount__gravatar {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100px;
+  }
+}
+
+.myAccount__gravatar + .myAccount__icon {
+  border-radius: 100px;
   overflow: hidden;
+}
+
+// Hidden Side - hidden links
+.myAccount__hiddenSide {
+  display: none;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @include breakpoint($screen-sm) {
+    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_tablet }}'}
+    }
+  }
+
+  @include breakpoint($screen-md-min) {
+    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_desktop }}'}
+    }
+  }
 
   &.is-animated {
     transition: all .3s ease-in-out;
@@ -901,8 +1412,6 @@ $header-bottom-top-info-background: #343434;
 
   .myAccount__separator,
   .myAccount__link {
-    float: none;
-    display: inline-block;
     vertical-align: top;
   }
 
@@ -914,8 +1423,7 @@ $header-bottom-top-info-background: #343434;
 }
 
 // Right Side - welcome message + icon
-.myAccount__rightSide {
-  float: left;
+.myAccount__visibleSide {
   overflow: hidden;
   cursor: pointer;
 
@@ -929,48 +1437,10 @@ $header-bottom-top-info-background: #343434;
       transition: all .3s ease-in-out;
     }
   }
-
-  .myAccount__img {
-    position: relative;
-    height: $headerTopTabletIcon-height;
-    width: $headerTopTabletIcon-height + 2;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
-
-    @include breakpoint($screen-lg) {
-      height: $headerTopDesktopIcon-height;
-      width: $headerTopDesktopIcon-height + 2;
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
-    }
-  }
-
-  .myAccount__icon {
-    transition: fill 0.3s ease-in-out;
-    height: 100%;
-    width: 100%;
-    fill: $header-icon-color;
-    overflow: visible;
-  }
-
-  .myAccount__gravatar {
-    position: absolute;
-    top: 0;
-    right: 1px;
-    height: 100%;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 100px;
-    }
-
-    & + .myAccount__icon {
-      border-radius: 100px;
-      overflow: hidden;
-    }
-  }
 }
-  .wishList {
+.wishList {
+  @include flexbox;
+  @include align-items(center);
   text-transform: uppercase;
   cursor: pointer;
 
@@ -1019,12 +1489,12 @@ $header-bottom-top-info-background: #343434;
   }
 
   .wishList__img {
+    display: block;
     position: relative;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
+    height: $headerTopTabletIcon-height;
 
     @include breakpoint($screen-lg) {
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+      height: $headerTopDesktopIcon-height;
     }
   }
 
@@ -1053,159 +1523,6 @@ $header-bottom-top-info-background: #343434;
     }
   }
 }
-}
-
-.headerTop__separator {
-  height: $headerTop-separatorHeight;
-  width: 1px;
-  background: $header-top-separator-color;
-  margin-top: ($headerTopTablet-height - $headerTop-separatorHeight) / 2;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: default;
-
-  @include breakpoint($screen-lg) {
-    margin-top: ($headerTopDesktop-height - $headerTop-separatorHeight) / 2;
-  }
-
-  &:last-child { display: none; }
-}
-
-.headerTopRight {
-  float: right;
-}
-
-.headerTopLeft {
-  float: left;
-
-  .headerTopLeft__item {
-    margin-right: 20px;
-
-    &:hover {
-      .headerTopLeft__img {
-        transform: rotate(0deg);
-        fill: $header-icon-color--active;
-      }
-
-      .headerTopLeft__option {
-        max-width: 200px;
-        margin-right: 10px;
-      }
-    }
-  }
-
-  .headerTopLeft__img {
-    height: 8px;
-    width: 8px;
-    margin-top: 16px;
-    margin-right: 5px;
-    fill: $header-icon-color;
-    float: left;
-    transform: rotate(90deg);
-    cursor: pointer;
-    transition: transform .3s ease-in-out, fill .3s linear;
-
-    @include breakpoint($screen-lg) {
-      margin-top: 10px;
-    }
-  }
-
-  .headerTopLeft__options {
-    list-style: none;
-    float: left;
-    text-transform: uppercase;
-  }
-
-  .headerTopLeft__option {
-    float: left;
-    max-width: 0;
-    overflow: hidden;
-    transition: all .3s linear;
-    color: $header-top-dropdown-option;
-
-    &:hover,
-    &.active {
-      max-width: 200px;
-      color: $header-top-dropdown-option--active;
-    }
-  }
-}
-.headerMain {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @include breakpoint($screen-md) {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  @include breakpoint($screen-lg) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .menuIcon {
-    margin-right: auto;
-  }
-
-  .logo {
-    display: block;
-    margin-left: 20px;
-    margin-right: 20px;
-
-    @include breakpoint($screen-sm-min) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  .logo__img {
-    max-width: $logoWidthMobile;
-    display: block;
-
-    @include breakpoint($screen-sm-min) {
-      max-width: $logoWidthTablet;
-    }
-
-    @include breakpoint($screen-lg) {
-      max-width: $logoWidthDesktop;
-    }
-  }
-
-  .cart {
-    width: 25px;
-    height: 25px;
-    fill: $header-main-cart-color;
-    margin-left: auto;
-
-    @include breakpoint($screen-sm-min) {
-      width: 30px;
-      height: 30px;
-    }
-  }
-}
-
-.headerBottom {
-  overflow: hidden;
-
-  .topInfo {
-    height: 25px;
-    width: 100%;
-    float: left;
-    color: $header-bottom-top-info-color;
-    background: $header-bottom-top-info-background;
-  }
-
-  .breadcrumb {
-    height: 25px;
-    width: 100%;
-    float: left;
-  }
-}
-
 /* -----------------------------------------------------------------------------
   HAMBURGER ICONS COMPONENT
 

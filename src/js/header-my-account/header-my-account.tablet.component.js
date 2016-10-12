@@ -1,7 +1,7 @@
 import {SHARED_CLASSES} from 'js/shared/shared';
-import {CLASSES, EVENT_NAMESPACE} from './top-header-my-account.config';
+import {CLASSES, EVENT_NAMESPACE} from './header-my-account.config';
 
-export default class TopHeaderMyAccountComponent {
+export default class {
   constructor($el) {
     this.$el = $el;
     this.$link = $el.find(`.${CLASSES.link}`);
@@ -10,23 +10,19 @@ export default class TopHeaderMyAccountComponent {
     this.$welcomeMessage = this.$rightSide.find(`.${CLASSES.link}`);
 
     this.settings = {
-      linksStyle: {
-        mobile: '{{ settings.my_account_link_style_mobile }}',
-        tablet: '{{ settings.my_account_link_style_tablet }}',
-        desktop: '{{ settings.my_account_link_style_desktop }}'
-      },
-      linksActions: {
-        mobile: '{{ settings.my_account_link_action_mobile }}',
-        tablet: '{{ settings.my_account_link_action_tablet }}',
-        desktop: '{{ settings.my_account_link_action_desktop }}'
-      },
-      logoSrc: "{{ 'logo.png' | asset_url }}"
+      linksStyle: '{{ settings.my_account_link_style_tablet }}',
+      linksActions: '{{ settings.my_account_link_action_tablet }}'
     };
 
-    console.warn(this.settings);
-
-    this._calculateWidths();
     this._addEventHandlers();
+
+    if (this.settings.linksStyle === 'slide') {
+      this._calculateWidths();
+      this.$leftSide.addClass(SHARED_CLASSES.collapsed);
+      this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
+    }
+
+    this.$leftSide.removeClass(SHARED_CLASSES.outsideViewport);
   }
 
   destroy() {
@@ -44,8 +40,6 @@ export default class TopHeaderMyAccountComponent {
   _calculateWidths() {
     this.$leftSide.attr('data-width', this.$leftSide.outerWidth());
     this.$welcomeMessage.attr('data-width', this.$welcomeMessage.outerWidth());
-    this.$leftSide.addClass(SHARED_CLASSES.collapsed).removeClass(SHARED_CLASSES.outsideViewport);
-    this.$welcomeMessage.outerWidth(this.$welcomeMessage.data('width'));
   }
 
   _addEventHandlers() {
@@ -102,23 +96,27 @@ export default class TopHeaderMyAccountComponent {
   }
 
   _slideInLeftSide() {
-    this.$leftSide
-      .one('transitionend', () => {
-        this.$welcomeMessage
-          .addClass(SHARED_CLASSES.animate)
-          .addClass(SHARED_CLASSES.collapsed);
-      })
-      .addClass(SHARED_CLASSES.animate)
-      .width(this.$leftSide.data('width'))
-      .removeClass(SHARED_CLASSES.collapsed);
+    if (this.settings.linksStyle === 'slide') {
+      this.$leftSide
+        .one('transitionend', () => {
+          this.$welcomeMessage
+            .addClass(SHARED_CLASSES.animate)
+            .addClass(SHARED_CLASSES.collapsed);
+        })
+        .addClass(SHARED_CLASSES.animate)
+        .width(this.$leftSide.data('width'))
+        .removeClass(SHARED_CLASSES.collapsed);
+    }
   }
 
   _slideOutLeftSide() {
-    this.$leftSide
-      .one('transitionend', () => {
-        this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
-        this.$el.removeClass(SHARED_CLASSES.active);
-      })
-      .addClass(SHARED_CLASSES.collapsed);
+    if (this.settings.linksStyle === 'slide') {
+      this.$leftSide
+        .one('transitionend', () => {
+          this.$welcomeMessage.removeClass(SHARED_CLASSES.collapsed);
+          this.$el.removeClass(SHARED_CLASSES.active);
+        })
+        .addClass(SHARED_CLASSES.collapsed);
+    }
   }
 };

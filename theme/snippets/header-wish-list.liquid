@@ -1,64 +1,76 @@
 {% if settings.use_header_wishlist %}
 
-{% assign wish_list_active = false %}
-{% assign wish_list_length = 0 %}
-{% assign used = "" %}
+  {% assign wish_list_active = false %}
+  {% assign wish_list_length = 0 %}
+  {% assign used = "" %}
 
-{% if customer %}
-  {% for tag in customer.tags %}
+  {% assign horizontalPosition = '' %}
+  {% assign desktopClass = '' %}
+  {% assign tabletClass = '' %}
+  {% assign mobileClass = '' %}
 
-    {% assign the_test = '' %}
-    {% capture tag_id %}{{ tag }}{% endcapture %}
-    {% assign tag_size = tag_id.size %}
+  {% if customer %}
+    {% for tag in customer.tags %}
 
-    {% for current_tag in customer.tags %}
-      {% if current_tag contains tag_id %}
-        {% assign difference = tag_size | minus:current_tag.size %}
-        {% if difference == 0 %}
-          {% assign the_test = tag_id %}
-        {% else %}
-          {% assign the_test = '' %}
+      {% assign the_test = '' %}
+      {% capture tag_id %}{{ tag }}{% endcapture %}
+      {% assign tag_size = tag_id.size %}
+
+      {% for current_tag in customer.tags %}
+        {% if current_tag contains tag_id %}
+          {% assign difference = tag_size | minus:current_tag.size %}
+          {% if difference == 0 %}
+            {% assign the_test = tag_id %}
+          {% else %}
+            {% assign the_test = '' %}
+          {% endif %}
         {% endif %}
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
 
-    {% for collection in collections %}
-      {% paginate collection.products by collection.all_products_count %}
+      {% for collection in collections %}
+        {% paginate collection.products by collection.all_products_count %}
         {% for product in collection.products %}
           {% for variant in product.variants %}
             {% capture variant_id %}{{ variant.id }}{% endcapture %}
             {% unless used contains variant_id %}
-              {% capture diff %}{{ tag_size | minus:variant_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
-              {% assign check = diff | split:'.' %}
-              {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
-              {% if display and the_test contains variant_id %}
-                {% assign wish_list_active = true %}
-                {% capture wish_list_length %}{{ wish_list_length | plus:1 }}{% endcapture %}
-                {% capture used %}{{ variant_id }} {{ used }}{% endcapture %}
-              {% endif %}
+            {% capture diff %}{{ tag_size | minus:variant_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+            {% assign check = diff | split:'.' %}
+            {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
+            {% if display and the_test contains variant_id %}
+              {% assign wish_list_active = true %}
+              {% capture wish_list_length %}{{ wish_list_length | plus:1 }}{% endcapture %}
+              {% capture used %}{{ variant_id }} {{ used }}{% endcapture %}
+            {% endif %}
             {% endunless %}
           {% endfor %}
         {% endfor %}
-      {% endpaginate %}
+        {% endpaginate %}
+      {% endfor %}
+
     {% endfor %}
+  {% endif %}
 
-  {% endfor %}
-{% endif %}
+  {% if settings.wishlist_position_desktop == position %}{% assign desktopClass = 'visible-md-min-flex' %}{% endif %}
+  {% if settings.wishlist_position_tablet == position %}{% assign tabletClass = 'visible-sm-flex' %}{% endif %}
+  {% if settings.wishlist_position_mobile == position %}{% assign mobileClass = 'visible-xs-flex' %}{% endif %}
 
-<li class="wishList"
-    data-ss-init="TopHeaderWishListComponent">
-  <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
-     class="wishList__link is-outside-viewport">My Wishlist</a>
-  <a href="{% unless settings.wishlist_page == '' %}/pages/{{settings.wishlist_page}}{% endunless %}"
-     class="wishList__img {% if wish_list_active %}is-active{% endif %}">
-    <div class="wishList__counter">{{wish_list_length}}</div>
-    <svg class="wishList__icon">
-      <use xlink:href="#wish-list-1"></use>
-    </svg>
-    <svg class="wishList__icon">
-      <use xlink:href="#wish-list-2"></use>
-    </svg>
-  </a>
-</li>
-<li class="headerTop__separator"></li>
+  {% if settings.wishlist_position_desktop == position
+  or settings.wishlist_position_tablet == position
+  or settings.wishlist_position_mobile == position %}
+    <div class="wishList test {{ mobileClass }} {{ tabletClass }} {{ desktopClass }}"
+         data-ss-init="TopHeaderWishListComponent">
+      <a href="{% unless settings.wishlist_page == '' %}/pages/{{ settings.wishlist_page }}{% endunless %}"
+         class="wishList__link is-outside-viewport">My Wishlist</a>
+      <a href="{% unless settings.wishlist_page == '' %}/pages/{{ settings.wishlist_page }}{% endunless %}"
+         class="wishList__img {% if wish_list_active %}is-active{% endif %}">
+        <div class="wishList__counter">{{ wish_list_length }}</div>
+        <svg class="wishList__icon">
+          <use xlink:href="#wish-list-1"></use>
+        </svg>
+        <svg class="wishList__icon">
+          <use xlink:href="#wish-list-2"></use>
+        </svg>
+      </a>
+    </div>
+  {% endif %}
 {% endif %}

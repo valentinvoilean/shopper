@@ -1,0 +1,30 @@
+{% assign desktopClass = '' %}
+{% assign tabletClass = '' %}
+{% assign mobileClass = '' %}
+
+{% if settings.logo_position_desktop == position %}{% assign desktopClass = 'visible-md-min' %}{% endif %}
+{% if settings.logo_position_tablet == position %}{% assign tabletClass = 'visible-sm' %}{% endif %}
+{% if settings.logo_position_mobile == position %}{% assign mobileClass = 'visible-xs' %}{% endif %}
+
+{% if settings.logo_position_desktop == position
+or settings.logo_position_tablet == position
+or settings.logo_position_mobile == position %}
+
+  {% if settings.use_logo %}
+    <a class="logo {{ mobileClass }} {{ tabletClass }} {{ desktopClass }}" href="/">
+      {% if settings.use_logo_retina %}
+        <img class="logo__img"
+             src="{{ 'logo.png' | asset_url }}"
+             srcset="{{ 'logo.png' | asset_url }} 1x, {{ 'logo_retina.png' | asset_url }} 2x"
+             alt="{{ shop.name }}">
+      {% else %}
+        <img class="logo__img" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+      {% endif %}
+    </a>
+  {% else %}
+    <a id="site-title" href="/">
+      {{ shop.name }}
+    </a>
+  {% endif %}
+
+{% endif %}

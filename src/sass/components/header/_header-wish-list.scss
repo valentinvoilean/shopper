@@ -1,4 +1,6 @@
 .wishList {
+  @include flexbox;
+  @include align-items(center);
   text-transform: uppercase;
   cursor: pointer;
 
@@ -47,12 +49,12 @@
   }
 
   .wishList__img {
+    display: block;
     position: relative;
-    margin-top: ($headerTopTablet-height - $headerTopTabletIcon-height) / 2;
-    float: right;
+    height: $headerTopTabletIcon-height;
 
     @include breakpoint($screen-lg) {
-      margin-top: ($headerTopDesktop-height - $headerTopDesktopIcon-height) / 2;
+      height: $headerTopDesktopIcon-height;
     }
   }
 

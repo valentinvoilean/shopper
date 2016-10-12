@@ -8,6 +8,14 @@
   *zoom: 1;
 }
 
+.noClear {
+  &:after {
+    content: initial !important;
+    display: none !important;
+    clear: none !important;
+  }
+}
+
 @mixin clearfix() {
   &:after {
     content: '';
