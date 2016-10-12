@@ -5,11 +5,11 @@ const
   webpack = require('webpack');
 
 module.exports = {
-  //devtool: 'inline-source-map',
+  devtool: 'inline-source-map',
 
   entry: {
-    vendors: ['babel-polyfill', 'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
-    main: [`${__src.js}/main.js`]
+    vendors: ['babel-polyfill', 'react', 'react-dom', 'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
+    main: [`${__src.js}/main.jsx`]
   },
 
   output: {
@@ -44,7 +44,7 @@ module.exports = {
   ],
 
   eslint: {
-    failOnError: true
+    failOnError: false
   },
 
   module: {
@@ -53,7 +53,7 @@ module.exports = {
     ],
     preLoaders: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         loaders: ['eslint'],
         include: __src.js
       }
@@ -68,7 +68,7 @@ module.exports = {
         loader: 'modernizr'
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include : __src.js,
         loader: 'babel'
       }

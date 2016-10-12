@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watchJS": "node_modules/webpack/bin/webpack.js -d --watch",
+    "watchJS": "node_modules/webpack/bin/webpack.js --watch",
     "buildJS": "node_modules/webpack/bin/webpack.js -p"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "6.16.0",
+    "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
     "babel-loader": "6.2.5",
     "babel-polyfill": "6.16.0",
     "babel-preset-es2015": "6.16.0",
-    "eslint": "3.6.1",
+    "eslint": "3.7.1",
     "eslint-loader": "1.5.0",
     "eslint-plugin-react": "6.4.1",
     "gulp": "3.9.1",
@@ -29,7 +29,7 @@
     "gulp-shell": "0.5.2",
     "gulp-shopify-sass": "0.3.2",
     "gulp-shopify-upload": "2.0.0",
-    "gulp-sourcemaps": "1.6.0",
+    "gulp-sourcemaps": "2.0.0",
     "gulp-util": "3.0.7",
     "gulp-watch": "4.3.10",
     "gulp-webpack": "1.5.0",
@@ -49,7 +49,7 @@
     "picturefill": "3.0.2",
     "run-sequence": "1.2.2",
     "sass-module-importer": "1.2.1",
-    "svg-sprite-loader": "0.0.28",
+    "svg-sprite-loader": "0.0.29",
     "webpack": "1.13.2"
   },
   "dependencies": {
