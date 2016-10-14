@@ -19,7 +19,7 @@
   }
 }
 
-.headerTop > .container {
+.headerTop .match-media {
   @include flexbox;
   @include justify-content(space-between);
   height: inherit;

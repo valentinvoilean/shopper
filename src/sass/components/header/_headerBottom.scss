@@ -1,12 +1,15 @@
 .headerBottom {
   overflow: hidden;
+  height: 25px;
+  width: 100%;
+  float: left;
+  color: $header-bottom-top-info-color;
+  background: $header-bottom-top-info-background;
 
-  .topInfo {
-    height: 25px;
-    width: 100%;
-    float: left;
-    color: $header-bottom-top-info-color;
-    background: $header-bottom-top-info-background;
+  & .match-media {
+    @include flexbox;
+    @include justify-content(space-between);
+    height: inherit;
   }
 
   .breadcrumb {

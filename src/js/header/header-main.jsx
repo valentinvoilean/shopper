@@ -9,7 +9,7 @@ export class HeaderMain extends React.Component {
     render() {
         return (
             <div className="headerMain">
-                <div className="container noClear">
+                <div className="container">
                     <MatchMedia mediaQuery={'(max-width: 767px)'}>
                         <div className="headerMain__items">
                             {this.props.data.MainLeft ? this.props.data.MainLeft.mobile : ''}

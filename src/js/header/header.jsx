@@ -9,8 +9,8 @@ export class Header extends React.Component {
         this.data = {
             MyAccount: {
                 mobile: {position: 'TopLeft', order: 1},
-                tablet: {position: 'TopCenter', order: 0},
-                desktop: {position: 'TopRight', order: 0}
+                tablet: {position: 'MainCenter', order: 0},
+                desktop: {position: 'BottomRight', order: 0}
             },
             Wishlist: {
                 mobile: {position: 'TopLeft', order: 0},

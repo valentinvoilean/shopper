@@ -11,7 +11,7 @@ export class HeaderTop extends React.Component {
 
         return (
             <div className="headerTop">
-                <div className="container noClear">
+                <div className="container">
                     <MatchMedia mediaQuery={'(max-width: 767px)'}>
                         <div className="headerTop__items">
                             {this.props.data.TopLeft ? this.props.data.TopLeft.mobile : ''}
