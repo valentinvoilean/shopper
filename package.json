@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watchJS": "node_modules/webpack/bin/webpack.js --watch",
-    "buildJS": "babel-node webpack -p"
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "babel-node webpack -p"
   },
   "author": "",
   "license": "ISC",
