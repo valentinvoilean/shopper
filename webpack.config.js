@@ -5,10 +5,11 @@ const
   webpack = require('webpack');
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   entry: {
-    vendors: ['babel-polyfill', 'react', 'react-dom', 'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
+    vendors: ['babel-polyfill', 'react', 'react-dom', 'react-match-media',
+      'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
     main: [`${__src.js}/main.jsx`]
   },
 
@@ -39,8 +40,10 @@ module.exports = {
       }
     }),
     /*new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    })*/
+     compress:{
+     warnings: false
+     }
+     })*/
   ],
 
   eslint: {
@@ -69,7 +72,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        include : __src.js,
+        include: __src.js,
         loader: 'babel'
       }
     ]
