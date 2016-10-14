@@ -4,6 +4,11 @@ const
   path = require('path'),
   webpack = require('webpack');
 
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('production'),
+  __DEV__: false
+};
+
 module.exports = {
   devtool: 'source-map',
 
@@ -35,6 +40,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new webpack.NoErrorsPlugin(),
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
@@ -42,16 +48,12 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
+
+    /*new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
       }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-     compress:{
-     warnings: false
-     }
-     })
+    })*/
   ],
 
   eslint: {
@@ -63,12 +65,12 @@ module.exports = {
       `${__npm}/jquery`
     ],
     preLoaders: [
-      { test: /\.jsx?$/, loaders: ['eslint'], exclude: /node_modules/ }
+      {test: /\.jsx?$/, include: __src.js, loaders: ['eslint']}
     ],
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
-      { test: /\.svg$/, loader: 'svg-sprite' },
-      { test: /\.modernizrrc$/, loader: 'modernizr' }
+      {test: /\.jsx?$/, include: __src.js, loader: 'babel'},
+      {test: /\.svg$/, loader: 'svg-sprite'},
+      {test: /\.modernizrrc$/, loader: 'modernizr'}
     ]
   }
 };
