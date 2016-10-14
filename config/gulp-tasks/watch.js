@@ -15,13 +15,5 @@ module.exports = function (gulp, plugins) {
     plugins.runSequence('concatSass');
   });
 
-  plugins.watch(`${__src.js}/**/*.*`, (file) => {
-    plugins.util.log(`Modified JS file: ${file.path}`);
-    plugins.runSequence(['lint', 'createBundle']);
-  });
-
-  plugins.watch(`${__tests}/**/*.*`, (file) => {
-    plugins.util.log(`Modified Test file: ${file.path}`);
-    plugins.runSequence('lint');
-  });
+  plugins.shell('npm run watchJS');
 };
