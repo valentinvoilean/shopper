@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "watchJS": "node_modules/webpack/bin/webpack.js --watch",
-    "buildJS": "node_modules/webpack/bin/webpack.js -p"
+    "buildJS": "babel-node webpack -p"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
     "babel-loader": "6.2.5",

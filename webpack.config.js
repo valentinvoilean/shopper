@@ -13,9 +13,15 @@ module.exports = {
     main: [`${__src.js}/main.jsx`]
   },
 
+  target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
+
   output: {
     path: __assets,
     filename: 'main.bundle.js'
+  },
+
+  devServer: {
+    contentBase: __src.js
   },
 
   resolve: {
@@ -29,6 +35,8 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.NoErrorsPlugin(),
+    //new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -55,26 +63,12 @@ module.exports = {
       `${__npm}/jquery`
     ],
     preLoaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['eslint'],
-        include: __src.js
-      }
+      { test: /\.jsx?$/, loaders: ['eslint'], exclude: /node_modules/ }
     ],
     loaders: [
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite'
-      },
-      {
-        test: /\.modernizrrc$/,
-        loader: 'modernizr'
-      },
-      {
-        test: /\.jsx?$/,
-        include: __src.js,
-        loader: 'babel'
-      }
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
+      { test: /\.svg$/, loader: 'svg-sprite' },
+      { test: /\.modernizrrc$/, loader: 'modernizr' }
     ]
   }
 };
