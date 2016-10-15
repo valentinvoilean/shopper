@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel watch:js",
+    "start": "npm-run-all --parallel watch:theme watch:js",
     "watch:js": "babel-node tools/startBuild.js",
-    "watch:theme": "bash themeWatch.sh"
+    "watch:theme": ". ./themeWatch.sh"
   },
   "author": "",
   "license": "ISC",
