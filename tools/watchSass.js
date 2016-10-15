@@ -10,57 +10,57 @@ let concatFiles = () => {
     /**
      * Breakpoints
      */
-    `${__src.sass}/variables/_grid.scss`,
+    `${__styles}/variables/_grid.scss`,
 
     /**
      * General Variables
      */
-    `${__src.sass}/variables/_fonts.scss`,
-    `${__src.sass}/variables/_colors.scss`,
+    `${__styles}/variables/_fonts.scss`,
+    `${__styles}/variables/_colors.scss`,
 
     /**
      * Sass Mixins
      */
-    `${__src.sass}/mixins/_clearfix.scss`,
-    `${__src.sass}/mixins/_flex.scss`,
-    `${__src.sass}/mixins/_center-block.scss`,
-    `${__src.sass}/mixins/_grid-framework.scss`,
-    `${__src.sass}/mixins/_grid.scss`,
-    `${__src.sass}/mixins/_breakpoint.scss`,
+    `${__styles}/mixins/_clearfix.scss`,
+    `${__styles}/mixins/_flex.scss`,
+    `${__styles}/mixins/_center-block.scss`,
+    `${__styles}/mixins/_grid-framework.scss`,
+    `${__styles}/mixins/_grid.scss`,
+    `${__styles}/mixins/_breakpoint.scss`,
 
     /**
      * Normalize
      */
-    `${__src.sass}/components/core/_normalize.scss`,
+    `${__styles}/components/core/_normalize.scss`,
 
     /**
      * Grid Setup
      */
-    `${__src.sass}/components/core/_grid.scss`,
-    `${__src.sass}/components/core/_utilities.scss`,
-    `${__src.sass}/components/core/_responsive-utilities.scss`,
+    `${__styles}/components/core/_grid.scss`,
+    `${__styles}/components/core/_utilities.scss`,
+    `${__styles}/components/core/_responsive-utilities.scss`,
 
     /**
      * Base
      */
-    `${__src.sass}/components/core/_base.scss`,
+    `${__styles}/components/core/_base.scss`,
 
     /**
      * Header
      */
-    `${__src.sass}/components/hamburgerIcon/_hamburgerIcon.scss`,
-    `${__src.sass}/components/header/_header.scss`,
-    `${__src.sass}/components/header/_headerTop.scss`,
-    `${__src.sass}/components/header/_headerMain.scss`,
-    `${__src.sass}/components/header/_headerBottom.scss`,
-    `${__src.sass}/components/header/_header-my-account.scss`,
-    `${__src.sass}/components/header/_header-wish-list.scss`
+    `${__styles}/components/hamburgerIcon/_hamburgerIcon.scss`,
+    `${__styles}/components/header/_header.scss`,
+    `${__styles}/components/header/_headerTop.scss`,
+    `${__styles}/components/header/_headerMain.scss`,
+    `${__styles}/components/header/_headerBottom.scss`,
+    `${__styles}/components/header/_header-my-account.scss`,
+    `${__styles}/components/header/_header-wish-list.scss`
   ], `${__assets}/theme.scss.liquid`, function() {
     console.log('Finished SASS concatenation.'.green);
   });
 };
 
-watch(__src.sass, function (filename) {
+watch(__styles, function (filename) {
 
   console.log(`${filename} changed`.blue);
   concatFiles();

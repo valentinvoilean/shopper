@@ -13,7 +13,7 @@ export default {
   entry: {
     vendors: ['babel-polyfill', 'react', 'react-dom', 'react-match-media',
       'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
-    main: [`${__src.js}/main.jsx`]
+    main: [`${__base}/src/index.js`]
   },
 
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
@@ -23,15 +23,15 @@ export default {
     filename: 'main.bundle.js'
   },
 
-  devServer: {
-    contentBase: __src.js
-  },
-
   resolve: {
     extensions: ['', '.js', '.svg'],
     alias: {
-      'svg': __src.svg,
-      'js': __src.js,
+      'svg': __svg,
+      'components': __components,
+      'utils': __utils,
+      'actions': __actions,
+      'reducers': __reducers,
+      'containers': __containers,
       'jquery': `${__npm}/jquery/dist/jquery.min.js`, //don't import all the module; use only the minified version
       modernizr$: path.resolve(__dirname, '.modernizrrc')
     }
@@ -63,10 +63,10 @@ export default {
       `${__npm}/jquery`
     ],
     preLoaders: [
-      {test: /\.jsx?$/, include: __src.js, loaders: ['eslint']}
+      {test: /\.js?$/, include: `${__base}/src`, loaders: ['eslint']}
     ],
     loaders: [
-      {test: /\.jsx?$/, include: __src.js, loader: 'babel'},
+      {test: /\.js?$/, include: `${__base}/src`, loader: 'babel-loader'},
       {test: /\.svg$/, loader: 'svg-sprite'},
       {test: /\.modernizrrc$/, loader: 'modernizr'}
     ]
