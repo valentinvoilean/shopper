@@ -1,8 +1,7 @@
 import 'colors';
 import concat from 'serial-concat-files';
 import watch from 'node-watch';
-
-require('../config/paths')(`${__dirname}/../`);
+import '../paths';
 
 console.log('Watching SCSS files..'.green);
 

@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
-
-require('./config/paths')(__dirname);
+import './paths';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),

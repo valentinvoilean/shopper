@@ -1,13 +1,10 @@
-'use strict';
-
-require('./config/paths')(__dirname);
-const path = require('path');
+import path from 'path';
+import './paths';
 
 // Karma configuration
 // Generated on Fri Feb 19 2016 15:10:40 GMT-0500 (EST)
 
-module.exports = function (config) {
-  config.set({
+export default {
     autoWatch: false,
     singleRun: true,
 
@@ -57,7 +54,7 @@ module.exports = function (config) {
         loaders: [
           {
             test: /\.modernizrrc$/,
-            loader: "modernizr"
+            loader: 'modernizr'
           }
         ]
       }
@@ -69,5 +66,4 @@ module.exports = function (config) {
       dir: 'coverage/',
       reporters: [{type: 'html'}]
     }
-  });
 };
