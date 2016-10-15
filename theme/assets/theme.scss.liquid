@@ -1,21 +1,3 @@
-/*============================================================================
-  Shopify Shopper
-  Copyright 2016 Valentin-Marian Voilean.
-  Author Valentin-Marian Voilean
-  Built with Sass - http://sass-lang.com/
-==============================================================================*/
-
-/*============================================================================
-  Table of Contents
-
-  #Breakpoints
-  #General Variables
-  #Sass Mixins
-  #Normalize
-  #Grid Setup
-  #Base
-  #Header
-==============================================================================*/
 
 /*============================================================================
   #Breakpoints
@@ -77,9 +59,11 @@ $container-md:                 $container-desktop;
 $container-large-desktop:      1200px;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
+
 /*============================================================================
   #General Variables
 ==============================================================================*/
+
 $base-font-family:       {{ settings.base_font_family }};
 $h1-font-family:         {{ settings.h1_font_family }};
 $h2-font-family:         {{ settings.h2_font_family }};
@@ -114,8 +98,7 @@ $desktop-h5-font-size:   {{ settings.desktop_h5_font_size }};
 
 $mobile-h6-font-size:    {{ settings.mobile_h6_font_size }};
 $tablet-h6-font-size:    {{ settings.tablet_h6_font_size }};
-$desktop-h6-font-size:   {{ settings.desktop_h6_font_size }};
-// Page Colors
+$desktop-h6-font-size:   {{ settings.desktop_h6_font_size }};// Page Colors
 $mobile-page-background-color: #{'{{ settings.mobile_page_background_color }}'};
 $tablet-page-background-color: #{'{{ settings.tablet_page_background_color }}'};
 $desktop-page-background-color: #{'{{ settings.desktop_page_background_color }}'};
@@ -130,12 +113,7 @@ $desktop-page-link-color: #{'{{ settings.desktop_page_link_color }}'};
 
 $mobile-border-color: #{'{{ settings.mobile_page_border_color }}'};
 $tablet-border-color: #{'{{ settings.tablet_page_border_color }}'};
-$desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
-/*============================================================================
-  #Sass Mixins
-==============================================================================*/
-
-/*================  Clearfix mixin ================*/
+$desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};/*================  Clearfix mixin ================*/
 
 .clearfix {
   &:after {
@@ -160,7 +138,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
     clear: both; }
   *zoom: 1;
 }
-
 // Flexbox Mixins
 // http://philipwalton.github.io/solved-by-flexbox/
 // https://github.com/philipwalton/solved-by-flexbox
@@ -515,15 +492,13 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
     -ms-flex-line-pack: $value;
   }
   align-content: $value;
-}
-// Center-align a block level element
+}// Center-align a block level element
 
 @mixin center-block() {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
 // Framework grid generation
 //
 // Used only by Bootstrap to generate the correct number of grid classes given
@@ -605,7 +580,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
   @include loop-grid-columns($grid-columns, $class, push);
   @include loop-grid-columns($grid-columns, $class, offset);
 }
-
 // Grid system
 //
 // Generate semantic grid columns with these mixins.
@@ -728,7 +702,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
     right: percentage(($columns / $grid-columns));
   }
 }
-
 /*================  Breakpoint mixin ================*/
 
 @mixin breakpoint($class) {
@@ -753,16 +726,7 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
     @warn "Please specify a breakpoint";
   }
 }
-
-/*============================================================================
-  #Normalize
-==============================================================================*/
-
 /*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}template,[hidden]{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:bold}button,input{overflow:visible}button,select{text-transform:none}button,html [type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:0.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
-
-/*============================================================================
-  #Grid setup
-==============================================================================*/
 //
 // Grid system
 // --------------------------------------------------
@@ -847,7 +811,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 @media (min-width: $screen-lg-min) {
   @include make-grid(lg);
 }
-
 //
 // Utility classes
 // --------------------------------------------------
@@ -895,8 +858,7 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 
 .hidden {
   display: none !important;
-}
-//
+}//
 // Responsive: Utility classes
 // --------------------------------------------------
 @mixin returnInitialStateClasses($mediaQueries){
@@ -936,10 +898,6 @@ $desktop-border-color: #{'{{ settings.desktop_page_border_color }}'};
 @include breakpoint($screen-md-min) { @include returnResponsiveClasses('md-min'); }
 @include breakpoint($screen-md-max) { @include returnResponsiveClasses('md-max'); }
 @include breakpoint($screen-lg)     { @include returnResponsiveClasses('lg'); }
-
-/*============================================================================
-  #Base
-==============================================================================*/
 * {
   box-sizing: border-box;
   outline: none;
@@ -1066,466 +1024,6 @@ ul { margin:0; padding: 0;}
   }
 }
 
-
-/*============================================================================
-  #Header
-==============================================================================*/
-$headerTopTablet-height:      40px;
-$headerTopDesktop-height:     30px;
-$headerTop-separatorHeight:   14px;
-$headerTopTabletIcon-height:  26px;
-$headerTopDesktopIcon-height: 20px;
-
-$headerMainTabletMyAccountIcon-height:  25px;
-$headerMainDesktopMyAccountIcon-height: 30px;
-
-$logoWidthMobile:  {{ settings.logo_mobile_width }};
-$logoWidthTablet:  {{ settings.logo_tablet_width }};
-$logoWidthDesktop: {{ settings.logo_desktop_width }};
-
-$header-top-background-color: #fff;
-$header-icon-color: #D7D7D7;
-$header-icon-color--active: #444;
-$header-link-color: #D7D7D7;
-$header-link-color--active: #444;
-$header-top-dropdown-option: #D7D7D7;
-$header-top-dropdown-option--active: #444;
-$header-top-separator-color: #E5E5E5;
-$header-main-cart-color: #9A9A9A;
-$header-bottom-top-info-color: #FFF;
-$header-bottom-top-info-background: #343434;
-
-.headerTop {
-  background: $header-top-background-color;
-  font-size: 12px;
-  line-height: $headerTopTablet-height;
-  font-weight: 400;
-
-  height: $headerTopTablet-height;
-  border-bottom: 1px solid $mobile-border-color;
-  overflow: hidden;
-
-  @include breakpoint($screen-md) {
-    border-color: $tablet-border-color;
-  }
-
-  @include breakpoint($screen-lg) {
-    border-color: $desktop-border-color;
-    line-height: $headerTopDesktop-height;
-    height: $headerTopDesktop-height;
-  }
-}
-
-.headerTop .match-media {
-  @include flexbox;
-  @include justify-content(space-between);
-  height: inherit;
-}
-
-.headerTop__items {
-  @include flexbox;
-  @include align-items(center);
-  overflow: hidden;
-  height: inherit;
-}
-
-.headerTop__separator {
-  height: $headerTop-separatorHeight;
-  width: 1px;
-  background: $header-top-separator-color;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: default;
-
-  &:last-child { display: none; }
-}
-
-.currency,
-.language {
-  margin-right: 20px;
-
-  &:hover {
-    .currency__img,
-    .language__img {
-      transform: rotate(0deg);
-      fill: $header-icon-color--active;
-    }
-
-    .currency__option,
-    .language__option {
-      max-width: 200px;
-      margin-right: 10px;
-    }
-  }
-}
-
-.currency__img,
-.language__img {
-  height: 8px;
-  width: 8px;
-  margin-top: 16px;
-  margin-right: 5px;
-  fill: $header-icon-color;
-  float: left;
-  transform: rotate(90deg);
-  cursor: pointer;
-  transition: transform .3s ease-in-out, fill .3s linear;
-
-  @include breakpoint($screen-lg) {
-    margin-top: 10px;
-  }
-}
-
-.currency__select,
-.language__select {
-  list-style: none;
-  float: left;
-  text-transform: uppercase;
-}
-
-.currency__option,
-.language__option {
-  float: left;
-  max-width: 0;
-  overflow: hidden;
-  transition: all .3s linear;
-  color: $header-top-dropdown-option;
-
-  &:hover,
-  &.active {
-    max-width: 200px;
-    color: $header-top-dropdown-option--active;
-  }
-}
-
-
-.headerMain {
-  @include flexbox;
-  @include align-items(flex-start);
-  @include justify-content(space-between);
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  @include breakpoint($screen-md) {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  @include breakpoint($screen-lg) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .headerMain__items {
-    display: flex;
-    justify-content: center;
-
-    &:first-child {
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      justify-content: flex-end;
-    }
-  }
-
-  &.center .headerMain__items {
-    width: 100%;
-  }
-
-  .menuIcon {
-    margin-right: auto;
-  }
-
-  .logo {
-    display: block;
-    margin-left: 20px;
-    margin-right: 20px;
-
-    @include breakpoint($screen-sm-min) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  .logo__img {
-    max-width: $logoWidthMobile;
-    display: block;
-
-    @include breakpoint($screen-sm-min) {
-      max-width: $logoWidthTablet;
-    }
-
-    @include breakpoint($screen-lg) {
-      max-width: $logoWidthDesktop;
-    }
-  }
-
-  .cart {
-    width: 25px;
-    height: 25px;
-    fill: $header-main-cart-color;
-
-    @include breakpoint($screen-sm-min) {
-      width: 30px;
-      height: 30px;
-    }
-  }
-}
-
-.headerBottom {
-  overflow: hidden;
-  height: 25px;
-  width: 100%;
-  float: left;
-  color: $header-bottom-top-info-color;
-  background: $header-bottom-top-info-background;
-
-  & .match-media {
-    @include flexbox;
-    @include justify-content(space-between);
-    height: inherit;
-  }
-
-  .breadcrumb {
-    height: 25px;
-    width: 100%;
-    float: left;
-  }
-}
-
-.myAccount {
-  @include flexbox;
-  @include align-items(center);
-  text-transform: uppercase;
-
-  &:hover,
-  &.is-active {
-    .myAccount__icon {
-      fill: $header-icon-color--active;
-    }
-  }
-
-  &.myAccount--leftSide {
-    flex-direction: row-reverse;
-    margin-right: 20px;
-
-    .myAccount__link {
-      padding-right: 0;
-      padding-left: 10px;
-    }
-
-    .myAccount__separator {
-      margin-left: 5px;
-      margin-right: -5px;
-    }
-  }
-}
-
-.myAccount__link {
-  color: $header-link-color;
-  padding-right: 10px;
-  transition: color .3s ease-in-out;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &.is-active {
-    color: $header-link-color--active;
-  }
-}
-
-.myAccount__img {
-  position: relative;
-  float: right;
-}
-
-.headerTop .myAccount__img {
-  height: $headerTopTabletIcon-height;
-  width: $headerTopTabletIcon-height + 2;
-
-  @include breakpoint($screen-lg) {
-    height: $headerTopDesktopIcon-height;
-    width: $headerTopDesktopIcon-height + 2;
-  }
-}
-
-.headerMain .myAccount__img {
-  height: $headerMainTabletMyAccountIcon-height;
-  width: $headerMainTabletMyAccountIcon-height + 2;
-
-  @include breakpoint($screen-lg) {
-    height: $headerMainDesktopMyAccountIcon-height;
-    width: $headerMainDesktopMyAccountIcon-height + 2;
-  }
-}
-
-.myAccount__icon {
-  transition: fill 0.3s ease-in-out;
-  height: 100%;
-  width: 100%;
-  fill: $header-icon-color;
-  overflow: visible;
-}
-
-.myAccount__gravatar {
-  position: absolute;
-  top: 0;
-  right: 1px;
-  height: 100%;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 100px;
-  }
-}
-
-.myAccount__gravatar + .myAccount__icon {
-  border-radius: 100px;
-  overflow: hidden;
-}
-
-// Hidden Side - hidden links
-.myAccount__hiddenSide {
-  display: none;
-  overflow: hidden;
-  white-space: nowrap;
-
-  @include breakpoint($screen-sm) {
-    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
-      display: block;
-    }
-    @else {
-      display: #{'{{ settings.my_account_link_style_tablet }}'}
-    }
-  }
-
-  @include breakpoint($screen-md-min) {
-    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
-      display: block;
-    }
-    @else {
-      display: #{'{{ settings.my_account_link_style_desktop }}'}
-    }
-  }
-
-  &.is-animated {
-    transition: all .3s ease-in-out;
-  }
-
-  .myAccount__separator,
-  .myAccount__link {
-    vertical-align: top;
-  }
-
-  .myAccount__separator {
-    margin-left: -5px;
-    margin-right: 5px;
-    color: $header-top-separator-color;
-  }
-}
-
-// Right Side - welcome message + icon
-.myAccount__visibleSide {
-  overflow: hidden;
-  cursor: pointer;
-
-  .myAccount__link {
-    float: right;
-    white-space: nowrap;
-    overflow: hidden;
-    text-transform: capitalize;
-
-    &.is-animated {
-      transition: all .3s ease-in-out;
-    }
-  }
-}
-.wishList {
-  @include flexbox;
-  @include align-items(center);
-  text-transform: uppercase;
-  cursor: pointer;
-
-  .wishList__link {
-    color: $header-link-color;
-    padding-right: 10px;
-    cursor: pointer;
-    float: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-transform: capitalize;
-
-    &.is-active {
-      color: $header-link-color--active;
-    }
-
-    &.is-animated {
-      transition: all .3s ease-in-out;
-    }
-  }
-
-  .wishList__icon {
-    transition: fill 0.3s ease-in-out;
-    height: $headerTopTabletIcon-height;
-    width: $headerTopTabletIcon-height + 2;
-    fill: $header-icon-color;
-    overflow: visible;
-
-    &:last-child {
-      display: none;
-    }
-
-    @include breakpoint($screen-lg) {
-      height: $headerTopDesktopIcon-height;
-      width: $headerTopDesktopIcon-height + 2;
-    }
-  }
-
-  .wishList__counter {
-    font-size: 10px;
-    line-height: 10px;
-    float: right;
-    color: $header-link-color;
-    margin-left: 2px;
-    display: none;
-  }
-
-  .wishList__img {
-    display: block;
-    position: relative;
-    height: $headerTopTabletIcon-height;
-
-    @include breakpoint($screen-lg) {
-      height: $headerTopDesktopIcon-height;
-    }
-  }
-
-  .wishList__img.is-active {
-    .wishList__icon {
-      display: none;
-
-      &:last-child {
-        display: block;
-      }
-    }
-
-    .wishList__counter {
-      display: block;
-    }
-  }
-
-  &:hover,
-  &.is-active {
-    .wishList__icon {
-      fill: $header-icon-color--active;
-    }
-
-    .wishList__counter {
-      color: $header-link-color--active;
-    }
-  }
-}
 /* -----------------------------------------------------------------------------
   HAMBURGER ICONS COMPONENT
 
@@ -1691,4 +1189,453 @@ $button-transistion-duration: 0.3s;     // The transition duration
 .menuIcon--arrow.is-active span::after {
   bottom: 0;
   transform: translateX($button-width/2) translateY(-$bar-thickness/2) rotate(-45deg);
+}$headerTopTablet-height:      40px;
+$headerTopDesktop-height:     30px;
+$headerTop-separatorHeight:   14px;
+$headerTopTabletIcon-height:  26px;
+$headerTopDesktopIcon-height: 20px;
+
+$headerMainTabletMyAccountIcon-height:  25px;
+$headerMainDesktopMyAccountIcon-height: 30px;
+
+$logoWidthMobile:  {{ settings.logo_mobile_width }};
+$logoWidthTablet:  {{ settings.logo_tablet_width }};
+$logoWidthDesktop: {{ settings.logo_desktop_width }};
+
+$header-top-background-color: #fff;
+$header-icon-color: #D7D7D7;
+$header-icon-color--active: #444;
+$header-link-color: #D7D7D7;
+$header-link-color--active: #444;
+$header-top-dropdown-option: #D7D7D7;
+$header-top-dropdown-option--active: #444;
+$header-top-separator-color: #E5E5E5;
+$header-main-cart-color: #9A9A9A;
+$header-bottom-top-info-color: #FFF;
+$header-bottom-top-info-background: #343434;.headerTop {
+  background: $header-top-background-color;
+  font-size: 12px;
+  line-height: $headerTopTablet-height;
+  font-weight: 400;
+
+  height: $headerTopTablet-height;
+  border-bottom: 1px solid $mobile-border-color;
+  overflow: hidden;
+
+  @include breakpoint($screen-md) {
+    border-color: $tablet-border-color;
+  }
+
+  @include breakpoint($screen-lg) {
+    border-color: $desktop-border-color;
+    line-height: $headerTopDesktop-height;
+    height: $headerTopDesktop-height;
+  }
+}
+
+.headerTop .match-media {
+  @include flexbox;
+  @include justify-content(space-between);
+  height: inherit;
+}
+
+.headerTop__items {
+  @include flexbox;
+  @include align-items(center);
+  overflow: hidden;
+  height: inherit;
+}
+
+.headerTop__separator {
+  height: $headerTop-separatorHeight;
+  width: 1px;
+  background: $header-top-separator-color;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: default;
+
+  &:last-child { display: none; }
+}
+
+.currency,
+.language {
+  margin-right: 20px;
+
+  &:hover {
+    .currency__img,
+    .language__img {
+      transform: rotate(0deg);
+      fill: $header-icon-color--active;
+    }
+
+    .currency__option,
+    .language__option {
+      max-width: 200px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.currency__img,
+.language__img {
+  height: 8px;
+  width: 8px;
+  margin-top: 16px;
+  margin-right: 5px;
+  fill: $header-icon-color;
+  float: left;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: transform .3s ease-in-out, fill .3s linear;
+
+  @include breakpoint($screen-lg) {
+    margin-top: 10px;
+  }
+}
+
+.currency__select,
+.language__select {
+  list-style: none;
+  float: left;
+  text-transform: uppercase;
+}
+
+.currency__option,
+.language__option {
+  float: left;
+  max-width: 0;
+  overflow: hidden;
+  transition: all .3s linear;
+  color: $header-top-dropdown-option;
+
+  &:hover,
+  &.active {
+    max-width: 200px;
+    color: $header-top-dropdown-option--active;
+  }
+}
+
+.headerMain {
+  @include flexbox;
+  @include align-items(flex-start);
+  @include justify-content(space-between);
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @include breakpoint($screen-md) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  @include breakpoint($screen-lg) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .headerMain__items {
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  &.center .headerMain__items {
+    width: 100%;
+  }
+
+  .menuIcon {
+    margin-right: auto;
+  }
+
+  .logo {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @include breakpoint($screen-sm-min) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .logo__img {
+    max-width: $logoWidthMobile;
+    display: block;
+
+    @include breakpoint($screen-sm-min) {
+      max-width: $logoWidthTablet;
+    }
+
+    @include breakpoint($screen-lg) {
+      max-width: $logoWidthDesktop;
+    }
+  }
+
+  .cart {
+    width: 25px;
+    height: 25px;
+    fill: $header-main-cart-color;
+
+    @include breakpoint($screen-sm-min) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.headerBottom {
+  overflow: hidden;
+  height: 25px;
+  width: 100%;
+  float: left;
+  color: $header-bottom-top-info-color;
+  background: $header-bottom-top-info-background;
+
+  & .match-media {
+    @include flexbox;
+    @include justify-content(space-between);
+    height: inherit;
+  }
+
+  .breadcrumb {
+    height: 25px;
+    width: 100%;
+    float: left;
+  }
+}
+.myAccount {
+  @include flexbox;
+  @include align-items(center);
+  text-transform: uppercase;
+
+  &:hover,
+  &.is-active {
+    .myAccount__icon {
+      fill: $header-icon-color--active;
+    }
+  }
+
+  &.myAccount--leftSide {
+    flex-direction: row-reverse;
+    margin-right: 20px;
+
+    .myAccount__link {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+    .myAccount__separator {
+      margin-left: 5px;
+      margin-right: -5px;
+    }
+  }
+}
+
+.myAccount__link {
+  color: $header-link-color;
+  padding-right: 10px;
+  transition: color .3s ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &.is-active {
+    color: $header-link-color--active;
+  }
+}
+
+.myAccount__img {
+  position: relative;
+  float: right;
+}
+
+.headerTop .myAccount__img {
+  height: $headerTopTabletIcon-height;
+  width: $headerTopTabletIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerTopDesktopIcon-height;
+    width: $headerTopDesktopIcon-height + 2;
+  }
+}
+
+.headerMain .myAccount__img {
+  height: $headerMainTabletMyAccountIcon-height;
+  width: $headerMainTabletMyAccountIcon-height + 2;
+
+  @include breakpoint($screen-lg) {
+    height: $headerMainDesktopMyAccountIcon-height;
+    width: $headerMainDesktopMyAccountIcon-height + 2;
+  }
+}
+
+.myAccount__icon {
+  transition: fill 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  fill: $header-icon-color;
+  overflow: visible;
+}
+
+.myAccount__gravatar {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100px;
+  }
+}
+
+.myAccount__gravatar + .myAccount__icon {
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+// Hidden Side - hidden links
+.myAccount__hiddenSide {
+  display: none;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @include breakpoint($screen-sm) {
+    @if '{{ settings.my_account_link_style_tablet }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_tablet }}'}
+    }
+  }
+
+  @include breakpoint($screen-md-min) {
+    @if '{{ settings.my_account_link_style_desktop }}' == 'slide' {
+      display: block;
+    }
+    @else {
+      display: #{'{{ settings.my_account_link_style_desktop }}'}
+    }
+  }
+
+  &.is-animated {
+    transition: all .3s ease-in-out;
+  }
+
+  .myAccount__separator,
+  .myAccount__link {
+    vertical-align: top;
+  }
+
+  .myAccount__separator {
+    margin-left: -5px;
+    margin-right: 5px;
+    color: $header-top-separator-color;
+  }
+}
+
+// Right Side - welcome message + icon
+.myAccount__visibleSide {
+  overflow: hidden;
+  cursor: pointer;
+
+  .myAccount__link {
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: capitalize;
+
+    &.is-animated {
+      transition: all .3s ease-in-out;
+    }
+  }
+}.wishList {
+  @include flexbox;
+  @include align-items(center);
+  text-transform: uppercase;
+  cursor: pointer;
+
+  .wishList__link {
+    color: $header-link-color;
+    padding-right: 10px;
+    cursor: pointer;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: capitalize;
+
+    &.is-active {
+      color: $header-link-color--active;
+    }
+
+    &.is-animated {
+      transition: all .3s ease-in-out;
+    }
+  }
+
+  .wishList__icon {
+    transition: fill 0.3s ease-in-out;
+    height: $headerTopTabletIcon-height;
+    width: $headerTopTabletIcon-height + 2;
+    fill: $header-icon-color;
+    overflow: visible;
+
+    &:last-child {
+      display: none;
+    }
+
+    @include breakpoint($screen-lg) {
+      height: $headerTopDesktopIcon-height;
+      width: $headerTopDesktopIcon-height + 2;
+    }
+  }
+
+  .wishList__counter {
+    font-size: 10px;
+    line-height: 10px;
+    float: right;
+    color: $header-link-color;
+    margin-left: 2px;
+    display: none;
+  }
+
+  .wishList__img {
+    display: block;
+    position: relative;
+    height: $headerTopTabletIcon-height;
+
+    @include breakpoint($screen-lg) {
+      height: $headerTopDesktopIcon-height;
+    }
+  }
+
+  .wishList__img.is-active {
+    .wishList__icon {
+      display: none;
+
+      &:last-child {
+        display: block;
+      }
+    }
+
+    .wishList__counter {
+      display: block;
+    }
+  }
+
+  &:hover,
+  &.is-active {
+    .wishList__icon {
+      fill: $header-icon-color--active;
+    }
+
+    .wishList__counter {
+      color: $header-link-color--active;
+    }
+  }
 }
