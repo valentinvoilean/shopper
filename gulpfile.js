@@ -19,12 +19,10 @@ gulp.task('compileSass', ['normalizeCSS', 'concatSass']);
 gulp.task('test', require(`${__gulpTasks}/test`)());
 gulp.task('test:debug', require(`${__gulpTasks}/test`)(true));
 
-gulp.task('watch:JS', require(`${__gulpTasks}/watchJS`)(gulp, plugins));
 gulp.task('watch:CSS', require(`${__gulpTasks}/watchCSS`)(gulp, plugins));
 gulp.task('watch:Theme', require(`${__gulpTasks}/watchTheme`)(gulp, plugins));
-gulp.task('watch', ['watch:Theme', 'watch:CSS', 'watch:JS']);
+gulp.task('watch', ['watch:Theme', 'watch:CSS']);
 
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));
-gulp.task('createBundle', require(`${__gulpTasks}/createBundle`)(gulp, plugins));
 
-gulp.task('default', ['watch', 'createBundle', 'compileSass']);
+gulp.task('default', ['watch', 'compileSass']);

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "babel-node webpack -p"
+    "start": "npm-run-all --parallel watch:js",
+    "watch:js": "babel-node tools/startBuild.js",
+    "watch:theme": "bash themeWatch.sh"
   },
   "author": "",
   "license": "ISC",
@@ -50,6 +52,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "1.8.0",
     "node-normalize-scss": "1.3.2",
+    "npm-run-all": "3.1.0",
     "picturefill": "3.0.2",
     "react-match-media": "1.0.4",
     "run-sequence": "1.2.2",

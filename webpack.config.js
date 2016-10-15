@@ -1,15 +1,14 @@
-require('./config/paths')(__dirname);
+import webpack from 'webpack';
+import path from 'path';
 
-const
-  path = require('path'),
-  webpack = require('webpack');
+require('./config/paths')(__dirname);
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEV__: false
 };
 
-module.exports = {
+export default {
   devtool: 'source-map',
 
   entry: {
