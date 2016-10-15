@@ -14,6 +14,4 @@ const gulp = require('gulp'),
 gulp.task('test', require(`${__gulpTasks}/test`)());
 gulp.task('test:debug', require(`${__gulpTasks}/test`)(true));
 
-gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));
-
-gulp.task('default', ['lint']);
+gulp.task('default', ['test']);

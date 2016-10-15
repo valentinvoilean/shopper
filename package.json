@@ -8,7 +8,8 @@
     "start": "npm-run-all --parallel watch:theme watch:js watch:sass",
     "watch:js": "babel-node tools/startBuild.js",
     "watch:theme": ". ./themeWatch.sh",
-    "watch:sass": "babel-node tools/watchSass"
+    "watch:sass": "babel-node tools/watchSass",
+    "lint": "eslint ./src/js/** ./tests/**"
   },
   "author": "",
   "license": "ISC",
