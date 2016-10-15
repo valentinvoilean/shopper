@@ -13,16 +13,13 @@ const gulp = require('gulp'),
 // SASS related Tasks
 gulp.task('normalizeCSS', require(`${__gulpTasks}/normalizeCSS/normalizeCSS`)(gulp, plugins));
 gulp.task('concatSass', require(`${__gulpTasks}/concatSass`)(gulp, plugins));
-gulp.task('compileSass', ['normalizeCSS', 'concatSass']);
+gulp.task('compile:sass', ['normalizeCSS', 'concatSass']);
 
 // Unit tests related tasks
 gulp.task('test', require(`${__gulpTasks}/test`)());
 gulp.task('test:debug', require(`${__gulpTasks}/test`)(true));
 
-gulp.task('watch:CSS', require(`${__gulpTasks}/watchCSS`)(gulp, plugins));
-gulp.task('watch:Theme', require(`${__gulpTasks}/watchTheme`)(gulp, plugins));
-gulp.task('watch', ['watch:Theme', 'watch:CSS']);
-
+gulp.task('watch:sass', require(`${__gulpTasks}/watchCSS`)(gulp, plugins));
 gulp.task('lint', require(`${__gulpTasks}/lint`)(gulp, plugins));
 
-gulp.task('default', ['watch', 'compileSass']);
+gulp.task('default', ['watch:sass', 'compile:sass']);

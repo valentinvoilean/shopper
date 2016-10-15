@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel watch:theme watch:js",
+    "start": "npm-run-all --parallel watch:theme watch:js watch:sass compile:sass",
     "watch:js": "babel-node tools/startBuild.js",
-    "watch:theme": ". ./themeWatch.sh"
+    "watch:theme": ". ./themeWatch.sh",
+    "watch:sass": "gulp watch:sass",
+    "compile:sass": "gulp compile:sass"
   },
   "author": "",
   "license": "ISC",
