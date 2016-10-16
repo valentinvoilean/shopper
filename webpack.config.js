@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import './paths';
 
 const GLOBALS = {
@@ -47,6 +48,7 @@ export default {
       $: 'jquery',
       jQuery: 'jquery'
     }),
+    new ExtractTextPlugin('helpers.css', {allChunks: false}),
 
     /*new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -70,7 +72,14 @@ export default {
       {test: /\.js?$/, include: `${__base}/src`, loader: 'babel-loader'},
       {test: /\.svg$/, loader: 'svg-sprite'},
       {test: /\.modernizrrc$/, loader: 'modernizr'},
-      {test: /\.css$/, loader: 'style-loader!css-loader'}
+      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
+      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+      {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
+      {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
+      {test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!less-loader')},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')},
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')}
     ]
   }
 };
