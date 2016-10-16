@@ -43,31 +43,20 @@
   </script>
 
   <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-  <script src="{{ 'main.bundle.js' | asset_url }}" defer></script>
+  <script src="{{ 'main.js' | asset_url }}" defer></script>
+  <script src="{{ 'utils.js' | asset_url }}" defer></script>
 </head>
 
 <body id="{{ page_title | handle }}"
       class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
-{% include 'header' %}
+
+  <header></header>
+
   <main role="main">
+    <div id="configContainer"></div>
+
+    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
     {{ content_for_layout }}
-    <div id="hello"></div>
-    <div class="container main">
-      <div class="row">
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1"><div class="testBackground"></div></div>
-        <div class="test col-xs-1 order-last"><div class="testBackground"></div></div>
-      </div>
-    </div>
   </main>
 
   <footer role="contentinfo"></footer>

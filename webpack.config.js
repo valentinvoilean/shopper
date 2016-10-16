@@ -8,11 +8,12 @@ const GLOBALS = {
 };
 
 export default {
-  devtool: 'source-map',
+  //devtool: 'source-map',
 
   entry: {
     vendors: ['babel-polyfill', 'react', 'react-dom', 'react-match-media',
       'jquery', 'jquery.currencies.js', 'modernizr', 'picturefill'],
+    utils: [`${__utils}/headerConfig.js`],
     main: [`${__base}/src/index.js`]
   },
 
@@ -20,7 +21,7 @@ export default {
 
   output: {
     path: __assets,
-    filename: 'main.bundle.js'
+    filename: '[name].js'
   },
 
   resolve: {
@@ -68,7 +69,8 @@ export default {
     loaders: [
       {test: /\.js?$/, include: `${__base}/src`, loader: 'babel-loader'},
       {test: /\.svg$/, loader: 'svg-sprite'},
-      {test: /\.modernizrrc$/, loader: 'modernizr'}
+      {test: /\.modernizrrc$/, loader: 'modernizr'},
+      {test: /\.css$/, loader: 'style-loader!css-loader'}
     ]
   }
 };
