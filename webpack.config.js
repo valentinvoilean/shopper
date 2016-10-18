@@ -79,7 +79,9 @@ export default {
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!less')},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style?sourceMap',
+        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!sass',
+      'resolve-url', 'sass?sourceMap')},
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')}
     ]
   }
