@@ -78,9 +78,9 @@ export default {
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      {test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!less-loader')},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')}
+      {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!less')},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')},
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')}
     ]
   }
 };

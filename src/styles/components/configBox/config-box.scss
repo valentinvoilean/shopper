@@ -1,0 +1,68 @@
+.configBox {
+
+  &__background {
+    background: rgba(black, 0.5);
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+
+  &__base {
+    background: white;
+    padding: 20px;
+    position: relative;
+    top: 20%;
+    box-shadow: 0 0 0 5px rgba(white, 0.25);
+    border-radius: 5px;
+  }
+
+  &__h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  &__h2 {
+
+  }
+
+  &__text {
+
+  }
+
+  &__box {
+
+  }
+
+  &__header {
+
+  }
+
+  &__column {
+
+  }
+
+  &__close {
+
+  }
+
+  &__plus {
+
+  }
+
+  &__copy {
+
+  }
+
+  &__nav {
+
+  }
+
+  &__tab {
+
+  }
+}
