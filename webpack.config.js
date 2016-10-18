@@ -80,7 +80,7 @@ export default {
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!less')},
       {test: /\.scss$/, loader: ExtractTextPlugin.extract('style',
-        'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url!sass?sourceMap')},
+        'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer!resolve-url!sass?sourceMap')},
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')}
     ]
   }

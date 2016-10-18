@@ -6,6 +6,9 @@ import { Footer } from 'containers/footer';
 import { MyAccount } from 'components/my-account';
 import { Wishlist } from 'components/wishlist';
 
+import styles from 'styles/components/configBox/config-box.scss';
+console.warn(styles);
+
 ReactDOM.render(
     <Header>
         <MyAccount/>
