@@ -49,7 +49,7 @@ export default {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    new ExtractTextPlugin('helpers.css', {allChunks: false}),
+    new ExtractTextPlugin('helpers.css', {allChunks: true}),
 
     /*new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -79,9 +79,8 @@ export default {
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!less')},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style?sourceMap',
-        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!sass',
-      'resolve-url', 'sass?sourceMap')},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style',
+        'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url!sass?sourceMap')},
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')}
     ]
   }
